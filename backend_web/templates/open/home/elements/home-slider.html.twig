@@ -17,7 +17,7 @@
                                     <div class="slide_content" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOut">
                                         <div class="home_title">{{ slide.home_title|raw }}</div>
                                         <div class="home_text">
-                                            {% if slide.home_link is not empty %}
+                                            {% if slide.home_link is defined and slide.home_link is not empty %}
                                             <div class="home_link"><a href="/promocion/corte-cabello-1"><b>Ver esta promoción</b></a></div>
                                             {% endif %}
                                         </div>
