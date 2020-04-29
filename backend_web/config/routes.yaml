@@ -2,6 +2,23 @@ home:
     path: /
     controller: App\Controller\Open\HomeController::index
 
+about-us:
+    path: /about-us
+    controller: App\Controller\Open\HomeController::about_us
+
+services:
+    path: /services
+    controller: App\Controller\Open\HomeController::services
+
+contact:
+    path: /contact
+    controller: App\Controller\Open\HomeController::contact
+
+# zona privada
+login:
+    path: /login
+    controller: App\Controller\UserController::login
+
 tasks:
     path: /tareas
     controller: App\Controller\TaskController::index
@@ -33,10 +50,6 @@ register:
 users:
     path: /users
     controller: App\Controller\UserController::index
-    
-login:
-    path: /login
-    controller: App\Controller\UserController::login
 
 logout:
     path: /logout
