@@ -14,10 +14,7 @@
         <!-- Main Navigation -->
         <nav class="main_nav">
             <ul class="d-flex flex-row align-items-start justify-content-start">
-                <li class="{% if requri == 'home' %}active{% endif %}"><a href="/">Inicio<div><div></div><div></div><div></div></div></a></li>
-                <li class="{% if requri == 'services' %}active{% endif %}"><a href="{{ path("services") }}">Servicios<div><div></div><div></div><div></div></div></a></li>
-                <li class="{% if requri == 'contact' %}active{% endif %}"><a href="{{ path("contact") }}">Contacto<div><div></div><div></div><div></div></div></a></li>
-                <li class="{% if requri == 'about-us' %}active{% endif %}"><a href="{{ path("about-us") }}">Doble RR<div><div></div><div></div><div></div></div></a></li>
+                {{ include("open/common/nav-lis.html.twig") }}
             </ul>
         </nav>
     </div>
@@ -27,10 +24,7 @@
 <div class="menu">
     <nav class="menu_nav">
         <ul class="d-flex flex-column align-items-start justify-content-start">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="{{ path("services") }}">Servicios</a></li>
-            <li><a href="{{ path("contact") }}">Contacto</a></li>
-            <li><a href="{{ path("about-us") }}">Doble RR</a></li>
+            {{ include("open/common/nav-lis.html.twig") }}
         </ul>
     </nav>
 </div>
