@@ -3,13 +3,16 @@
 declare(strict_types=1);
 namespace App\Controller\Open;
 
+use App\Providers\HomeProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     public function index()
     {
-        return $this->render('open/home/index.html.twig');
+        $provider = new HomeProvider();
+        $arslider = $provider->get_text_slider();
+        return $this->render('open/home/index.html.twig',["arslider"=>$arslider]);
     }
 
     public function about_us()

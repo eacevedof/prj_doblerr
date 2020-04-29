@@ -1,82 +1,33 @@
 <!-- Home -->
 <div class="home">
     <!-- Home Slider -->
+
+
     <div class="home_slider_container">
         <div class="owl-carousel owl-theme home_slider">
-            <!-- Slide -->
-            <div class="owl-item home_slide">
-                <div class="background_image" style="background-image:url(/assets/themes/beauty/images/index.jpg)"></div>
-                <div class="slide_text" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                    <div class="slide_title">Our best offers</div>
-                    <div class="slide_subtitle">Lorem ipsum dolor sit amet, consectetur</div>
-                </div>
-                <div class="slide_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-11">
-                                <div class="slide_content" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOut">
-                                    <div class="home_title"><h1>El <span>cabello</span> de tus sueños.</h1></div>
-                                    <div class="home_text">
-                                        <p>
-                                            En Doble RR
-                                        </p>
+            {% for slide in arslider %}
+                <!-- Slide {{ loop.index }}-->
+                <div class="owl-item home_slide">
+                    <div class="background_image" style="background-image:url(/assets/themes/beauty/images/{{ slide.background_image }})"></div>
+
+                    <div class="slide_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="slide_content" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOut">
+                                        <div class="home_title">{{ slide.home_title|raw }}</div>
+                                        <div class="home_text">
+                                            {% if slide.home_link is not empty %}
+                                            <div class="home_link"><a href="/promocion/corte-cabello-1"><b>Ver esta promoción</b></a></div>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                    <div class="home_link"><a href="/assets/themes/beauty/#">View our offers</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Slide -->
-            <div class="owl-item home_slide">
-                <div class="background_image" style="background-image:url(/assets/themes/beauty/images/index.jpg)"></div>
-                <div class="slide_text" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                    <div class="slide_title">Our best offers</div>
-                    <div class="slide_subtitle">Lorem ipsum dolor sit amet, consectetur</div>
-                </div>
-                <div class="slide_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-11">
-                                <div class="slide_content" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOut">
-                                    <div class="home_title"><h1>The <span>hair</span> that you dream</h1></div>
-                                    <div class="home_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien cursus faucibus finibus.</p>
-                                    </div>
-                                    <div class="home_link"><a href="/assets/themes/beauty/#">View our offers</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide -->
-            <div class="owl-item home_slide">
-                <div class="background_image" style="background-image:url(/assets/themes/beauty/images/index.jpg)"></div>
-                <div class="slide_text" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                    <div class="slide_title">Our best offers</div>
-                    <div class="slide_subtitle">Lorem ipsum dolor sit amet, consectetur</div>
-                </div>
-                <div class="slide_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-11">
-                                <div class="slide_content" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOut">
-                                    <div class="home_title"><h1>The <span>hair</span> that you dream</h1></div>
-                                    <div class="home_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien cursus faucibus finibus.</p>
-                                    </div>
-                                    <div class="home_link"><a href="/assets/themes/beauty/#">View our offers</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
 
