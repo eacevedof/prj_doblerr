@@ -43,7 +43,7 @@ volumes:
 
 networks:
   sf-doblerr-net:
-  default:
-    external:
-      name: mariadb-univ_net
+  mariadb-univ_net:
+    external: true
+
 
