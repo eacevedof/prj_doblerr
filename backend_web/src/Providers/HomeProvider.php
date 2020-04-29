@@ -13,12 +13,12 @@ class HomeProvider
                 //"home_link"=>"",
             ],
             [
-                "background_image"=>"index.jpg",
+                "background_image"=>"slide-01.jpeg",
                 "home_title"=>"<h1>cejas <span>KeRaTiNa</span> manicura.</h1>",
                 //"home_link"=>"",
             ],
             [
-                "background_image"=>"index.jpg",
+                "background_image"=>"slide-02.jpeg",
                 "home_title"=>"<h1>PeInAdO <span>complementos</span> estilo.</h1>",
                 //"home_link"=>"",
             ],
