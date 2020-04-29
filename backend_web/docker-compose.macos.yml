@@ -1,0 +1,49 @@
+version: '3.5'
+
+services:
+  sf-doblerr-web:
+    container_name: sf-doblerr-web
+    build:
+      # apunta al Dockerfile
+      context: ./docker/nginx
+      args:
+        UID: $U_ID
+    ports:
+      - 200:80
+    volumes:
+      - ./public:/appdata/www/public
+    depends_on:
+      - sf-doblerr-be
+    networks:
+      - sf-doblerr-net
+
+  sf-doblerr-be:
+    container_name: sf-doblerr-be
+    build:
+      context: docker/php
+      args:
+        UID: $U_ID
+    environment:
+      # variables necesarias para xdebug
+      PHP_IDE_CONFIG: serverName=DockerDoble
+      PHP_XDEBUG_ENABLED: 1
+      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9005
+    volumes:
+      # nocopy evita hacer la copia del contenedor al host (nuestra maquina)
+      - sf-doblerr-be-sync:/appdata/www:nocopy
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ~/.ssh/id_rsa:/home/appuser/.ssh/id_rsa
+
+    networks:
+      - sf-doblerr-net
+      - mariadb-univ_net
+volumes:
+  sf-doblerr-be-sync:
+    external: true
+
+networks:
+  sf-doblerr-net:
+  default:
+    external:
+      name: mariadb-univ_net
+
