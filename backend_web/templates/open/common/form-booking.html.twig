@@ -14,15 +14,16 @@
             <input type="text" class="app_input" placeholder="Nombre" required="required">
             <input type="email" class="app_input" placeholder="Email" required="required">
             <input type="text" class="app_input" placeholder="Teléfono" required="required">
-            <input type="text" class="app_input" placeholder="Fecha" required="required">
-            <select class="app_input app_select">
-                <option disabled="" selected="">Select Service</option>
-                <option>Service 1</option>
-                <option>Service 2</option>
-                <option>Service 3</option>
-                <option>Service 4</option>
+            <input type="text" class="app_input" placeholder="Fecha y hora" required="required">
+            <select id="sel-service" class="app_input app_select" multiple size="10">
+                <option disabled="" selected="">Que te vas a hacer?</option>
+                <option value="Corta">Cortar</option>
+                <option value="Peinar">Peinar</option>
+                <option value="Lavar">Lavar</option>
+                <option value="Tratamiento">Tratamiento</option>
+                <option value="Estética">Estética</option>
             </select>
-            <button class="app_form_button">submit</button>
+            <button class="app_form_button">Pedir</button>
         </form>
     </div>
 </div>

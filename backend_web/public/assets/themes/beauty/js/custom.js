@@ -1,5 +1,5 @@
 /* JS Document */
-
+console.log("custom.js")
 /******************************
 
 [Table of Contents]
@@ -200,6 +200,7 @@ $(document).ready(function()
 		{
 			var btn = $('.app_button');
 			var close = $('.app_button_close');
+
 			btn.on('click', function()
 			{
 				if(!$('.menu').hasClass('active'))
