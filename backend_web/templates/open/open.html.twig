@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Peluquería Doble RR</title>
+    <title>{% block title %}Doble RR{% endblock %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Vogue template project">
@@ -16,7 +16,10 @@
 </head>
 <body>
 <div class="super_container">
+    {{ include("open/common/header.html.twig") }}
+{% block body %}
 
+{% endblock %}
 </div>
 
 <script src="/assets/themes/beauty/js/jquery-3.2.1.min.js"></script>
