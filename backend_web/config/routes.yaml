@@ -3,15 +3,15 @@ home:
     controller: App\Controller\Open\HomeController::index
 
 about-us:
-    path: /es/la-empresa
+    path: /la-empresa
     controller: App\Controller\Open\HomeController::about_us
 
 services:
-    path: /es/servicios
+    path: /servicios
     controller: App\Controller\Open\HomeController::services
 
 contact:
-    path: /es/contacto
+    path: /contacto
     controller: App\Controller\Open\HomeController::contact
 
 # zona privada
