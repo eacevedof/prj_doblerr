@@ -22,7 +22,6 @@
                         {% set items=0 %}
                         {% for service in services %}
                             {% if items is same as(0) %}
-                                <!-- Slide {{ loop.index }}-->
                                 <div class="owl-item">
                             {% endif %}
                             <!-- Service -->
@@ -38,11 +37,13 @@
                                 </div>
                             </div>
 
-                            {% if items is same as(2) %}
+                            {% if items is same as(1) %}
                                 </div>
                                 {% set items=0 %}
+                            {% else %}
+                                {% set items=items + 1 %}
                             {% endif %}
-                            {% set items=items + 1 %}
+
                         {% endfor %}
                         </div>
                     </div>
