@@ -53,7 +53,7 @@ $(document).ready(function()
 
 	$(document).on('scroll', function()
 	{
-		setHeader();
+		//setHeader();
 	});
 
 	/* 
@@ -64,6 +64,7 @@ $(document).ready(function()
 
 	function setHeader()
 	{
+
 		if($(window).scrollTop() > 91)
 		{
 			header.addClass('scrolled');
