@@ -29,8 +29,9 @@ class HomeController extends AbstractController
 
     public function services()
     {
+        $categories = $this->provider->get_categories();
         $services = $this->provider->get_text_services();
-        return $this->render('open/home/services.html.twig',["services"=>$services]);
+        return $this->render('open/home/services.html.twig',["categories"=>$categories,"services"=>$services]);
     }
 
     public function contact()
