@@ -1,5 +1,5 @@
+console.log("services.js")
 /* JS Document */
-
 /******************************
 
 [Table of Contents]
@@ -52,7 +52,7 @@ $(document).ready(function()
 
 	$(document).on('scroll', function()
 	{
-		setHeader();
+		//setHeader();
 	});
 
 	/* 
