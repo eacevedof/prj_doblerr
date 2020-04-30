@@ -12,7 +12,8 @@ class HomeController extends AbstractController
     {
         $provider = new HomeProvider();
         $arslider = $provider->get_text_slider();
-        return $this->render('open/home/index.html.twig',["arslider"=>$arslider]);
+        $services = $provider->get_text_services();
+        return $this->render('open/home/index.html.twig',["arslider"=>$arslider,"services"=>$services]);
     }
 
     public function about_us()

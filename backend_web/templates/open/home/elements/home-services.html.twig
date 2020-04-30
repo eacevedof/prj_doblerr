@@ -19,89 +19,31 @@
                     <!-- Servicios Slider -->
                     <div class="services_slider_container">
                         <div class="owl-carousel owl-theme services_slider">
-
-                            <!-- Slide -->
-                            <div class="owl-item">
-
-                                <!-- Service -->
-                                <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
-                                    <div class="service_icon"><div><img src="/assets/themes/beauty/images/mirror.svg" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="service_content">
-                                        <div class="service_title trans_200">Peinado</div>
-                                        <div class="service_text trans_200">
-                                            <p>
-                                                Peinados con estilo para bodas, eventos especiales o para cualquier momento del día.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Service -->
-                                <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
-                                    <div class="service_icon"><div><img src="/assets/themes/beauty/images/facial-mask.svg" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="service_content">
-                                        <div class="service_title trans_200">Color y Mechas</div>
-                                        <div class="service_text trans_200">
-                                            <p>
-                                                Trabajamos con las mejores marcas en tintes del mercado para lograr un acabado único.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Slide -->
-                            <div class="owl-item">
-
-                                <!-- Service -->
-                                <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
-                                    <div class="service_icon"><div><img src="/assets/themes/beauty/images/makeup.svg" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="service_content">
-                                        <div class="service_title trans_200">Recogidos</div>
-                                        <div class="service_text trans_200">
-                                            <p>Estudiaremos tu estilo para hacerte el recogido perfecto</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Service -->
-                                <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
-                                    <div class="service_icon service_icon_2"><div><img src="/assets/themes/beauty/images/facial-mask.svg" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="service_content">
-                                        <div class="service_title trans_200">Tratamientos para tu cabello</div>
-                                        <div class="service_text trans_200">
-                                            <p>Contamos con una amplia gama de tratamientos para los distintos tipos y problemas de cabello</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="owl-item">
-                                <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
-                                    <div class="service_icon service_icon_2"><div><img src="/assets/themes/beauty/images/cream-2.svg" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="service_content">
-                                        <div class="service_title trans_200">Alisado Queratina</div>
-                                        <div class="service_text trans_200">
-                                            <p>
-                                                Si tienes el pelo ondulado este tratamiento es perfecto para ti.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
-                                    <div class="service_icon service_icon_2"><div><img src="/assets/themes/beauty/images/cream.svg" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="service_content">
-                                        <div class="service_title trans_200">Extensiones</div>
-                                        <div class="service_text trans_200">
-                                            <p>
-                                                Disponemos de distintos tipos de extensiones, fijas, adhesivas, clip, postizos.
-                                                Daremos con el tono que se ajuste a tu color.
-                                            </p>
-                                        </div>
+                        {% set items=0 %}
+                        {% for service in services %}
+                            {% if items is same as(0) %}
+                                <!-- Slide {{ loop.index }}-->
+                                <div class="owl-item">
+                            {% endif %}
+                            <!-- Service -->
+                            <div class="service d-flex flex-row align-items-center justify-content-start trans_200">
+                                <div class="service_icon"><div><img src="/assets/themes/beauty/images/{{ service.icon }}" class="svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+                                <div class="service_content">
+                                    <div class="service_title trans_200">{{ service.service_title }}</div>
+                                    <div class="service_text trans_200">
+                                        <p>
+                                            {{ service.service_text }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
+
+                            {% if items is same as(2) %}
+                                </div>
+                                {% set items=0 %}
+                            {% endif %}
+                            {% set items=items + 1 %}
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
