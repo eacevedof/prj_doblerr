@@ -14,10 +14,8 @@
             </div>
             <div class="w3top-nav-right">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    {% set requri = app.request.get('_route') %}
+                    {{ include("open/common/nav-lis.html.twig") }}
                 </ul>
             </div>
         </div>
