@@ -20,7 +20,7 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://www.doblerr.es/$1 [R,L]
+    RewriteRule ^(.*)$ https://doblerr.es/$1 [R,L]
 
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
