@@ -8,11 +8,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+    private $provider;
+
+    public function __construct()
+    {
+        $this->provider= new HomeProvider();
+    }
+
     public function index()
     {
-        $provider = new HomeProvider();
-        $arslider = $provider->get_text_slider();
-        $services = $provider->get_text_services();
+        $arslider = $this->provider->get_text_slider();
+        $services = $this->provider->get_text_services();
         return $this->render('open/home/index.html.twig',["arslider"=>$arslider,"services"=>$services]);
     }
 
@@ -23,7 +29,8 @@ class HomeController extends AbstractController
 
     public function services()
     {
-        return $this->render('open/home/services.html.twig');
+        $services = $this->provider->get_text_services();
+        return $this->render('open/home/services.html.twig',["services"=>$services]);
     }
 
     public function contact()
