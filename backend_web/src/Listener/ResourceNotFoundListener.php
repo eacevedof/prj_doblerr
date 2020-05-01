@@ -6,7 +6,6 @@ namespace App\Listener;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 class ResourceNotFoundListener
 {
@@ -23,7 +22,10 @@ class ResourceNotFoundListener
         // You get the exception object from the received event
         $exception = $event->getThrowable();
 
-        if (!($exception instanceof ResourceNotFoundException))
+        //print_r(get_class($exception));
+        print_r(get_parent_class($exception));
+        //Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+        if (!($exception instanceof Symfony\Component\HttpKernel\Exception\NotFoundHttpException || $exception instanceof Symfony\Component\Routing\Exception\ResourceNotFoundException))
             return;
 
         $message = sprintf(
@@ -51,4 +53,6 @@ class ResourceNotFoundListener
         // sends the modified response object to the event
         $event->setResponse($response);
     }
+
+
 }
