@@ -16,8 +16,8 @@
 var map;
 function initialize() {
     var mapOptions = {
-        zoom: 18,
-        center: {lat: 40.4453711, lng: -3.6682841}
+        zoom: 16,
+        center: {lat: 40.4459085, lng: -3.667624 }
     };
     map = new google.maps.Map(document.getElementById('map'),
         mapOptions);
@@ -48,5 +48,5 @@ function initialize() {
         infowindow.open(map, marker);
     });
 }
-initialize();
+google.maps.event.addDomListener(window, 'load', initialize);
 </script>
