@@ -2,26 +2,78 @@
 
 {% block title %}Doble RR | Contacto{% endblock %}
 
-{% block body %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/styles/contact_responsive.css">
+{% endblock %}
 
+{% block body %}
+<div class="home">
+    <div class="parallax_background" data-image-src="/assets/themes/beauty/images/contact.jpg"></div>
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="section_title_container">
+                        <div class="section_title"><h1>Here is where you can<span> find us</span></h1></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+
+<div class="contact">
+
+    <!-- Google Map -->
+    <div class="map">
+        <div id="google_map" class="google_map">
+            <div class="map_container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact_overlay">
+        <div class="contact_overlay_content d-flex flex-column align-items-center justify-content-center">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="#">
+                    <div>V<span>o</span>gue</div>
+                    <div>hair</div>
+                </a>
+            </div>
+            <div class="contact_list">
+                <ul>
+                    <li class="text-center">
+                        <div><span><img src="/assets/themes/beauty/images/placeholder.svg" alt="https://www.flaticon.com/authors/freepik"></span>4127 Raoul Wallenber4127 Raoul Wallen berg Place</div>
+                    </li>
+                    <li class="text-center">
+                        <div><span><img src="/assets/themes/beauty/images/phone-call.svg" alt="https://www.flaticon.com/authors/freepik"></span>203-808-8613</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
     <div class="parallax_background" data-image-src="/assets/themes/beauty/images/footer.jpg"></div>
-     <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/assets/themes/beauty/images/footer.jpg" data-speed="0.8"></div>
     <div class="footer_container">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="section_title_container">
-                        <div class="section_title"><h1>Infórmate</h1></div>
-                        <p>
-                            Mantente informado sobre los nuevos servicios y técnicas que aplicamos
-                        </p>
+                        <div class="section_title"><h1>Get in touch</h1></div>
+                        <p>Maximus mauris sceleri sque, at rutrum nulla dictum.</p>
                     </div>
                 </div>
             </div>
             <div class="row footer_row">
                 <div class="col-lg-4 footer_col">
                     <div class="contact_info">
-                        <div class="footer_title">Contacto Info</div>
+                        <div class="footer_title">Contact Info</div>
                         <div class="contact_info_list">
                             <ul>
                                 <li class="d-flex flex-row align-items-start justify-content-start">
@@ -40,12 +92,12 @@
                         </div>
                         <div class="social">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="/assets/themes/beauty/#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li><a href="/assets/themes/beauty/#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="/assets/themes/beauty/#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="/assets/themes/beauty/#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                <li><a href="/assets/themes/beauty/#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-                                <li><a href="/assets/themes/beauty/#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -73,10 +125,9 @@
             </div>
         </div>
     </div>
-    <div class="footer_bar d-flex flex-row align-items-center justify-content-start">
-        <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/assets/themes/beauty/https://colorlib.com" target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-    </div>
-
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+    <script src="/assets/themes/beauty/js/contact.js"></script>
 {% endblock %}
