@@ -61,7 +61,7 @@ function initialize()
         infowindow.open(map, marker);
     });
     //marker.setMap(marker);
-
+    google.maps.event.trigger(marker, 'click');
 
 
     if($(window).width() > 990)
