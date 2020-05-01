@@ -29,7 +29,7 @@ $(document).ready(function()
 
 	initMenu();
 	initApp();
-	initGoogleMap();
+	//initGoogleMap();
 	initParallax();
 
 	setHeader();
