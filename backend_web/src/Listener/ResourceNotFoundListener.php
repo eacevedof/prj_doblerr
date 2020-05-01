@@ -23,6 +23,9 @@ class ResourceNotFoundListener
         // You get the exception object from the received event
         $exception = $event->getThrowable();
 
+        if (!($exception instanceof ResourceNotFoundException))
+            return;
+
         $message = sprintf(
             'Resource: %s with code: %s',
             $exception->getMessage(),
@@ -38,7 +41,7 @@ class ResourceNotFoundListener
 
         // HttpExceptionInterface is a special type of exception that
         // holds status code and header details
-        if ($exception instanceof HttpExceptionInterface) {
+        if ($exception instanceof ResourceNotFoundException) {
             $response->setStatusCode($exception->getStatusCode());
             $response->headers->replace($exception->getHeaders());
         } else {
