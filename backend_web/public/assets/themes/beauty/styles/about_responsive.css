@@ -374,3 +374,14 @@
 {
 	
 }
+
+/**
+15. 360x640 (mi telef)
+ */
+@media only screen and (max-width: 360px)
+{
+	.app
+	{
+		width: 180px;
+	}
+}

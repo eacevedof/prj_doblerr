@@ -238,7 +238,7 @@
 		left: 50%;
 		-webkit-transform: translate(-50%, 0px);
 		-moz-transform: translate(-50%, 0px);
-		-ms-transform: translate(-50%, 0px%);
+		-ms-transform: translate(-50%, 0px);
 		-o-transform: translate(-50%, 0px);
 		transform: translate(-50%, 0px);
 		top: auto;
@@ -369,4 +369,15 @@
 @media only screen and (max-width: 400px)
 {
 	
+}
+
+/**
+15. 360x640 (mi telef)
+ */
+@media only screen and (max-width: 360px)
+{
+	.app
+	{
+		width: 180px;
+	}
 }
