@@ -5,6 +5,7 @@ namespace App\Controller\Open;
 
 use App\Providers\HomeProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Providers\SeoProvider;
 
 class HomeController extends AbstractController
 {
@@ -17,28 +18,32 @@ class HomeController extends AbstractController
 
     public function index()
     {
+        $seo = SeoProvider::get_meta("home");
         $arslider = $this->provider->get_text_slider();
         $services = $this->provider->get_text_services();
-        return $this->render('open/home/index.html.twig',["arslider"=>$arslider,"services"=>$services]);
+        return $this->render('open/home/index.html.twig',["arslider"=>$arslider,"services"=>$services,"seo"=>$seo]);
     }
 
     public function about_us()
     {
-        return $this->render('open/home/about-us.html.twig');
+        $seo = SeoProvider::get_meta("about-us");
+        return $this->render('open/home/about-us.html.twig',["seo"=>$seo]);
     }
 
     public function services()
     {
+        $seo = SeoProvider::get_meta("services");
         $categories = $this->provider->get_categories();
         $services = $this->provider->get_text_services();
         $products = $this->provider->get_text_products();
         $services = array_merge($services,$products);
-        return $this->render('open/home/services.html.twig',["categories"=>$categories,"services"=>$services]);
+        return $this->render('open/home/services.html.twig',["categories"=>$categories,"services"=>$services,"seo"=>$seo]);
     }
 
     public function contact()
     {
-        return $this->render('open/home/contact.html.twig');
+        $seo = SeoProvider::get_meta("contact");
+        return $this->render('open/home/contact.html.twig',["seo"=>$seo]);
     }
 
 }
