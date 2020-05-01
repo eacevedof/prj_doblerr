@@ -31,6 +31,8 @@ class HomeController extends AbstractController
     {
         $categories = $this->provider->get_categories();
         $services = $this->provider->get_text_services();
+        $products = $this->provider->get_text_products();
+        $services = array_merge($services,$products);
         return $this->render('open/home/services.html.twig',["categories"=>$categories,"services"=>$services]);
     }
 
