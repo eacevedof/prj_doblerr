@@ -8,23 +8,54 @@
 {% endblock %}
 
 {% block body %}
-<div class="home">
-    <div class="parallax_background" data-image-src="/assets/themes/beauty/images/contact.jpg"></div>
-    <div class="home_container">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-8">
-                    <div class="section_title_container">
-                        <div class="section_title"><h1>Aquí<span> te esperamos</span></h1></div>
+    <div class="footer">
+        <div class="parallax_background" data-image-src="/assets/themes/beauty/images/footer.jpg"></div>
+        <div class="footer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section_title_container">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer_row">
+                    <div class="col-lg-4 footer_col">
+                        <div class="contact_info">
+                            <div class="footer_title">Datos de contacto</div>
+                            <div class="contact_info_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-start justify-content-start">
+                                        <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/placeholder.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+                                        <div class="contact_info_content">Calle Clara Del Rey 57</div>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/phone-call.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+                                        <div class="contact_info_content">+34 91 455 74 43</div>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/message.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+                                        <div class="contact_info_content">doblerr57@gmail.com</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--
+                        <div class="social">
+                            <ul class="d-flex flex-row align-items-center justify-content-start">
+                                {{ include("open/home/elements/contact-social.html.twig") }}
+                            </ul>
+                        </div>
+-->
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        {{ include("open/home/elements/contact-form.html.twig") }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 <!-- Contact -->
-
 <div class="contact">
 
     {{ include("open/home/elements/contact-gmaps.html.twig") }}
@@ -41,7 +72,7 @@
             <div class="contact_list">
                 <ul>
                     <li class="text-center">
-                        <div><span><img src="/assets/themes/beauty/images/placeholder.svg" alt=""></span>Calle Clara del Rey 57</div>
+                        <div><span><img src="/assets/themes/beauty/images/placeholder.svg" alt=""></span>Calle Clara del Rey 57 - Madrid 28002</div>
                     </li>
                     <li class="text-center">
                         <div><span><img src="/assets/themes/beauty/images/phone-call.svg" alt=""></span>+34 91 455 74 43</div>
@@ -51,53 +82,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <div class="parallax_background" data-image-src="/assets/themes/beauty/images/footer.jpg"></div>
-    <div class="footer_container">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title_container">
-                        <div class="section_title"><h1 style="color:white;">Formulario</h1></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row footer_row">
-                <div class="col-lg-4 footer_col">
-                    <div class="contact_info">
-                        <div class="footer_title">Datos de contacto</div>
-                        <div class="contact_info_list">
-                            <ul>
-                                <li class="d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/placeholder.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="contact_info_content">Calle Clara Del Rey 57</div>
-                                </li>
-                                <li class="d-flex flex-row align-items-center justify-content-start">
-                                    <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/phone-call.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="contact_info_content">+34 91 455 74 43</div>
-                                </li>
-                                <li class="d-flex flex-row align-items-center justify-content-start">
-                                    <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/message.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="contact_info_content">doblerr57@gmail.com</div>
-                                </li>
-                            </ul>
-                        </div>
-<!--
-                        <div class="social">
-                            <ul class="d-flex flex-row align-items-center justify-content-start">
-                                {{ include("open/home/elements/contact-social.html.twig") }}
-                            </ul>
-                        </div>
--->
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    {{ include("open/home/elements/contact-form.html.twig") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 {% endblock %}
 {% block javascripts %}
     <script src="/assets/themes/beauty/js/contact.js"></script>
