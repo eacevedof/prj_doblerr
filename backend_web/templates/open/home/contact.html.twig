@@ -65,54 +65,34 @@
             <div class="row footer_row">
                 <div class="col-lg-4 footer_col">
                     <div class="contact_info">
-                        <div class="footer_title">Contact Info</div>
+                        <div class="footer_title">Datos de contacto</div>
                         <div class="contact_info_list">
                             <ul>
                                 <li class="d-flex flex-row align-items-start justify-content-start">
                                     <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/placeholder.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="contact_info_content">4127 Raoul Wallenber4127 Raoul Wallen berg Place</div>
+                                    <div class="contact_info_content">Calle Clara Del Rey 57</div>
                                 </li>
                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                     <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/phone-call.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="contact_info_content">203-808-8613</div>
+                                    <div class="contact_info_content">+34 91 455 74 43</div>
                                 </li>
                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                     <div><div class="contact_info_icon"><img src="/assets/themes/beauty/images/message.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                                    <div class="contact_info_content">milothemes@gmail.com</div>
+                                    <div class="contact_info_content">doblerr57@gmail.com</div>
                                 </li>
                             </ul>
                         </div>
+<!--
                         <div class="social">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                {{ include("open/home/elements/contact-social.html.twig") }}
                             </ul>
                         </div>
+-->
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="footer_title">Leave a comment</div>
-                    <div class="contact_form_container">
-                        <form action="#" id="contact_form" class="contact_form">
-                            <div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Name" class="contact_input" required="required">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="email" placeholder="E-mail" class="contact_input" required="required">
-                                    </div>
-                                </div>
-                            </div>
-                            <div><input type="text" placeholder="Subject" class="contact_input"></div>
-                            <div><textarea class="contact_input contact_textarea" placeholder="Message" required="required"></textarea></div>
-                            <button class="contact_form_button">send message</button>
-                        </form>
-                    </div>
+                    {{ include("open/home/elements/contact-form.html.twig") }}
                 </div>
             </div>
         </div>
