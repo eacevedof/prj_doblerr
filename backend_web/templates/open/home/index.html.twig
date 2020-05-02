@@ -1,17 +1,17 @@
-{% EXTENDS 'OPEN/OPEN.HTML.TWIG' %}
+{% extends 'open/open.html.twig' %}
 
 
-{% BLOCK STYLES %}
-    <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="/ASSETS/THEMES/BEAUTY/STYLES/MAIN_STYLES.CSS">
-    <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="/ASSETS/THEMES/BEAUTY/STYLES/RESPONSIVE.CSS">
-{% ENDBLOCK %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/styles/responsive.css">
+{% endblock %}
 
 
-{% BLOCK BODY %}
-    {{ INCLUDE("OPEN/HOME/ELEMENTS/HOME-SLIDER.HTML.TWIG") }}
-    {{ INCLUDE("OPEN/HOME/ELEMENTS/HOME-SERVICES.HTML.TWIG") }}
-{% ENDBLOCK %}
+{% block body %}
+    {{ include("open/home/elements/home-slider.html.twig") }}
+    {{ include("open/home/elements/home-services.html.twig") }}
+{% endblock %}
 
-{% BLOCK JAVASCRIPTS %}
-<SCRIPT SRC="/ASSETS/THEMES/BEAUTY/JS/CUSTOM.JS"></SCRIPT>
-{% ENDBLOCK %}
+{% block javascripts %}
+<script src="/assets/themes/beauty/js/custom.js"></script>
+{% endblock %}
