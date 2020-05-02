@@ -56,6 +56,6 @@ class HomeController extends AbstractController
         $mail->send();
         return (new Response('Content',
             Response::HTTP_OK,
-            ['content-type' => 'text/html']))->setContent("hellow");
+            ['content-type' => 'application/json']))->setContent(json_encode("hellow"));
     }
 }

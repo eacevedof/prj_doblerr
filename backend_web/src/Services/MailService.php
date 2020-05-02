@@ -18,8 +18,16 @@ class MailService
 
     private function get_mail_object()
     {
+        $d = $this->data;
         $email = new Email();
-        $email->from($this->data["from"]);
+        $email->from($d["from"]);
+        $email->to($d["to"]);
+        $email->bcc($d["bcc"]);
+        $email->cc($d["cc"]);
+        $email->subject($d["subject"]);
+        $email->text($d["text"]);
+        $email->html($d["html"]);
+        return $email;
     }
 
     public function send()
@@ -35,7 +43,7 @@ class MailService
             ->text('Sending emails is fun again!')
             ->html('<p>See Twig integration for better HTML integration!</p>');
 
+        $email = $this->get_mail_object();
         $this->mailer->send($email);
-
     }
 }
