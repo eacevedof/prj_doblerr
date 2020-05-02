@@ -18,4 +18,9 @@ c @ common.js:67
 (anonymous) @ AuthenticationService.Authenticate?1shttps%3A%2F%2Fwww.doblerr.es%2Fcontacto&4sAIzaSyDimWax6oDetilbXKqdmmoIIxHREyJ4aY0&callback=_xdc_._z6v3h5&key=AIzaSyDimWax6oDetilbXKqdmmoIIxHREyJ4aY0&token=72486:1
 ```
     - Habia que entrar [aqui](https://console.cloud.google.com/google/maps-apis/apis/maps-backend.googleapis.com/metrics?project=doblerr-es&folder=&organizationId=)
-    
+- Google no me indexaba
+    ```
+    # framework.yaml
+    # seo
+    disallow_search_engine_index: false
+    ```
