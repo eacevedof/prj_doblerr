@@ -4,8 +4,11 @@ declare(strict_types=1);
 namespace App\Controller\Open;
 
 use App\Providers\HomeProvider;
+use App\Services\MailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Providers\SeoProvider;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController extends AbstractController
 {
@@ -46,4 +49,13 @@ class HomeController extends AbstractController
         return $this->render('open/home/contact.html.twig',["seo"=>$seo]);
     }
 
+    public function mail(MailerInterface $mailer)
+    {
+        $data[""] = "";
+        $mail = new MailService($mailer,$data);
+        $mail->send();
+        return (new Response('Content',
+            Response::HTTP_OK,
+            ['content-type' => 'text/html']))->setContent("hellow");
+    }
 }
