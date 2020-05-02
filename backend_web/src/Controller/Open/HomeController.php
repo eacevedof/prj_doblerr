@@ -51,8 +51,10 @@ class HomeController extends AbstractController
 
     public function mail(MailerInterface $mailer)
     {
-        $data[""] = "";
-        //print_r(env("APP_ENV"));
+        $data = [];
+        print_r($_ENV);
+        print_r(getenv("PHP_VERSION"));
+        //print_r($this->getParameter("emailfrom"));
         $mail = new MailService($mailer,$data);
         //$mail->send();
         return (new Response('Content',
