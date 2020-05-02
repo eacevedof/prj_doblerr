@@ -52,8 +52,9 @@ class HomeController extends AbstractController
     public function mail(MailerInterface $mailer)
     {
         $data[""] = "";
+        //print_r(env("APP_ENV"));
         $mail = new MailService($mailer,$data);
-        $mail->send();
+        //$mail->send();
         return (new Response('Content',
             Response::HTTP_OK,
             ['content-type' => 'application/json']))->setContent(json_encode("hellow"));
