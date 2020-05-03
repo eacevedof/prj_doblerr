@@ -10,7 +10,7 @@ class Mail
     private $mailer;
     private $data;
 
-    public function __construct(MailerInterface $mailer,array $data)
+    public function __construct(array $data, MailerInterface $mailer)
     {
         $this->data = $data;
         $this->mailer = $mailer;

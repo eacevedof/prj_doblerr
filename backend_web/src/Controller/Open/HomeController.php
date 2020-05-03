@@ -5,8 +5,8 @@ namespace App\Controller\Open;
 
 use App\Controller\BaseController;
 use App\Providers\HomeProvider;
-use App\Component\Mail;
 use App\Providers\SeoProvider;
+use App\Services\EmailService;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -52,25 +52,19 @@ class HomeController extends BaseController
 
     public function mail(MailerInterface $mailer)
     {
-        $action = "cita";
-        $name = $this->get_post("name") ?? "aaa";
-        $emailto = $this->get_post("mail-to") ?? "eacevedofgmail.com";
-
-        $message = $this->get_post("message") ?? " message ";
-        $data = [
-            "from" => $this->get_env("APP_EMAIL_FROM"),
-            "to" => $emailto,
-            "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
-            "subject" => sprintf("doblerr.es - %s de (%s) %s %s",$action,$name,$emailto,date("Ymd-His")),
-            "text" => $message,
-        ];
-        //dump($data);die;
         try{
-            $mail = new Mail($mailer,$data);
+            $mail = new EmailService($this->get_request(),$mailer);
             $mail->send();
         }
         catch(\Exception $e){
-            die($e->getMessage());
+            return (new Response('Content',
+                Response::HTTP_BAD_REQUEST,
+                ['content-type' => 'application/json']))->setContent(json_encode(
+                    [
+                        "title" => "Error sending email",
+                        "description"=>$e->getMessage()
+                    ]
+            ));
         }
 
 

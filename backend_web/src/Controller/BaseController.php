@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class BaseController extends AbstractController
@@ -26,5 +25,10 @@ class BaseController extends AbstractController
     protected function get_get($key)
     {
         return $this->request->query->get($key) ?? null;
+    }
+
+    protected function get_request()
+    {
+        return $this->request;
     }
 }
