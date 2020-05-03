@@ -70,28 +70,49 @@ var app = new Vue({
             e.preventDefault()
 
             const data = new FormData();
+            data.append("action","appointment")
             data.append("name",this.name)
             data.append("email",this.email)
             data.append("phone",this.phone)
             data.append("datetime",this.datetime)
             data.append("services",this.selservices)
             data.append("person",this.selperson)
-
             console.log("data",data);
-
             fetch('/mail', {
                 method: 'post',
                 body: data
             })
             .then(function(response) {
+
                 if(response.ok) {
-                    return response.text()
+                    $(".app_button_close").click()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Enhorabuena! la cita se ha procesado ',
+                        html: 'En breves momentos recibirás una copia de la misma en tu email. Recuerda que te llamaremos para <b>confirmarla</b>',
+                    })
+                    /*this.name = ""
+                    this.email = ""
+                    this.phone = ""
+                    this.datetime = ""
+                    this.selservices = []
+                    this.selperson = ""*/
+                    e.target.reset()
+
                 } else {
-                    throw "Error en la llamada Ajax";
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Vaya! Algo no ha ido bien',
+                        text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
+                    })
                 }
 
             })
         }
+    },//methods
+    mounted(){
+        console.log("mounted")
+        document.getElementById("frmappointment").reset()
     }
 })
 </script>

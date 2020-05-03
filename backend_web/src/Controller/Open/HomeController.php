@@ -52,10 +52,6 @@ class HomeController extends BaseController
 
     public function mail(MailerInterface $mailer)
     {
-        $this->logd($_GET,"mail GET");
-        $this->logd($_POST,"mail POST");
-        print_r($_POST);
-        die("mail ok");
         try{
             $mail = new EmailService($this->get_request(),$mailer);
             $mail->send();

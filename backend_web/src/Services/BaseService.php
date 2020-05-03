@@ -22,7 +22,6 @@ class BaseService
 
     protected function get_post($key)
     {
-        $this->logd($this->request->request->get("json"),"json?");
         return $this->request->request->get($key) ?? null;
     }
     protected function get_get($key)
