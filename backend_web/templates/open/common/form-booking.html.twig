@@ -11,7 +11,7 @@
 <div class="app_content d-flex flex-column align-items-start justify-content-center">
     <div class="app_form_container text-right">
         {% verbatim %}
-        <form action="#" id="app" class="app_form">
+        <form id="app" action="/mail" @submit="checkform" method="post" class="app_form">
             <input type="text" v-model="name" class="app_input" placeholder="Nombre" required="required">
             <input type="email" v-model="email"  class="app_input" placeholder="Email" required="required">
             <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
@@ -41,6 +41,7 @@
 var app = new Vue({
     el: "#app",
     data: {
+        errors:[],
         name: "",
         email: "",
         phone: "",
@@ -63,6 +64,12 @@ var app = new Vue({
             { text: 'Otro', value: 'Otro' },
         ],
 
+    },
+    methods:{
+        checkform:function (e) {
+            alert("hacer fetch")
+            e.preventDefault()
+        }
     }
 })
 </script>
