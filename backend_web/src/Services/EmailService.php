@@ -3,7 +3,6 @@ namespace App\Services;
 use App\Component\Mail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 final class EmailService extends BaseService
 {
