@@ -7,6 +7,8 @@ use Symfony\Component\Mailer\MailerInterface;
 final class EmailService extends BaseService
 {
     private const APPOINTMENT = "appointment";
+    private const CONTACT = "contact";
+
     private MailerInterface $mailer;
 
     public function __construct(Request $request, MailerInterface $mailer)
@@ -25,6 +27,17 @@ final class EmailService extends BaseService
             Estilista:  {$this->get_post("person")} 
             Fecha:  {$this->get_post("datetime")}
             Servicios:  {$this->get_post("services")}
+        ";
+        return $message;
+    }
+
+    private function get_text_contact()
+    {
+        $message = "
+        Cliente:  {$this->get_post("name")}
+        Email:  {$this->get_post("email")} 
+        Asunto:  {$this->get_post("subject")} 
+        Mensaje:  {$this->get_post("message")}
         ";
         return $message;
     }
@@ -50,11 +63,33 @@ final class EmailService extends BaseService
         $mail->send();
     }
 
+    private function contact()
+    {
+        $action = $this->get_post("action");
+        if($action==self::CONTACT)
+            $action = "Consulta";
+        $name = $this->get_post("name");
+        $email = $this->get_post("email");
+
+        $data = [
+            "from" => $this->get_env("APP_EMAIL_FROM"),
+            "to" => $email,
+            "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
+            "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
+            "text" => $this->get_text_contact(),
+        ];
+
+        $this->logd($data,"mail.contact");
+        $mail = new Mail($data,$this->mailer);
+        $mail->send();
+    }
+
     public function send()
     {
         $action = $this->get_post("action");
         $this->logd($action,"action");
         if($action==self::APPOINTMENT) $this->appointment();
+        if($action==self::CONTACT) $this->contact();
     }
 
 }

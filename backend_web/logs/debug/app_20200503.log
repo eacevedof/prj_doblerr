@@ -939,3 +939,62 @@ array (
 action:
 contact
 
+-- [20200503-203334]
+action:
+contact
+
+-- [20200503-203930]
+mail.post:
+array (
+  'action' => 'contact',
+  'name' => 'Edu',
+  'email' => 'eacevedof@yahoo.es',
+  'subject' => '15678',
+  'message' => '98eroej<>dkfjskfj9874kj<<<!kher>>',
+)
+
+-- [20200503-203930]
+ip from:
+192.168.160.1
+
+-- [20200503-203930]
+action:
+contact
+
+-- [20200503-204112]
+mail.post:
+array (
+  'action' => 'contact',
+  'name' => 'Eddddddddd',
+  'email' => 'eacevedof@yahoo.es',
+  'subject' => '15678',
+  'message' => '98eroej<>dkfjskfj9874kj<<<!kher>>',
+)
+
+-- [20200503-204112]
+ip from:
+192.168.160.1
+
+-- [20200503-204112]
+action:
+contact
+
+-- [20200503-204112]
+mail.contact:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@yahoo.es',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Consulta de Eddddddddd (eacevedof@yahoo.es) 20200503-204112',
+  'text' => '
+        Cliente:  Eddddddddd
+        Email:  eacevedof@yahoo.es 
+        Asunto:  15678 
+        Mensaje:  98eroej<>dkfjskfj9874kj<<<!kher>>
+        ',
+)
+
