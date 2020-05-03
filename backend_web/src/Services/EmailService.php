@@ -33,11 +33,13 @@ final class EmailService extends BaseService
 
     private function get_text_contact()
     {
+        $str = $this->get_post("message");
+        $str = substr($str,0,2000);
         $message = "
         Cliente:  {$this->get_post("name")}
         Email:  {$this->get_post("email")} 
         Asunto:  {$this->get_post("subject")} 
-        Mensaje:  {$this->get_post("message")}
+        Mensaje:  {$str}
         ";
         return $message;
     }
