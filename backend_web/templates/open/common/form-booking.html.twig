@@ -17,7 +17,7 @@
             <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
             <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" required="required">
 
-            <select v-model="selservices" class="app_input app_select" multiple size="10" required="required"">
+            <select v-model="selservices" class="app_input app_select" multiple size="10" required="required">
                 <option disabled="" selected="">Que te vas a hacer?</option>
                 <option v-for="option in serviceopts" v-bind:value="option.value">
                 {{ option.text }}
