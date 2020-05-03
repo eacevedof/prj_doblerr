@@ -42,6 +42,7 @@
                 data.append("subject",this.subject)
                 data.append("message",this.message)
 
+                console.log("data pre fetch",data)
                 fetch('/mail', {
                     method: 'post',
                     body: data
