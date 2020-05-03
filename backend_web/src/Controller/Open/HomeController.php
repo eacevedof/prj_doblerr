@@ -5,7 +5,7 @@ namespace App\Controller\Open;
 
 use App\Controller\BaseController;
 use App\Providers\HomeProvider;
-use App\Components\Mail;
+use App\Component\Mail;
 use App\Providers\SeoProvider;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;

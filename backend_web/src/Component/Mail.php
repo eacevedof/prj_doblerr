@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Components;
+namespace App\Component;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
