@@ -10,39 +10,29 @@
 </div>
 <div class="app_content d-flex flex-column align-items-start justify-content-center">
     <div class="app_form_container text-right">
-        <form action="#" id="app_form" class="app_form">
+        {% verbatim %}
+        <form action="#" id="app" class="app_form">
+            <input type="text" v-model="name" class="app_input" placeholder="Nombre" required="required">
+            <input type="email" v-model="email"  class="app_input" placeholder="Email" required="required">
+            <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
+            <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" required="required">
 
-            {% verbatim %}
-            <div id="app">
-                <select v-model="selected">
-                    <option v-for="option in options" v-bind:value="option.value">
-                    {{ option.text }}
-                    </option>
-                </select>
-                <span>Seleccionado: {{ selected }}</span>
-            </div>
-            {% endverbatim %}
-            <input type="text" class="app_input" placeholder="Nombre" required="required">
-            <input type="email" class="app_input" placeholder="Email" required="required">
-            <input type="text" class="app_input" placeholder="Teléfono" required="required">
-            <input type="text" class="app_input" placeholder="Fecha y hora" required="required">
-            <select id="sel-service" class="app_input app_select" multiple size="10">
+            <select v-model="selservices" class="app_input app_select" multiple size="10">
                 <option disabled="" selected="">Que te vas a hacer?</option>
-                <option value="Corta">Cortar</option>
-                <option value="Peinar">Peinar</option>
-                <option value="Lavar">Lavar</option>
-                <option value="Tratamiento">Tratamiento</option>
-                <option value="Estética">Estética</option>
+                <option v-for="option in serviceopts" v-bind:value="option.value">
+                {{ option.text }}
+                </option>
             </select>
-            <select id="sel-hairdresser" class="app_input app_select">
+
+            <select v-model="selperson" class="app_input app_select">
                 <option disabled="" selected="">Con quién?</option>
-                <option value="Carlos">Carlos</option>
-                <option VALUE="Miriam">Miriam</option>
-                <option value="Beatriz">Beatriz</option>
-                <option value="Cualquiera">Cualquiera</option>
+                <option v-for="option in personsopts" v-bind:value="option.value">
+                {{ option.text }}
+                </option>
             </select>
             <button class="app_form_button">Pedir</button>
         </form>
+        {% endverbatim %}
     </div>
 </div>
 
@@ -51,12 +41,28 @@
 var app = new Vue({
     el: "#app",
     data: {
-        selected: "A",
-        options:[
-            { text: 'Uno', value: 'A' },
-            { text: 'Dos', value: 'B' },
-            { text: 'Tres', value: 'C' }
-        ]
+        name: "",
+        email: "",
+        phone: "",
+        datetime: "",
+        selservices: "s",
+        serviceopts:[
+            { text: 'Cortar', value: 'Cortar' },
+            { text: 'Peinar', value: 'Peinar' },
+            { text: 'Lavar', value: 'Lavar' },
+            { text: 'Tratamiento', value: 'Tratamiento' },
+            { text: 'Estética', value: 'Estética' },
+            { text: 'Masaje', value: 'Masaje' }
+        ],
+
+        selperson: "p",
+        personsopts:[
+            { text: 'Carlos', value: 'Carlos' },
+            { text: 'Miriam', value: 'Miriam' },
+            { text: 'Beatriz', value: 'Beatriz' },
+            { text: 'Otro', value: 'Otro' },
+        ],
+
     }
 })
 </script>
