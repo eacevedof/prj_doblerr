@@ -7,6 +7,7 @@
 /vendor/
 /.docker-sync/
 /config/jwt/
+/logs/
 ###< symfony/framework-bundle ###
 
 ###> Other files ###
