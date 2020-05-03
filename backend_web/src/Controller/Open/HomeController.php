@@ -61,15 +61,19 @@ class HomeController extends BaseController
                 Response::HTTP_BAD_REQUEST,
                 ['content-type' => 'application/json']))->setContent(json_encode(
                     [
-                        "title" => "Error sending email",
+                        "title" => "error",
                         "description"=>$e->getMessage()
                     ]
             ));
         }
 
-
         return (new Response('Content',
             Response::HTTP_OK,
-            ['content-type' => 'application/json']))->setContent(json_encode($data));
+            ['content-type' => 'application/json']))->setContent(json_encode(
+                [
+                    "title" => "success",
+                    "description"=>"Email has benn sent"
+                ]
+            ));
     }
 }
