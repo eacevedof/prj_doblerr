@@ -7,15 +7,18 @@ use App\Controller\BaseController;
 use App\Providers\HomeProvider;
 use App\Services\MailService;
 use App\Providers\SeoProvider;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController extends BaseController
 {
-    private $provider;
 
-    public function __construct()
+    public function __construct(RequestStack $request)
     {
+
+        parent::__construct($request);
         $this->provider= new HomeProvider();
     }
 
@@ -51,14 +54,23 @@ class HomeController extends BaseController
 
     public function mail(MailerInterface $mailer)
     {
-        $data = [];
-        //print_r($_ENV);
-        print_r($this->get_env("APP_EMAIL_FROM"));
-        //print_r($this->getParameter("emailfrom"));
-        //$mail = new MailService($mailer,$data);
-        //$mail->send();
+        $action = "cita";
+        $name = $this->get_post("name") ?? "aaa";
+        $emailto = $this->get_post("mail-to") ?? "eacevedof@gmail.com";
+
+        $message = $this->get_post("message") ?? " message ";
+        $data = [
+            "from" => $this->get_env("APP_EMAIL_FROM"),
+            "to" => $emailto,
+            "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
+            "subject" => sprintf("doblerr.es - %s de (%s) %s ",$action,$name,$emailto,date("Ymd-His")),
+            "text" => $message,
+        ];
+        //dump($data);die;
+        $mail = new MailService($mailer,$data);
+        $mail->send();
         return (new Response('Content',
             Response::HTTP_OK,
-            ['content-type' => 'application/json']))->setContent(json_encode("hellow"));
+            ['content-type' => 'application/json']))->setContent(json_encode($data));
     }
 }
