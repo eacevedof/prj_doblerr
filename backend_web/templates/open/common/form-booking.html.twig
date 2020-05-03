@@ -11,11 +11,11 @@
 <div class="app_content d-flex flex-column align-items-start justify-content-center">
     <div class="app_form_container text-right">
         {% verbatim %}
-        <form id="app" action="/mail" @submit="checkform" method="post" class="app_form">
-            <input type="text" v-model="name" class="app_input" placeholder="Nombre" required="required">
-            <input type="email" v-model="email"  class="app_input" placeholder="Email" required="required">
-            <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
-            <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" required="required">
+        <form id="frmappointment" action="/mail" @submit="checkform" method="post" class="app_form">
+            <input type="text" v-model="name" class="app_input" placeholder="Nombre" requiredx="required">
+            <input type="email" v-model="email"  class="app_input" placeholder="Email" requiredx="required">
+            <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" requiredx="required">
+            <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" requiredx="required">
 
             <select v-model="selservices" class="app_input app_select" multiple size="10">
                 <option disabled="" selected="">Que te vas a hacer?</option>
@@ -39,14 +39,14 @@
 
 <script>
 var app = new Vue({
-    el: "#app",
+    el: "#frmappointment",
     data: {
         errors:[],
         name: "",
         email: "",
         phone: "",
         datetime: "",
-        selservices: "s",
+        selservices: [],
         serviceopts:[
             { text: 'Cortar', value: 'Cortar' },
             { text: 'Peinar', value: 'Peinar' },
@@ -66,9 +66,12 @@ var app = new Vue({
 
     },
     methods:{
-        checkform:function (e) {
-            alert("hacer fetch")
+        checkform: async function(e) {
             e.preventDefault()
+            const params = new URLSearchParams([...new FormData(e.target).entries()]);
+            fetch("/mail", {method:"POST", body:params})
+            const response = await new Response(params).text();
+            console.log(response,"reeeeesponse");
         }
     }
 })
