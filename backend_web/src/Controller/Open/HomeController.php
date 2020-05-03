@@ -3,14 +3,14 @@
 declare(strict_types=1);
 namespace App\Controller\Open;
 
+use App\Controller\BaseController;
 use App\Providers\HomeProvider;
 use App\Services\MailService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Providers\SeoProvider;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 
-class HomeController extends AbstractController
+class HomeController extends BaseController
 {
     private $provider;
 
@@ -52,10 +52,10 @@ class HomeController extends AbstractController
     public function mail(MailerInterface $mailer)
     {
         $data = [];
-        print_r($_ENV);
-        print_r(getenv("PHP_VERSION"));
+        //print_r($_ENV);
+        print_r($this->get_env("APP_EMAIL_FROM"));
         //print_r($this->getParameter("emailfrom"));
-        $mail = new MailService($mailer,$data);
+        //$mail = new MailService($mailer,$data);
         //$mail->send();
         return (new Response('Content',
             Response::HTTP_OK,
