@@ -1,5 +1,6 @@
 <?php
-$time_start = microtime(true); 
+//print_r($_POST);die;
+$time_start = microtime(true);
 
 use App\Kernel;
 use Symfony\Component\ErrorHandler\Debug;

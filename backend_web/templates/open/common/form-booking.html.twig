@@ -68,21 +68,22 @@ var app = new Vue({
     methods:{
         checkform: function(e) {
             e.preventDefault()
-            fetch("/mail", {
-                method: "post",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
+            const form = e.target
+            const data = new FormData(form);
+            console.log("data:",data)
+            data.append("aaa","xxxx")
+            fetch('/mail', {
+                method: 'POST',
+                body: data
+            })
+                .then(function(response) {
+                    if(response.ok) {
+                        return response.text()
+                    } else {
+                        throw "Error en la llamada Ajax";
+                    }
 
-                //make sure to serialize your JSON body
-                body: JSON.stringify({
-                    name: this.name,
-                    email: this.email
                 })
-            }).then( (response) => {
-                console.log(response,"response")
-            });
         }
     }
 })

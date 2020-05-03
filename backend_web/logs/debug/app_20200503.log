@@ -33,3 +33,384 @@ mail POST:
 array (
 )
 
+-- [20200503-160845]
+mail POST:
+array (
+)
+
+-- [20200503-161151]
+mail POST:
+array (
+)
+
+-- [20200503-161350]
+mail GET:
+array (
+)
+
+-- [20200503-161350]
+mail POST:
+array (
+)
+
+-- [20200503-161435]
+mail GET:
+array (
+)
+
+-- [20200503-161435]
+mail POST:
+array (
+)
+
+-- [20200503-161537]
+mail GET:
+array (
+)
+
+-- [20200503-161537]
+mail POST:
+array (
+)
+
+-- [20200503-161537]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161537]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161537]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161828]
+mail GET:
+array (
+)
+
+-- [20200503-161828]
+mail POST:
+array (
+)
+
+-- [20200503-161828]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161828]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161828]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161835]
+mail GET:
+array (
+)
+
+-- [20200503-161835]
+mail POST:
+array (
+)
+
+-- [20200503-161835]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161835]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-161835]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-162511]
+mail GET:
+array (
+)
+
+-- [20200503-162511]
+mail POST:
+array (
+)
+
+-- [20200503-162511]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-162511]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-162511]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-162608]
+mail GET:
+array (
+)
+
+-- [20200503-162608]
+mail POST:
+array (
+)
+
+-- [20200503-162608]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-162608]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-162608]
+POST EN REQUEST:
+Symfony\Component\HttpFoundation\ParameterBag::__set_state(array(
+   'parameters' => 
+  array (
+  ),
+))
+
+-- [20200503-163103]
+mail GET:
+array (
+)
+
+-- [20200503-163103]
+mail POST:
+array (
+)
+
+-- [20200503-163103]
+json?:
+NULL
+
+-- [20200503-163103]
+json?:
+NULL
+
+-- [20200503-163103]
+json?:
+NULL
+
+-- [20200503-164110]
+mail GET:
+array (
+)
+
+-- [20200503-164110]
+mail POST:
+array (
+  '_name' => 'xxx',
+  '_email' => 'uuuu',
+)
+
+-- [20200503-164110]
+json?:
+NULL
+
+-- [20200503-164110]
+json?:
+NULL
+
+-- [20200503-164110]
+json?:
+NULL
+
+-- [20200503-164149]
+mail GET:
+array (
+)
+
+-- [20200503-164149]
+mail POST:
+array (
+  '_name' => 'xxx',
+  '_email' => 'uuuu',
+)
+
+-- [20200503-164149]
+json?:
+NULL
+
+-- [20200503-164149]
+json?:
+NULL
+
+-- [20200503-164149]
+json?:
+NULL
+
+-- [20200503-164321]
+mail GET:
+array (
+)
+
+-- [20200503-164321]
+mail POST:
+array (
+)
+
+-- [20200503-164332]
+mail GET:
+array (
+)
+
+-- [20200503-164332]
+mail POST:
+array (
+)
+
+-- [20200503-164350]
+mail GET:
+array (
+)
+
+-- [20200503-164350]
+mail POST:
+array (
+)
+
+-- [20200503-164455]
+mail GET:
+array (
+)
+
+-- [20200503-164455]
+mail POST:
+array (
+)
+
+-- [20200503-164734]
+mail GET:
+array (
+)
+
+-- [20200503-164734]
+mail POST:
+array (
+)
+
+-- [20200503-164820]
+mail GET:
+array (
+)
+
+-- [20200503-164820]
+mail POST:
+array (
+)
+
+-- [20200503-165038]
+mail GET:
+array (
+)
+
+-- [20200503-165038]
+mail POST:
+array (
+)
+
+-- [20200503-165150]
+mail GET:
+array (
+)
+
+-- [20200503-165150]
+mail POST:
+array (
+)
+
+-- [20200503-165259]
+mail GET:
+array (
+)
+
+-- [20200503-165259]
+mail POST:
+array (
+)
+
+-- [20200503-165348]
+mail GET:
+array (
+)
+
+-- [20200503-165348]
+mail POST:
+array (
+)
+
+-- [20200503-165406]
+mail GET:
+array (
+)
+
+-- [20200503-165406]
+mail POST:
+array (
+  'aaa' => 'xxxx',
+)
+
