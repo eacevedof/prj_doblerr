@@ -727,3 +727,133 @@ array (
         ',
 )
 
+-- [20200503-193041]
+action:
+appointment
+
+-- [20200503-193041]
+mail.apointment:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@gmail.com',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Cita de Un nombre (eacevedof@gmail.com) 20200503-193041',
+  'text' => '
+        
+            Cliente:  Un nombre
+            Telf:  78545    
+            Email:  eacevedof@gmail.com 
+            Estilista:  Miriam 
+            Fecha:  2020-04-30
+            Servicios:  Cortar,Peinar,Lavar,Tratamiento,Estética,Masaje
+        ',
+)
+
+-- [20200503-193412]
+action:
+appointment
+
+-- [20200503-193412]
+mail.apointment:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@yahoo.es',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Cita de rear (eacevedof@yahoo.es) 20200503-193412',
+  'text' => '
+        
+            Cliente:  rear
+            Telf:  989    
+            Email:  eacevedof@yahoo.es 
+            Estilista:  Carlos 
+            Fecha:  2020-01-30
+            Servicios:  Cortar
+        ',
+)
+
+-- [20200503-193554]
+action:
+appointment
+
+-- [20200503-193554]
+mail.apointment:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@yahoo.es',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Cita de Lucas (eacevedof@yahoo.es) 20200503-193554',
+  'text' => '
+        
+            Cliente:  Lucas
+            Telf:  Juan    
+            Email:  eacevedof@yahoo.es 
+            Estilista:  Beatriz 
+            Fecha:  2020-12-29
+            Servicios:  Cortar,Peinar,Lavar,Tratamiento,Estética
+        ',
+)
+
+-- [20200503-193712]
+action:
+appointment
+
+-- [20200503-193712]
+mail.apointment:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@yahoo.es',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Cita de iuiui (eacevedof@yahoo.es) 20200503-193712',
+  'text' => '
+        
+            Cliente:  iuiui
+            Telf:  8745    
+            Email:  eacevedof@yahoo.es 
+            Estilista:  Miriam 
+            Fecha:  2021-11-02
+            Servicios:  Cortar,Peinar,Lavar,Tratamiento,Estética
+        ',
+)
+
+-- [20200503-193742]
+action:
+appointment
+
+-- [20200503-193742]
+mail.apointment:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@yahoo.es',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Cita de 789 (eacevedof@yahoo.es) 20200503-193742',
+  'text' => '
+        
+            Cliente:  789
+            Telf:  78845    
+            Email:  eacevedof@yahoo.es 
+            Estilista:  Carlos 
+            Fecha:  2021-01-31
+            Servicios:  Peinar,Lavar,Tratamiento,Estética,Masaje
+        ',
+)
+

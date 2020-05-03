@@ -12,10 +12,10 @@
     <div class="app_form_container text-right">
         {% verbatim %}
         <form id="frmappointment" action="/mail" @submit="checkform" method="post" class="app_form">
-            <input type="text" v-model="name" class="app_input" placeholder="Nombre" requiredx="required">
-            <input type="email" v-model="email"  class="app_input" placeholder="Email" requiredx="required">
-            <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" requiredx="required">
-            <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" requiredx="required">
+            <input type="text" v-model="name" class="app_input" placeholder="Nombre" required="required">
+            <input type="email" v-model="email"  class="app_input" placeholder="Email" required="required">
+            <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
+            <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" required="required">
 
             <select v-model="selservices" class="app_input app_select" multiple size="10">
                 <option disabled="" selected="">Que te vas a hacer?</option>
@@ -30,7 +30,7 @@
                 {{ option.text }}
                 </option>
             </select>
-            <button class="app_form_button">Pedir</button>
+            <button id="btn-appointment" class="app_form_button">Pedir</button>
         </form>
         {% endverbatim %}
     </div>
@@ -67,6 +67,7 @@ var app = new Vue({
     },
     methods:{
         checkform: function(e) {
+            $("#btn-appointment").prop("disabled",true)
             e.preventDefault()
 
             const data = new FormData();
@@ -83,7 +84,6 @@ var app = new Vue({
                 body: data
             })
             .then(function(response) {
-
                 if(response.ok) {
                     $(".app_button_close").click()
                     Swal.fire({
@@ -105,6 +105,7 @@ var app = new Vue({
                         title: 'Vaya! Algo no ha ido bien',
                         text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
                     })
+                    $("#btn-appointment").prop("disabled",false)
                 }
 
             })
