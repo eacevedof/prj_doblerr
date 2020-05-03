@@ -1,12 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Components;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\Address;
 
-class MailService
+class Mail
 {
     private $mailer;
     private $data;
@@ -17,14 +16,26 @@ class MailService
         $this->mailer = $mailer;
     }
 
+    private function add_bcc($bcc,Email $email)
+    {
+        if(isset($bcc))
+        {
+            if(is_array($bcc))
+                foreach ($bcc as $sbcc)
+                    $email->addBcc($sbcc);
+            else
+                $email->bcc($bcc);
+        }
+    }
+
     private function get_mail_object()
     {
         $d = $this->data;
         $email = new Email();
         $email->from($d["from"]);
         $email->to($d["to"]);
-        if(isset($d["bcc"])) $email->bcc($d["bcc"][0]);
-        if(isset($d["cc"])) $email->cc($d["cc"]);
+
+        if(isset($d["cc"])) $this->add_bcc($d["cc"],$email);
         if(isset($d["subject"])) $email->subject($d["subject"]);
         $email->text($d["text"]);
         if(isset($d["html"]))$email->html($d["html"]);

@@ -5,9 +5,8 @@ namespace App\Controller\Open;
 
 use App\Controller\BaseController;
 use App\Providers\HomeProvider;
-use App\Services\MailService;
+use App\Components\Mail;
 use App\Providers\SeoProvider;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -17,7 +16,6 @@ class HomeController extends BaseController
 
     public function __construct(RequestStack $request)
     {
-
         parent::__construct($request);
         $this->provider= new HomeProvider();
     }
@@ -56,19 +54,26 @@ class HomeController extends BaseController
     {
         $action = "cita";
         $name = $this->get_post("name") ?? "aaa";
-        $emailto = $this->get_post("mail-to") ?? "eacevedof@gmail.com";
+        $emailto = $this->get_post("mail-to") ?? "eacevedofgmail.com";
 
         $message = $this->get_post("message") ?? " message ";
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
             "to" => $emailto,
             "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
-            "subject" => sprintf("doblerr.es - %s de (%s) %s ",$action,$name,$emailto,date("Ymd-His")),
+            "subject" => sprintf("doblerr.es - %s de (%s) %s %s",$action,$name,$emailto,date("Ymd-His")),
             "text" => $message,
         ];
         //dump($data);die;
-        $mail = new MailService($mailer,$data);
-        $mail->send();
+        try{
+            $mail = new Mail($mailer,$data);
+            $mail->send();
+        }
+        catch(\Exception $e){
+            die($e->getMessage());
+        }
+
+
         return (new Response('Content',
             Response::HTTP_OK,
             ['content-type' => 'application/json']))->setContent(json_encode($data));
