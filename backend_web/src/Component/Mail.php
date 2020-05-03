@@ -28,6 +28,18 @@ class Mail
         }
     }
 
+    private function add_cc($cc,Email $email)
+    {
+        if(isset($cc))
+        {
+            if(is_array($cc))
+                foreach ($cc as $scc)
+                    $email->addCc($scc);
+            else
+                $email->cc($cc);
+        }
+    }
+
     private function get_mail_object()
     {
         $d = $this->data;
@@ -35,7 +47,8 @@ class Mail
         $email->from($d["from"]);
         $email->to($d["to"]);
 
-        if(isset($d["cc"])) $this->add_bcc($d["cc"],$email);
+        if(isset($d["cc"])) $this->add_cc($d["cc"],$email);
+        if(isset($d["bcc"])) $this->add_bcc($d["bcc"],$email);
         if(isset($d["subject"])) $email->subject($d["subject"]);
         $email->text($d["text"]);
         if(isset($d["html"]))$email->html($d["html"]);

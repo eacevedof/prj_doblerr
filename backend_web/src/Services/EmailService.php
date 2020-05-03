@@ -20,13 +20,13 @@ final class EmailService extends BaseService
     private function get_text_appointment()
     {
         $message = "
-        
-            Cliente:  {$this->get_post("name")}
-            Telf:  {$this->get_post("phone")}    
-            Email:  {$this->get_post("email")} 
-            Estilista:  {$this->get_post("person")} 
-            Fecha:  {$this->get_post("datetime")}
-            Servicios:  {$this->get_post("services")}
+        <b>Cita:</b>
+        Cliente:  {$this->get_post("name")}
+        Telf:  {$this->get_post("phone")}    
+        Email:  {$this->get_post("email")} 
+        Estilista:  {$this->get_post("person")} 
+        Fecha:  {$this->get_post("datetime")}
+        Servicios:  {$this->get_post("services")}
         ";
         return $message;
     }
@@ -36,6 +36,7 @@ final class EmailService extends BaseService
         $str = $this->get_post("message");
         $str = substr($str,0,3000);
         $message = "
+        <b>Consulta:</b>
         Cliente:  {$this->get_post("name")}
         Email:  {$this->get_post("email")} 
         Asunto:  {$this->get_post("subject")} 
