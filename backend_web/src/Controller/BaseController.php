@@ -1,11 +1,14 @@
 <?php
 declare(strict_types=1);
 namespace App\Controller;
+use App\Traits\Log;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class BaseController extends AbstractController
 {
+    use Log;
+
     private $request;
 
     public function __construct(RequestStack $request)
