@@ -66,12 +66,23 @@ var app = new Vue({
 
     },
     methods:{
-        checkform: async function(e) {
+        checkform: function(e) {
             e.preventDefault()
-            const params = new URLSearchParams([...new FormData(e.target).entries()]);
-            fetch("/mail", {method:"POST", body:params})
-            const response = await new Response(params).text();
-            console.log(response,"reeeeesponse");
+            fetch("/mail", {
+                method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                    name: this.name,
+                    email: this.email
+                })
+            }).then( (response) => {
+                console.log(response,"response")
+            });
         }
     }
 })
