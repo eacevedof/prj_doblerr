@@ -1,10 +1,13 @@
 <?php
 namespace App\Services;
 
+use App\Traits\Log;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+
 class BaseService
 {
+    use Log;
+
     private $request;
 
     public function __construct(Request $request)
