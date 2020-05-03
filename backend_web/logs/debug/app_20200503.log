@@ -857,3 +857,29 @@ array (
         ',
 )
 
+-- [20200503-200822]
+action:
+appointment
+
+-- [20200503-200822]
+mail.apointment:
+array (
+  'from' => 'doblerr57c@gmail.com',
+  'to' => 'eacevedof@yahoo.es',
+  'bcc' => 
+  array (
+    0 => 'doblerr57c@gmail.com',
+    1 => 'doblerr57@gmail.com',
+  ),
+  'subject' => 'doblerr noreply - Cita de Abb (eacevedof@yahoo.es) 20200503-200822',
+  'text' => '
+        
+            Cliente:  Abb
+            Telf:  123456    
+            Email:  eacevedof@yahoo.es 
+            Estilista:  Carlos 
+            Fecha:  2021-02-02
+            Servicios:  Cortar
+        ',
+)
+

@@ -17,14 +17,14 @@
             <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
             <input type="date" v-model="datetime" class="app_input" placeholder="Fecha y hora" required="required">
 
-            <select v-model="selservices" class="app_input app_select" multiple size="10">
+            <select v-model="selservices" class="app_input app_select" multiple size="10" required="required"">
                 <option disabled="" selected="">Que te vas a hacer?</option>
                 <option v-for="option in serviceopts" v-bind:value="option.value">
                 {{ option.text }}
                 </option>
             </select>
 
-            <select v-model="selperson" class="app_input app_select">
+            <select v-model="selperson" class="app_input app_select" required="required">
                 <option disabled="" selected="">Con quién?</option>
                 <option v-for="option in personsopts" v-bind:value="option.value">
                 {{ option.text }}
@@ -53,9 +53,9 @@ var app = new Vue({
             { text: 'Lavar', value: 'Lavar' },
             { text: 'Tratamiento', value: 'Tratamiento' },
             { text: 'Estética', value: 'Estética' },
-            { text: 'Masaje', value: 'Masaje' }
+            { text: 'Masaje', value: 'Masaje' },
+            { text: 'Otro', value: 'Otro' }
         ],
-
         selperson: "",
         personsopts:[
             { text: 'Carlos', value: 'Carlos' },
