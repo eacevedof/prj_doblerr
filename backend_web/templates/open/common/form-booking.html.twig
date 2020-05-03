@@ -56,7 +56,7 @@ var app = new Vue({
             { text: 'Masaje', value: 'Masaje' }
         ],
 
-        selperson: "p",
+        selperson: "",
         personsopts:[
             { text: 'Carlos', value: 'Carlos' },
             { text: 'Miriam', value: 'Miriam' },
@@ -68,22 +68,29 @@ var app = new Vue({
     methods:{
         checkform: function(e) {
             e.preventDefault()
-            const form = e.target
-            const data = new FormData(form);
-            console.log("data:",data)
-            data.append("aaa","xxxx")
+
+            const data = new FormData();
+            data.append("name",this.name)
+            data.append("email",this.email)
+            data.append("phone",this.phone)
+            data.append("datetime",this.datetime)
+            data.append("services",this.selservices)
+            data.append("person",this.selperson)
+
+            console.log("data",data);
+
             fetch('/mail', {
-                method: 'POST',
+                method: 'post',
                 body: data
             })
-                .then(function(response) {
-                    if(response.ok) {
-                        return response.text()
-                    } else {
-                        throw "Error en la llamada Ajax";
-                    }
+            .then(function(response) {
+                if(response.ok) {
+                    return response.text()
+                } else {
+                    throw "Error en la llamada Ajax";
+                }
 
-                })
+            })
         }
     }
 })

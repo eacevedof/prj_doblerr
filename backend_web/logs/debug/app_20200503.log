@@ -414,3 +414,84 @@ array (
   'aaa' => 'xxxx',
 )
 
+-- [20200503-170009]
+mail GET:
+array (
+)
+
+-- [20200503-170009]
+mail POST:
+array (
+  'aaa' => 'xxxx',
+)
+
+-- [20200503-170021]
+mail GET:
+array (
+)
+
+-- [20200503-170021]
+mail POST:
+array (
+  'aaa' => 'xxxx',
+)
+
+-- [20200503-170041]
+mail GET:
+array (
+)
+
+-- [20200503-170041]
+mail POST:
+array (
+  'rrr' => 'xxxx',
+)
+
+-- [20200503-181006]
+mail GET:
+array (
+)
+
+-- [20200503-181006]
+mail POST:
+array (
+)
+
+-- [20200503-181138]
+mail GET:
+array (
+)
+
+-- [20200503-181139]
+mail POST:
+array (
+  'name' => 'uuuu',
+)
+
+-- [20200503-181230]
+mail GET:
+array (
+)
+
+-- [20200503-181230]
+mail POST:
+array (
+  'name' => 'www',
+)
+
+-- [20200503-181753]
+mail GET:
+array (
+)
+
+-- [20200503-181753]
+mail POST:
+array (
+  'name' => 'dareerer',
+  'email' => 'eacevedof@yahoo.es',
+  'phone' => 'dafdfsdf',
+  'datetime' => '2020-05-08',
+  'services' => 'Cortar,Peinar,Lavar,Tratamiento,Estética',
+  'person' => 'Beatriz',
+)
+
