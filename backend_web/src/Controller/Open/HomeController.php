@@ -57,6 +57,8 @@ class HomeController extends BaseController
             $mail->send();
         }
         catch(\Exception $e){
+            $this->logd($e->getMessage(),"mail.error");
+            $this->logd($_POST,"mail.error.post");
             return (new Response('Content',
                 Response::HTTP_BAD_REQUEST,
                 ['content-type' => 'application/json']))->setContent(json_encode(
