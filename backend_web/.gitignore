@@ -8,6 +8,7 @@
 /.docker-sync/
 /config/jwt/
 /logs/
+logs
 ###< symfony/framework-bundle ###
 
 ###> Other files ###
