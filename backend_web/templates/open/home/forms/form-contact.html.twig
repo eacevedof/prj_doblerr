@@ -5,15 +5,17 @@
         <div>
             <div class="row">
                 <div class="col-lg-6">
-                    <input type="text" v-model="name" placeholder="Nombre" class="contact_input" required="required">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" v-model="name" placeholder="...tu nombre" class="contact_input" required="required">
                 </div>
                 <div class="col-lg-6">
-                    <input type="email" v-model="email" placeholder="E-mail" class="contact_input" required="required">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" v-model="email" placeholder="tu-email@dominio.com" class="contact_input" required="required">
                 </div>
             </div>
         </div>
-        <div><input type="text" v-model="subject" placeholder="Asunto" class="contact_input"></div>
-        <div><textarea v-model="message" class="contact_input contact_textarea" placeholder="Mensaje" required="required"></textarea></div>
+        <div><input type="text" v-model="subject" placeholder="Asunto" class="contact_input" style="margin-top:15px"></div>
+        <div><textarea v-model="message" class="contact_input contact_textarea" placeholder="Mensaje" required="required" style="margin-top:15px;"></textarea></div>
         <button id="btn-contact" class="contact_form_button">Enviar</button>
     </form>
     {% endverbatim %}
