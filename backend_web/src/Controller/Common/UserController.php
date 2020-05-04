@@ -2,7 +2,7 @@
 //proyecto\src\Controller\Common\UserController.php
 namespace App\Controller\Common;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
@@ -10,7 +10,7 @@ use App\Form\RegisterType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class UserController extends AbstractController
+class UserController extends BaseController
 {    
     public function register(Request $request,UserPasswordEncoderInterface $encoder)
     {

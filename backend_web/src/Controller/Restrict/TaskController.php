@@ -2,14 +2,14 @@
 
 namespace App\Controller\Restrict;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use App\Entity\Task;
 use App\Form\TaskType;
 
-class TaskController extends AbstractController
+class TaskController extends BaseController
 {
     public function index()
     {
