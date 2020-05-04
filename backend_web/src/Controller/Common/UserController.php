@@ -1,6 +1,6 @@
 <?php
-//proyecto\src\Controller\UserController.php
-namespace App\Controller;
+//proyecto\src\Controller\Common\UserController.php
+namespace App\Controller\Common;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

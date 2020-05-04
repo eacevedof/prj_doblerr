@@ -25,39 +25,39 @@ mail:
 # zona privada
 login:
     path: /login
-    controller: App\Controller\UserController::login
+    controller: App\Controller\Common\UserController::login
 
 tasks:
     path: /tareas
-    controller: App\Controller\TaskController::index
+    controller: App\Controller\Restrict\TaskController::index
 
 task_detail:
     path: /tarea/{id}
-    controller: App\Controller\TaskController::detail
+    controller: App\Controller\Restrict\TaskController::detail
 
 tasks_creation:
     path: /tarea
-    controller: App\Controller\TaskController::creation    
+    controller: App\Controller\Restrict\TaskController::creation    
 
 my_tasks:
     path: /mis-tareas
-    controller: App\Controller\TaskController::myTasks  
+    controller: App\Controller\Restrict\TaskController::myTasks  
     
 task_edit:
     path: /editar-tarea/{id}
-    controller: App\Controller\TaskController::edit
+    controller: App\Controller\Restrict\TaskController::edit
 
 task_delete:
     path: /tarea/delete/{id}
-    controller: App\Controller\TaskController::delete    
+    controller: App\Controller\Restrict\TaskController::delete    
 
 register:
     path: /registro
-    controller: App\Controller\UserController::register
+    controller: App\Controller\Common\UserController::register
     
 users:
     path: /users
-    controller: App\Controller\UserController::index
+    controller: App\Controller\Common\UserController::index
 
 logout:
     path: /logout

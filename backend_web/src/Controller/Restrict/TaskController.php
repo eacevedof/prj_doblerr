@@ -1,5 +1,6 @@
 <?php
-namespace App\Controller;
+
+namespace App\Controller\Restrict;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
