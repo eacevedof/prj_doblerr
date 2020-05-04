@@ -63,7 +63,8 @@ final class EmailService extends BaseService
 
         $this->logd($data,"mail.apointment");
         $mail = new Mail($data,$this->mailer);
-        $mail->send();
+        if($this->is_envprod())  $mail->send();
+        //$mail->send();
     }
 
     private function contact()
@@ -84,7 +85,8 @@ final class EmailService extends BaseService
 
         $this->logd($data,"mail.contact");
         $mail = new Mail($data,$this->mailer);
-        $mail->send();
+        if($this->is_envprod()) $mail->send();
+        //$mail->send();
     }
 
     public function send()

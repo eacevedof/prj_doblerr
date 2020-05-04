@@ -14,6 +14,10 @@ contact:
     path: /contacto
     controller: App\Controller\Open\HomeController::contact
 
+appointment:
+    path: /cita
+    controller: App\Controller\Open\HomeController::appointment
+
 mail:
     path: /mail
     controller: App\Controller\Open\HomeController::mail

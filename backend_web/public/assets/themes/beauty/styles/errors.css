@@ -23,7 +23,8 @@ img{max-width:100%;}
 /*-- end reset --*/
 body {
 	font-family: 'Open Sans', sans-serif;
-	background: url(../images/error-background-image.jpg)no-repeat center 0px;
+	background: url(../images/error-404-tumbleweed.jpg)no-repeat center 0px;
+	background-color: black;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	background-size:cover;
@@ -80,7 +81,6 @@ p.w3lstext {
 	line-height: 1.8em;
 	font-weight: 400;
 	width: 65%;
-	text-transform: capitalize;
 	margin: 1.5em auto 2.5em;
 }
 p.w3lstext a {

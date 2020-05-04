@@ -31,6 +31,12 @@ class SeoProvider
             "keywords" => "La empresa, barrio prosperidad, metro alfonso 13, buscas trabajo?, trabaja con nosotros",
             "h1" => ""
         ],
+        "appointment"=>[
+            "title"=>"Doble RR | Reservar cita",
+            "description"=>"Reserva tu cita online. Selecciona el día y quién deseas que te atienda.",
+            "keywords" => "Peluquería Doble RR, citas, pedir cita, solicitar cita, corte de cabello, madrid",
+            "h1" => "Formulario petición cita"
+        ],
     ];
 
     public static function get_meta($route)

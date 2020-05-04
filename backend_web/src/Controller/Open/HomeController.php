@@ -50,6 +50,12 @@ class HomeController extends BaseController
         return $this->render('open/home/contact.html.twig',["seo"=>$seo]);
     }
 
+    public function appointment()
+    {
+        $seo = SeoProvider::get_meta("appointment");
+        return $this->render('open/home/appointment.html.twig',["seo"=>$seo]);
+    }
+
     public function mail(MailerInterface $mailer)
     {
         $this->logd($_POST,"mail.post");

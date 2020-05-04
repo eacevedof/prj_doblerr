@@ -20,6 +20,12 @@ class BaseService
         return $_ENV[$key] ?? "";
     }
 
+    protected function is_envprod()
+    {
+        $env = $this->get_env("APP_ENV");
+        return $env==="prod";
+    }
+
     protected function get_post($key)
     {
         return $this->request->request->get($key) ?? null;
