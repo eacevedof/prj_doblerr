@@ -35,7 +35,7 @@ class UserController extends BaseController
             return $this->redirectToRoute("tasks");
         }
         
-        return $this->render('user/register.html.twig', [
+        return $this->render('common/user/register.html.twig', [
             "form" => $form->createView()
         ]);
     }
@@ -44,7 +44,7 @@ class UserController extends BaseController
     {
         $error = $authentication->getLastAuthenticationError();
         $lastUsername = $authentication->getLastUsername();
-        return $this->render("user/login.html.twig",[
+        return $this->render("common/user/login.html.twig",[
             "error" => $error,
             "_last_username"=>$lastUsername
         ]);

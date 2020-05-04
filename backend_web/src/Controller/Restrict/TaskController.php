@@ -18,7 +18,7 @@ class TaskController extends BaseController
         //$tasks = $repotask->findAll();
         $tasks = $repotask->findBy([],["id"=>"DESC"]);
 
-        return $this->render('task/index.html.twig', [
+        return $this->render('restrict/system/task/index.html.twig', [
             'tasks' => $tasks,
         ]);
     }
@@ -28,7 +28,7 @@ class TaskController extends BaseController
             return $this->redirectToRoute("tasks");
         }
 
-        return $this->render("task/detail.html.twig",["task"=>$task]);
+        return $this->render("restrict/system/task/detail.html.twig",["task"=>$task]);
     }
 
     public function creation(Request $request, UserInterface $user)
@@ -49,7 +49,7 @@ class TaskController extends BaseController
             return $this->redirect($this->generateUrl("task_detail",["id"=>$task->getId()]));
 
         }
-        return $this->render("task/creation.html.twig",[
+        return $this->render("restrict/system/task/creation.html.twig",[
             "form"=>$form->createView()
         ]);
     }
@@ -57,7 +57,7 @@ class TaskController extends BaseController
     //mis-tareas
     public function myTasks(UserInterface $user){
         $tasks = $user->getTasks();
-        return $this->render("task/my-tasks.html.twig",["tasks"=>$tasks]);
+        return $this->render("restrict/system/task/my-tasks.html.twig",["tasks"=>$tasks]);
     }
     
     //editar-tarea/{id}
@@ -79,7 +79,7 @@ class TaskController extends BaseController
             return $this->redirect($this->generateUrl("task_detail",["id"=>$task->getId()]));
 
         }
-        return $this->render("task/creation.html.twig",["edit"=>true,
+        return $this->render("restrict/system/task/creation.html.twig",["edit"=>true,
             "form"=>$form->createView()
         ]);
     }
