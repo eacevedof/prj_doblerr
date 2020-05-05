@@ -7,6 +7,9 @@ Doblerr
     
 - [Iconos](https://www.flaticon.com/packs/beauty-15)
 
+- **sqlyog**
+    - ![](https://trello-attachments.s3.amazonaws.com/5eb15644e823d340ffa477fd/1137x655/c15826378e1748154745cc134ea879cb/image.png)
+
 ### Errores
 ```
 Google Maps JavaScript API error: ApiNotActivatedMapError
@@ -49,3 +52,4 @@ En composer.lock he cambiado esta linea:
 },
 esto terminará dando algun error en el futuro (cuando use persistencia), pero por lo menos docker ya se levanta
 ```
+
