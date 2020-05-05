@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tasks", indexes={@ORM\Index(name="fk_task_user", columns={"user_id"})})
  * @ORM\Entity
  */
-class Tasks
+class Tasks extends BaseEntity
 {
     /**
      * @var int

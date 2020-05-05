@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_order_head")
  * @ORM\Entity
  */
-class AppOrderHead
+class AppOrderHead extends BaseEntity
 {
     /**
      * @var int

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_tag")
  * @ORM\Entity
  */
-class AppTag
+class AppTag extends BaseEntity
 {
     /**
      * @var int

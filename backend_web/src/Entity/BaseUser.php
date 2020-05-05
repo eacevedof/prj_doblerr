@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="base_user", uniqueConstraints={@ORM\UniqueConstraint(name="base_user_email_uindex", columns={"email"})})
  * @ORM\Entity
  */
-class BaseUser
+class BaseUser extends BaseEntity
 {
     /**
      * @var int

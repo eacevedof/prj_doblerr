@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_promotion")
  * @ORM\Entity
  */
-class AppPromotion
+class AppPromotion extends BaseEntity
 {
     /**
      * @var int
