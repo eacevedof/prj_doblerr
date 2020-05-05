@@ -10,6 +10,11 @@ Doblerr
 - **sqlyog**
     - ![](https://trello-attachments.s3.amazonaws.com/5eb15644e823d340ffa477fd/1137x655/c15826378e1748154745cc134ea879cb/image.png)
 
+- Generando entidades a partir de la bd
+    - `php bin/console --env=local  doctrine:mapping:import "App\Entity" annotation --path=src/Entity`
+        - Es importante que en **.env.local** exista la linea con ip de localhost:
+            - `DATABASE_URL=mysql://root:1234@127.0.0.1:3306/db_tinyshop?serverVersion=5.7`
+
 ### Errores
 ```
 Google Maps JavaScript API error: ApiNotActivatedMapError

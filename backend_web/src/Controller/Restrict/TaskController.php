@@ -6,7 +6,7 @@ use App\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-use App\Entity\Task;
+use App\Entity\App\Task;
 use App\Form\TaskType;
 
 class TaskController extends BaseController
