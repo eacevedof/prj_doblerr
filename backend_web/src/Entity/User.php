@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User implements UserInterface
+class User extends BaseEntity implements UserInterface
 {
     /**
      * @var int
