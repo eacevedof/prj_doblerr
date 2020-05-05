@@ -5,7 +5,7 @@ namespace App\Controller\Common;
 use App\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 
-use App\Entity\Base\User;
+use App\Entity\User;
 use App\Form\RegisterType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;

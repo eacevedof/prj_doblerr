@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppOrderHead
+ * BaseUserArray
  *
- * @ORM\Table(name="app_order_head")
+ * @ORM\Table(name="base_user_array")
  * @ORM\Entity
  */
-class AppOrderHead extends BaseEntity
+class BaseUserArray extends BaseEntity
 {
     /**
      * @var int
@@ -33,7 +33,7 @@ class AppOrderHead extends BaseEntity
      *
      * @ORM\Column(name="insert_platform", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $insertPlatform = '\'1\'';
+    private $insertPlatform = '1';
 
     /**
      * @var string|null
@@ -103,14 +103,14 @@ class AppOrderHead extends BaseEntity
      *
      * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="'0'"})
      */
-    private $isErpsent = '\'0\'';
+    private $isErpsent = '0';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="is_enabled", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $isEnabled = '\'1\'';
+    private $isEnabled = '1';
 
     /**
      * @var int|null
@@ -129,6 +129,20 @@ class AppOrderHead extends BaseEntity
     /**
      * @var string|null
      *
+     * @ORM\Column(name="type", type="string", length=15, nullable=true, options={"default"="NULL"})
+     */
+    private $type = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="id_tosave", type="string", length=25, nullable=true, options={"default"="NULL"})
+     */
+    private $idTosave = 'NULL';
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
     private $description = 'NULL';
@@ -136,37 +150,16 @@ class AppOrderHead extends BaseEntity
     /**
      * @var int
      *
-     * @ORM\Column(name="id_user_client", type="integer", nullable=false)
+     * @ORM\Column(name="order_by", type="integer", nullable=false, options={"default"="100"})
      */
-    private $idUserClient;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_user_seller", type="integer", nullable=false)
-     */
-    private $idUserSeller;
+    private $orderBy = '100';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="total", type="decimal", precision=10, scale=3, nullable=true, options={"default"="0.000"})
+     * @ORM\Column(name="code_cache", type="string", length=500, nullable=true, options={"default"="NULL"})
      */
-    private $total = '0.000';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="status", type="string", length=25, nullable=true, options={"default"="NULL"})
-     */
-    private $status = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="notes", type="string", length=2000, nullable=true, options={"default"="NULL"})
-     */
-    private $notes = 'NULL';
+    private $codeCache = 'NULL';
 
 
 }

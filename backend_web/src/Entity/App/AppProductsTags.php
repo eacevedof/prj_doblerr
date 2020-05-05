@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppPromotionUsers
+ * AppProductsTags
  *
- * @ORM\Table(name="app_promotion_users")
+ * @ORM\Table(name="app_products_tags")
  * @ORM\Entity
  */
-class AppPromotionUsers extends BaseEntity
+class AppProductsTags extends BaseEntity
 {
     /**
      * @var int
@@ -33,7 +33,7 @@ class AppPromotionUsers extends BaseEntity
      *
      * @ORM\Column(name="insert_platform", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $insertPlatform = '\'1\'';
+    private $insertPlatform = '1';
 
     /**
      * @var string|null
@@ -103,14 +103,14 @@ class AppPromotionUsers extends BaseEntity
      *
      * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="'0'"})
      */
-    private $isErpsent = '\'0\'';
+    private $isErpsent = '0';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="is_enabled", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $isEnabled = '\'1\'';
+    private $isEnabled = '1';
 
     /**
      * @var int|null
@@ -120,18 +120,18 @@ class AppPromotionUsers extends BaseEntity
     private $i = 'NULL';
 
     /**
-     * @var string|null
+     * @var int|null
      *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="id_product", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $description = 'NULL';
+    private $idProduct = 'NULL';
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="el usuario que se ha apuntado"})
+     * @ORM\Column(name="id_tag", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idUser = 'NULL';
+    private $idTag = 'NULL';
 
     /**
      * @var string|null

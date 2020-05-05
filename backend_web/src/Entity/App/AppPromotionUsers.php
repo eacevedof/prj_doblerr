@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppOrderLines
+ * AppPromotionUsers
  *
- * @ORM\Table(name="app_order_lines")
+ * @ORM\Table(name="app_promotion_users")
  * @ORM\Entity
  */
-class AppOrderLines extends BaseEntity
+class AppPromotionUsers extends BaseEntity
 {
     /**
      * @var int
@@ -33,7 +33,7 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="insert_platform", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $insertPlatform = '\'1\'';
+    private $insertPlatform = '1';
 
     /**
      * @var string|null
@@ -103,14 +103,14 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="'0'"})
      */
-    private $isErpsent = '\'0\'';
+    private $isErpsent = '0';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="is_enabled", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $isEnabled = '\'1\'';
+    private $isEnabled = '1';
 
     /**
      * @var int|null
@@ -122,13 +122,6 @@ class AppOrderLines extends BaseEntity
     /**
      * @var string|null
      *
-     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
-     */
-    private $codeErp = 'NULL';
-
-    /**
-     * @var string|null
-     *
      * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
     private $description = 'NULL';
@@ -136,23 +129,16 @@ class AppOrderLines extends BaseEntity
     /**
      * @var int|null
      *
-     * @ORM\Column(name="id_order_head", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="el usuario que se ha apuntado"})
      */
-    private $idOrderHead = 'NULL';
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="id_product", type="integer", nullable=true, options={"default"="NULL"})
-     */
-    private $idProduct = 'NULL';
+    private $idUser = 'NULL';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=3, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="code_cache", type="string", length=500, nullable=true, options={"default"="NULL"})
      */
-    private $price = 'NULL';
+    private $codeCache = 'NULL';
 
 
 }

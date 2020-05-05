@@ -12,8 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class RegisterType extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add("name", TextType::class, ["label"=>"Nombre"])
-                ->add("surname", TextType::class, ["label"=>"Apellidos"])
+        $builder->add("fullname", TextType::class, ["label"=>"Nombre"])
+                //->add("surname", TextType::class, ["label"=>"Apellidos"])
                 ->add("email", EmailType::class, ["label"=>"Correo electronico"])
                 ->add("password", PasswordType::class, ["label"=>"Contraseña"])
                 ->add("submit", SubmitType::class, ["label"=>"Registrarese"])

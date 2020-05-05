@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppTag
+ * AppPromotion
  *
- * @ORM\Table(name="app_tag")
+ * @ORM\Table(name="app_promotion")
  * @ORM\Entity
  */
-class AppTag extends BaseEntity
+class AppPromotion extends BaseEntity
 {
     /**
      * @var int
@@ -33,7 +33,7 @@ class AppTag extends BaseEntity
      *
      * @ORM\Column(name="insert_platform", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $insertPlatform = '\'1\'';
+    private $insertPlatform = '1';
 
     /**
      * @var string|null
@@ -103,14 +103,14 @@ class AppTag extends BaseEntity
      *
      * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="'0'"})
      */
-    private $isErpsent = '\'0\'';
+    private $isErpsent = '0';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="is_enabled", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $isEnabled = '\'1\'';
+    private $isEnabled = '1';
 
     /**
      * @var int|null
@@ -120,39 +120,18 @@ class AppTag extends BaseEntity
     private $i = 'NULL';
 
     /**
-     * @var int|null
-     *
-     * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
-     */
-    private $idType = 'NULL';
-
-    /**
      * @var string|null
      *
-     * @ORM\Column(name="description", type="string", length=50, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
     private $description = 'NULL';
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idUser = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="slug", type="string", length=100, nullable=true, options={"default"="NULL","comment"="la descripcion en slug"})
-     */
-    private $slug = 'NULL';
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="order_by", type="integer", nullable=false, options={"default"="100"})
-     */
-    private $orderBy = '100';
+    private $idType = 'NULL';
 
     /**
      * @var string|null

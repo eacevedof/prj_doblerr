@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppPromotion
+ * AppOrderHead
  *
- * @ORM\Table(name="app_promotion")
+ * @ORM\Table(name="app_order_head")
  * @ORM\Entity
  */
-class AppPromotion extends BaseEntity
+class AppOrderHead extends BaseEntity
 {
     /**
      * @var int
@@ -33,7 +33,7 @@ class AppPromotion extends BaseEntity
      *
      * @ORM\Column(name="insert_platform", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $insertPlatform = '\'1\'';
+    private $insertPlatform = '1';
 
     /**
      * @var string|null
@@ -103,14 +103,14 @@ class AppPromotion extends BaseEntity
      *
      * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="'0'"})
      */
-    private $isErpsent = '\'0\'';
+    private $isErpsent = '0';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="is_enabled", type="string", length=3, nullable=true, options={"default"="'1'"})
      */
-    private $isEnabled = '\'1\'';
+    private $isEnabled = '1';
 
     /**
      * @var int|null
@@ -122,23 +122,51 @@ class AppPromotion extends BaseEntity
     /**
      * @var string|null
      *
+     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
+     */
+    private $codeErp = 'NULL';
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
     private $description = 'NULL';
 
     /**
-     * @var int|null
+     * @var int
      *
-     * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="id_user_client", type="integer", nullable=false)
      */
-    private $idType = 'NULL';
+    private $idUserClient;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_user_seller", type="integer", nullable=false)
+     */
+    private $idUserSeller;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="code_cache", type="string", length=500, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="total", type="decimal", precision=10, scale=3, nullable=true, options={"default"="0.000"})
      */
-    private $codeCache = 'NULL';
+    private $total = '0.000';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="status", type="string", length=25, nullable=true, options={"default"="NULL"})
+     */
+    private $status = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="notes", type="string", length=2000, nullable=true, options={"default"="NULL"})
+     */
+    private $notes = 'NULL';
 
 
 }

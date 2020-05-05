@@ -23,9 +23,22 @@ mail:
     controller: App\Controller\Open\HomeController::mail
 
 # zona privada
+register:
+    path: /registro
+    controller: App\Controller\Common\UserController::register
+
+users:
+    path: /users
+    controller: App\Controller\Common\UserController::index
+
 login:
     path: /login
     controller: App\Controller\Common\UserController::login
+
+logout:
+    path: /logout
+    # ya viene por defecto
+
 
 tasks:
     path: /tareas
@@ -51,16 +64,6 @@ task_delete:
     path: /tarea/delete/{id}
     controller: App\Controller\Restrict\TaskController::delete    
 
-register:
-    path: /registro
-    controller: App\Controller\Common\UserController::register
-    
-users:
-    path: /users
-    controller: App\Controller\Common\UserController::index
 
-logout:
-    path: /logout
-    # ya viene por defecto
     
     
