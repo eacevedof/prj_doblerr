@@ -3,6 +3,7 @@
 namespace App\Controller\Common;
 
 use App\Controller\BaseController;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
@@ -11,8 +12,20 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends BaseController
-{    
-    public function register(Request $request,UserPasswordEncoderInterface $encoder)
+{
+
+    /**
+     * @var UserRepository
+     */
+    private UserRepository $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+        //dump($this->userRepository);die("xxx");
+    }
+
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
         //mapea el formulario con la entidad
@@ -45,14 +58,26 @@ class UserController extends BaseController
     {
         $error = $authentication->getLastAuthenticationError();
 
-if($error) {
-    dump($error);
-    die;
-}
+        if($error) {
+            print_r("usercontroller.login");
+            dump($error);
+            die;
+        }
         $lastUsername = $authentication->getLastUsername();
         return $this->render("common/user/login.html.twig",[
             "error" => $error,
             "_last_username"=>$lastUsername
         ]);
     }
+
+    public function index()
+    {
+        $user = $this->getUser();
+        //dump($user);die("user?");
+        return $this->render("common/user/index.html.twig");
+    }
+
+
+
+
 }//UserController

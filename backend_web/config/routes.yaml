@@ -24,7 +24,7 @@ mail:
 
 # zona privada
 register:
-    path: /registro
+    path: /register
     controller: App\Controller\Common\UserController::register
 
 users:
