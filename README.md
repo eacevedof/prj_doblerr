@@ -15,6 +15,8 @@ Doblerr
         - Es importante que en **.env.local** exista la linea con ip de localhost:
             - `DATABASE_URL=mysql://root:1234@127.0.0.1:3306/db_tinyshop?serverVersion=5.7`
 
+- [Tema admin - Github](https://github.com/creativetimofficial/light-bootstrap-dashboard)
+
 ### Errores
 ```
 Google Maps JavaScript API error: ApiNotActivatedMapError
