@@ -3,7 +3,8 @@ Doblerr
 
 - [Probando servor](https://youtu.be/ansUGkcrhwY?t=753)
     - `sudo npm install -g servor`
-    - escucha cambios en la carpeta src: `servor src index.html 8080 --reload`
+    - para probar el compilado de react
+    - escucha cambios en la carpeta build (react): `servor build index.html 3000 --reload`
     
 - [Iconos](https://www.flaticon.com/packs/beauty-15)
 
