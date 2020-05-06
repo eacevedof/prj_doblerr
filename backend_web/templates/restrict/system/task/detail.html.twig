@@ -6,7 +6,7 @@
 <div class="example-wrapper">
   <h1>{{ task.title }}</h1>
   <p class="data-task">
-    {{ task.user.name }} {{ task.user.surname }} | {{ task.createdAt|date("d/m/Y H:i:s")}} | 
+    {{ task.user.fullname }} | {{ task.createdAt|date("d/m/Y H:i:s")}} |
     {% if task.priority == "high" %}
       {{ "Alta" }}
     {% endif %}

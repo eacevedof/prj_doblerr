@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -14,6 +15,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User extends BaseEntity implements UserInterface
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\App\Task", mappedBy="user")
+     */
+    private $tasks;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -21,6 +28,14 @@ class User extends BaseEntity implements UserInterface
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * @var string|null
@@ -897,5 +912,13 @@ class User extends BaseEntity implements UserInterface
     public function eraseCredentials()
     {
         ;
+    }
+
+    /**
+     * @return Collection|Task[]
+     */
+    public function getTasks():Collection
+    {
+        return $this->tasks;
     }
 }

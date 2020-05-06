@@ -33,7 +33,10 @@ class TaskController extends BaseController
 
     public function creation(Request $request, UserInterface $user)
     {
-        //var_dump($user);die;
+        if(!$user) {
+            dump($user);
+            die;
+        }
         $task = new Task();
         $form = $this->createForm(TaskType::class,$task);
         $form->handleRequest($request);

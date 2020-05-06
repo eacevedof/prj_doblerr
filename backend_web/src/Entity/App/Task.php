@@ -3,6 +3,7 @@
 namespace App\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
 
 /**
  * Task
@@ -26,35 +27,35 @@ class Task
      *
      * @ORM\Column(name="title", type="string", length=100, nullable=true, options={"default"="NULL"})
      */
-    private $title = 'NULL';
+    private $title = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="content", type="text", length=65535, nullable=true, options={"default"="NULL"})
      */
-    private $content = 'NULL';
+    private $content = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="priority", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $priority = 'NULL';
+    private $priority = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="hours", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $hours = 'NULL';
+    private $hours = null;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $createdAt = 'NULL';
+    private $createdAt = null;
 
     /**
      * @var \User
