@@ -22,8 +22,9 @@ class UserController extends BaseController
         //si hay datos en POST|GET
         if($form->isSubmitted() && $form->isValid())
         {
-            $user->setRole("ROLE_USER");
-            $user->setCreatedAt(new \DateTime("now"));
+            //roles: 1:admin, 2:system, 3:user
+            $user->setIdProfile(3);//user
+            $user->setUpdateDate(new \DateTime("now"));
             //cifrando la contraseña
             $encoded = $encoder->encodePassword($user,$user->getPassword());
             $user->setPassword($encoded);
@@ -31,7 +32,7 @@ class UserController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            
+
             return $this->redirectToRoute("tasks");
         }
         
