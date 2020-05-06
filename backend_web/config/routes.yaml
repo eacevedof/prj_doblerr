@@ -27,13 +27,13 @@ register:
     path: /register
     controller: App\Controller\Common\UserController::register
 
+login:
+    path: /login
+    controller: App\Controller\Common\SecurityController::login
+
 users:
     path: /users
     controller: App\Controller\Common\UserController::index
-
-login:
-    path: /login
-    controller: App\Controller\Common\UserController::login
 
 logout:
     path: /logout

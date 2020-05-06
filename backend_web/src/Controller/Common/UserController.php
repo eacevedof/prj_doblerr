@@ -1,15 +1,13 @@
 <?php
 //proyecto\src\Controller\Common\UserController.php
 namespace App\Controller\Common;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use App\Controller\BaseController;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\Request;
-
 use App\Entity\User;
 use App\Form\RegisterType;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends BaseController
 {
@@ -44,34 +42,20 @@ class UserController extends BaseController
             return $this->redirectToRoute("tasks");
         }
         
-        return $this->render('common/user/register.html.twig', [
+        return $this->render('open/user/register.html.twig', [
             "form" => $form->createView()
-        ]);
-    }
-    
-    public function login(AuthenticationUtils $authentication)
-    {
-        $error = $authentication->getLastAuthenticationError();
-
-        if($error) {
-            print_r("usercontroller.login");
-            dump($error);
-            die;
-        }
-        $lastUsername = $authentication->getLastUsername();
-        return $this->render("common/user/login.html.twig",[
-            "error" => $error,
-            "_last_username"=>$lastUsername
         ]);
     }
 
     public function index()
     {
+        //$response->headers->set('Content-Type', 'application/json');
+        // Allow all websites
+        //$response->headers->set('Access-Control-Allow-Origin', '*');
+
         $users = $this->userRepository->findBy([],["id"=>"DESC"]);
         return $this->render("restrict/system/user/index.html.twig",["users"=>$users]);
     }
-
-
 
 
 }//UserController
