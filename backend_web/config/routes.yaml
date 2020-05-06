@@ -30,7 +30,8 @@ register:
 
 login:
     path: /login
-    controller: App\Controller\Common\SecurityController::login
+    controller: App\Controller\Common\SecurityController
+    # defaults: {_controller: app.common.security_controller}
 
 users:
     path: /users
