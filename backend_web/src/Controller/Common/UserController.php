@@ -41,10 +41,7 @@ class UserController extends BaseController
             //cifrando la contraseña
             $encoded = $encoder->encodePassword($user,$user->getPassword());
             $user->setPassword($encoded);
-            
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $this->userRepository->save($user);
 
             return $this->redirectToRoute("tasks");
         }

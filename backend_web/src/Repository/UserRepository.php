@@ -8,6 +8,8 @@ use App\Entity\User;
 
 class UserRepository extends BaseRepository
 {
+    //en el construct se define objectRepository a partir del nombre de la clase de la entidad
+
     protected static function entityClass(): string
     {
         return User::class;
