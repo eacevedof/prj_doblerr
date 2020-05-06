@@ -39,7 +39,6 @@ logout:
     path: /logout
     # ya viene por defecto
 
-
 tasks:
     path: /tareas
     controller: App\Controller\Restrict\TaskController::index

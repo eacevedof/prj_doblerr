@@ -872,7 +872,7 @@ class User extends BaseEntity implements UserInterface
      */
     public function getRoles()
     {
-        return $this->idProfile;
+        return ["ROLE_$this->idProfile"];
     }
 
     /**

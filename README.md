@@ -63,4 +63,9 @@ Hay que reiniciar el contenedor de nginx
 docker stop sf-doblerr-be
 docker start sf-doblerr-be
 ```
-
+- Error *Access denied, the user is neither anonymous, nor remember-me.*
+```
+Estoy usando roles tipo 1,2,3,4,5 y deben ser ROLE_1,...N, con prefijo ROLE
+```
+- Redireccion en login:
+`security.yaml: default_target_path: tasks`

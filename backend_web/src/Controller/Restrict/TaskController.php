@@ -13,7 +13,7 @@ class TaskController extends BaseController
 {
     public function index()
     {
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
         $repotask = $this->getDoctrine()->getRepository(Task::class);
         //$tasks = $repotask->findAll();
         $tasks = $repotask->findBy([],["id"=>"DESC"]);

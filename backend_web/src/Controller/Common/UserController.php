@@ -22,7 +22,7 @@ class UserController extends BaseController
         //si hay datos en POST|GET
         if($form->isSubmitted() && $form->isValid())
         {
-            //roles: 1:admin, 2:system, 3:user
+            //roles: 1:admin, 2:system, 3:enterprise, 4:user, 5:anonymous
             $user->setIdProfile(3);//user
             $user->setUpdateDate(new \DateTime("now"));
             //cifrando la contraseña
@@ -44,6 +44,11 @@ class UserController extends BaseController
     public function login(AuthenticationUtils $authentication)
     {
         $error = $authentication->getLastAuthenticationError();
+
+if($error) {
+    dump($error);
+    die;
+}
         $lastUsername = $authentication->getLastUsername();
         return $this->render("common/user/login.html.twig",[
             "error" => $error,
