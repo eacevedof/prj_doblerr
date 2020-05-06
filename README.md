@@ -17,6 +17,8 @@ Doblerr
             - `DATABASE_URL=mysql://root:1234@127.0.0.1:3306/db_tinyshop?serverVersion=5.7`
 
 - [Tema admin - Github](https://github.com/creativetimofficial/light-bootstrap-dashboard)
+- Pasar el build a synfony
+    - `py.sh "/Users/ioedu/projects/prj_doblerr/frontend_react/pannel/.pysh" index react`
 
 ### Errores
 ```
