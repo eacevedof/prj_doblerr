@@ -26,6 +26,7 @@ mail:
 register:
     path: /register
     controller: App\Controller\Common\UserController::register
+    # defaults: {_controller: app.common.user_controller}
 
 login:
     path: /login
