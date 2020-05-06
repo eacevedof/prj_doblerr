@@ -33,7 +33,7 @@ solucion:
 # seo
 disallow_search_engine_index: false
 ```
- - Error con ocramius/proxy-manager
+- Error con ocramius/proxy-manager
 ```
 Your requirements could not be resolved to an installable set of packages.
 Problem 1
@@ -56,5 +56,11 @@ En composer.lock he cambiado esta linea:
     "webimpress/safe-writer": "^2.0.1"
 },
 esto terminará dando algun error en el futuro (cuando use persistencia), pero por lo menos docker ya se levanta
+```
+- Error 502 Bad Gateway nginx/1.17.7
+```
+Hay que reiniciar el contenedor de nginx 
+docker stop sf-doblerr-be
+docker start sf-doblerr-be
 ```
 
