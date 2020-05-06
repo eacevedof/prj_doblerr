@@ -22,7 +22,6 @@ class UserController extends BaseController
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
-        //dump($this->userRepository);die("xxx");
     }
 
     public function register(Request $request, UserPasswordEncoderInterface $encoder)
@@ -42,7 +41,6 @@ class UserController extends BaseController
             $encoded = $encoder->encodePassword($user,$user->getPassword());
             $user->setPassword($encoded);
             $this->userRepository->save($user);
-
             return $this->redirectToRoute("tasks");
         }
         
@@ -69,9 +67,8 @@ class UserController extends BaseController
 
     public function index()
     {
-        $user = $this->getUser();
-        //dump($user);die("user?");
-        return $this->render("common/user/index.html.twig");
+        $users = $this->userRepository->findBy([],["id"=>"DESC"]);
+        return $this->render("restrict/system/user/index.html.twig",["users"=>$users]);
     }
 
 

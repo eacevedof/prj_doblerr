@@ -31,6 +31,13 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
+    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
+    {
+        /** @var User $user */
+        $user = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
+        return $user;
+    }
+
     public function save(User $user): void
     {
         $this->saveEntity($user);
