@@ -1,10 +1,7 @@
 //App.js
 import React, {useState, useEffect} from 'react';
-import Sidebar from "./components/common/sidebar"
-import Navbar from "./components/common/navbar"
-import Footer from "./components/common/footer"
-import Graphics from "./components/dashboard/graphics"
-import Profile from "./components/user/profile/profile"
+import Dashboard from "./components/dashboard/dashboard"
+
 //import axios from 'axios'
 
 import {
@@ -15,28 +12,6 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-
-
-function xpp() {
-  return (
-    <div className="wrapper">
-      {/* 
-      <img src={process.env.PUBLIC_URL + '/assets/img/sidebar-5.jpg'} />  
-      */}
-      <Sidebar />
-      <div className="main-panel">
-        <Navbar />
-        <div className="content">
-          <div className="container-fluid">
-            <Graphics />
-            <Profile />
-          </div>
-        </div>
-        <Footer />
-      </div>
-    </div>
-  )
-}//xpp()
 
 function App(){
   return (
@@ -52,9 +27,15 @@ function App(){
           <li>
             <Link to="/topics">Topics</Link>
           </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>          
         </ul>
 
         <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>                    
           <Route path="/about">
             <About />
           </Route>
