@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "toprod": "py.sh \"/Users/ioedu/projects/prj_doblerr/frontend_react/pannel/.pysh\" index react"
   },
   "eslintConfig": {
     "extends": "react-app"
