@@ -8,12 +8,18 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "rewire": "^5.0.0"
   },
   "homepage": "react",
+  "homepage": ".",
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build": "node ./scripts/build-non-split.js && npm run build:clean && npm run toprod",
+    "build": "node ./scripts/build-non-split.js && npm run toprod",
+    "build:clean": "cd build && mv static/js/*.js main.js && mv static/css/*.css main.css && rm -r static",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "toprod": "py.sh \"/Users/ioedu/projects/prj_doblerr/frontend_react/pannel/.pysh\" index react"
