@@ -7,22 +7,22 @@ function footer() {
             <nav>
                 <ul class="footer-menu">
                     <li>
-                        <a href="#">
+                        <a href="/#">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/#">
                             Company
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/#">
                             Portfolio
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/#">
                             Blog
                         </a>
                     </li>

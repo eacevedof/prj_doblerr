@@ -94,7 +94,7 @@ function Profile() {
             </div>
             <div className="card-body">
                 <div className="author">
-                    <a href="#">
+                    <a href="/#">
                         <img className="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="..." />
                         <h5 className="title">Mike Andrew</h5>
                     </a>
@@ -110,13 +110,13 @@ function Profile() {
             </div>
             <hr />
             <div className="button-container mr-auto ml-auto">
-                <button href="#" className="btn btn-simple btn-link btn-icon">
+                <button href="/#" className="btn btn-simple btn-link btn-icon">
                     <i className="fa fa-facebook-square"></i>
                 </button>
-                <button href="#" className="btn btn-simple btn-link btn-icon">
+                <button href="/#" className="btn btn-simple btn-link btn-icon">
                     <i className="fa fa-twitter"></i>
                 </button>
-                <button href="#" className="btn btn-simple btn-link btn-icon">
+                <button href="/#" className="btn btn-simple btn-link btn-icon">
                     <i className="fa fa-google-plus-square"></i>
                 </button>
             </div>
