@@ -33,6 +33,10 @@ login:
     controller: App\Controller\Common\SecurityController
     # defaults: {_controller: app.common.security_controller}
 
+react:
+    path: /react
+    controller: App\Controller\Restrict\ReactController
+
 users:
     path: /users
     controller: App\Controller\Common\UserController::index

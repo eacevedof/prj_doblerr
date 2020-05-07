@@ -23,7 +23,7 @@ security:
                 login_path: login
                 check_path: login
                 provider: proveedor
-                default_target_path: tasks
+                default_target_path: react
 
             logout:
                 path: /logout
@@ -39,6 +39,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/react, roles: [ROLE_1,ROLE_2,ROLE_3,ROLE_4]  }
         - { path: ^/users, roles: [ROLE_1,ROLE_2] }
 
 
