@@ -1,9 +1,7 @@
 //App.js
 import React, {useState, useEffect} from 'react';
 import Dashboard from "./components/dashboard/dashboard"
-
 //import axios from 'axios'
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,40 +17,18 @@ function App(){
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/react">Dashboard</Link>
           </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>          
         </ul>
 
         <Switch>
-          <Route path="/dashboard">
+          <Route path="/react">
             <Dashboard />
           </Route>                    
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/topics">
-            <Topics />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
         </Switch>
       </div>
     </Router>
   );
 }//App
-
-function About(){return (<>About</>)}
-function Topics(){return (<>Topics</>)}
-function Home(){return (<>Home</>)}
 
 export default App;
