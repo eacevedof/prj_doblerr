@@ -2,9 +2,9 @@
 import React, {useState, useEffect} from 'react';
 import Sidebar from "./components/common/sidebar"
 import Navbar from "./components/common/navbar"
-
+import Footer from "./components/common/footer"
+import Graphics from "./components/dashboard/graphics"
 //import axios from 'axios'
-console.log(Sidebar)
 
 function App() {
   return (
@@ -15,6 +15,12 @@ function App() {
       <Sidebar />
       <div className="main-panel">
         <Navbar />
+        <div className="content">
+          <div className="container-fluid">
+            <Graphics />
+          </div>
+        </div>
+        <Footer />
       </div>
     </div>
   )
