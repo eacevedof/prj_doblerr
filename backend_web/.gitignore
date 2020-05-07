@@ -23,4 +23,9 @@ logs
 /phpunit.xml
 bin/.phpunit
 ###< symfony/phpunit-bridge ###
+
+###> custom ###
 composer.phar
+/public/react/*
+###< custom ###
+
