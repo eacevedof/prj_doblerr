@@ -101,6 +101,14 @@ class AppProduct extends BaseEntity
     private $codeCache = null;
 
     /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string|null
      */
     public function getCodeErp(): ?string
@@ -115,8 +123,6 @@ class AppProduct extends BaseEntity
     {
         $this->codeErp = $codeErp;
     }
-
-
 
     /**
      * @return string|null
@@ -293,6 +299,4 @@ class AppProduct extends BaseEntity
     {
         $this->codeCache = $codeCache;
     }
-
-
 }

@@ -10,12 +10,12 @@ class Serialize
 
     public static function get_jsonarray(array $array): string
     {
+        //print_r($array);die;
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
 
         $serializer = new Serializer($normalizers, $encoders);
         $jsonContent = $serializer->serialize($array, 'json');
-
         return $jsonContent;
     }
 
