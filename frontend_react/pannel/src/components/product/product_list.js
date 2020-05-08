@@ -29,7 +29,7 @@ function ProductList() {
     <div className="wrapper">
       <Sidebar />
       <div className="main-panel">
-        <Navbar title="Dashboard" />
+        <Navbar title="Products" />
         <div className="content">
           <div className="container-fluid">
             {list}

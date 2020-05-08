@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 function Navbar({title,iitems}) {
 
-    return (
+  return (
     <nav className="navbar navbar-expand-lg " color-on-scroll="500">
       <div className="container-fluid">
         <a className="navbar-brand" href="/react"> {title} </a>

@@ -3,7 +3,7 @@ import React from 'react';
 
 function Sidebar() {
   return (
-      <div className="sidebar" data-image={process.env.PUBLIC_URL + '/assets/img/sidebar-5.jpg'}>
+      <div className="sidebar" data-image={process.env.PUBLIC_URL + '/assets/img/sidebar-5.jpg'} data-color="black">
         <div className="sidebar-wrapper">
           <div className="logo">
               <a href="http://www.elchalanaruba.com" target="_blank" className="simple-text">

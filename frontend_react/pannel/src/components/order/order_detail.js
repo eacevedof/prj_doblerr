@@ -10,7 +10,7 @@ function OrderDetail() {
     <div className="wrapper">
       <Sidebar />
       <div className="main-panel">
-        <Navbar title="Dashboard" />
+        <Navbar title="Order" />
         <div className="content">
           <div className="container-fluid">
             {order.toString()}
