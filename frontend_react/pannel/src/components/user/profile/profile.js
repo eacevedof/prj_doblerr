@@ -25,7 +25,7 @@ function Profile() {
                   </div>
                   <div className="col-md-4 pl-1">
                       <div className="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
+                          <label htmlFor="exampleInputEmail1">Email address</label>
                           <input type="email" className="form-control" placeholder="Email" />
                       </div>
                   </div>
