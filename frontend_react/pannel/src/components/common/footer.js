@@ -2,10 +2,10 @@ import React from 'react';
 
 function footer() {
   return (
-    <footer class="footer">
-        <div class="container-fluid">
+    <footer className="footer">
+        <div className="container-fluid">
             <nav>
-                <ul class="footer-menu">
+                <ul className="footer-menu">
                     <li>
                         <a href="/#">
                             Home
@@ -27,7 +27,7 @@ function footer() {
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-center">
+                <p className="copyright text-center">
                     ©
                     <script>
                         document.write(new Date().getFullYear())

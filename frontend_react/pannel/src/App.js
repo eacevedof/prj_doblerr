@@ -1,6 +1,7 @@
 //App.js
 import React, {useState, useEffect} from 'react';
 import Dashboard from "./components/dashboard/dashboard"
+import UserDetail from "./components/user/user_detail"
 //import axios from 'axios'
 import {
   BrowserRouter as Router,
@@ -14,19 +15,19 @@ import {
 function App(){
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/react">Dashboard</Link>
-          </li>
-        </ul>
-
+      <>
         <Switch>
           <Route path="/react">
             <Dashboard />
-          </Route>                    
+          </Route>
+          <Route path="/user-detail">
+            <Dashboard />
+          </Route>
+          <Route path="/user-detail">
+            <Dashboard />
+          </Route>               
         </Switch>
-      </div>
+      </>
     </Router>
   );
 }//App

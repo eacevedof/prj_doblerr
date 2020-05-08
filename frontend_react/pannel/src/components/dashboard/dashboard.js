@@ -13,7 +13,7 @@ function Dashboard() {
       */}
       <Sidebar />
       <div className="main-panel">
-        <Navbar />
+        <Navbar title="Dashboard" />
         <div className="content">
           <div className="container-fluid">
             <Graphics />
