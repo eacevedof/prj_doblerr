@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Traits\Log;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Response;
 
 class BaseController extends AbstractController
 {
@@ -33,5 +34,13 @@ class BaseController extends AbstractController
     protected function get_request()
     {
         return $this->request;
+    }
+
+    protected function get_response_json()
+    {
+        $response = new Response();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 }

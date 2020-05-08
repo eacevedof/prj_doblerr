@@ -20,4 +20,10 @@ class ProductService extends BaseService
         return $products;
     }
 
+    public function get_list_filter(array $criteria=[])
+    {
+        $products = $this->productRepository->findBy($criteria,["id"=>"DESC"]);
+        return $products;
+    }
+
 }
