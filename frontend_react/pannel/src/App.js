@@ -11,6 +11,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import ProductList from './components/products/product_list';
 
 function App(){
   return (
@@ -18,14 +19,8 @@ function App(){
       <>
         <Switch>
           <Route path="/react">
-            <Dashboard />
+            <ProductList />
           </Route>
-          <Route path="/user-detail">
-            <Dashboard />
-          </Route>
-          <Route path="/user-detail">
-            <Dashboard />
-          </Route>               
         </Switch>
       </>
     </Router>
