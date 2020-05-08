@@ -17,12 +17,6 @@ function Sidebar() {
                   <p>Products</p>
                 </a>
               </li>
-              <li>
-                <a className="nav-link" href="/order">
-                  <i className="nc-icon nc-cart-simple"></i>
-                  <p>Order</p>
-                </a>
-              </li>
             </ul>
         </div>
       </div>

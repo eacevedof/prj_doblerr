@@ -1,12 +1,12 @@
 //Navbar.js
 import React, {useState} from 'react';
 
-function Navbar({title,iitems}) {
+function Navbar({iitems}) {
 
   return (
     <nav className="navbar navbar-expand-lg " color-on-scroll="500">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/react"> {title} </a>
+        <a className="navbar-brand" href="/order"> Order </a>
         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-bar burger-lines"></span>
           <span className="navbar-toggler-bar burger-lines"></span>
@@ -18,7 +18,7 @@ function Navbar({title,iitems}) {
               <a href="/order" className="nav-link">
                   <i className="nc-icon nc-cart-simple"></i>
                   <span className="notification">{iitems}</span>
-                  <span className="d-lg-none">Cart</span>
+                  <span className="d-lg-none">Order</span>
               </a>
             </li>
           </ul>
