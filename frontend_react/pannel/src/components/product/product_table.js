@@ -3,6 +3,7 @@ import Swal from "sweetalert2"
 
 const ProductTable = ({items}) => {
   
+  const i = 0
 
   const add_to_order = ()=>{
     Swal.fire({
@@ -13,6 +14,14 @@ const ProductTable = ({items}) => {
     })
   }
 
+  const remove_from_order = ()=>{
+    Swal.fire({
+      title: 'Error!',
+    text: 'Do you want to continue',
+    icon: 'error',
+    confirmButtonText: 'Cool'
+    })
+  }
 
 
   const trs = items.map( product => (
@@ -20,18 +29,17 @@ const ProductTable = ({items}) => {
       <td>{product.id}</td>
       <td>{product.descriptionFull}</td>
       <td><img 
-            src={`http://localhost:200/pictures/products/product_${product.id}`} 
+            src={`http://localhost:200/pictures/products/product_0.png`} 
             alt={product.descriptionFull}
-            className="img-responsive"
+            className="img-thumbnail"
+            height="45" width="45"
             /></td>
       <td>{product.priceSale}</td>
       <td>
-        <button type="button" className="btn btn-primary btn-fill pull-left" onClick={add_to_order} > 
-          <i className="nc-icon nc-simple-add"></i>
-        </button>
-        <button type="button" className="btn btn-danger btn-fill pull-right"> 
-          <i className="nc-icon nc-simple-delete"></i>
-        </button>
+      <div className="input-group">
+        <input type="number" className="form-control"  defaultValue={i} min="0" max="10"/>
+        <button type="submit" className="btn btn-primary btn-fill pull-left">save</button>
+      </div>
       </td>
     </tr>
   ))

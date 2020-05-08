@@ -3,6 +3,8 @@ import axios from "axios"
 import Sidebar from "../common/sidebar"
 import Navbar from "../common/navbar"
 import Footer from "../common/footer"
+import ProductSearch from "./forms/product_search"
+import ProductTable from "./product_table"
 
 function ProductList() {
   
@@ -13,7 +15,8 @@ function ProductList() {
     console.log("url:",url,"products",products)
     //if(!products){
       const result = await axios(url)
-      console.log("products",result.data)
+      console.log("products")
+      console.table(result.data)
       set_products(result.data)
     //}
   }
@@ -32,7 +35,8 @@ function ProductList() {
         <Navbar title="Products" />
         <div className="content">
           <div className="container-fluid">
-            {list}
+            <ProductSearch />
+            <ProductTable items={products} />
           </div>
         </div>
         <Footer />

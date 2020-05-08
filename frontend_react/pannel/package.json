@@ -11,7 +11,9 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "rewire": "^5.0.0"
+    "rewire": "^5.0.0",
+    "styled-components": "^5.1.0",
+    "sweetalert2": "^9.10.12"
   },
   "homepage": "react",
   "scripts": {
