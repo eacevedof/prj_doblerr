@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Controller\Open;
+use App\Component\Serialize;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -21,10 +22,11 @@ class ProductController extends BaseController
     public function __invoke(Request $request)
     {
         $response = new Response();
-        $response->setContent(json_encode([
-            'data' => 123,
-        ]));
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Content-Type', 'application/json');
+
+        $products = $this->productService->get_list();
+        $response->setContent(Serialize::get_jsonarray($products));
         return $response;
     }
 

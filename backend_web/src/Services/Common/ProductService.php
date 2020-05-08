@@ -3,6 +3,7 @@ namespace App\Services\Common;
 
 use App\Services\BaseService;
 use App\Repository\ProductRepository;
+use App\Component\Serialize;
 
 class ProductService extends BaseService
 {
@@ -15,7 +16,7 @@ class ProductService extends BaseService
 
     public function get_list()
     {
-        $products = $this->productRepository->findBy([],["id"=>"DESC"]);
+        $products = $this->productRepository->findAll();
         return $products;
     }
 

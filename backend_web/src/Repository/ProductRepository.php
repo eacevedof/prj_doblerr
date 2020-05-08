@@ -24,18 +24,17 @@ class ProductRepository extends BaseRepository
         return $product;
     }
 
-    public function findOneByEmail(string $email): ?AppProduct
-    {
-        /** @var AppProduct $product */
-        $product = $this->objectRepository->findOneBy(['email' => $email]);
-        return $product;
-    }
 
     public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
         /** @var AppProduct $product */
         $product = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
         return $product;
+    }
+
+    public function findAll()
+    {
+        return $this->objectRepository->findAll();
     }
 
     public function save(AppProduct $product): void
