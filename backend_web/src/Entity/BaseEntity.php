@@ -93,6 +93,18 @@ class BaseEntity
     protected $i = null;
 
     /**
+     * @var string|null
+     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
+     */
+    private $codeErp = null;
+
+    /**
+     * @var string|null
+     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
+     */
+    private $description = null;
+
+    /**
      * @return string|null
      */
     public function getProcessflag(): ?string
@@ -102,9 +114,9 @@ class BaseEntity
 
     /**
      * @param string|null $processflag
-     * @return User
+     * @return BaseEntity
      */
-    public function setProcessflag(?string $processflag): User
+    public function setProcessflag(?string $processflag): BaseEntity
     {
         $this->processflag = $processflag;
         return $this;
@@ -120,9 +132,9 @@ class BaseEntity
 
     /**
      * @param string|null $insertPlatform
-     * @return User
+     * @return BaseEntity
      */
-    public function setInsertPlatform(?string $insertPlatform): User
+    public function setInsertPlatform(?string $insertPlatform): BaseEntity
     {
         $this->insertPlatform = $insertPlatform;
         return $this;
@@ -138,9 +150,9 @@ class BaseEntity
 
     /**
      * @param string|null $insertUser
-     * @return User
+     * @return BaseEntity
      */
-    public function setInsertUser(?string $insertUser): User
+    public function setInsertUser(?string $insertUser): BaseEntity
     {
         $this->insertUser = $insertUser;
         return $this;
@@ -156,9 +168,9 @@ class BaseEntity
 
     /**
      * @param \DateTime|null $insertDate
-     * @return User
+     * @return BaseEntity
      */
-    public function setInsertDate(?\DateTime $insertDate): User
+    public function setInsertDate(?\DateTime $insertDate): BaseEntity
     {
         $this->insertDate = $insertDate;
         return $this;
@@ -174,9 +186,9 @@ class BaseEntity
 
     /**
      * @param string|null $updatePlatform
-     * @return User
+     * @return BaseEntity
      */
-    public function setUpdatePlatform(?string $updatePlatform): User
+    public function setUpdatePlatform(?string $updatePlatform): BaseEntity
     {
         $this->updatePlatform = $updatePlatform;
         return $this;
@@ -192,9 +204,9 @@ class BaseEntity
 
     /**
      * @param string|null $updateUser
-     * @return User
+     * @return BaseEntity
      */
-    public function setUpdateUser(?string $updateUser): User
+    public function setUpdateUser(?string $updateUser): BaseEntity
     {
         $this->updateUser = $updateUser;
         return $this;
@@ -210,9 +222,9 @@ class BaseEntity
 
     /**
      * @param \DateTime|null $updateDate
-     * @return User
+     * @return BaseEntity
      */
-    public function setUpdateDate(?\DateTime $updateDate): User
+    public function setUpdateDate(?\DateTime $updateDate): BaseEntity
     {
         $this->updateDate = $updateDate;
         return $this;
@@ -228,9 +240,9 @@ class BaseEntity
 
     /**
      * @param string|null $deletePlatform
-     * @return User
+     * @return BaseEntity
      */
-    public function setDeletePlatform(?string $deletePlatform): User
+    public function setDeletePlatform(?string $deletePlatform): BaseEntity
     {
         $this->deletePlatform = $deletePlatform;
         return $this;
@@ -246,9 +258,9 @@ class BaseEntity
 
     /**
      * @param string|null $deleteUser
-     * @return User
+     * @return BaseEntity
      */
-    public function setDeleteUser(?string $deleteUser): User
+    public function setDeleteUser(?string $deleteUser): BaseEntity
     {
         $this->deleteUser = $deleteUser;
         return $this;
@@ -264,9 +276,9 @@ class BaseEntity
 
     /**
      * @param \DateTime|null $deleteDate
-     * @return User
+     * @return BaseEntity
      */
-    public function setDeleteDate(?\DateTime $deleteDate): User
+    public function setDeleteDate(?\DateTime $deleteDate): BaseEntity
     {
         $this->deleteDate = $deleteDate;
         return $this;
@@ -282,9 +294,9 @@ class BaseEntity
 
     /**
      * @param string|null $cruCsvnote
-     * @return User
+     * @return BaseEntity
      */
-    public function setCruCsvnote(?string $cruCsvnote): User
+    public function setCruCsvnote(?string $cruCsvnote): BaseEntity
     {
         $this->cruCsvnote = $cruCsvnote;
         return $this;
@@ -300,9 +312,9 @@ class BaseEntity
 
     /**
      * @param string|null $isErpsent
-     * @return User
+     * @return BaseEntity
      */
-    public function setIsErpsent(?string $isErpsent): User
+    public function setIsErpsent(?string $isErpsent): BaseEntity
     {
         $this->isErpsent = $isErpsent;
         return $this;
@@ -318,9 +330,9 @@ class BaseEntity
 
     /**
      * @param string|null $isEnabled
-     * @return User
+     * @return BaseEntity
      */
-    public function setIsEnabled(?string $isEnabled): User
+    public function setIsEnabled(?string $isEnabled): BaseEntity
     {
         $this->isEnabled = $isEnabled;
         return $this;
@@ -336,29 +348,11 @@ class BaseEntity
 
     /**
      * @param int|null $i
-     * @return User
+     * @return BaseEntity
      */
-    public function setI(?int $i): User
+    public function setI(?int $i): BaseEntity
     {
         $this->i = $i;
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCodeErp(): ?string
-    {
-        return $this->codeErp;
-    }
-
-    /**
-     * @param string|null $codeErp
-     * @return User
-     */
-    public function setCodeErp(?string $codeErp): User
-    {
-        $this->codeErp = $codeErp;
         return $this;
     }
 
@@ -372,12 +366,10 @@ class BaseEntity
 
     /**
      * @param string|null $description
-     * @return User
      */
-    public function setDescription(?string $description): User
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
-        return $this;
     }
 
     /**
@@ -388,25 +380,12 @@ class BaseEntity
         return $this->codeCache;
     }
 
-
     /**
      * @param string|null $codeCache
-     * @return User
      */
-    public function setCodeCache(?string $codeCache): User
+    public function setCodeCache(?string $codeCache): void
     {
         $this->codeCache = $codeCache;
-        return $this;
     }
-    /**
-     * @var string|null
-     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
-     */
-    private $codeErp = null;
 
-    /**
-     * @var string|null
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $description = null;
 }

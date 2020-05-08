@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="base_user_array")
  * @ORM\Entity
  */
-class BaseUserArray extends BaseEntity
+class BaseUserArray 
 {
     /**
      * @var int

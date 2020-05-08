@@ -22,6 +22,10 @@ mail:
     path: /mail
     controller: App\Controller\Open\HomeController::mail
 
+products:
+    path: /products
+    controller: App\Controller\Open\ProductController
+
 # zona privada
 register:
     path: /register
