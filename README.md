@@ -79,3 +79,5 @@ Estoy usando roles tipo 1,2,3,4,5 y deben ser ROLE_1,...N, con prefijo ROLE
 ```
 - Redireccion en login:
 `security.yaml: default_target_path: tasks`
+- Error 500 al no encontrar favico.ico
+`@todo`
