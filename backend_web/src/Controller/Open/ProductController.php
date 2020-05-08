@@ -19,8 +19,8 @@ class ProductController extends BaseController
 
     public function __invoke(Request $request)
     {
-        //$products = $this->productService->get_list();
-        $products = $this->productService->get_list_filter(["id"=>3]);
+        $products = $this->productService->get_list();
+        //$products = $this->productService->get_list_filter(["id"=>3]);
         $response = $this->get_response_json();
         $response->setContent(Serialize::get_jsonarray($products));
         return $response;

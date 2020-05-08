@@ -8,7 +8,6 @@ use Symfony\Component\Serializer\Serializer;
 class Serialize
 {
 
-
     public static function get_jsonarray(array $array): string
     {
         $encoders = [new JsonEncoder()];
