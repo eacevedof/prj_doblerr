@@ -95,7 +95,7 @@ function Profile() {
             <div className="card-body">
                 <div className="author">
                     <a href="/#">
-                        <img className="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="..." />
+                        <img className="avatar border-gray" src={process.env.PUBLIC_URL + '/assets/img/faces/face-3.jpg'} alt="..." />
                         <h5 className="title">Mike Andrew</h5>
                     </a>
                     <p className="description">
