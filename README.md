@@ -20,6 +20,11 @@ Doblerr
 - Pasar el build a synfony
     - `py.sh "/Users/ioedu/projects/prj_doblerr/frontend_react/pannel/.pysh" index react`
 
+- **Generar entidades**
+    - cambiar en **.env.local** la ruta a la bd
+    - `DATABASE_URL=mysql://root:1234@127.0.0.1:3306/db_tinyshop?serverVersion=5.7 #esto para lanzarlo desde la maquina host`
+    - `php bin/console --env=local doctrine:mapping:import "App\Entity" annotation --path=src/Entity`
+
 ### Errores
 ```
 Google Maps JavaScript API error: ApiNotActivatedMapError
