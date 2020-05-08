@@ -1,8 +1,5 @@
 //App.js
-import React, {useState, useEffect} from 'react';
-import Dashboard from "./components/dashboard/dashboard"
-import UserDetail from "./components/user/user_detail"
-//import axios from 'axios'
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +8,10 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-import ProductList from './components/products/product_list';
+import ProductList from './components/product/product_list';
+import OrderDetail from "./components/order/order_detail"
+
+console.log("App.js")
 
 function App(){
   return (
@@ -21,6 +21,9 @@ function App(){
           <Route path="/react">
             <ProductList />
           </Route>
+          <Route path="/order">
+            <OrderDetail />
+          </Route>          
         </Switch>
       </>
     </Router>

@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios"
+import Sidebar from "../common/sidebar"
+import Navbar from "../common/navbar"
+import Footer from "../common/footer"
 
 function ProductList() {
   
@@ -23,7 +26,18 @@ function ProductList() {
   const list = products.map(product => <li key={product.id}>{product.descriptionFull}</li>)
 
   return (
-    <ul>{list}</ul>
+    <div className="wrapper">
+      <Sidebar />
+      <div className="main-panel">
+        <Navbar title="Dashboard" />
+        <div className="content">
+          <div className="container-fluid">
+            {list}
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </div>
   )
 }
 
