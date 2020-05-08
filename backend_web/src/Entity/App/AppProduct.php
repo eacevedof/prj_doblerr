@@ -100,5 +100,213 @@ class AppProduct extends BaseEntity
      */
     private $codeCache = null;
 
+    /**
+     * @return string|null
+     */
+    public function getCodeErp(): ?string
+    {
+        return $this->codeErp;
+    }
+
+    /**
+     * @param string|null $codeErp
+     */
+    public function setCodeErp(?string $codeErp): void
+    {
+        $this->codeErp = $codeErp;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescriptionFull(): ?string
+    {
+        return $this->descriptionFull;
+    }
+
+    /**
+     * @param string|null $descriptionFull
+     */
+    public function setDescriptionFull(?string $descriptionFull): void
+    {
+        $this->descriptionFull = $descriptionFull;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string|null $slug
+     */
+    public function setSlug(?string $slug): void
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitsMin(): int
+    {
+        return $this->unitsMin;
+    }
+
+    /**
+     * @param int $unitsMin
+     */
+    public function setUnitsMin(int $unitsMin): void
+    {
+        $this->unitsMin = $unitsMin;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitsMax(): int
+    {
+        return $this->unitsMax;
+    }
+
+    /**
+     * @param int $unitsMax
+     */
+    public function setUnitsMax(int $unitsMax): void
+    {
+        $this->unitsMax = $unitsMax;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceGross(): ?string
+    {
+        return $this->priceGross;
+    }
+
+    /**
+     * @param string|null $priceGross
+     */
+    public function setPriceGross(?string $priceGross): void
+    {
+        $this->priceGross = $priceGross;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTaxPercent(): ?string
+    {
+        return $this->taxPercent;
+    }
+
+    /**
+     * @param string|null $taxPercent
+     */
+    public function setTaxPercent(?string $taxPercent): void
+    {
+        $this->taxPercent = $taxPercent;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceTaxed(): ?string
+    {
+        return $this->priceTaxed;
+    }
+
+    /**
+     * @param string|null $priceTaxed
+     */
+    public function setPriceTaxed(?string $priceTaxed): void
+    {
+        $this->priceTaxed = $priceTaxed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPriceSale(): string
+    {
+        return $this->priceSale;
+    }
+
+    /**
+     * @param string $priceSale
+     */
+    public function setPriceSale(string $priceSale): void
+    {
+        $this->priceSale = $priceSale;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getOrderBy(): ?int
+    {
+        return $this->orderBy;
+    }
+
+    /**
+     * @param int|null $orderBy
+     */
+    public function setOrderBy(?int $orderBy): void
+    {
+        $this->orderBy = $orderBy;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCodeCache(): ?string
+    {
+        return $this->codeCache;
+    }
+
+    /**
+     * @param string|null $codeCache
+     */
+    public function setCodeCache(?string $codeCache): void
+    {
+        $this->codeCache = $codeCache;
+    }
+
 
 }
