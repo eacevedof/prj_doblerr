@@ -5,13 +5,17 @@ import Navbar from "../common/navbar"
 import Footer from "../common/footer"
 import ProductSearch from "./forms/product_search"
 import ProductTable from "./product_table"
+import get_localip from "../../helpers/get_localip"
 
-function ProductList() {
+const ipserver = get_localip()
+
+function ProductList({order,set_order}) {
+  
   
   const [products, set_products] = useState([])
 
   const get_data = async() => {
-    const url = "http://localhost:200/products"
+    const url = `http://${ipserver}:200/products`
     console.log("url:",url,"products",products)
     //if(!products){
       const result = await axios(url)
@@ -22,6 +26,7 @@ function ProductList() {
   }
 
   useEffect(()=>{
+      console.log("productlist.order",order)
       console.log("useEffect")
       get_data()
     },[])
@@ -36,7 +41,7 @@ function ProductList() {
         <div className="content">
           <div className="container-fluid">
             <ProductSearch />
-            <ProductTable items={products} />
+            <ProductTable items={products} order={order} set_order={set_order} />
           </div>
         </div>
         <Footer />

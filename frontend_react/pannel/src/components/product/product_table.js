@@ -1,17 +1,15 @@
 import React from 'react'
 import Swal from "sweetalert2"
+import get_localip from "../../helpers/get_localip"
 
-const ProductTable = ({items}) => {
+const ipserver = get_localip() 
+
+const ProductTable = ({order,set_order,items}) => {
   
   const i = 0
 
   const add_to_order = ()=>{
-    Swal.fire({
-      title: 'Error!',
-    text: 'Do you want to continue',
-    icon: 'error',
-    confirmButtonText: 'Cool'
-    })
+
   }
 
   const remove_from_order = ()=>{
@@ -29,7 +27,7 @@ const ProductTable = ({items}) => {
       <td>{product.id}</td>
       <td>{product.descriptionFull}</td>
       <td><img 
-            src={`http://localhost:200/pictures/products/product_0.png`} 
+            src={`http://${ipserver}:200/pictures/products/product_0.png`} 
             alt={product.descriptionFull}
             className="img-thumbnail"
             height="45" width="45"
