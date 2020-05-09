@@ -7,14 +7,14 @@ import ProductRepo from "../../repository/product_repo"
 const ipserver = get_localip() 
 
 
-const ProductTable = ({order,set_order,items}) => {
+const ProductTable = ({order,set_order,products}) => {
   
   const i = 0
 
   const add_to_order = (e)=>{
     //alert("ok")
     OrderRepo.order = order
-    ProductRepo.products = items
+    ProductRepo.products = products
     //console.log(ProductRepo.products)
 
     const prodid = parseInt(e.target.getAttribute("prodid"))
@@ -40,7 +40,7 @@ const ProductTable = ({order,set_order,items}) => {
     })
   }
 
-  const get_trs = items => items.map( product => (
+  const get_trs = products => products.map( product => (
     <tr key={product.id}>
       <td>{product.id}</td>
       <td>{product.descriptionFull}</td>
@@ -60,7 +60,7 @@ const ProductTable = ({order,set_order,items}) => {
     </tr>
   ))//get_trs
 
-  const trs = get_trs(items)
+  const trs = get_trs(products)
   
   return (
     <div className="card strpied-tabled-with-hover">

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {NavLink} from "react-router-dom"
 
 function Sidebar() {
   return (
@@ -12,10 +12,10 @@ function Sidebar() {
           </div>
           <ul className="nav">
               <li className="nav-item active">
-                <a className="nav-link" href="/react">
+                <NavLink className="nav-link" to={"/react"}>
                   <i className="nc-icon nc-chart-pie-35"></i>
                   <b>Products</b>
-                </a>
+                </NavLink>
               </li>
             </ul>
         </div>

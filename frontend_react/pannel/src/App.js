@@ -20,16 +20,14 @@ function App(){
 
   return (
     <Router>
-      <>
-        <Switch>
-          <Route path="/react">
-            <ProductList order={order} set_order={set_order}/>
-          </Route>
-          <Route path="/order">
-            <OrderDetail order={order} set_order={set_order}/>
-          </Route>          
-        </Switch>
-      </>
+      <Switch>
+        <Route path="/react">
+          <ProductList order={order} set_order={set_order}/>
+        </Route>
+        <Route path="/order">
+          <OrderDetail order={order} set_order={set_order}/>
+        </Route>          
+      </Switch>
     </Router>
   );
 }//App
