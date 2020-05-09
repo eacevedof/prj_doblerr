@@ -5,26 +5,31 @@ import { NavLink } from "react-router-dom";
 function Navbar({iitems}) {
 
   return (
-    <nav className="navbar navbar-expand-lg " color-on-scroll="500">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-sm">
+      <div className="collapse navbar-collapse">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/react"}>
+                <i className="nc-icon nc-cart-simple"></i>&nbsp;Products
+              </NavLink>
+            </li>            
 
-        <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-bar burger-lines"></span>
-          <span className="navbar-toggler-bar burger-lines"></span>
-          <span className="navbar-toggler-bar burger-lines"></span>
-        </button>
-
-        <div className="collapse navbar-collapse justify-content-end" id="navigation">
-          <ul className="nav navbar-nav mr-auto">
-            <li className="dropdown nav-item">
-                <NavLink className="nav-link" to="/order">
-                  <i className="nc-icon nc-cart-simple"></i>
-                  <span className="notification">{iitems}</span>
-                  <span className="d-lg-none">Order</span>
-                </NavLink>              
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/order"}>
+                  <i className="nc-icon nc-bullet-list-67"></i>&nbsp;Order
+                  <span className="notification">5</span>
+                  <span className="d-lg-none">Notification</span>
+              </NavLink>      
             </li>
           </ul>
-        </div>
+          <button type="submit" className="navbar-toggler navbar-toggler-right"
+            data-toggle="collapse" aria-controls="navigation-index" 
+            aria-expanded="false" aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-bar burger-lines"></span>
+              <span className="navbar-toggler-bar burger-lines"></span>
+              <span className="navbar-toggler-bar burger-lines"></span>
+          </button>
       </div>
     </nav>
   )
