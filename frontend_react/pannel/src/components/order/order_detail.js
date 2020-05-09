@@ -10,7 +10,7 @@ function OrderDetail({order}) {
   return (
     <div className="wrapper">
       <div className="main-panel">
-        <Navbar title="Order" />
+        <Navbar order={order} />
         <div className="content">
           <div className="container-fluid">
             <OrderTable order={order} />

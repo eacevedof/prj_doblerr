@@ -3,23 +3,22 @@ import Swal from "sweetalert2"
 import get_localip from "../../helpers/get_localip"
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
+import DateTime from "../../helpers/date_time"
 
 const ipserver = get_localip() 
 
-
 const OrderTable = ({order,set_order}) => {
-   
-
+  
   const [products, set_products] = useState(order.products)
   
   useEffect(() => {
     console.log("ordertable.order.products",order.products)
     console.log("ordertable.products",products)
     set_products(products)
-  }, [products]);
+  });
 
   const get_trs = products => products.map( product => (
-    <tr key={product.id}>
+    <tr key={DateTime.get_ymdhis()}>
       <td>{product.id}</td>
       <td>{product.descriptionFull}</td>
       <td><img 

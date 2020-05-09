@@ -1,11 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Swal from "sweetalert2"
 import get_localip from "../../helpers/get_localip"
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
 
 const ipserver = get_localip() 
-
 
 const ProductTable = ({order,set_order,products}) => {
   
@@ -28,17 +27,17 @@ const ProductTable = ({order,set_order,products}) => {
     set_order(OrderRepo.order)
     //OrderRepo.order.add_product()
     
-
   }
 
   const remove_from_order = ()=>{
-    Swal.fire({
-      title: 'Error!',
-    text: 'Do you want to continue',
-    icon: 'error',
-    confirmButtonText: 'Cool'
-    })
+
   }
+
+  useEffect(() => {
+    console.log("producttable.useEffect")
+
+  });
+
 
   const get_trs = products => products.map( product => (
     <tr key={product.id}>
@@ -53,7 +52,7 @@ const ProductTable = ({order,set_order,products}) => {
       <td>{product.priceSale}</td>
       <td>
       <div className="input-group">
-        <input type="number" className="form-control"  defaultValue={0} min="0" max="10"/>
+        <input type="number" className="form-control"  defaultValue={i} min="0" max="10"/>
         <button type="button" className="btn btn-primary btn-fill pull-left" onClick={add_to_order} prodid={product.id}>+</button>
       </div>
       </td>

@@ -25,17 +25,15 @@ function ProductList({order,set_order}) {
   }
 
   useEffect(()=>{
-      console.log("productlist.order",order)
-      console.log("useEffect")
+      console.log("useeffect.productlist.order",order)
+
       get_data()
     },[])
-
-  const list = products.map(product => <li key={product.id}>{product.descriptionFull}</li>)
 
   return (
     <div className="wrapper">
       <div className="main-panel">
-        <Navbar title="Products" />
+        <Navbar order={order} />
         <div className="content">
           <div className="container-fluid">
             <ProductSearch />
