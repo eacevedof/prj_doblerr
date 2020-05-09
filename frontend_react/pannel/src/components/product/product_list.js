@@ -34,7 +34,6 @@ function ProductList({order,set_order}) {
 
   return (
     <div className="wrapper">
-      <Sidebar />
       <div className="main-panel">
         <Navbar title="Products" />
         <div className="content">

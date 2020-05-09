@@ -691,7 +691,7 @@ body>.navbar-collapse[data-color="purple"]:after {
     background: rgba(203, 203, 210, 0.15);
     position: relative;
     float: right;
-    width: calc(100% - 260px);
+    width: calc(100% - 0px);
     min-height: 100%;
 }
 
@@ -4463,7 +4463,7 @@ Copyright (c) 2015 Daniel Eden
     [class*="navbar-"] .navbar-nav>li>a,
     [class*="navbar-"] .navbar-nav>li>a:hover,
     [class*="navbar-"] .navbar-nav>li>a:focus {
-        opacity: .7;
+        opacity: 1;
         background-color: transparent;
         outline: none;
     }

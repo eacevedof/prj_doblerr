@@ -3,12 +3,12 @@ import Sidebar from "../common/sidebar"
 import Navbar from "../common/navbar"
 import Footer from "../common/footer"
 import OrderTable from "./order_table"
+import "../../index.css"
 
 
 function OrderDetail({order}) {
   return (
     <div className="wrapper">
-      <Sidebar />
       <div className="main-panel">
         <Navbar title="Order" />
         <div className="content">
