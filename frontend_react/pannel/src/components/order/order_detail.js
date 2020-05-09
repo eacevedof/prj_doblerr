@@ -2,10 +2,10 @@ import React from 'react';
 import Sidebar from "../common/sidebar"
 import Navbar from "../common/navbar"
 import Footer from "../common/footer"
+import OrderTable from "./order_table"
 
-const order = {}
 
-function OrderDetail() {
+function OrderDetail({order}) {
   return (
     <div className="wrapper">
       <Sidebar />
@@ -13,7 +13,7 @@ function OrderDetail() {
         <Navbar title="Order" />
         <div className="content">
           <div className="container-fluid">
-            {order.toString()}
+            <OrderTable order={order} />
           </div>
         </div>
         <Footer />

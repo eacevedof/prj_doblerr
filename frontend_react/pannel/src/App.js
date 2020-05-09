@@ -16,7 +16,7 @@ import objorder from "./models/order"
 function App(){
 
   const [order, set_order] = useState(objorder)
-
+  console.log("App.order ",order)
 
   return (
     <Router>
@@ -26,7 +26,7 @@ function App(){
             <ProductList order={order} set_order={set_order}/>
           </Route>
           <Route path="/order">
-            <OrderDetail />
+            <OrderDetail order={order} set_order={set_order}/>
           </Route>          
         </Switch>
       </>
