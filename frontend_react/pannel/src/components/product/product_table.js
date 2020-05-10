@@ -64,7 +64,7 @@ const ProductTable = ({order, set_order, products}) => {
   
   return (
     <>
-    <NumberModal product={selproduct} order={order} products={products} />
+    <NumberModal product={selproduct} order={order} set_order={set_order} />
     <div className="card strpied-tabled-with-hover">
       <div className="card-header ">
           <h4 className="card-title">Products</h4>

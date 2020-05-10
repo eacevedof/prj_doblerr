@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import LocalDb from "../../../helpers/local_db"
 import styles from "./formsearch.module.css"
 
 function ProductSearch() {
@@ -8,7 +9,7 @@ function ProductSearch() {
   const on_submit = (e)=>{
     e.preventDefault()
     console.log("on submit search")
-
+    LocalDb.dropdb()
   }
 
   return (
