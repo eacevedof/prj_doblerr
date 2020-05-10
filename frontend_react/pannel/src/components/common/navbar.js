@@ -16,7 +16,7 @@ function Navbar({order}) {
 
   return (
     <nav className="navbar navbar-expand">
-      <div className="collapse navbar-collapse">
+      <div className="collapse navbar-collapse" id="navigation">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <NavLink className="nav-link" activeClassName="navlink-active" to={"/react"}>
@@ -24,11 +24,15 @@ function Navbar({order}) {
               </NavLink>
             </li>            
 
-            <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="navlink-active" to={"/order"}>
+            <li className="nav-item dropdown">
+              <NavLink className="nav-link dropdown-toggle" id="nav-order" data-toggle="dropdown" activeClassName="navlink-active" to={"/order"}>
                   <span><i className="nc-icon nc-bullet-list-67"></i>&nbsp;Order</span>
                   <span className="notification">{iitems}</span>
-              </NavLink>      
+              </NavLink>
+              <div className="dropdown-menu" aria-labelledby="nav-order">
+                <a className="dropdown-item" href="#!">Action</a>
+                <a className="dropdown-item" href="#!">Another action</a>
+              </div>
             </li>
           </ul>
       </div>
