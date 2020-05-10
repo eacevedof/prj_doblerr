@@ -13,6 +13,7 @@ import OrderDetail from "./components/order/order_detail"
 import objorder from "./models/order"
 import LocalDb from "./helpers/local_db"
 import _ from "lodash"
+import "./index.css"
 
 function App(){
 

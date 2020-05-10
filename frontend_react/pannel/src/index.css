@@ -2,8 +2,18 @@
 .navlink-active {
   font-weight: bold;
   color: black;
- }
+}
 
- .navlink-active span {
-   border-bottom: 2px solid #0fbad8;
- }
+.navlink-active span {
+  border-bottom: 2px solid #0fbad8;
+}
+
+.modal-backdrop {
+  z-index: -1; 
+}
+
+.modal {
+  border: 1px solid green;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+}
