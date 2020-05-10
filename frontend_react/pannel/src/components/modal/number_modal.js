@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-function NumberModal({product}) {
+function NumberModal({product,order,products}) {
 
   const [units, set_units] = useState(0)
 
   useEffect(() => {
     console.log("numbermodal.useeffect.product",product)
-  },[]);
+  },[order]);
 
   return (
     <>

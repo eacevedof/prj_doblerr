@@ -9,36 +9,19 @@ import NumberModal from "../modal/number_modal"
 
 const ipserver = get_localip() 
 
-const ProductTable = ({order,set_order,products}) => {
+const ProductTable = ({order, set_order, products}) => {
   
-  const i = 0
   const [selproduct,set_selproduct] = useState({})
-  const [visible,set_visible] = useState("")
 
-  const show_modal = objproduct =>{
-    console.log(objproduct)
-
-  }
-
-  const add_to_order = (e)=>{
-    OrderRepo.order = Object.assign({},order)
-    ProductRepo.products = [...products]
-    console.log("add_to_order.productrepo.products",ProductRepo.products)
+  const show_modal = (e)=>{
+    OrderRepo.order = _.clone(order,true)
+    ProductRepo.products = _.clone(products,true)
 
     const button = e.currentTarget
     const prodid = parseInt(button.getAttribute("prodid"))
-    console.log("prodid",prodid)
     const objproduct = ProductRepo.findById(prodid)
-    console.log("add_to_order.objproduct",objproduct)
-    set_selproduct(objproduct)
-    OrderRepo.add_product(objproduct)
 
-    console.log("OrderRepo.get_products",OrderRepo.get_products())
-    set_order(OrderRepo.order)
-    LocalDb.save("order",order)
-    //OrderRepo.order.add_product()
-    set_visible("show")
-    
+    set_selproduct(objproduct)        
   }
 
   const remove_from_order = ()=>{
@@ -48,7 +31,7 @@ const ProductTable = ({order,set_order,products}) => {
   useEffect(() => {
     console.log("producttable.useEffect.order",order)
 
-  },[order,visible]);
+  },[order]);
 
 
   const get_trs = products => products.map( (product,i) => (
@@ -66,7 +49,7 @@ const ProductTable = ({order,set_order,products}) => {
       <div className="input-group">
         <button type="button" 
           className="btn btn-primary btn-fill pull-left" 
-          onClick={add_to_order} prodid={product.id} 
+          onClick={show_modal} prodid={product.id} 
           data-toggle="modal"
           data-target="#number-modal"
           >
@@ -81,7 +64,7 @@ const ProductTable = ({order,set_order,products}) => {
   
   return (
     <>
-    <NumberModal product={selproduct} visible={visible}/>
+    <NumberModal product={selproduct} order={order} products={products} />
     <div className="card strpied-tabled-with-hover">
       <div className="card-header ">
           <h4 className="card-title">Products</h4>
