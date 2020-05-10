@@ -4,6 +4,7 @@ import get_localip from "../../helpers/get_localip"
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
 import DateTime from "../../helpers/date_time"
+import _ from "lodash"
 
 const ipserver = get_localip() 
 
@@ -12,10 +13,9 @@ const OrderTable = ({order,set_order}) => {
   const [products, set_products] = useState(order.products)
   
   useEffect(() => {
-    console.log("ordertable.order.products",order.products)
-    console.log("ordertable.products",products)
-    set_products(products)
-  });
+    console.log("ordertable.useeffect.order",order)
+    set_products(order.products)
+  },[order,products]);
 
   const get_trs = products => products.map( product => (
     <tr key={DateTime.get_ymdhis()}>
@@ -27,7 +27,7 @@ const OrderTable = ({order,set_order}) => {
             className="img-thumbnail"
             height="45" width="45"
             /></td>
-      <td>{product.priceSale}</td>
+      <td>{_.round(product.priceSale,2).toFixed(2)}</td>
       <td>
       <div className="input-group">
         <input type="number" className="form-control"  defaultValue={0} min="0" max="10"/>

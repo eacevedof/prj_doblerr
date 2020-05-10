@@ -12,10 +12,9 @@ import ProductList from './components/product/product_list';
 import OrderDetail from "./components/order/order_detail"
 import objorder from "./models/order"
 import LocalDb from "./helpers/local_db"
+import _ from "lodash"
 
 function App(){
-
-
 
   const [order, set_order] = useState(objorder)
   console.log("App.order ",order)
@@ -24,11 +23,12 @@ function App(){
     console.log("app.useffect")
     if(order.products.length === 0){
       const dborder = LocalDb.select("order")
-      if(dborder.products.length>0)
+      if(!_.isEmpty(dborder)){
         console.log("app.useeffect.dborder",dborder)
         set_order(dborder)
+      }
     }
-  }, []);
+  }, [order]);
 
   return (
     <Router>

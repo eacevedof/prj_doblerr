@@ -3,6 +3,8 @@ import Swal from "sweetalert2"
 import get_localip from "../../helpers/get_localip"
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
+import LocalDb from "../../helpers/local_db"
+import _ from "lodash"
 
 const ipserver = get_localip() 
 
@@ -13,16 +15,16 @@ const ProductTable = ({order,set_order,products}) => {
   const add_to_order = (e)=>{
     //alert("ok")
     OrderRepo.order = Object.assign({},order)
-    ProductRepo.products = products
+    ProductRepo.products = [...products]
     //console.log(ProductRepo.products)
 
     const prodid = parseInt(e.target.getAttribute("prodid"))
     const objproduct = ProductRepo.findById(prodid)
-    OrderRepo.order.products.push(objproduct)
+    OrderRepo.add_product(objproduct)
 
-    console.log("OrderRepo.order",OrderRepo.order.products)
-    console.log("Order global",order.products)
+    console.log("OrderRepo.get_products",OrderRepo.get_products())
     set_order(OrderRepo.order)
+    LocalDb.save("order",order)
     //OrderRepo.order.add_product()
     
   }
@@ -32,7 +34,7 @@ const ProductTable = ({order,set_order,products}) => {
   }
 
   useEffect(() => {
-    console.log("producttable.useEffect")
+    console.log("producttable.useEffect.order",order)
 
   },[order]);
 
@@ -47,7 +49,7 @@ const ProductTable = ({order,set_order,products}) => {
             className="img-thumbnail"
             height="45" width="45"
             /></td>
-      <td>{product.priceSale}</td>
+      <td>{_.round(product.priceSale,2).toFixed(2)}</td>
       <td>
       <div className="input-group">
         <input type="number" className="form-control"  defaultValue={i} min="0" max="10"/>

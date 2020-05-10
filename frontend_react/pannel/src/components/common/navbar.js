@@ -10,9 +10,12 @@ function Navbar({order}) {
 
   useEffect(()=>{
     console.log("navbar.useeffect.order",order)
-    const i = order.products.length
-    set_iitems(i)
-  })
+    if(order)
+    {
+      const i = order.products.length
+      set_iitems(i)
+    }
+  },[order])
 
   return (
     <nav className="navbar navbar-expand">
