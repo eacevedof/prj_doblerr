@@ -81,6 +81,7 @@ const ProductTable = ({order,set_order,products}) => {
   
   return (
     <>
+    <NumberModal product={selproduct} visible={visible}/>
     <div className="card strpied-tabled-with-hover">
       <div className="card-header ">
           <h4 className="card-title">Products</h4>
@@ -103,7 +104,6 @@ const ProductTable = ({order,set_order,products}) => {
         </table>
       </div>
     </div>
-    <NumberModal id="number-modal" product={selproduct} visible={visible}/>
     </>
     )
 }
