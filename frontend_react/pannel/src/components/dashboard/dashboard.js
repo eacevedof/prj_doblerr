@@ -6,6 +6,7 @@ import Graphics from "../dashboard/graphics"
 import Profile from "../user/profile/profile"
 
 function Dashboard() {
+
   return (
     <div className="wrapper">
       {/* 

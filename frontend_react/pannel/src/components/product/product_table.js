@@ -12,14 +12,12 @@ const ProductTable = ({order,set_order,products}) => {
 
   const add_to_order = (e)=>{
     //alert("ok")
-    OrderRepo.order = order
+    OrderRepo.order = Object.assign({},order)
     ProductRepo.products = products
     //console.log(ProductRepo.products)
 
     const prodid = parseInt(e.target.getAttribute("prodid"))
     const objproduct = ProductRepo.findById(prodid)
-    //console.log("obprod",objproduct)
-
     OrderRepo.order.products.push(objproduct)
 
     console.log("OrderRepo.order",OrderRepo.order.products)
@@ -36,7 +34,7 @@ const ProductTable = ({order,set_order,products}) => {
   useEffect(() => {
     console.log("producttable.useEffect")
 
-  });
+  },[order]);
 
 
   const get_trs = products => products.map( product => (

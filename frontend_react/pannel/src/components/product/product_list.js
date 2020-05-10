@@ -6,6 +6,7 @@ import Footer from "../common/footer"
 import ProductSearch from "./forms/product_search"
 import ProductTable from "./product_table"
 import get_localip from "../../helpers/get_localip"
+import HrefDom from "../../helpers/href_dom"
 
 const ipserver = get_localip()
 
@@ -26,7 +27,7 @@ function ProductList({order,set_order}) {
 
   useEffect(()=>{
       console.log("useeffect.productlist.order",order)
-
+      HrefDom.document_title("ECH | Products")
       get_data()
     },[])
 

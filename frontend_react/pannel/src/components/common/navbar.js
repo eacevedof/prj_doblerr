@@ -1,6 +1,7 @@
 //Navbar.js
 import React, {useState, useEffect} from 'react';
 import { NavLink } from "react-router-dom";
+import "../../index.css"
 
 function Navbar({order}) {
   console.log("navbar.order",order)
@@ -18,14 +19,14 @@ function Navbar({order}) {
       <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to={"/react"}>
-                <i className="nc-icon nc-cart-simple"></i>&nbsp;Products
+              <NavLink className="nav-link" activeClassName="navlink-active" to={"/react"}>
+                <span><i className="nc-icon nc-cart-simple"></i>&nbsp;Products</span>
               </NavLink>
             </li>            
 
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to={"/order"}>
-                  <i className="nc-icon nc-bullet-list-67"></i>&nbsp;Order
+              <NavLink className="nav-link" activeClassName="navlink-active" to={"/order"}>
+                  <span><i className="nc-icon nc-bullet-list-67"></i>&nbsp;Order</span>
                   <span className="notification">{iitems}</span>
               </NavLink>      
             </li>

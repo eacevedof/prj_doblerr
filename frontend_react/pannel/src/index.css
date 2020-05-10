@@ -1,11 +1,9 @@
 
-.center {
-  width: 100%;
-  /*border: 1px solid red;*/
-  text-align: center;
-}
+.navlink-active {
+  font-weight: bold;
+  color: black;
+ }
 
-.dynamic-content {
-  display: inline-block;
-  width: 90%;
-}
+ .navlink-active span {
+   border-bottom: 2px solid #0fbad8;
+ }
