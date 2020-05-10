@@ -23,18 +23,6 @@ class AppProduct extends BaseEntity
 
     /**
      * @var string|null
-     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
-     */
-    private $codeErp = null;
-
-    /**
-     * @var string|null
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $description = null;
-
-    /**
-     * @var string|null
      * @ORM\Column(name="description_full", type="string", length=3000, nullable=true, options={"default"="NULL"})
      */
     private $descriptionFull = null;
@@ -106,22 +94,6 @@ class AppProduct extends BaseEntity
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCodeErp(): ?string
-    {
-        return $this->codeErp;
-    }
-
-    /**
-     * @param string|null $codeErp
-     */
-    public function setCodeErp(?string $codeErp): void
-    {
-        $this->codeErp = $codeErp;
     }
 
     /**

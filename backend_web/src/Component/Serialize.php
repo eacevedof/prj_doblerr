@@ -15,7 +15,10 @@ class Serialize
         $normalizers = [new ObjectNormalizer()];
 
         $serializer = new Serializer($normalizers, $encoders);
-        $jsonContent = $serializer->serialize($array, 'json');
+        $jsonContent = $serializer->serialize($array, 'json',[
+            //ObjectNormalizer::SKIP_NULL_VALUES => true,
+        ]);
+        //print_r($jsonContent);die;
         return $jsonContent;
     }
 

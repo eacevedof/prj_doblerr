@@ -96,13 +96,13 @@ class BaseEntity
      * @var string|null
      * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
      */
-    private $codeErp = null;
+    protected $codeErp = null;
 
     /**
      * @var string|null
      * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
-    private $description = null;
+    protected $description = null;
 
     /**
      * @return string|null
