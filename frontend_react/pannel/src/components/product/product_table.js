@@ -39,9 +39,9 @@ const ProductTable = ({order,set_order,products}) => {
   },[order]);
 
 
-  const get_trs = products => products.map( product => (
+  const get_trs = products => products.map( (product,i) => (
     <tr key={product.id}>
-      <td>{product.id}</td>
+      <td>{i+1}</td>
       <td>{product.descriptionFull}</td>
       <td><img 
             src={`http://${ipserver}:200/pictures/products/product_0.png`} 
@@ -52,8 +52,9 @@ const ProductTable = ({order,set_order,products}) => {
       <td>{_.round(product.priceSale,2).toFixed(2)}</td>
       <td>
       <div className="input-group">
-        <input type="number" className="form-control"  defaultValue={i} min="0" max="10"/>
-        <button type="button" className="btn btn-primary btn-fill pull-left" onClick={add_to_order} prodid={product.id}>+</button>
+        <button type="button" className="btn btn-primary btn-fill pull-left" onClick={add_to_order} prodid={product.id}>
+          <i className="fa fa-cart-plus" aria-hidden="true"></i>
+        </button>
       </div>
       </td>
     </tr>

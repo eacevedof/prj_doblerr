@@ -4,6 +4,7 @@ import get_localip from "../../helpers/get_localip"
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
 import DateTime from "../../helpers/date_time"
+
 import _ from "lodash"
 
 const ipserver = get_localip() 
@@ -17,9 +18,9 @@ const OrderTable = ({order,set_order}) => {
     set_products(order.products)
   },[order,products]);
 
-  const get_trs = products => products.map( product => (
+  const get_trs = products => products.map( (product,i) => (
     <tr key={DateTime.get_ymdhis()}>
-      <td>{product.id}</td>
+      <td>{i+1}</td>
       <td>{product.descriptionFull}</td>
       <td><img 
             src={`http://${ipserver}:200/pictures/products/product_0.png`} 
@@ -62,6 +63,7 @@ const OrderTable = ({order,set_order}) => {
         </table>
       </div>
     </div>
+    
     )
 }
 

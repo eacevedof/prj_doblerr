@@ -5,7 +5,7 @@ import Footer from "../common/footer"
 import OrderTable from "./order_table"
 import "../../index.css"
 import HrefDom from "../../helpers/href_dom"
-
+import MiniModal from "../modal/mini_modal"
 
 function OrderDetail({order}) {
 
