@@ -12,14 +12,54 @@ const ProductTable = ({order,set_order,products}) => {
   
   const i = 0
 
+  const show_modal = objproduct =>{
+    console.log(objproduct)
+    Swal.fire({
+      html: `
+      <div className="card">
+        <img className="card-img-top img-responsive" 
+          src="http://192.168.1.129:200/pictures/products/product_0.png" alt="Card image cap"
+        />
+        <div className="card-body">
+          <h5 className="card-title">${objproduct.description}</h5>
+          <p className="card-text">
+            ${objproduct.descriptionFull}
+          </p>
+        </div>
+      </div>      
+      `,
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Look up',
+      showLoaderOnConfirm: true,
+      preConfirm: (login) => {
+        alert("llama a endpo")
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title: `${result.value.login}'s avatar`,
+          imageUrl: result.value.avatar_url
+        })
+      }
+    })
+  }
+
   const add_to_order = (e)=>{
-    //alert("ok")
     OrderRepo.order = Object.assign({},order)
     ProductRepo.products = [...products]
-    //console.log(ProductRepo.products)
+    console.log("add_to_order.productrepo.products",ProductRepo.products)
 
-    const prodid = parseInt(e.target.getAttribute("prodid"))
+    const button = e.currentTarget
+    const prodid = parseInt(button.getAttribute("prodid"))
+    console.log("prodid",prodid)
     const objproduct = ProductRepo.findById(prodid)
+    console.log("add_to_order.objproduct",objproduct)
+    show_modal(objproduct)
     OrderRepo.add_product(objproduct)
 
     console.log("OrderRepo.get_products",OrderRepo.get_products())
@@ -53,7 +93,7 @@ const ProductTable = ({order,set_order,products}) => {
       <td>
       <div className="input-group">
         <button type="button" className="btn btn-primary btn-fill pull-left" onClick={add_to_order} prodid={product.id}>
-          <i className="fa fa-cart-plus" aria-hidden="true"></i>
+          <i className="fa fa-cart-plus fa-lg" aria-hidden="true"></i>
         </button>
       </div>
       </td>
