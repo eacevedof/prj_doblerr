@@ -25,7 +25,7 @@ function Navbar({order}) {
             </li>            
 
             <li className="nav-item dropdown">
-              <NavLink className="nav-link" id="nav-order" data-toggle="dropdown" activeClassName="navlink-active" to={"/order"}>
+              <NavLink className="nav-link" id="nav-order" activeClassName="navlink-active" to={"/order"}>
                   <span><i className="nc-icon nc-bullet-list-67"></i>&nbsp;Order</span>
                   <span className="notification">{iitems}</span>
               </NavLink>
