@@ -11,6 +11,7 @@ function FormUserOrder({order,set_order}) {
 
   return (
     <form onSubmit={on_submit}>
+      <h3><b>User information</b></h3>
       <div className="row">
           <div className="col-md-12">
             <div className="form-group">
@@ -48,7 +49,12 @@ function FormUserOrder({order,set_order}) {
         <div className="col-md-12">
           <div className="form-group">
             <label htmlFor="order-notes" className="pull-left">Observations</label>
-            <textarea id="order-notes" rows="5000" cols="800" className="form-control" placeholder="...let us know more about your request" ></textarea>
+            <textarea 
+              id="order-notes" 
+              rows="5000" 
+              cols="800" 
+              className="form-control text-area-h"
+              placeholder="...let us know more: Need cutlery?, extra rice?, Is anyone else coming to pick it up?, etc" ></textarea>
           </div>
         </div>
       </div>

@@ -45,6 +45,7 @@ const OrderTable = ({order,set_order}) => {
 
   const show_sweet_user = (e) => {
     Swal2.fire({
+      //title: <h2>User information</h2>,
       html: <FormUserOrder order={order} set_order={set_order} />,
       showConfirmButton: true,
       showCancelButton: true,      
