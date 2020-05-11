@@ -2,9 +2,7 @@ import React, {useEffect} from 'react';
 
 function OrderDetail({text}) {
 
-  useEffect(()=>{
-    
-  },[])
+
 
   return (
     <div className="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

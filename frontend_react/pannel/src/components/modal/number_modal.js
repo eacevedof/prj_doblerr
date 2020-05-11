@@ -32,16 +32,16 @@ function NumberModal({product,order,set_order}) {
     console.log("on_remove.units",newunits)
     const prodmodif = _.assign(product,{units:newunits})
     console.log("on_remove.prodmodif",prodmodif)
-    OrderRepo.add_product(prodmodif)
+    OrderRepo.remove_product(prodmodif)
     set_order(OrderRepo.order)
     OrderRepo.save()
   }
 
   useEffect(() => {
     console.log("numbermodal.useeffect.product",product)
-    OrderRepo.order = _.clone(order,true)
-    const orderunits = OrderRepo.get_units(product.id)
-    set_units(orderunits)
+    //OrderRepo.order = _.clone(order,true)
+    //const orderunits = OrderRepo.get_units(product.id)
+    //set_units(orderunits)
   },[order,units]);
 
   return (

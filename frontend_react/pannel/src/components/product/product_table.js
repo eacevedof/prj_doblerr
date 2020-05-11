@@ -24,14 +24,11 @@ const ProductTable = ({order, set_order, products}) => {
     set_selproduct(objproduct)        
   }
 
-  const remove_from_order = ()=>{
 
-  }
+  //useEffect(() => {
+    //console.log("producttable.useEffect.order",order)
 
-  useEffect(() => {
-    console.log("producttable.useEffect.order",order)
-
-  },[order]);
+  //},[order]);
 
 
   const get_trs = products => products.map( (product,i) => (
