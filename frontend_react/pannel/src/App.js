@@ -25,7 +25,7 @@ function App(){
     if(order.products.length === 0){
       const dborder = LocalDb.select("order")
       if(!_.isEmpty(dborder)){
-        console.log("app.useeffect.dborder",dborder)
+        console.log("app.useeffect.dborder ...loading from localstorage",dborder)
         set_order(dborder)
       }
     }

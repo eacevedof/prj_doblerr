@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import OrderRepo from "../../repository/order_repo"
+//import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
 import _ from "lodash"
 import NumberModal from "../modal/number_modal"
@@ -8,17 +8,17 @@ const BASE_URL = process.env.REACT_APP_BASEURLAPI
 
 const ProductTable = ({order, set_order, products}) => {
   
-  const [selproduct,set_selproduct] = useState({})
+  const [selproduct, set_selproduct] = useState({})
 
   const show_modal = (e)=>{
-    OrderRepo.order = _.clone(order,true)
-    ProductRepo.products = _.clone(products,true)
-
+    //OrderRepo.order = _.clone(order,true)
     const button = e.currentTarget
     const prodid = parseInt(button.getAttribute("prodid"))
+    
+    ProductRepo.products = _.clone(products,true)
     const objproduct = ProductRepo.findById(prodid)
 
-    set_selproduct(objproduct)        
+    set_selproduct(objproduct)
   }
 
 
