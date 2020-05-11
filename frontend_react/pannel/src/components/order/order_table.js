@@ -33,8 +33,8 @@ const OrderTable = ({order,set_order}) => {
       title: <p>Are you sure to remove <b>{product.descriptionFull}</b>?</p>,
       showConfirmButton: true,
       showCancelButton: true,
-    }).then((isConfirmed) => {
-      if(isConfirmed){
+    }).then( isConfirmed => {
+      if(isConfirmed.value){
         OrderRepo.remove_product(prodid)
         set_products(OrderRepo.get_products())
         set_order(OrderRepo.order)
@@ -48,7 +48,7 @@ const OrderTable = ({order,set_order}) => {
       //title: <h2>User information</h2>,
       html: <FormUserOrder order={order} set_order={set_order} />,
       showConfirmButton: true,
-      showCancelButton: true,      
+      showCancelButton: true, 
       allowOutsideClick: false,
       preConfirm: () => {
         console.log(Swal2);
@@ -62,6 +62,15 @@ const OrderTable = ({order,set_order}) => {
         return console.log(mxobject)
       
       console.log("values[]",mxobject.value);
+      Swal2.fire({
+        title: <p>Are you sure to continue?</p>,
+        showConfirmButton: true,
+        showCancelButton: true,
+      }).then(isConfirmed => {
+        if(isConfirmed.value){
+          console.log("values[] II ",mxobject.value);
+        }
+      })
     });
   }
 

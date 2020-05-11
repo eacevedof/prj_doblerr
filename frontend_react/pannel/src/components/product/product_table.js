@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-//import OrderRepo from "../../repository/order_repo"
+import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
 import _ from "lodash"
 import NumberModal from "../modal/number_modal"
@@ -27,31 +27,43 @@ const ProductTable = ({order, set_order, products}) => {
   },[products]);
 
 
-  const get_trs = products => products.map( (product,i) => (
-    <tr key={product.id}>
-      <td>{i+1}</td>
-      <td>{product.descriptionFull}</td>
-      <td><img 
-            src={`${BASE_URL}/pictures/products/product_0.png`} 
-            alt={product.descriptionFull}
-            className="img-thumbnail"
-            height="45" width="45"
-            /></td>
-      <td>{_.round(product.priceSale,2).toFixed(2)}</td>
-      <td>
-      <div className="input-group">
-        <button type="button" 
-          className="btn btn-primary btn-fill pull-left" 
-          onClick={show_modal} prodid={product.id} 
-          data-toggle="modal"
-          data-target="#number-modal"
-          >
-          <i className="fa fa-cart-plus fa-lg" aria-hidden="true"></i>
-        </button>
-      </div>
-      </td>
-    </tr>
-  ))//get_trs
+  const get_trs = products => products.map( (product,i) => {
+    
+    OrderRepo.order = _.clone(order,true)
+    const units = OrderRepo.get_units(product.id)
+
+    return (
+      <tr key={product.id}>
+        <td>{i+1}</td>
+        <td>
+          {product.descriptionFull}
+          {
+            units>0 ? <span className="n-items">{units}</span> :null
+          }
+        </td>
+        <td><img 
+              src={`${BASE_URL}/pictures/products/product_0.png`} 
+              alt={product.descriptionFull}
+              className="img-thumbnail"
+              height="45" width="45"
+              /></td>
+        <td>{_.round(product.priceSale,2).toFixed(2)}</td>
+        <td>
+        <div className="input-group">
+          <button type="button" 
+            className="btn btn-primary btn-fill pull-left" 
+            onClick={show_modal} prodid={product.id} 
+            data-toggle="modal"
+            data-target="#number-modal"
+            >
+            <i className="fa fa-cart-plus fa-lg" aria-hidden="true"></i>
+            &nbsp;
+          </button>
+        </div>
+        </td>
+      </tr>
+    ) //return
+})//get_trs
 
   const trs = get_trs(products)
   
