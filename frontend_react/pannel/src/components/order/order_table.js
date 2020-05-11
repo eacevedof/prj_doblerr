@@ -20,13 +20,14 @@ const OrderTable = ({order,set_order}) => {
     return sum
   }
 
+  const Swal2 = withReactContent(Swal)
+
   const show_confirm_remove = (e) => {
     const button = e.currentTarget
     const prodid = parseInt(button.getAttribute("prodid"))
     OrderRepo.order = _.clone(order,true)
     const product = OrderRepo.get_product(prodid)
-
-    const Swal2 = withReactContent(Swal)
+    
     Swal2.fire({
       title: <p>Are you sure to remove <b>{product.descriptionFull}</b>?</p>,
       showConfirmButton: true,
@@ -42,7 +43,18 @@ const OrderTable = ({order,set_order}) => {
   }
 
   const show_sweet_user = (e) => {
-
+    Swal2.fire({
+      html: "<input />",
+      preConfirm: () => {
+        console.log(Swal2);
+        return [
+          //document.getElementById("input1").value,
+          //document.getElementById("input2").value
+        ];
+      }
+    }).then(arvalues => {
+      console.log(arvalues, "arvalues");
+    });
   }
 
   useEffect(() => {
