@@ -17,8 +17,8 @@ const OrderTable = ({order,set_order}) => {
     const sum = products
                   .map(product => parseFloat(product.priceSale) * parseFloat(product.units))
                   .reduce((ac,price)=> ac = ac + price,0)
-    //console.log("SUM",sum)  
-    return sum
+  
+    return _.round(sum,2).toFixed(2)
   }
 
   const Swal2 = withReactContent(Swal)
