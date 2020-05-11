@@ -7,11 +7,24 @@ const BASE_URL = process.env.REACT_APP_BASEURLAPI
 const OrderTable = ({order,set_order}) => {
   
   const [products, set_products] = useState(order.products)
-  
+  const [total, set_total] = useState(0)
+
+  const get_total = products => {
+    const sum = products
+                  .map(product => parseFloat(product.priceSale) * parseFloat(product.units))
+                  .reduce((ac,price)=> ac = ac + price,0)
+    //console.log("SUM",sum)  
+    return sum
+  }
+
   useEffect(() => {
+    //si cambia el pedido hay que refrescar los productos y el total
     console.log("ordertable.useeffect.order",order)
     set_products(order.products)
-  },[order,products]);
+    const total = get_total(order.products)
+    set_total(total)
+
+  },[order]);
 
   const get_trs = products => products.map( (product,i) => (
     <tr key={DateTime.get_ymdhis()}>
@@ -23,12 +36,19 @@ const OrderTable = ({order,set_order}) => {
             className="img-thumbnail"
             height="45" width="45"
             /></td>
-      <td>{_.round(product.priceSale,2).toFixed(2)}</td>
       <td>
-      <div className="input-group">
-        <input type="number" className="form-control"  defaultValue={0} min="0" max="10"/>
-        <button type="button" className="btn btn-primary btn-fill pull-left" prodid={product.id}>+</button>
-      </div>
+        <sub>{product.units} x </sub>
+        <sub>{_.round(product.priceSale,2).toFixed(2)}</sub>
+      </td> 
+      <td>
+        <span>{_.round(product.priceSale * product.units,2).toFixed(2)}</span>
+      </td>
+      <td>
+        <div className="input-group">
+          <button type="button" className="btn btn-danger btn-fill pull-left" prodid={product.id}>
+            <i className="fa fa-trash fa-lg" aria-hidden="true"></i>
+          </button>
+        </div>
       </td>
     </tr>
   ))//get_trs
@@ -48,13 +68,24 @@ const OrderTable = ({order,set_order}) => {
               <th>ID</th>
               <th>Name</th>
               <th>Image</th>
-              <th>Price</th>
+              <th>Units</th>
+              <th>Total</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             { trs }      
           </tbody>
+          <tfoot>
+            <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td>{total}</td>
+            <td></td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
