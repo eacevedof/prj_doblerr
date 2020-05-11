@@ -29,7 +29,7 @@ function App(){
         set_order(dborder)
       }
     }
-  }, [order]);
+  }, []);
 
   return (
     <Router>

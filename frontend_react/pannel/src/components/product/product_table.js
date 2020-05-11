@@ -1,13 +1,10 @@
 import React, {useEffect,setState, useState} from 'react'
-import Swal from "sweetalert2"
-import get_localip from "../../helpers/get_localip"
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
-import LocalDb from "../../helpers/local_db"
 import _ from "lodash"
 import NumberModal from "../modal/number_modal"
 
-const ipserver = get_localip() 
+const BASE_URL = process.env.REACT_APP_BASEURLAPI
 
 const ProductTable = ({order, set_order, products}) => {
   
@@ -36,7 +33,7 @@ const ProductTable = ({order, set_order, products}) => {
       <td>{i+1}</td>
       <td>{product.descriptionFull}</td>
       <td><img 
-            src={`http://${ipserver}:200/pictures/products/product_0.png`} 
+            src={`${BASE_URL}/pictures/products/product_0.png`} 
             alt={product.descriptionFull}
             className="img-thumbnail"
             height="45" width="45"

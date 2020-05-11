@@ -5,31 +5,25 @@ import Navbar from "../common/navbar"
 import Footer from "../common/footer"
 import ProductSearch from "./forms/product_search"
 import ProductTable from "./product_table"
-import get_localip from "../../helpers/get_localip"
-import HrefDom from "../../helpers/href_dom"
 
-const ipserver = get_localip()
+import HrefDom from "../../helpers/href_dom"
+import Api from "../../providers/api"
 
 function ProductList({order,set_order}) {
   
   const [products, set_products] = useState([])
 
-  const get_data = async() => {
-    const url = `http://${ipserver}:200/products`
-    console.log("url:",url,"products",products)
-    //if(!products){
-      const result = await axios(url)
-      //console.log("products")
-      console.table(result.data)
-      set_products(result.data)
-    //}
-  }
-
   useEffect(()=>{
-      console.log("useeffect.productlist.order",order)
-      HrefDom.document_title("ECH | Products")
-      get_data()
-    },[])
+    HrefDom.document_title("ECH | products")
+
+    async function load_products(){
+      const response = await Api.get_async_products()
+      if(response)
+        if(response.status === 200)
+          set_products(response.data)
+    }
+    load_products()
+  },[])
 
   return (
     <div className="wrapper">

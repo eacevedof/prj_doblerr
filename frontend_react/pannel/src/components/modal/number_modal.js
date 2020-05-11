@@ -37,12 +37,12 @@ function NumberModal({product,order,set_order}) {
     OrderRepo.save()
   }
 
-  useEffect(() => {
-    console.log("numbermodal.useeffect.product",product)
+  //useEffect(() => {
+    //console.log("numbermodal.useeffect.product",product)
     //OrderRepo.order = _.clone(order,true)
     //const orderunits = OrderRepo.get_units(product.id)
     //set_units(orderunits)
-  },[order,units]);
+  //},[order,units]);
 
   return (
     <>
