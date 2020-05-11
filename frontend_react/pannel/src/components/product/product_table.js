@@ -1,4 +1,4 @@
-import React, {useEffect,setState, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import OrderRepo from "../../repository/order_repo"
 import ProductRepo from "../../repository/product_repo"
 import _ from "lodash"
@@ -22,10 +22,9 @@ const ProductTable = ({order, set_order, products}) => {
   }
 
 
-  //useEffect(() => {
-    //console.log("producttable.useEffect.order",order)
-
-  //},[order]);
+  useEffect(() => {
+    console.log("producttable.useEffect.order",order)
+  },[products]);
 
 
   const get_trs = products => products.map( (product,i) => (

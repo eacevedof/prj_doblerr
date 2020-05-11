@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import axios from "axios"
-import Sidebar from "../common/sidebar"
 import Navbar from "../common/navbar"
 import Footer from "../common/footer"
 import ProductSearch from "./forms/product_search"

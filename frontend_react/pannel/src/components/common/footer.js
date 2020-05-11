@@ -7,7 +7,7 @@ function footer() {
         <nav>
           <p className="copyright text-center">
               © {new Date().getFullYear()} 
-              <a href="http://www.elchalanaruba.com" target="_blank"> El Chalán Aruba</a>
+              <a href="http://www.elchalanaruba.com" target="_blank" rel="noopener noreferrer"> El Chalán Aruba</a>
           </p>
         </nav>
       </div>
