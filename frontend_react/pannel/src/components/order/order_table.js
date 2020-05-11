@@ -48,6 +48,7 @@ const OrderTable = ({order,set_order}) => {
       html: <FormUserOrder order={order} set_order={set_order} />,
       showConfirmButton: true,
       showCancelButton: true,      
+      allowOutsideClick: false,
       preConfirm: () => {
         console.log(Swal2);
         return [
