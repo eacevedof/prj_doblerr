@@ -20,7 +20,7 @@ const OrderTable = ({order,set_order}) => {
     return sum
   }
 
-  const show_confirm = (e) => {
+  const show_confirm_remove = (e) => {
     const button = e.currentTarget
     const prodid = parseInt(button.getAttribute("prodid"))
     OrderRepo.order = _.clone(order,true)
@@ -39,6 +39,10 @@ const OrderTable = ({order,set_order}) => {
         OrderRepo.save()
       }
     })
+  }
+
+  const show_sweet_user = (e) => {
+
   }
 
   useEffect(() => {
@@ -73,7 +77,7 @@ const OrderTable = ({order,set_order}) => {
             type="button" 
             className="btn btn-danger btn-fill pull-left" 
             prodid={product.id}
-            onClick={show_confirm}
+            onClick={show_confirm_remove}
             >
             <i className="fa fa-trash fa-lg" aria-hidden="true"></i>
           </button>
@@ -109,10 +113,28 @@ const OrderTable = ({order,set_order}) => {
             <tr>
             <td></td>
             <td></td>
-            <td></td>
+            <td>
+
+            </td>
             <td>Total:</td>
             <td>{total}</td>
-            <td></td>
+            <td>
+              {
+                total>0?
+                (
+                  <button 
+                  type="button" 
+                  className="btn btn-success btn-fill pull-left" 
+                  onClick={show_sweet_user}
+                  >
+                  Process order&nbsp;
+                  <i className="fa fa-truck fa-lg" aria-hidden="true"></i> &nbsp;
+                  </button>  
+                )
+                :
+                ""
+              }
+            </td>
             </tr>
           </tfoot>
         </table>
