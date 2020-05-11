@@ -5,7 +5,7 @@ import OrderTable from "./order_table"
 import "../../index.css"
 import HrefDom from "../../helpers/href_dom"
 
-function OrderDetail({order}) {
+function OrderDetail({order,set_order}) {
 
   useEffect(()=>{
     console.log("orderdetail.useffect.order",order)
@@ -18,7 +18,7 @@ function OrderDetail({order}) {
         <Navbar order={order} />
         <div className="content">
           <div className="container-fluid">
-            <OrderTable order={order} />
+            <OrderTable order={order} set_order={set_order} />
           </div>
         </div>
         <Footer />

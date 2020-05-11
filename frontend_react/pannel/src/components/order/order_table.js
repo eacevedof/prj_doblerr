@@ -31,13 +31,11 @@ const OrderTable = ({order,set_order}) => {
       title: <p>Are you sure to remove <b>{product.descriptionFull}</b>?</p>,
       showConfirmButton: true,
       showCancelButton: true,
-      onOpen: () => {
-
-      }
     }).then((isConfirmed) => {
       if(isConfirmed){
         OrderRepo.remove_product(prodid)
         set_products(OrderRepo.get_products())
+        set_order(OrderRepo.order)
         OrderRepo.save()
       }
     })
