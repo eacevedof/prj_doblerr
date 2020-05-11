@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import DateTime from "../../helpers/date_time"
+import Swal from "sweetalert2"
 import _ from "lodash"
 
 const BASE_URL = process.env.REACT_APP_BASEURLAPI
@@ -15,6 +16,26 @@ const OrderTable = ({order,set_order}) => {
                   .reduce((ac,price)=> ac = ac + price,0)
     //console.log("SUM",sum)  
     return sum
+  }
+
+  const show_confirm = ()=>{
+    Swal.fire({
+      title: '<strong>HTML <u>example</u></strong>',
+      icon: 'info',
+      html:
+        'You can use <b>bold text</b>, ' +
+        '<a href="//sweetalert2.github.io">links</a> ' +
+        'and other HTML tags',
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> Great!',
+      confirmButtonAriaLabel: 'Thumbs up, great!',
+      cancelButtonText:
+        '<i class="fa fa-thumbs-down"></i>',
+      cancelButtonAriaLabel: 'Thumbs down'
+    })
   }
 
   useEffect(() => {
@@ -45,7 +66,12 @@ const OrderTable = ({order,set_order}) => {
       </td>
       <td>
         <div className="input-group">
-          <button type="button" className="btn btn-danger btn-fill pull-left" prodid={product.id}>
+          <button 
+            type="button" 
+            className="btn btn-danger btn-fill pull-left" 
+            prodid={product.id}
+            onClick={show_confirm}
+            >
             <i className="fa fa-trash fa-lg" aria-hidden="true"></i>
           </button>
         </div>
