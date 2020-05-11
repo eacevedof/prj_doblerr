@@ -4,6 +4,7 @@ import Swal from "sweetalert2"
 import withReactContent from 'sweetalert2-react-content'
 import _ from "lodash"
 import OrderRepo from "../../repository/order_repo"
+import FormUserOrder from "../user/form/form_user_order"
 
 const BASE_URL = process.env.REACT_APP_BASEURLAPI
 
@@ -44,7 +45,9 @@ const OrderTable = ({order,set_order}) => {
 
   const show_sweet_user = (e) => {
     Swal2.fire({
-      html: "<input />",
+      html: <FormUserOrder order={order} set_order={set_order} />,
+      showConfirmButton: true,
+      showCancelButton: true,      
       preConfirm: () => {
         console.log(Swal2);
         return [
@@ -52,8 +55,11 @@ const OrderTable = ({order,set_order}) => {
           //document.getElementById("input2").value
         ];
       }
-    }).then(arvalues => {
-      console.log(arvalues, "arvalues");
+    }).then(mxobject => {
+      if(_.has(mxobject,"dismiss"))
+        return console.log(mxobject)
+      
+      console.log("values[]",mxobject.value);
     });
   }
 
