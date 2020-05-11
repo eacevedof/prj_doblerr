@@ -31,7 +31,7 @@ function NumberModal({product,order,set_order}) {
     console.log("on_remove.units",newunits)
     const prodmodif = _.assign(product,{units:newunits})
     console.log("on_remove.prodmodif",prodmodif)
-    OrderRepo.remove_product(prodmodif)
+    OrderRepo.remove_units(prodmodif)
     set_order(OrderRepo.order)
     OrderRepo.save()
   }

@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import DateTime from "../../helpers/date_time"
 import Swal from "sweetalert2"
+import withReactContent from 'sweetalert2-react-content'
 import _ from "lodash"
+import OrderRepo from "../../repository/order_repo"
 
 const BASE_URL = process.env.REACT_APP_BASEURLAPI
 
@@ -18,23 +20,26 @@ const OrderTable = ({order,set_order}) => {
     return sum
   }
 
-  const show_confirm = ()=>{
-    Swal.fire({
-      title: '<strong>HTML <u>example</u></strong>',
-      icon: 'info',
-      html:
-        'You can use <b>bold text</b>, ' +
-        '<a href="//sweetalert2.github.io">links</a> ' +
-        'and other HTML tags',
-      showCloseButton: true,
+  const show_confirm = (e) => {
+    const button = e.currentTarget
+    const prodid = parseInt(button.getAttribute("prodid"))
+    OrderRepo.order = _.clone(order,true)
+    const product = OrderRepo.get_product(prodid)
+
+    const Swal2 = withReactContent(Swal)
+    Swal2.fire({
+      title: <p>Are you sure to remove <b>{product.descriptionFull}</b>?</p>,
+      showConfirmButton: true,
       showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Great!',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-        '<i class="fa fa-thumbs-down"></i>',
-      cancelButtonAriaLabel: 'Thumbs down'
+      onOpen: () => {
+
+      }
+    }).then((isConfirmed) => {
+      if(isConfirmed){
+        OrderRepo.remove_product(prodid)
+        set_products(OrderRepo.get_products())
+        OrderRepo.save()
+      }
     })
   }
 

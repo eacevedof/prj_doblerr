@@ -23,7 +23,7 @@ const OrderRepo = {
     }
   },
 
-  remove_product(objproduct){
+  remove_units(objproduct){
     if(this.is_product(objproduct)){
       //console.log("remove.is_product true")
       if(objproduct.units===0){
@@ -39,6 +39,12 @@ const OrderRepo = {
     else if(objproduct.units>0){
       this.add_product(objproduct)
     }
+  },
+
+  remove_product(prodid){
+    const products = this.order.products.filter(product => product.id !== prodid)
+    console.log("removed prodid",prodid,"products cleaned",products)
+    this.order.products = products
   },
 
   get_product(id){
