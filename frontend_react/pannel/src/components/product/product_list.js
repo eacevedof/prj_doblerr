@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from "../common/navbar"
 import Footer from "../common/footer"
-import ProductSearch from "./forms/product_search"
+import FormProductSearch from "./forms/form_product_search"
 import ProductTable from "./product_table"
 
 import HrefDom from "../../helpers/href_dom"
@@ -29,7 +29,7 @@ function ProductList({order,set_order}) {
         <Navbar order={order} />
         <div className="content">
           <div className="container-fluid">
-            <ProductSearch />
+            <FormProductSearch />
             <ProductTable products={products} order={order} set_order={set_order} />
           </div>
         </div>

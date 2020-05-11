@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import OrderRepo from "../../repository/order_repo"
-import ProductRepo from "../../repository/product_repo"
 import _ from "lodash"
 
 function NumberModal({product,order,set_order}) {

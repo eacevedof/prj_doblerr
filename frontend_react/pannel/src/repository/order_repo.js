@@ -25,10 +25,10 @@ const OrderRepo = {
 
   remove_product(objproduct){
     if(this.is_product(objproduct)){
-      console.log("remove.is_product true")
+      //console.log("remove.is_product true")
       if(objproduct.units===0){
-        console.log("remove.units === 0")
-        _.remove(this.order.products, product => product.id == objproduct.id)
+        //console.log("remove.units === 0")
+        _.remove(this.order.products, product => product.id === objproduct.id)
         //console.log("remove.res con prod borrado",res)
         //this.order.products = res
       }

@@ -8,6 +8,7 @@ import HrefDom from "../../helpers/href_dom"
 function OrderDetail({order}) {
 
   useEffect(()=>{
+    console.log("orderdetail.useffect.order",order)
     HrefDom.document_title("ECH | Order")
   },[])
 

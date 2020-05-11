@@ -23,13 +23,13 @@ function Navbar({order}) {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <NavLink className="nav-link" activeClassName="navlink-active" to={"/react"}>
-                <span><i className="nc-icon nc-cart-simple"></i>&nbsp;Products</span>
+                <span><i className="nc-icon nc-bullet-list-67"></i>&nbsp;Products</span>
               </NavLink>
             </li>            
 
             <li className="nav-item dropdown">
               <NavLink className="nav-link" id="nav-order" activeClassName="navlink-active" to={"/order"}>
-                  <span><i className="nc-icon nc-bullet-list-67"></i>&nbsp;Order</span>
+                  <span><i className="nc-icon nc-cart-simple"></i>&nbsp;Order</span>
                   <span className="notification">{iitems}</span>
               </NavLink>
             </li>
