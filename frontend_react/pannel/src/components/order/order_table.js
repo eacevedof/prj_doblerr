@@ -90,17 +90,18 @@ const OrderTable = ({order,set_order}) => {
         <b>{product.description}</b><br/>
         <sub>{product.descriptionFull}</sub>
       </td>
-      <td><img 
-            src={`http://www.elchalanaruba.com/wp-content/uploads/2016/07/el-chalan-tallarin-verde-con-bisteck-imagen-1-170x170.jpg`} 
-            alt={product.descriptionFull}
-            className="img-thumbnail"
-
-            /></td>
-      <td>
+      <td className="text-center">>
+        <img 
+          src={`http://www.elchalanaruba.com/wp-content/uploads/2016/07/el-chalan-tallarin-verde-con-bisteck-imagen-1-170x170.jpg`} 
+          alt={product.descriptionFull}
+          className="img-thumbnail"
+        />
+      </td>
+      <td className="text-right">
         <sub>{product.units} x </sub>
         <sub>{_.round(product.priceSale,2).toFixed(2)}</sub>
       </td> 
-      <td>
+      <td className="text-right">
         <span>{_.round(product.priceSale * product.units,2).toFixed(2)}</span>
       </td>
       <td>

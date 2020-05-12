@@ -43,6 +43,17 @@
   font-weight: bold;
 }
 
+/*para imagen boton*/
+.btn-empty {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+/*para boton en celda*/
+td:last-child{
+  display: inline !important;
+}
 
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.

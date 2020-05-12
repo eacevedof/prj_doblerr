@@ -36,31 +36,34 @@ const ProductTable = ({order, set_order, products, search}) => {
       <tr key={product.id}>
         <td>{i+1}</td>
         <td>
-          <b>{product.description}</b>&nbsp;{product.descriptionFull}
+          <b>{product.description}</b><br/>{product.descriptionFull}
           {
-            units>0 ? <span className="n-items">{units} in cart</span> :null
+            units>0 ? <><br/><span className="n-items">{units} in cart</span></> :null
           }
         </td>
-        <td>
-          <img 
+        <td className="text-center">
+          <button type="button" className="btn-empty" onClick={show_modal} prodid={product.id}>
+            <img 
               src={`http://www.elchalanaruba.com/wp-content/uploads/2016/07/el-chalan-tallarin-verde-con-bisteck-imagen-1-170x170.jpg`} 
               alt={product.descriptionFull}
               className="img-thumbnail"
-              height="45" width="45"
+              data-toggle="modal"
+              data-target="#number-modal"
               />
-        </td>
-        <td>{_.round(product.priceSale,2).toFixed(2)}</td>
-        <td>
-        <div className="input-group">
-          <button type="button" 
-            className="btn btn-primary btn-fill pull-left" 
-            onClick={show_modal} prodid={product.id} 
-            data-toggle="modal"
-            data-target="#number-modal"
-            >
-            <i className="fa fa-cart-plus fa-lg" aria-hidden="true"></i>
-            &nbsp;
           </button>
+        </td>
+        <td><span className="pull-right">{_.round(product.priceSale,2).toFixed(2)}</span></td>
+        <td>
+          <div className="input-group">
+            <button type="button" 
+              className="btn btn-primary btn-fill pull-left btn-block" 
+              onClick={show_modal} prodid={product.id}
+              data-toggle="modal"
+              data-target="#number-modal"
+              >
+              <i className="fa fa-cart-plus fa-lg" aria-hidden="true"></i>
+              &nbsp;
+            </button>
         </div>
         </td>
       </tr>
