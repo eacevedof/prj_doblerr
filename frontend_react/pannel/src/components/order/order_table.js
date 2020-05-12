@@ -121,7 +121,24 @@ const OrderTable = ({order,set_order}) => {
     <div className="card strpied-tabled-with-hover">
       <div className="card-header ">
           <h4 className="card-title">Order Cart</h4>
-          <p className="card-category">Products you have selected</p>
+          <p className="card-category">
+            Products you have selected
+            {
+                total>0?
+                (
+                  <button 
+                  type="button" 
+                  className="btn btn-success btn-fill pull-right" 
+                  onClick={show_sweet_user}
+                  >
+                  Process order&nbsp;
+                  <i className="fa fa-truck fa-lg" aria-hidden="true"></i> &nbsp;
+                  </button>  
+                )
+                :
+                ""
+              }
+          </p>
       </div>
       <div className="card-body table-full-width table-responsive">
         <table className="table table-hover table-striped">
@@ -148,21 +165,7 @@ const OrderTable = ({order,set_order}) => {
             <td>Total:</td>
             <td>{total}</td>
             <td>
-              {
-                total>0?
-                (
-                  <button 
-                  type="button" 
-                  className="btn btn-success btn-fill pull-left" 
-                  onClick={show_sweet_user}
-                  >
-                  Process order&nbsp;
-                  <i className="fa fa-truck fa-lg" aria-hidden="true"></i> &nbsp;
-                  </button>  
-                )
-                :
-                ""
-              }
+        
             </td>
             </tr>
           </tfoot>
