@@ -62,6 +62,10 @@ const OrderRepo = {
     return 0
   },
 
+  get_num_products(){
+    return this.order.products.length
+  },
+
   save(){
     LocalDb.save("order",this.order)
   }

@@ -86,12 +86,15 @@ const OrderTable = ({order,set_order}) => {
   const get_trs = products => products.map( (product,i) => (
     <tr key={DateTime.get_ymdhis()}>
       <td>{i+1}</td>
-      <td>{product.descriptionFull}</td>
+      <td>
+        <b>{product.description}</b><br/>
+        <sub>{product.descriptionFull}</sub>
+      </td>
       <td><img 
             src={`http://www.elchalanaruba.com/wp-content/uploads/2016/07/el-chalan-tallarin-verde-con-bisteck-imagen-1-170x170.jpg`} 
             alt={product.descriptionFull}
             className="img-thumbnail"
-            height="45" width="45"
+
             /></td>
       <td>
         <sub>{product.units} x </sub>
@@ -116,24 +119,26 @@ const OrderTable = ({order,set_order}) => {
   ))//get_trs
 
   const trs = get_trs(products)
-  
+ 
   return (
     <div className="card strpied-tabled-with-hover">
       <div className="card-header ">
           <h4 className="card-title">Order Cart</h4>
           <p className="card-category">
-            Products you have selected
             {
                 total>0?
                 (
-                  <button 
-                  type="button" 
-                  className="btn btn-success btn-fill pull-right" 
-                  onClick={show_sweet_user}
-                  >
-                  Process order&nbsp;
-                  <i className="fa fa-truck fa-lg" aria-hidden="true"></i> &nbsp;
-                  </button>  
+                  <>
+                    <span>{order.products.length} products selected. <b>Total:  {total}</b></span>
+                    <button 
+                    type="button" 
+                    className="btn btn-success btn-fill pull-right" 
+                    onClick={show_sweet_user}
+                    >
+                    Process order&nbsp;
+                    <i className="fa fa-truck fa-lg" aria-hidden="true"></i> &nbsp;
+                    </button>  
+                  </>
                 )
                 :
                 ""
@@ -169,7 +174,7 @@ const OrderTable = ({order,set_order}) => {
             <tfoot>
               <tr>
               <td colSpan="4"><span className="pull-right"><b>Total:</b></span></td>
-              <td>{total}</td>
+              <td className="td-total"><span>{total}</span></td>
               </tr>
             </tfoot>
           </table>
