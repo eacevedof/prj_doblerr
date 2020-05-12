@@ -88,7 +88,7 @@ const OrderTable = ({order,set_order}) => {
       <td>{i+1}</td>
       <td>{product.descriptionFull}</td>
       <td><img 
-            src={`${BASE_URL}/pictures/products/product_0.png`} 
+            src={`http://www.elchalanaruba.com/wp-content/uploads/2016/07/el-chalan-tallarin-verde-con-bisteck-imagen-1-170x170.jpg`} 
             alt={product.descriptionFull}
             className="img-thumbnail"
             height="45" width="45"
@@ -168,22 +168,13 @@ const OrderTable = ({order,set_order}) => {
             </tbody>
             <tfoot>
               <tr>
-              <td></td>
-              <td></td>
-              <td>
-
-              </td>
-              <td>Total:</td>
+              <td colSpan="4"><span className="pull-right"><b>Total:</b></span></td>
               <td>{total}</td>
-              <td>
-          
-              </td>
               </tr>
             </tfoot>
           </table>
         )
       }
-      
       </div>
     </div>
     

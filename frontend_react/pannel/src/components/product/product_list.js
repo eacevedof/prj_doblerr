@@ -28,7 +28,7 @@ function ProductList({order,set_order}) {
       <div className="main-panel">
         <Navbar order={order} />
         <div className="content">
-          <div className="container-fluid">
+          <div className="container-fluid z-index-2000">
             <FormProductSearch />
             <ProductTable products={products} order={order} set_order={set_order} />
           </div>

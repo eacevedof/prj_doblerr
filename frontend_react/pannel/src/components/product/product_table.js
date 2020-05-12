@@ -41,12 +41,14 @@ const ProductTable = ({order, set_order, products}) => {
             units>0 ? <span className="n-items">{units}</span> :null
           }
         </td>
-        <td><img 
-              src={`${BASE_URL}/pictures/products/product_0.png`} 
+        <td>
+          <img 
+              src={`http://www.elchalanaruba.com/wp-content/uploads/2016/07/el-chalan-tallarin-verde-con-bisteck-imagen-1-170x170.jpg`} 
               alt={product.descriptionFull}
               className="img-thumbnail"
               height="45" width="45"
-              /></td>
+              />
+        </td>
         <td>{_.round(product.priceSale,2).toFixed(2)}</td>
         <td>
         <div className="input-group">

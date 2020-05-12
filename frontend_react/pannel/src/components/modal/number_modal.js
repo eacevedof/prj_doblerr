@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import OrderRepo from "../../repository/order_repo"
 import _ from "lodash"
+import ProductCard from "../product/product_card"
 
 function NumberModal({product,order,set_order}) {
 
@@ -46,11 +47,10 @@ function NumberModal({product,order,set_order}) {
 
   return (
     <>
-    <div className="modal fade" id="number-modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal fade" id="number-modal" tabIndex="-1" role="dialog" aria-labelledby="number-modal" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel"><b>{product.description}</b></h5>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -75,9 +75,11 @@ function NumberModal({product,order,set_order}) {
                   </div>
                 </div>
               </div>
+            </div>            
+            <div className="row">        
+              <ProductCard product={product} />
             </div>
           </div>
-          <div className="modal-footer"></div>
         </div>
       </div>
     </div>
