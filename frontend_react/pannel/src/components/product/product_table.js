@@ -38,7 +38,7 @@ const ProductTable = ({order, set_order, products, search}) => {
         <td>
           <b>{product.description}</b>&nbsp;{product.descriptionFull}
           {
-            units>0 ? <span className="n-items">{units}</span> :null
+            units>0 ? <span className="n-items">{units} in cart</span> :null
           }
         </td>
         <td>

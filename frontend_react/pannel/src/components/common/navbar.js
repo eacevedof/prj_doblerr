@@ -29,7 +29,7 @@ function Navbar({order}) {
 
             <li className="nav-item dropdown">
               <NavLink className="nav-link" id="nav-order" activeClassName="navlink-active" to={"/order"}>
-                  <span><i className="nc-icon nc-cart-simple"></i>&nbsp;Order</span>
+                  <span><i className="nc-icon nc-cart-simple"></i>&nbsp; Cart</span>
                   <span className="notification">{iitems}</span>
               </NavLink>
             </li>
