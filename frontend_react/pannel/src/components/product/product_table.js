@@ -36,7 +36,7 @@ const ProductTable = ({order, set_order, products, search}) => {
       <tr key={product.id}>
         <td>{i+1}</td>
         <td>
-          {product.descriptionFull}
+          <b>{product.description}</b>&nbsp;{product.descriptionFull}
           {
             units>0 ? <span className="n-items">{units}</span> :null
           }

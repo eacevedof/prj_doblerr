@@ -55,7 +55,10 @@
   /* Force table to not be like tables anymore */
   table, thead, tbody, th, td, tr {
     display: block;
-    border:none;
+  }
+
+  th, td {
+    border: 0 !important;
   }
 
   /* Hide table headers (but not display: none;, for accessibility) */
