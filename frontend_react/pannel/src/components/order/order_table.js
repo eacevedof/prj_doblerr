@@ -137,39 +137,53 @@ const OrderTable = ({order,set_order}) => {
                 )
                 :
                 ""
-              }
+            }
           </p>
       </div>
       <div className="card-body table-full-width table-responsive">
-        <table className="table table-hover table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Units</th>
-              <th>Total</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            { trs }      
-          </tbody>
-          <tfoot>
-            <tr>
-            <td></td>
-            <td></td>
-            <td>
+      {
+        total==0?
+        (
+          <div className="alert alert-primary">
+            <span>
+              <b> Your order cart is empty</b> 
+            </span>
+          </div>
+        )
+        :
+        (
+          <table className="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Units</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              { trs }      
+            </tbody>
+            <tfoot>
+              <tr>
+              <td></td>
+              <td></td>
+              <td>
 
-            </td>
-            <td>Total:</td>
-            <td>{total}</td>
-            <td>
-        
-            </td>
-            </tr>
-          </tfoot>
-        </table>
+              </td>
+              <td>Total:</td>
+              <td>{total}</td>
+              <td>
+          
+              </td>
+              </tr>
+            </tfoot>
+          </table>
+        )
+      }
+      
       </div>
     </div>
     
