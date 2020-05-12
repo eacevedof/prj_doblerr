@@ -10,6 +10,7 @@ import Api from "../../providers/api"
 function ProductList({order,set_order}) {
   
   const [products, set_products] = useState([])
+  const [search, set_search] = useState("")
 
   useEffect(()=>{
     HrefDom.document_title("ECH | products")
@@ -29,8 +30,8 @@ function ProductList({order,set_order}) {
         <Navbar order={order} />
         <div className="content">
           <div className="container-fluid z-index-2000">
-            <FormProductSearch />
-            <ProductTable products={products} order={order} set_order={set_order} />
+            <FormProductSearch search={search} set_search={set_search}/>
+            <ProductTable products={products} order={order} set_order={set_order} search={search}/>
           </div>
         </div>
         <Footer />

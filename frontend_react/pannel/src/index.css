@@ -18,7 +18,7 @@
 }
 
 .modal {
-  border: 1px solid green;
+  /*border: 1px solid green;*/
   background: rgba(0, 0, 0, 0.5);
   height: 100vh;
 }
@@ -55,6 +55,7 @@
   /* Force table to not be like tables anymore */
   table, thead, tbody, th, td, tr {
     display: block;
+    border:none;
   }
 
   /* Hide table headers (but not display: none;, for accessibility) */
@@ -64,8 +65,9 @@
     left: -9999px;
   }
 
-  tr {
+  tbody tr {
     margin: 0 0 1rem 0;
+    border-top: 2px solid #3EBAD8
   }
     
   tr:nth-child(odd) {
@@ -75,7 +77,7 @@
   td {
     /* Behave  like a "row" */
     border: none;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     position: relative;
     padding-left: 50%;
   }

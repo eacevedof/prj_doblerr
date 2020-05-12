@@ -6,7 +6,7 @@ import NumberModal from "../modal/number_modal"
 
 const BASE_URL = process.env.REACT_APP_BASEURLAPI
 
-const ProductTable = ({order, set_order, products}) => {
+const ProductTable = ({order, set_order, products, search}) => {
   
   const [selproduct, set_selproduct] = useState({})
 
@@ -75,7 +75,9 @@ const ProductTable = ({order, set_order, products}) => {
     <div className="card strpied-tabled-with-hover">
       <div className="card-header ">
           <h4 className="card-title">Products</h4>
-          <p className="card-category">tags applied</p>
+          {
+            search !== "" ? <p className="card-category">Filtered by {search}</p> : null
+          }
       </div>
       <div className="card-body table-full-width table-responsive">
         <table className="table table-hover table-striped">

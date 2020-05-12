@@ -2,9 +2,8 @@ import React,{useState} from 'react';
 import LocalDb from "../../../helpers/local_db"
 //import styles from "./formsearch.module.css"
 
-function FormProductSearch() {
+function FormProductSearch({search,set_search}) {
 
-  const [search, set_search] = useState("")
 
   const on_submit = (e)=>{
     e.preventDefault()
@@ -15,7 +14,7 @@ function FormProductSearch() {
 
   const on_search_change = (e)=>{
     const strsearch = e.target.value
-    set_search(strsearch)
+    //set_search(strsearch)
     console.log("formproductsearch.on_search_change.search",search)
   }
 
