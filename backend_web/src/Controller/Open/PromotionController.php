@@ -22,7 +22,7 @@ class PromotionController extends BaseController
     public function __invoke(Request $request, string $slug)
     {
         $seo = SeoProvider::get_meta("promotion");
-        return $this->render('open/promotions/index.html.twig',["seo"=>$seo]);
+        return $this->render('open/promotion/forms/promo-0001.html.twig',["seo"=>$seo,"error"=>null]);
     }
 
 }//PromotionController

@@ -18,7 +18,7 @@ class TaskController extends BaseController
         //$tasks = $repotask->findAll();
         $tasks = $repotask->findBy([],["id"=>"DESC"]);
 
-        return $this->render('restrict/system/task/index.html.twig', [
+        return $this->render('restrict/system/task/promotion.html.twig', [
             'tasks' => $tasks,
         ]);
     }
