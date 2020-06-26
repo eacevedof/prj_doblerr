@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\App;
 
+use App\Entity\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_promotion_user")
  * @ORM\Entity
  */
-class AppPromotionUser
+class AppPromotionUser extends BaseEntity
 {
     /**
      * @var int
