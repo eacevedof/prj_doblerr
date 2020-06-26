@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppPromotion
+ * AppPromotionArray
  *
- * @ORM\Table(name="app_promotion")
+ * @ORM\Table(name="app_promotion_array")
  * @ORM\Entity
  */
-class AppPromotion
+class AppPromotionArray
 {
     /**
      * @var int
@@ -122,6 +122,27 @@ class AppPromotion
     /**
      * @var string|null
      *
+     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
+     */
+    private $codeErp = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="type", type="string", length=15, nullable=true, options={"default"="NULL"})
+     */
+    private $type = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="id_tosave", type="string", length=25, nullable=true, options={"default"="NULL"})
+     */
+    private $idTosave = 'NULL';
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
     private $description = 'NULL';
@@ -129,16 +150,16 @@ class AppPromotion
     /**
      * @var int|null
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="a quien pertenece la promo"})
+     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="propietario del tipo o categoria"})
      */
     private $idUser = 'NULL';
 
     /**
-     * @var int|null
+     * @var int
      *
-     * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="order_by", type="integer", nullable=false, options={"default"="100"})
      */
-    private $idType = 'NULL';
+    private $orderBy = '100';
 
     /**
      * @var string|null
@@ -146,55 +167,6 @@ class AppPromotion
      * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
     private $codeCache = 'NULL';
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="date_from", type="datetime", nullable=true, options={"default"="NULL"})
-     */
-    private $dateFrom = 'NULL';
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="date_to", type="datetime", nullable=true, options={"default"="NULL"})
-     */
-    private $dateTo = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="slug", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $slug = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url_nw", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $urlNw = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url_design", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $urlDesign = 'NULL';
-
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
-     */
-    private $isActive = '0';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="notes", type="string", length=300, nullable=true, options={"default"="NULL"})
-     */
-    private $notes = 'NULL';
 
 
 }

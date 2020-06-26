@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppPromotion
+ * AppPromotionsSusbscribers
  *
- * @ORM\Table(name="app_promotion")
+ * @ORM\Table(name="app_promotions_susbscribers")
  * @ORM\Entity
  */
-class AppPromotion
+class AppPromotionsSusbscribers
 {
     /**
      * @var int
@@ -127,67 +127,53 @@ class AppPromotion
     private $description = 'NULL';
 
     /**
-     * @var int|null
+     * @var int
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="a quien pertenece la promo"})
+     * @ORM\Column(name="id_promotion", type="integer", nullable=false)
      */
-    private $idUser = 'NULL';
+    private $idPromotion;
 
     /**
-     * @var int|null
+     * @var int
      *
-     * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="id_promouser", type="integer", nullable=false)
      */
-    private $idType = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
-     */
-    private $codeCache = 'NULL';
+    private $idPromouser;
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="date_from", type="datetime", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="date_subs", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $dateFrom = 'NULL';
+    private $dateSubs = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="code1", type="string", length=15, nullable=true, options={"default"="NULL"})
+     */
+    private $code1 = 'NULL';
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="date_to", type="datetime", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="date_confirm", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $dateTo = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="slug", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $slug = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url_nw", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $urlNw = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url_design", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $urlDesign = 'NULL';
+    private $dateConfirm = 'NULL';
 
     /**
      * @var bool|null
      *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
+     * @ORM\Column(name="is_confirmed", type="boolean", nullable=true)
      */
-    private $isActive = '0';
+    private $isConfirmed = '0';
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_exec", type="datetime", nullable=true, options={"default"="NULL"})
+     */
+    private $dateExec = 'NULL';
 
     /**
      * @var string|null
@@ -195,6 +181,13 @@ class AppPromotion
      * @ORM\Column(name="notes", type="string", length=300, nullable=true, options={"default"="NULL"})
      */
     private $notes = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
+     */
+    private $codeCache = 'NULL';
 
 
 }

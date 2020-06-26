@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppPromotion
+ * AppPromotionUser
  *
- * @ORM\Table(name="app_promotion")
+ * @ORM\Table(name="app_promotion_user")
  * @ORM\Entity
  */
-class AppPromotion
+class AppPromotionUser
 {
     /**
      * @var int
@@ -127,18 +127,81 @@ class AppPromotion
     private $description = 'NULL';
 
     /**
-     * @var int|null
+     * @var string
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="a quien pertenece la promo"})
+     * @ORM\Column(name="phone1", type="string", length=20, nullable=false, options={"comment"="telefono"})
      */
-    private $idUser = 'NULL';
+    private $phone1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="birthdate", type="datetime", nullable=true, options={"default"="NULL","comment"="cuando se ejecuta la promo"})
+     */
+    private $birthdate = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name1", type="string", length=15, nullable=false)
+     */
+    private $name1;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="name2", type="string", length=15, nullable=true, options={"default"="NULL"})
+     */
+    private $name2 = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="id_gender", type="string", length=5, nullable=true, options={"default"="NULL","comment"="promotion_array"})
+     */
+    private $idGender = 'NULL';
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="m1", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idType = 'NULL';
+    private $m1 = 'NULL';
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="m2", type="integer", nullable=true, options={"default"="NULL"})
+     */
+    private $m2 = 'NULL';
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="m3", type="integer", nullable=true, options={"default"="NULL"})
+     */
+    private $m3 = 'NULL';
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="m4", type="integer", nullable=true, options={"default"="NULL"})
+     */
+    private $m4 = 'NULL';
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="m5", type="integer", nullable=true, options={"default"="NULL"})
+     */
+    private $m5 = 'NULL';
 
     /**
      * @var string|null
@@ -146,55 +209,6 @@ class AppPromotion
      * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
     private $codeCache = 'NULL';
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="date_from", type="datetime", nullable=true, options={"default"="NULL"})
-     */
-    private $dateFrom = 'NULL';
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="date_to", type="datetime", nullable=true, options={"default"="NULL"})
-     */
-    private $dateTo = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="slug", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $slug = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url_nw", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $urlNw = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url_design", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $urlDesign = 'NULL';
-
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
-     */
-    private $isActive = '0';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="notes", type="string", length=300, nullable=true, options={"default"="NULL"})
-     */
-    private $notes = 'NULL';
 
 
 }
