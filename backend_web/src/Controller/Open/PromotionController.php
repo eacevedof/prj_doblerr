@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Open;
 use App\Component\Serialize;
+use App\Providers\SeoProvider;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
 use App\Services\Common\ProductService;
@@ -17,11 +18,11 @@ class PromotionController extends BaseController
         $this->productService = $productService;
     }
 
+    //<domain>/promotion/<some-slug>
     public function __invoke(Request $request, string $slug)
     {
-        return $this->render("open/promotions/index.html.twig",[
-
-        ]);
+        $seo = SeoProvider::get_meta("promotion");
+        return $this->render('open/promotions/index.html.twig',["seo"=>$seo]);
     }
 
 }//PromotionController
