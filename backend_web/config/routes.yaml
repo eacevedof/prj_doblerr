@@ -27,7 +27,7 @@ products:
     controller: App\Controller\Open\ProductController
 
 promotions:
-    path: /promotions/{slug}
+    path: /promotion/{slug}
     controller: App\Controller\Open\PromotionController
 
 # zona privada
