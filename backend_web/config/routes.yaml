@@ -30,6 +30,10 @@ promotions:
     path: /promotion/{slug}
     controller: App\Controller\Open\PromotionController
 
+promotion-subscribe:
+    path: /promotion/subscribe
+    controller: App\Controller\Open\PromotionController::subscribe
+
 # zona privada
 register:
     path: /register

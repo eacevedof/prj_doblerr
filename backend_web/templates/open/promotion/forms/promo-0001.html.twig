@@ -3,16 +3,15 @@
 {% block title %}Promoción Botox Capilar{% endblock %}
 
 {% block body %}
-
     <div class="example-wrapper">
-        <h2>Login usuarios</h2>
+        <h2>Botox Capilar Gratis</h2>
         {% if error %}
             <div class="alert alert-error">
                 {{ error.messagekey|trans(error.messageData,"security") }}
             </div>
         {% endif %}
         {% verbatim %}
-        <form id="form-appointment" action="/mail" @submit="checkform" method="post" class="app_form">
+        <form id="form-appointment"  @submit="checkform" method="post" class="app_form">
             <input type="text" v-model="name" class="app_input" placeholder="Nombre" required="required">
             <input type="email" v-model="email"  class="app_input" placeholder="Email" required="required">
             <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
@@ -41,6 +40,7 @@
 const app = new Vue({
     el: "#form-appointment",
     data: {
+        url: "/promotion/subscribe",
         errors:[],
         name: "",
         email: "",
