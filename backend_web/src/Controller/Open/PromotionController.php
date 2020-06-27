@@ -8,16 +8,16 @@ use App\Providers\SeoProvider;
 use App\Services\EmailService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
-use App\Services\Common\ProductService;
+use App\Services\Open\PromotionSubscribeService;
 use Symfony\Component\HttpFoundation\Response;
 
 class PromotionController extends BaseController
 {
-    private ProductService $productService;
+    private PromotionSubscribeService $promotionSubscribeService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(PromotionSubscribeService $promotionSubscribeService)
     {
-        $this->productService = $productService;
+        $this->promotionSubscribeService = $promotionSubscribeService;
     }
 
     //<domain>/promotion/<some-slug>
@@ -33,10 +33,13 @@ class PromotionController extends BaseController
         ]);
     }
 
-    public function subscribe(Request $request)
+    //<domain>/promotion/subscribe/{promotionid}
+    public function subscribe(Request $request,String $promotionid)
     {
+
         $this->logd($_POST,"mail.post");
         $this->logd($_SERVER["REMOTE_ADDR"],"ip from");
+        die("oooooooo subscrie");
         try{
             $mail = new EmailService($this->get_request(),$mailer);
             $mail->send();

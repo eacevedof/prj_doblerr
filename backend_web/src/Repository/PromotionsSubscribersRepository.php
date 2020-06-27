@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\App\AppPromotionsSubscribers;
+use App\Entity\App\AppPromotionsSusbscribers;
 
 class PromotionsSubscribersRepository extends BaseRepository
 {
@@ -12,13 +12,13 @@ class PromotionsSubscribersRepository extends BaseRepository
 
     protected static function entityClass(): string
     {
-        return AppPromotionsSubscribers::class;
+        return AppPromotionsSusbscribers::class;
     }
 
-    public function findOneById(string $id): ?AppPromotionsSubscribers
+    public function findOneById(string $id): ?AppPromotionsSusbscribers
     {
         /**
-         * @var AppPromotionsSubscribers $product
+         * @var AppPromotionsSusbscribers $product
          */
         $product = $this->objectRepository->find($id);
         return $product;
@@ -27,7 +27,7 @@ class PromotionsSubscribersRepository extends BaseRepository
 
     public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
-        /** @var AppPromotionsSubscribers $product */
+        /** @var AppPromotionsSusbscribers $product */
         $product = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
         return $product;
     }
@@ -37,7 +37,7 @@ class PromotionsSubscribersRepository extends BaseRepository
         return $this->objectRepository->findAll();
     }
 
-    public function save(AppPromotionsSubscribers $product): void
+    public function save(AppPromotionsSusbscribers $product): void
     {
         $this->saveEntity($product);
     }

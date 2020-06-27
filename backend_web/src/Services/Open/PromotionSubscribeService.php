@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Common;
+namespace App\Services\Open;
 
 use App\Services\BaseService;
 use App\Repository\PromotionsSubscribersRepository;

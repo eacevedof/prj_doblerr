@@ -25,7 +25,7 @@ class HomeController extends BaseController
         $seo = SeoProvider::get_meta("home");
         $arslider = $this->provider->get_text_slider();
         $services = $this->provider->get_text_services();
-        return $this->render('open/home/promotion.html.twig',["arslider"=>$arslider,"services"=>$services,"seo"=>$seo]);
+        return $this->render('open/home/index.html.twig',["arslider"=>$arslider,"services"=>$services,"seo"=>$seo]);
     }
 
     public function about_us()

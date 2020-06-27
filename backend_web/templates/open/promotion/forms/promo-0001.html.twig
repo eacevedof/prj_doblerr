@@ -12,6 +12,7 @@
         {% endif %}
         {% verbatim %}
         <form id="form-subscribe"  @submit="handleSubmit">
+            <input type="hidden" v-model="slug" value="">
             <input v-if="!showconfirm" type="text" v-model="name" placeholder="Nombre" required="required">
             <input v-if="!showconfirm" type="email" v-model="email"  placeholder="Email" required="required">
             <input v-if="!showconfirm" type="text" v-model="phone"  placeholder="Teléfono" required="required">
@@ -28,6 +29,7 @@ const formid = "form-subscribe"
 const app = new Vue({
     el: `#${formid}`,
     data: {
+        requri: {{ app.request.attributes.get('_route') }},
         showconfirm: false,
         errors:[],
         codeconfirm: "",
@@ -38,7 +40,8 @@ const app = new Vue({
 
     methods:{
         handleSubmit: function(e) {
-            const url = "/promotion/subscribe"
+            alert(this.requri)
+            const url = "/promotion/subscribe/1"
             console.log("handleSubmit")
             $("#btn-appointment").hide()
             e.preventDefault()
