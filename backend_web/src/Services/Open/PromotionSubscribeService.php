@@ -16,19 +16,21 @@ class PromotionSubscribeService extends BaseService
     private PromotionsSubscribersRepository $promotionsSubscribesRepository;
     private PromotionRepository $promotionRepository;
     private PromotionUserRepository $promotionUserRepository;
-    /**
-     * @var AppPromotion
-     */
     private AppPromotion $appPromotion;
-    /**
-     * @var AppPromotionsSusbscribers
-     */
     private AppPromotionsSusbscribers $appPromotionsSusbscribers;
-    /**
-     * @var AppPromotionUser
-     */
     private AppPromotionUser $appPromotionUser;
 
+    public function __construct(
+        PromotionsSubscribersRepository $promotionsSubscribesRepository,
+        PromotionRepository $promotionRepository,
+        PromotionUserRepository $promotionUserRepository,
+        AppPromotion $appPromotion
+    )
+    {
+
+    }
+
+/*
     public function __construct(
         PromotionsSubscribersRepository $promotionsSubscribesRepository,
         PromotionRepository $promotionRepository,
@@ -37,16 +39,17 @@ class PromotionSubscribeService extends BaseService
         AppPromotionsSusbscribers $appPromotionsSusbscribers,
         AppPromotionUser $appPromotionUser,
         RequestStack $requestStack
-        )
+    )
     {
         $this->promotionsSubscribesRepository = $promotionsSubscribesRepository;
         $this->promotionRepository = $promotionRepository;
         $this->promotionUserRepository = $promotionUserRepository;
-        $this->appPromotion = $appPromotion;
+        //$this->appPromotion = $appPromotion;
         $this->appPromotionsSusbscribers = $appPromotionsSusbscribers;
         $this->appPromotionUser = $appPromotionUser;
         $this->requestStack = $requestStack;
     }
+*/
 
     private function _get_post($key){
         return $this->requestStack->getCurrentRequest()->get($key);
