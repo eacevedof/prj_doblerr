@@ -39,16 +39,16 @@ const app = new Vue({
         showconfirm: false,
         errors:[],
         codeconfirm: "",
-        name: "",
-        email: "",
-        phone: "",
+        name: "Eledu",
+        email: "eac@ya.com",
+        phone: "123474128",
     },
 
     methods:{
         handleSubmit: function(e) {
-            alert(get_slug())
-            const url = "/promotion/subscribe/1"
-            console.log("handleSubmit")
+            const slug = get_slug()
+            const url = `/promotion/subscribe/${slug}`
+            //console.log("handleSubmit")
             $("#btn-appointment").hide()
             e.preventDefault()
 
