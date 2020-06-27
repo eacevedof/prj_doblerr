@@ -34,14 +34,16 @@ const formid = "form-subscribe"
 
 const app = new Vue({
     el: `#${formid}`,
-    data: {
-        //requri: "{{ app.request.uri }}",
-        showconfirm: false,
-        errors:[],
-        codeconfirm: "",
-        name: "Eledu",
-        email: "eac@ya.com",
-        phone: "123474128",
+    data(){
+        return {
+            //requri: "{{ app.request.uri }}",
+            showconfirm: false,
+            errors:[],
+            codeconfirm: "",
+            name: "Eledu",
+            email: "eac@ya.com",
+            phone: "123474128",
+        }
     },
 
     methods:{
@@ -87,7 +89,7 @@ const app = new Vue({
     },//methods
     mounted(){
         console.log("mounted")
-        document.getElementById("form-subscribe").reset()
+        //document.getElementById("form-subscribe").reset()
     }
 })
 </script>
