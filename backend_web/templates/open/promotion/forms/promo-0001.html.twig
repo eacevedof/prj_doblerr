@@ -12,7 +12,6 @@
         {% endif %}
         {% verbatim %}
         <form id="form-subscribe"  @submit="handleSubmit">
-            <input type="hidden" v-model="slug" value="">
             <input v-if="!showconfirm" type="text" v-model="name" placeholder="Nombre" required="required">
             <input v-if="!showconfirm" type="email" v-model="email"  placeholder="Email" required="required">
             <input v-if="!showconfirm" type="text" v-model="phone"  placeholder="Teléfono" required="required">
@@ -24,12 +23,19 @@
 {% endblock %}
 {% block javascripts %}
 <script>
+const get_slug = ()=>{
+    const parts = window.location.pathname.split("/")
+    const slugquery = parts[parts.length-1]
+    const slug = slugquery.split("?")
+    return slug[0] ?? ""
+}
+
 const formid = "form-subscribe"
 
 const app = new Vue({
     el: `#${formid}`,
     data: {
-        requri: {{ app.request.attributes.get('_route') }},
+        //requri: "{{ app.request.uri }}",
         showconfirm: false,
         errors:[],
         codeconfirm: "",
@@ -40,7 +46,7 @@ const app = new Vue({
 
     methods:{
         handleSubmit: function(e) {
-            alert(this.requri)
+            alert(get_slug())
             const url = "/promotion/subscribe/1"
             console.log("handleSubmit")
             $("#btn-appointment").hide()
