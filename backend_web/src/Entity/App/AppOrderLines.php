@@ -26,7 +26,7 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="processflag", type="string", length=5, nullable=true, options={"default"="NULL"})
      */
-    private $processflag = 'NULL';
+    private $processflag = null;
 
     /**
      * @var string|null
@@ -40,7 +40,7 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="insert_user", type="string", length=15, nullable=true, options={"default"="NULL"})
      */
-    private $insertUser = 'NULL';
+    private $insertUser = null;
 
     /**
      * @var \DateTime
@@ -54,14 +54,14 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="update_platform", type="string", length=3, nullable=true, options={"default"="NULL"})
      */
-    private $updatePlatform = 'NULL';
+    private $updatePlatform = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="update_user", type="string", length=15, nullable=true, options={"default"="NULL"})
      */
-    private $updateUser = 'NULL';
+    private $updateUser = null;
 
     /**
      * @var \DateTime|null
@@ -75,28 +75,28 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="delete_platform", type="string", length=3, nullable=true, options={"default"="NULL"})
      */
-    private $deletePlatform = 'NULL';
+    private $deletePlatform = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="delete_user", type="string", length=15, nullable=true, options={"default"="NULL"})
      */
-    private $deleteUser = 'NULL';
+    private $deleteUser = null;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="delete_date", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $deleteDate = 'NULL';
+    private $deleteDate = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="cru_csvnote", type="string", length=500, nullable=true, options={"default"="NULL"})
      */
-    private $cruCsvnote = 'NULL';
+    private $cruCsvnote = null;
 
     /**
      * @var string|null
@@ -117,42 +117,42 @@ class AppOrderLines extends BaseEntity
      *
      * @ORM\Column(name="i", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $i = 'NULL';
+    private $i = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
      */
-    private $codeErp = 'NULL';
+    private $codeErp = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
-    private $description = 'NULL';
+    private $description = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="id_order_head", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idOrderHead = 'NULL';
+    private $idOrderHead = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="id_product", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idProduct = 'NULL';
+    private $idProduct = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="price", type="decimal", precision=10, scale=3, nullable=true, options={"default"="NULL"})
      */
-    private $price = 'NULL';
+    private $price = null;
 
 
 }

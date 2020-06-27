@@ -41,7 +41,7 @@ class AppPromotionUser extends BaseEntity
      *
      * @ORM\Column(name="birthdate", type="datetime", nullable=true, options={"default"="NULL","comment"="cuando se ejecuta la promo"})
      */
-    private $birthdate = 'NULL';
+    private $birthdate = null;
 
     /**
      * @var string
@@ -55,56 +55,56 @@ class AppPromotionUser extends BaseEntity
      *
      * @ORM\Column(name="name2", type="string", length=15, nullable=true, options={"default"="NULL"})
      */
-    private $name2 = 'NULL';
+    private $name2 = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="id_gender", type="string", length=5, nullable=true, options={"default"="NULL","comment"="promotion_array"})
      */
-    private $idGender = 'NULL';
+    private $idGender = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="m1", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $m1 = 'NULL';
+    private $m1 = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="m2", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $m2 = 'NULL';
+    private $m2 = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="m3", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $m3 = 'NULL';
+    private $m3 = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="m4", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $m4 = 'NULL';
+    private $m4 = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="m5", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $m5 = 'NULL';
+    private $m5 = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $codeCache = 'NULL';
+    private $codeCache = null;
 
 
 }

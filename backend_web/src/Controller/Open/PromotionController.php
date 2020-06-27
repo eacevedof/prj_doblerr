@@ -33,19 +33,17 @@ class PromotionController extends BaseController
         ]);
     }
 
-    //<domain>/promotion/subscribe/{promotionid}
-    public function subscribe(Request $request,String $promotionid)
+    //<domain>/promotion/subscribe/{slug}
+    public function subscribe(Request $request,String $promoslug)
     {
 
-        $this->logd($_POST,"mail.post");
-        $this->logd($_SERVER["REMOTE_ADDR"],"ip from");
-        die("oooooooo subscrie");
         try{
-            $mail = new EmailService($this->get_request(),$mailer);
-            $mail->send();
+            $this->promotionSubscribeService->subscribe();
+            //$mail = new EmailService($this->get_request(),$mailer);
+            //$mail->send();
         }
         catch(\Exception $e){
-            $this->logd($e->getMessage(),"mail.error");
+            $this->logd($e->getMessage(),"promotion.subscribe.error");
             return (new Response('Content',
                 Response::HTTP_BAD_REQUEST,
                 ['content-type' => 'application/json']))->setContent(json_encode(
@@ -61,7 +59,7 @@ class PromotionController extends BaseController
             ['content-type' => 'application/json']))->setContent(json_encode(
             [
                 "title" => "success",
-                "description"=>"Email has benn sent"
+                "description"=>"Te hemos enviado un código de confirmación por favor insertalo para finalizar tu subscripcioón."
             ]
         ));
     }

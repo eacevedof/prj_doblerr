@@ -23,67 +23,60 @@ class AppPromotion extends BaseEntity
     private $id;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $description = 'NULL';
-
-    /**
      * @var int|null
      *
      * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="a quien pertenece la promo"})
      */
-    private $idUser = 'NULL';
+    private $idUser = null;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idType = 'NULL';
+    private $idType = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $codeCache = 'NULL';
+    private $codeCache = null;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_from", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $dateFrom = 'NULL';
+    private $dateFrom = null;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_to", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $dateTo = 'NULL';
+    private $dateTo = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="slug", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
-    private $slug = 'NULL';
+    private $slug = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="url_nw", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
-    private $urlNw = 'NULL';
+    private $urlNw = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="url_design", type="string", length=250, nullable=true, options={"default"="NULL"})
      */
-    private $urlDesign = 'NULL';
+    private $urlDesign = null;
 
     /**
      * @var bool|null
@@ -97,7 +90,7 @@ class AppPromotion extends BaseEntity
      *
      * @ORM\Column(name="notes", type="string", length=300, nullable=true, options={"default"="NULL"})
      */
-    private $notes = 'NULL';
+    private $notes = null;
 
 
 }

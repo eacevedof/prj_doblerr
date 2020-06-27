@@ -31,7 +31,7 @@ promotions:
     controller: App\Controller\Open\PromotionController
 
 promotion-subscribe:
-    path: /promotion/subscribe/{promotionid}
+    path: /promotion/subscribe/{promoslug}
     controller: App\Controller\Open\PromotionController::subscribe
 
 # zona privada
