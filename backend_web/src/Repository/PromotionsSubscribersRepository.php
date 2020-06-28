@@ -35,7 +35,7 @@ class PromotionsSubscribersRepository extends BaseRepository
     public function findByPromoUser($idpromotion, $idpromouser)
     {
         $criteria = [
-            "id_promotion" => $idpromotion,"id_promouser" => $idpromouser,
+            "idPromotion" => $idpromotion,"idPromouser" => $idpromouser,
             //"is_confirmed" => 0
         ];
         $entity = $this->findBy($criteria);

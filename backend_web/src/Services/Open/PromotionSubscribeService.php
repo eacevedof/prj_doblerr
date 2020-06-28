@@ -101,7 +101,10 @@ class PromotionSubscribeService extends BaseService
 
         //print_r($oPromouser);die;
         //var_dump($oPromotion);die;
-        $r = $this->promotionsSubscribersRepository->findByPromoUser($oPromotion->getId(),$oPromouser>getId());
+        $idpromo = $oPromotion->getId();
+        $idpromouser = $oPromouser->getId();
+
+        $r = $this->promotionsSubscribersRepository->findByPromoUser($idpromo,$idpromouser);
         if(!$r) return;
 
         $oPromoSubscription = $r[0];
