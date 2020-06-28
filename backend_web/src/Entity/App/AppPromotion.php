@@ -240,4 +240,11 @@ class AppPromotion extends BaseEntity
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }

@@ -18,18 +18,18 @@ class PromotionUserRepository extends BaseRepository
     public function findOneById(string $id): ?AppPromotionUser
     {
         /**
-         * @var AppPromotionUser $product
+         * @var AppPromotionUser $entity
          */
-        $product = $this->objectRepository->find($id);
-        return $product;
+        $entity = $this->objectRepository->find($id);
+        return $entity;
     }
 
 
     public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
-        /** @var AppPromotionUser $product */
-        $product = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
-        return $product;
+        /** @var AppPromotionUser $entity */
+        $entity = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
+        return $entity;
     }
 
     public function findAll()
@@ -37,8 +37,8 @@ class PromotionUserRepository extends BaseRepository
         return $this->objectRepository->findAll();
     }
 
-    public function save(AppPromotionUser $product): void
+    public function save(AppPromotionUser $entity): void
     {
-        $this->saveEntity($product);
+        $this->saveEntity($entity);
     }
 }

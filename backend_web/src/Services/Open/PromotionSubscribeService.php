@@ -2,6 +2,7 @@
 namespace App\Services\Open;
 
 use App\Services\BaseService;
+use App\Component\Encdecrypt;
 use App\Repository\PromotionsSubscribersRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Repository\PromotionRepository;
@@ -19,10 +20,7 @@ class PromotionSubscribeService extends BaseService
     private PromotionRepository $promotionRepository;
     private PromotionUserRepository $promotionUserRepository;
 
-    private AppPromotion $appPromotion;
-    private AppPromotionsSusbscribers $appPromotionsSusbscribers;
-    private AppPromotionUser $appPromotionUser;
-
+    private Encdecrypt $encDecrypt;
     private ?string $slug;
 
     public function __construct(
@@ -35,9 +33,7 @@ class PromotionSubscribeService extends BaseService
         $this->promotionsSubscribesRepository = $promotionsSubscribesRepository;
         $this->promotionRepository = $promotionRepository;
         $this->promotionUserRepository = $promotionUserRepository;
-        //$this->appPromotion = $appPromotion;
-        //$this->appPromotionsSusbscribers = $appPromotionsSusbscribers;
-        //$this->appPromotionUser = $appPromotionUser;
+        $this->encDecrypt = new Encdecrypt();
         $this->requestStack = $requestStack;
         //dump($this->requestStack);die;
     }
@@ -50,31 +46,56 @@ class PromotionSubscribeService extends BaseService
         return $this->requestStack->getCurrentRequest()->query->get($key);
     }
 
-    private function _get_promotion()
+    private function _get_promotion(): ?AppPromotion
     {
-        return $this->promotionRepository->findBySlug($this->slug);
+        $r = $this->promotionRepository->findBySlug($this->slug);
+        return $r[0] ?? null;
     }
 
-    private function _get_promo_user()
+    private function _get_saved_promouser(): AppPromotionUser
     {
         $name1 = $this->_get_post("name");
         $email = $this->_get_post("email");
         $phone1 = $this->_get_post("phone");
 
+        /*
         $promouser = new AppPromotionUser();
         $promouser->setName1($name1);
         $promouser->setEmail($email);
         $promouser->setPhone1($phone1);
+        */
 
+        $r = $this->promotionUserRepository->findBy(["email"=>$email]);
+        $promouser = $r[0] ?? null;
+        if(!$promouser){
+            $promouser = new AppPromotionUser();
+            $promouser->setName1($name1);
+            $promouser->setEmail($email);
+            $promouser->setPhone1($phone1);
+            $this->promotionUserRepository->save($promouser);
+            return $promouser;
+        }
+
+        $promouser->setUpdateDate(new \DateTime());
+        $promouser->setPhone1($phone1);
+        $promouser->setName1($name1);
         $this->promotionUserRepository->save($promouser);
+        return $promouser;
     }
 
     private function _is_subscribed()
     {
         //comprueba si tiene una suscripción pendiente de consumir
-        $oPromouser = $this->promotionUserRepository->findBy(["email"=>$this->_get_post("email")]);
+        $r = $this->promotionUserRepository->findBy(["email"=>$this->_get_post("email")]);
+        if(!$r) return;
+
+        $oPromouser = $r[0];
         if(!$oPromouser->getId()) return;
-        $oPromotion = $this->promotionRepository->findBySlug($this->slug);
+        $r = $this->promotionRepository->findBySlug($this->slug);
+
+        $oPromotion = $r[0];
+        if(!$oPromotion->getId()) return;
+
         $oPromoSubscription = $this->promotionsSubscribesRepository->findByPromoUser($oPromouser->getId(),$oPromotion>getId());
         if(!$oPromoSubscription->getId()) return;
         if(!$oPromoSubscription->getIsConfirmed())
@@ -137,6 +158,16 @@ class PromotionSubscribeService extends BaseService
         $this->slug = $slug;
         $this->_validate();
         $promotion = $this->_get_promotion();
+        $promouser = $this->_get_saved_promouser();
+
+        $promosubscription = new AppPromotionsSusbscribers();
+        $promosubscription->setIdPromotion($promotion->getId());
+        $promosubscription->setIdPromouser($promouser->getId());
+        $this->promotionsSubscribesRepository->save($promosubscription);
+        //$promosubscription->setDateSubs();
+        $code = $this->encDecrypt->get_rnd_word(5);
+        $promosubscription->setCode1($code);
+        $this->promotionsSubscribesRepository->save($promosubscription);
         //var_dump($promotion);die;
     }
 
