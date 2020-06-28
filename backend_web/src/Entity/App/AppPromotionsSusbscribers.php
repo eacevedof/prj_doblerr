@@ -62,7 +62,7 @@ class AppPromotionsSusbscribers extends BaseEntity
      *
      * @ORM\Column(name="is_confirmed", type="boolean", nullable=true)
      */
-    private $isConfirmed = '0';
+    private $isConfirmed = 0;
 
     /**
      * @var \DateTime|null

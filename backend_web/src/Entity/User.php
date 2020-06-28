@@ -111,7 +111,7 @@ class User extends BaseEntity implements UserInterface
      * @var int|null
      * @ORM\Column(name="log_attempts", type="integer", nullable=true)
      */
-    private $logAttempts = '0';
+    private $logAttempts = 0;
 
     /**
      * @var int|null

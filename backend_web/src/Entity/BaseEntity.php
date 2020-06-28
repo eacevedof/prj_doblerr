@@ -76,9 +76,9 @@ class BaseEntity
 
     /**
      * @var string|null
-     * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="'0'"})
+     * @ORM\Column(name="is_erpsent", type="string", length=3, nullable=true, options={"default"="0"})
      */
-    protected $isErpsent = '0';
+    protected $isErpsent = 0;
 
     /**
      * @var string|null
