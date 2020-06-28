@@ -55,6 +55,50 @@ class PromotionSubscribeService extends BaseService
         return $this->promotionRepository->findBySlug($this->slug);
     }
 
+    private function _get_promo_user()
+    {
+        $name1 = $this->_get_post("name");
+        $email = $this->_get_post("email");
+        $phone1 = $this->_get_post("phone");
+
+        $promouser = new AppPromotionUser();
+        $promouser->setName1($name1);
+        $promouser->setEmail($email);
+        $promouser->setPhone1($phone1);
+
+        $this->promotionUserRepository->save($promouser);
+    }
+
+    private function _is_subscribed()
+    {
+        //comprueba si tiene una suscripción pendiente de consumir
+        $oPromouser = $this->promotionUserRepository->findBy(["email"=>$this->_get_post("email")]);
+        if(!$oPromouser->getId()) return;
+        $oPromotion = $this->promotionRepository->findBySlug($this->slug);
+        $oPromoSubscription = $this->promotionsSubscribesRepository->findByPromoUser($oPromouser->getId(),$oPromotion>getId());
+        if(!$oPromoSubscription->getId()) return;
+        if(!$oPromoSubscription->getIsConfirmed())
+            throw new \Exception("Tienes una subscripción pendiente de confirmar. Revisa tu email: {$oPromouser->getEmail()}",Response::HTTP_BAD_REQUEST);
+
+        if(!$oPromoSubscription->getDateExec())
+            throw new \Exception("Solo te puedes subscribir una vez",Response::HTTP_BAD_REQUEST);
+    }
+
+    private function _is_post()
+    {
+        $name1 = $this->_get_post("name");
+        if(!trim($name1))
+            throw new \Exception("No se ha proporcionado el nombre",Response::HTTP_BAD_REQUEST);
+
+        $email = $this->_get_post("email");
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+            throw new \Exception("Email incorrecto",Response::HTTP_BAD_REQUEST);
+
+        $phone1 = $this->_get_post("phone");
+        if(!trim($phone1))
+            throw new \Exception("No se ha proporcionado un teléfono",Response::HTTP_BAD_REQUEST);
+    }
+
     private function _is_slug()
     {
         if(!$this->slug)
@@ -81,8 +125,10 @@ class PromotionSubscribeService extends BaseService
     private function _validate()
     {
         $this->_is_slug();
+        $this->_is_post();
         $this->_is_promotion();
         $this->_is_indate();
+        $this->_is_subscribed();
         $this->_is_ip();
     }
 

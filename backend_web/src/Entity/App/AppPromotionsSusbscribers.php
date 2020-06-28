@@ -79,11 +79,157 @@ class AppPromotionsSusbscribers extends BaseEntity
     private $notes = null;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
+     * @return int
      */
-    private $codeCache = null;
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPromotion(): int
+    {
+        return $this->idPromotion;
+    }
+
+    /**
+     * @param int $idPromotion
+     * @return AppPromotionsSusbscribers
+     */
+    public function setIdPromotion(int $idPromotion): AppPromotionsSusbscribers
+    {
+        $this->idPromotion = $idPromotion;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPromouser(): int
+    {
+        return $this->idPromouser;
+    }
+
+    /**
+     * @param int $idPromouser
+     * @return AppPromotionsSusbscribers
+     */
+    public function setIdPromouser(int $idPromouser): AppPromotionsSusbscribers
+    {
+        $this->idPromouser = $idPromouser;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateSubs(): ?\DateTime
+    {
+        return $this->dateSubs;
+    }
+
+    /**
+     * @param \DateTime|null $dateSubs
+     * @return AppPromotionsSusbscribers
+     */
+    public function setDateSubs(?\DateTime $dateSubs): AppPromotionsSusbscribers
+    {
+        $this->dateSubs = $dateSubs;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCode1(): ?string
+    {
+        return $this->code1;
+    }
+
+    /**
+     * @param string|null $code1
+     * @return AppPromotionsSusbscribers
+     */
+    public function setCode1(?string $code1): AppPromotionsSusbscribers
+    {
+        $this->code1 = $code1;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateConfirm(): ?\DateTime
+    {
+        return $this->dateConfirm;
+    }
+
+    /**
+     * @param \DateTime|null $dateConfirm
+     * @return AppPromotionsSusbscribers
+     */
+    public function setDateConfirm(?\DateTime $dateConfirm): AppPromotionsSusbscribers
+    {
+        $this->dateConfirm = $dateConfirm;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsConfirmed(): ?bool
+    {
+        return $this->isConfirmed;
+    }
+
+    /**
+     * @param bool|null $isConfirmed
+     * @return AppPromotionsSusbscribers
+     */
+    public function setIsConfirmed(?bool $isConfirmed): AppPromotionsSusbscribers
+    {
+        $this->isConfirmed = $isConfirmed;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateExec(): ?\DateTime
+    {
+        return $this->dateExec;
+    }
+
+    /**
+     * @param \DateTime|null $dateExec
+     * @return AppPromotionsSusbscribers
+     */
+    public function setDateExec(?\DateTime $dateExec): AppPromotionsSusbscribers
+    {
+        $this->dateExec = $dateExec;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @param string|null $notes
+     * @return AppPromotionsSusbscribers
+     */
+    public function setNotes(?string $notes): AppPromotionsSusbscribers
+    {
+        $this->notes = $notes;
+        return $this;
+    }
+
 
 
 }
