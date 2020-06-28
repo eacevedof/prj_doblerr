@@ -8,6 +8,7 @@ namespace App\Repository;
 //use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\QueryBuilder as OrmQb;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
@@ -42,6 +43,16 @@ abstract class BaseRepository
     }
 
     protected function createQueryBuilder(): QueryBuilder
+    {
+        return $this->getEntityManager()->createQueryBuilder();
+    }
+
+    protected function getDbalQueryBuilder(): QueryBuilder
+    {
+        return $this->getEntityManager()->createQueryBuilder();
+    }
+
+    protected function getOrmQueryBuilder(): OrmQb
     {
         return $this->getEntityManager()->createQueryBuilder();
     }
