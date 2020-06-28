@@ -46,16 +46,19 @@ class PromotionRepository extends BaseRepository
 
     public function findByDate(string $slug=""){
         $today = date("Ymd");
-        $q = $this->getOrmQueryBuilder("p")
+        $qb = $this->getOrmQueryBuilder();
+        $qb->select("p")
+            ->from(self::entityClass(),"p")
+            ->where($qb->expr()->isNull("p.deleteDate"))
             ->where("p.slug=':slug'")
             ->where("p.date_from>:today")
             ->where("p.date_to<=:today")
             ->setParameter("slug",$slug)
-            ->setParameter("today",$today)
-            ->getQuery();
-        $r = $q->getResult();
-        print_r($r);
-        return $r;
+            ->setParameter("today",$today);
+
+        $q = $qb->getQuery();
+        $this->log($q->getDQL(),"promorepo.findByDate.q");
+        return $q;
     }
     
     public function save(AppPromotion $entity): void

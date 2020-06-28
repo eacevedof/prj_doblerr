@@ -6,6 +6,7 @@ namespace App\Repository;
 //esta clase aparece como obsoleta pero en esta version de doctrine no esta del todo corregida
 //por lo tanto la seguimos usando
 //use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Traits\Log;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\QueryBuilder as OrmQb;
@@ -15,6 +16,7 @@ use Doctrine\Persistence\ObjectRepository;
 
 abstract class BaseRepository
 {
+    use Log;
     protected ManagerRegistry $managerRegistry;
     protected ObjectRepository $objectRepository;
     protected Connection $connection;
