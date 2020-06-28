@@ -50,6 +50,11 @@ class PromotionSubscribeService extends BaseService
         return $this->requestStack->getCurrentRequest()->query->get($key);
     }
 
+    private function _get_promotion()
+    {
+        return $this->promotionRepository->findBySlug($this->slug);
+    }
+
     private function _is_slug()
     {
         if(!$this->slug)
@@ -67,7 +72,7 @@ class PromotionSubscribeService extends BaseService
     {
         $promotion = $this->promotionRepository->findByDate($this->slug);
         if(!$promotion)
-            throw new \Exception("La promoción fuera de fecha.",Response::HTTP_BAD_REQUEST);
+            throw new \Exception("La promoción esta fuera de fecha.",Response::HTTP_BAD_REQUEST);
     }
 
     private function _is_ip()
@@ -75,8 +80,8 @@ class PromotionSubscribeService extends BaseService
 
     private function _validate()
     {
-        //$this->_is_slug();
-        //$this->_is_promotion();
+        $this->_is_slug();
+        $this->_is_promotion();
         $this->_is_indate();
         $this->_is_ip();
     }
@@ -85,6 +90,8 @@ class PromotionSubscribeService extends BaseService
     {
         $this->slug = $slug;
         $this->_validate();
+        $promotion = $this->_get_promotion();
+        //var_dump($promotion);die;
     }
 
 }
