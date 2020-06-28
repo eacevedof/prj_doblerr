@@ -52,13 +52,12 @@ const app = new Vue({
     },
 
     methods:{
-        handleSubmit: function(e) {
+        subscribe(){
             const self = this
             const slug = get_slug()
             const url = `/promotion/subscribe/${slug}`
             //console.log("handleSubmit")
             $("#btn-confirm").hide()
-            e.preventDefault()
 
             const data = new FormData();
             data.append("action","subscribe")
@@ -101,8 +100,23 @@ const app = new Vue({
                     //text: response.description,
                 })
             })
-        }
+        },//subscribe
+
+        confirm(){
+            alert("confirm")
+        },
+
+        handleSubmit: function(e) {
+          e.preventDefault()
+          if(!this.showconfirm)
+              this.subscribe()
+          else{
+              this.confirm()
+          }
+        }//handleSubmit(e)
+
     },//methods
+
     mounted(){
         console.log("mounted")
         //document.getElementById("form-subscribe").reset()
