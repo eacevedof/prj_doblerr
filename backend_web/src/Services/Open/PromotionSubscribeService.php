@@ -11,6 +11,8 @@ use App\Entity\App\AppPromotion;
 use App\Entity\App\AppPromotionsSusbscribers;
 use App\Entity\App\AppPromotionUser;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class PromotionSubscribeService extends BaseService
 {
     private PromotionsSubscribersRepository $promotionsSubscribesRepository;
@@ -49,24 +51,32 @@ class PromotionSubscribeService extends BaseService
     }
 
     private function _is_slug()
-    {}
+    {
+        if(!$this->slug)
+            throw new \Exception("No se ha seleccionado una promoción",Response::HTTP_BAD_REQUEST);
+    }
 
     private function _is_promotion()
     {
         $promotion = $this->promotionRepository->findBySlug($this->slug);
-        dump($promotion);
+        if(!$promotion)
+            throw new \Exception("No se ha encontrado esta promoción",Response::HTTP_NOT_FOUND);
     }
 
     private function _is_indate()
-    {}
+    {
+        $promotion = $this->promotionRepository->findByDate($this->slug);
+        if(!$promotion)
+            throw new \Exception("La promoción fuera de fecha.",Response::HTTP_BAD_REQUEST);
+    }
 
     private function _is_ip()
     {}
 
     private function _validate()
     {
-        $this->_is_slug();
-        $this->_is_promotion();
+        //$this->_is_slug();
+        //$this->_is_promotion();
         $this->_is_indate();
         $this->_is_ip();
     }

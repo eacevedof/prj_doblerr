@@ -43,6 +43,16 @@ class PromotionRepository extends BaseRepository
         ];
         return $this->findBy($arcond,null,1,0);
     }
+
+    public function findByDate(string $slug=""){
+        $today = date("Ymd");
+        $arcond = [
+            "slug" => $slug,
+            "date_from" => ">=$today",
+            "date_to" => "<=$today",
+        ];
+        return $this->findBy($arcond,null,1,0);
+    }
     
     public function save(AppPromotion $entity): void
     {
