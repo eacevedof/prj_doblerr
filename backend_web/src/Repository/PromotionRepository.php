@@ -50,9 +50,9 @@ class PromotionRepository extends BaseRepository
         $qb->select("p")
             ->from(self::entityClass(),"p")
             ->where($qb->expr()->isNull("p.deleteDate"))
-            ->where("p.slug=':slug'")
-            ->where("p.date_from>:today")
-            ->where("p.date_to<=:today")
+            ->andWhere("p.slug=':slug'")
+            ->andWhere("p.date_from>:today")
+            ->andWhere("p.date_to<=:today")
             ->setParameter("slug",$slug)
             ->setParameter("today",$today);
 
