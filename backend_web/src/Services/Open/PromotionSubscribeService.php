@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PromotionSubscribeService extends BaseService
 {
-    private PromotionsSubscribersRepository $promotionsSubscribesRepository;
+    private PromotionsSubscribersRepository $promotionsSubscribersRepository;
     private PromotionRepository $promotionRepository;
     private PromotionUserRepository $promotionUserRepository;
 
@@ -24,17 +24,18 @@ class PromotionSubscribeService extends BaseService
     private ?string $slug;
 
     public function __construct(
-        PromotionsSubscribersRepository $promotionsSubscribesRepository,
+        PromotionsSubscribersRepository $promotionsSubscribersRepository,
         PromotionRepository $promotionRepository,
         PromotionUserRepository $promotionUserRepository,
         RequestStack $requestStack
     )
     {
-        $this->promotionsSubscribesRepository = $promotionsSubscribesRepository;
+        $this->promotionsSubscribersRepository = $promotionsSubscribersRepository;
         $this->promotionRepository = $promotionRepository;
         $this->promotionUserRepository = $promotionUserRepository;
-        $this->encDecrypt = new Encdecrypt();
         $this->requestStack = $requestStack;
+
+        $this->encDecrypt = new Encdecrypt();
         //dump($this->requestStack);die;
     }
 
@@ -91,13 +92,21 @@ class PromotionSubscribeService extends BaseService
 
         $oPromouser = $r[0];
         if(!$oPromouser->getId()) return;
+
         $r = $this->promotionRepository->findBySlug($this->slug);
+        if(!$r) return;
 
         $oPromotion = $r[0];
         if(!$oPromotion->getId()) return;
 
-        $oPromoSubscription = $this->promotionsSubscribesRepository->findByPromoUser($oPromouser->getId(),$oPromotion>getId());
+        //print_r($oPromouser);die;
+        //var_dump($oPromotion);die;
+        $r = $this->promotionsSubscribersRepository->findByPromoUser($oPromotion->getId(),$oPromouser>getId());
+        if(!$r) return;
+
+        $oPromoSubscription = $r[0];
         if(!$oPromoSubscription->getId()) return;
+        
         if(!$oPromoSubscription->getIsConfirmed())
             throw new \Exception("Tienes una subscripción pendiente de confirmar. Revisa tu email: {$oPromouser->getEmail()}",Response::HTTP_BAD_REQUEST);
 
@@ -163,11 +172,11 @@ class PromotionSubscribeService extends BaseService
         $promosubscription = new AppPromotionsSusbscribers();
         $promosubscription->setIdPromotion($promotion->getId());
         $promosubscription->setIdPromouser($promouser->getId());
-        $this->promotionsSubscribesRepository->save($promosubscription);
+        $this->promotionsSubscribersRepository->save($promosubscription);
         //$promosubscription->setDateSubs();
         $code = $this->encDecrypt->get_rnd_word(5);
         $promosubscription->setCode1($code);
-        $this->promotionsSubscribesRepository->save($promosubscription);
+        $this->promotionsSubscribersRepository->save($promosubscription);
         //var_dump($promotion);die;
     }
 
