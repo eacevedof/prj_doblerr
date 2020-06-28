@@ -72,9 +72,9 @@ const app = new Vue({
             .then(response => response.json())
             .then(function(response) {
                 $("#btn-confirm").show()
-                //const objresp = JSON.parse(response)
+                
                 console.log("reponse",response)
-                //pr(objresp,"RESPONSE")
+                
                 if(response.title == "success") {
                     $(".app_button_close").click()
                     Swal.fire({
@@ -82,7 +82,7 @@ const app = new Vue({
                         title: 'Enhorabuena! <br/> Subscripción pendiente de confirmación',
                         html: 'Revisa tu email e ingresa el código que te hemos enviado.',
                     })
-                    //e.target.reset()
+                    
                     self.showconfirm = true;
                 } else {
                     Swal.fire({
@@ -104,6 +104,47 @@ const app = new Vue({
 
         confirm(){
             alert("confirm")
+            const self = this
+            const slug = get_slug()
+            const url = `/promotion/confirm-code/${slug}`
+            $("#btn-confirm").hide()
+            const data = new FormData();
+            data.append("action","confirm-code")
+            data.append("codeconfirm",this.codeconfirm)
+            fetch(url, {
+                method: 'post',
+                body: data
+            })
+            .then(response => response.json())
+            .then(function(response) {
+                $("#btn-confirm").show()
+                console.log("reponse",response)
+                
+                if(response.title == "success") {
+                    $(".app_button_close").click()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Enhorabuena! <br/> Subscripción realizada correctamente',
+                        html: 'Revisa tu email e ingresa el código que te hemos enviado.',
+                    })
+                    
+                    self.showconfirm = true;
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Vaya! Algo no ha ido bien',
+                        text: response.description,
+                    })
+                }
+            })
+            .catch(function(error){
+                console.log("error",error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Vaya! Ha ocurrido un error',
+                    text: error.toString(),
+                })
+            })
         },
 
         handleSubmit: function(e) {
