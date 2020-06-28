@@ -21,6 +21,8 @@ class PromotionSubscribeService extends BaseService
     private AppPromotionsSusbscribers $appPromotionsSusbscribers;
     private AppPromotionUser $appPromotionUser;
 
+    private ?string $slug;
+
     public function __construct(
         PromotionsSubscribersRepository $promotionsSubscribesRepository,
         PromotionRepository $promotionRepository,
@@ -35,6 +37,7 @@ class PromotionSubscribeService extends BaseService
         //$this->appPromotionsSusbscribers = $appPromotionsSusbscribers;
         //$this->appPromotionUser = $appPromotionUser;
         $this->requestStack = $requestStack;
+        //dump($this->requestStack);die;
     }
 
     private function _get_post($key){
@@ -45,11 +48,13 @@ class PromotionSubscribeService extends BaseService
         return $this->requestStack->getCurrentRequest()->query->get($key);
     }
 
+    private function _is_slug()
+    {}
+
     private function _is_promotion()
     {
-        $promoslug = $this->_get_get("promoslug");
-        $promotion = $this->promotionRepository->findBySlug($promoslug);
-        dump($promotion);die;
+        $promotion = $this->promotionRepository->findBySlug($this->slug);
+        dump($promotion);
     }
 
     private function _is_indate()
@@ -60,13 +65,15 @@ class PromotionSubscribeService extends BaseService
 
     private function _validate()
     {
+        $this->_is_slug();
         $this->_is_promotion();
         $this->_is_indate();
         $this->_is_ip();
     }
 
-    public function subscribe()
+    public function subscribe(?string $slug)
     {
+        $this->slug = $slug;
         $this->_validate();
     }
 

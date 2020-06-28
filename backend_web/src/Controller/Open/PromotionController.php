@@ -34,11 +34,11 @@ class PromotionController extends BaseController
     }
 
     //<domain>/promotion/subscribe/{slug}
-    public function subscribe(Request $request,String $promoslug)
+    public function subscribe(Request $request,string $promoslug)
     {
-
+//die($promoslug);
         try{
-            $this->promotionSubscribeService->subscribe();
+            $this->promotionSubscribeService->subscribe($promoslug);
             //$mail = new EmailService($this->get_request(),$mailer);
             //$mail->send();
         }
