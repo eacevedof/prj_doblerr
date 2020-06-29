@@ -36,7 +36,7 @@ class PromotionConfirmService extends BaseService
         $this->promotionUserRepository = $promotionUserRepository;
         $this->requestStack = $requestStack;
         $this->encDecrypt = new Encdecrypt();
-        $this->codeconfirm = $this->_get_post("codeconfirm");
+        $this->codeconfirm = trim($this->_get_post("codeconfirm"));
     }
 
     private function _get_post($key){
@@ -91,8 +91,12 @@ class PromotionConfirmService extends BaseService
         if(!trim($codeconfirm))
             throw new \Exception("No se ha proporcionado el código de confirmación",Response::HTTP_BAD_REQUEST);
 
-        if(!strstr($codeconfirm,"-"))
+        if(!is_numeric(substr($codeconfirm, 0, 1)))
             throw new \Exception("Formato de código de confirmación incorrecto.",Response::HTTP_BAD_REQUEST);
+
+        //comprobar si el ultimo caracter es un caracter
+        //if(!is_numeric(substr($codeconfirm, 0, 1)))
+            //throw new \Exception("Formato de código de confirmación incorrecto.",Response::HTTP_BAD_REQUEST);
     }
 
     private function _is_promotion()
