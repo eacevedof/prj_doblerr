@@ -184,4 +184,4 @@ class PromotionSubscriptionService extends BaseService
         $promosubscription->setCode1($finalcode);
         $this->promotionsSubscribersRepository->save($promosubscription);
     }
-}
+}// PromotionSubscriptionService
