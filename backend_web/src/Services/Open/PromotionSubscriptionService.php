@@ -115,6 +115,10 @@ class PromotionSubscriptionService extends BaseService
 
     private function _is_post()
     {
+        $action = $this->_get_post("action");
+        if($action!=="subscribe")
+            throw new \Exception("No se ha podido identificar la acción: {$action}",Response::HTTP_BAD_REQUEST);
+
         $name1 = $this->_get_post("name");
         if(!trim($name1))
             throw new \Exception("No se ha proporcionado el nombre",Response::HTTP_BAD_REQUEST);

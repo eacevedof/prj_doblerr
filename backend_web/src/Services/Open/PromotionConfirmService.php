@@ -87,6 +87,10 @@ class PromotionConfirmService extends BaseService
 
     private function _is_post()
     {
+        $action = $this->_get_post("action");
+        if($action!=="confirm-code")
+            throw new \Exception("No se ha podido identificar la acción {$action}",Response::HTTP_BAD_REQUEST);
+
         $codeconfirm = $this->codeconfirm;
         if(!trim($codeconfirm))
             throw new \Exception("No se ha proporcionado el código de confirmación",Response::HTTP_BAD_REQUEST);
