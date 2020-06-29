@@ -137,6 +137,33 @@ class Encdecrypt
         return implode("",$arWord);
     }
 
+    public function get_rnd_wordsimple($iLen=8)
+    {
+        $iLen = $iLen-4;
+        $arConsonants = [
+            "b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z",
+            "B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"
+        ];
+        $arVocals = ["a","e","i","o","u","A","E","I","O","U"];
+
+        $arWord = [];
+        for($i=0;$i<$iLen;$i++)
+        {
+            if($i%2===0)
+            {
+                $iPos = array_rand($arConsonants,1);
+                $arWord[] = $arConsonants[$iPos];
+            }
+            else
+            {
+                $iPos = array_rand($arVocals,1);
+                $arWord[] = $arVocals[$iPos];
+            }
+        }
+
+        return implode("",$arWord);
+    }
+
     private function num_replace(&$sNumeric)
     {
         $arNumbers = array_keys($this->arNumberConfig);

@@ -53,7 +53,10 @@ class PromotionController extends BaseController
             ['content-type' => 'application/json']))->setContent(json_encode(
             [
                 "title" => "success",
-                "description"=>"Te hemos enviado un código de confirmación por favor insertalo para finalizar tu subscripcioón."
+                "description"=>"
+                    Te hemos enviado un código de confirmación por favor insertalo para finalizar tu subscripcioón.
+                    
+                "
             ]
         ));
     }// subscribe
