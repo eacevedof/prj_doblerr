@@ -112,8 +112,7 @@ class PromotionConfirmService extends BaseService
     private function _is_subscription()
     {
         $subscription = $this->promotionsSubscribersRepository->findByCode1($this->codeconfirm);
-        print_r($subscription);die;
-        if(!$subscription->getId())
+        if(!($subscription && $subscription->getId()))
             throw new \Exception("No se ha encontrado esta subscripción.",Response::HTTP_NOT_FOUND);
     }
 

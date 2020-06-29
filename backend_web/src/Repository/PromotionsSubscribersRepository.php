@@ -47,8 +47,8 @@ class PromotionsSubscribersRepository extends BaseRepository
         $criteria = [
             "code1" => $codeconfirm,
         ];
-        $entity = $this->findBy($criteria);
-        return $entity;
+        $r = $this->findBy($criteria);
+        return $r[0] ?? null;
     }
 
 
