@@ -42,10 +42,10 @@ class PromotionsSubscribersRepository extends BaseRepository
         return $entity;
     }
 
-    public function findByCode(?string $codeconfirm):?AppPromotionsSusbscribers
+    public function findByCode1(?string $codeconfirm):?AppPromotionsSusbscribers
     {
         $criteria = [
-            "code" => $codeconfirm,
+            "code1" => $codeconfirm,
         ];
         $entity = $this->findBy($criteria);
         return $entity;
