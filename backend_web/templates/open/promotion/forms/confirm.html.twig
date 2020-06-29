@@ -1,0 +1,104 @@
+{% extends '/open/promotion/promotion.html.twig' %}
+
+{% block title %}Confirma tu promoción{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h2>Ingresa tu código recibido en tu email</h2>
+        {% if error %}
+            <div class="alert alert-error">
+                {{ error.messagekey|trans(error.messageData,"security") }}
+            </div>
+        {% endif %}
+        {% verbatim %}
+        <form id="form-confirm"  @submit="handleSubmit">
+            <input type="text" v-model="codeconfirm" placeholder="Código confirmación" required="required">
+            <button id="btn-confirm">Aceptar</button>
+        </form>
+        {% endverbatim %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+const pr = (v,t) => {
+    const str = JSON.stringify(v);
+    alert(`${t}\n:${str}`)
+}
+
+const get_slug = ()=>{
+    const parts = window.location.pathname.split("/")
+    const slugquery = parts[parts.length-1]
+    const slug = slugquery.split("?")
+    return slug[0] ?? ""
+}
+
+const formid = "form-confirm"
+
+const app = new Vue({
+    el: `#${formid}`,
+    data(){
+        return {
+            errors: [],
+            codeconfirm: "",
+        }
+    },
+
+    methods:{
+        handleSubmit: function(e) {
+          e.preventDefault()
+            //alert("confirm")
+            const self = this
+            const slug = get_slug()
+            const url = `/promotion/confirm/${slug}`
+            $("#btn-confirm").hide()
+            const data = new FormData();
+            data.append("action","confirm-code")
+            data.append("codeconfirm",this.codeconfirm)
+            fetch(url, {
+                method: 'post',
+                body: data
+            })
+            .then(response => response.json())
+            .then(function(response) {
+                $("#btn-confirm").show()
+                console.log("reponse",response)
+
+                if(response.title == "success") {
+                    $(".app_button_close").click()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Enhorabuena! <br/> Subscripción realizada correctamente',
+                        html: response.description
+                    })
+
+                    self.showconfirm = true;
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Esta acción no se ha podido completar',
+                        text: response.description,
+                    })
+                }
+            })
+            .catch(function(error){
+                $("#btn-confirm").show()
+                console.log("error catched:",error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Vaya! Ha ocurrido un error',
+                    text: error.toString(),
+                })
+            })
+        }//handleSubmit(e)
+
+    },//methods
+
+    mounted(){
+        console.log("mounted")
+        //document.getElementById("form-confirm").reset()
+    }
+})
+</script>
+{% endblock %}
+
+

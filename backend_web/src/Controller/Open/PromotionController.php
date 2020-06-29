@@ -89,5 +89,19 @@ class PromotionController extends BaseController
                 "description"=>"Gracias por haber confirmado tu suscripción. Hazla efectiva antes de que caduque."
             ]
         ));
-    }// subscribe
+    }// confirm
+
+    //<domain>/promotion/confirm-form/{slug}
+    public function confirm_form(PromotionConfirmService $promotionConfirmService, string $promoslug)
+    {
+        $seo = SeoProvider::get_meta("promotion");
+        return $this->render('open/promotion/forms/confirm.html.twig',[
+            "seo"=>$seo,
+            "error"=>null,
+            "options"=>[
+                ["value"=>"","text"=>""],
+            ],
+        ]);
+    }// confirm_form
+
 }//PromotionController
