@@ -38,6 +38,10 @@ promotion-confirm:
     path: /promotion/confirm/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm
 
+promotion-confirmform:
+    path: /promotion/confirm-form/{promoslug}
+    controller: App\Controller\Open\PromotionController::confirm_form
+
 # zona privada
 register:
     path: /register

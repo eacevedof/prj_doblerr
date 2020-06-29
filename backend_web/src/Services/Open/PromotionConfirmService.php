@@ -141,7 +141,6 @@ class PromotionConfirmService extends BaseService
         $this->_is_ip();
     }
 
-
     public function confirm(?string $slug)
     {
         $this->slug = $slug;
