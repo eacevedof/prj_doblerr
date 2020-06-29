@@ -49,8 +49,8 @@ class PromotionSubscriptionService extends BaseService
 
     private function _get_promotion(): ?AppPromotion
     {
-        $r = $this->promotionRepository->findBySlug($this->slug);
-        return $r[0] ?? null;
+        $entity = $this->promotionRepository->findBySlug($this->slug);
+        return $entity;
     }
 
     private function _get_saved_promouser(): AppPromotionUser
@@ -93,21 +93,17 @@ class PromotionSubscriptionService extends BaseService
         $oPromouser = $r[0];
         if(!$oPromouser->getId()) return;
 
-        $r = $this->promotionRepository->findBySlug($this->slug);
-        if(!$r) return;
+        $oPromotion = $this->promotionRepository->findBySlug($this->slug);
+        if(!$oPromotion) return;
 
-        $oPromotion = $r[0];
         if(!$oPromotion->getId()) return;
 
-        //print_r($oPromouser);die;
-        //var_dump($oPromotion);die;
         $idpromo = $oPromotion->getId();
         $idpromouser = $oPromouser->getId();
 
-        $r = $this->promotionsSubscribersRepository->findByPromoUser($idpromo,$idpromouser);
-        if(!$r) return;
+        $oPromoSubscription = $this->promotionsSubscribersRepository->findByPromoUser($idpromo,$idpromouser);
+        if(!$oPromoSubscription) return;
 
-        $oPromoSubscription = $r[0];
         if(!$oPromoSubscription->getId()) return;
         
         if(!$oPromoSubscription->getIsConfirmed())

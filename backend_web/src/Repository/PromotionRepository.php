@@ -41,9 +41,8 @@ class PromotionRepository extends BaseRepository
         $arcond = [
             "slug" => $slug
         ];
-        $obj = $this->findBy($arcond,null,1,0);
-        //var_dump($obj);die;
-        return $obj;
+        $r = $this->findBy($arcond);
+        return $r[0] ?? null;
     }
 
     public function findByDate(string $slug=""){
