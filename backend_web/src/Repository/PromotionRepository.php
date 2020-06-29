@@ -41,7 +41,9 @@ class PromotionRepository extends BaseRepository
         $arcond = [
             "slug" => $slug
         ];
-        return $this->findBy($arcond,null,1,0);
+        $obj = $this->findBy($arcond,null,1,0);
+        //var_dump($obj);die;
+        return $obj;
     }
 
     public function findByDate(string $slug=""){
@@ -56,9 +58,9 @@ class PromotionRepository extends BaseRepository
 
         $q = $qb->getQuery();
         $this->log($q->getDQL(),"promorepo.findByDate.q");
-        $r = $q->getResult();
-        //var_dump($r);die;
-        return $r;
+        $obj = $q->getResult();
+        //var_dump($obj);die;
+        return $obj;
     }
     
     public function save(AppPromotion $entity): void

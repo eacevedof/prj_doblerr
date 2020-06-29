@@ -42,10 +42,6 @@ class PromotionConfirmService extends BaseService
         return $this->requestStack->getCurrentRequest()->get($key);
     }
 
-    private function _get_get($key){
-        return $this->requestStack->getCurrentRequest()->query->get($key);
-    }
-
     private function _get_promotion(): ?AppPromotion
     {
         $r = $this->promotionRepository->findBySlug($this->slug);
@@ -54,7 +50,7 @@ class PromotionConfirmService extends BaseService
 
     private function _get_saved_promouser(): AppPromotionUser
     {
-        $name1 = $this->_get_post("name");
+        $name1 = $this->_get_post("codeconfirm");
         $email = $this->_get_post("email");
         $phone1 = $this->_get_post("phone");
 
@@ -149,11 +145,9 @@ class PromotionConfirmService extends BaseService
         $this->_is_ip();
     }
 
-    public function subscribe(?string $slug)
+    private function _subscribe(?string $slug)
     {
 
-
-        $promotion = $this->_get_promotion();
         $promouser = $this->_get_saved_promouser();
 
         $promosubscription = new AppPromotionsSusbscribers();
@@ -173,6 +167,7 @@ class PromotionConfirmService extends BaseService
     {
         $this->slug = $slug;
         $this->_validate_with_exceptions();
+        $promotion = $this->_get_promotion();
         $this->logd($slug,"confirm.slug");
     }
 
