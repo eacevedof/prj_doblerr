@@ -142,6 +142,7 @@ class PromotionConfirmService extends BaseService
     {
         $this->slug = $slug;
         $this->logd($slug,"confirm.slug");
+        $this->logd($this->codeconfirm,"confirm.code");
         $this->_validate_with_exceptions();
         $subscription = $this->_get_subscription();
         $subscription->setIsConfirmed(1);

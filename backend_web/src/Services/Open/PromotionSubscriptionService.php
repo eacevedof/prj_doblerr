@@ -173,8 +173,8 @@ class PromotionSubscriptionService extends BaseService
         $promosubscription->setIdPromotion($promotion->getId());
         $promosubscription->setIdPromouser($promouser->getId());
         $this->promotionsSubscribersRepository->save($promosubscription);
-        $code = $this->encDecrypt->get_rnd_wordsimple(3);
-        $finalcode = "{$promosubscription->getId()}-$code";
+        $code = $this->encDecrypt->get_rnd_wordsimple(4);
+        $finalcode = "{$promosubscription->getId()}$code";
         $finalcode = strtolower($finalcode);
         $this->logd($finalcode,"finalcode");
         $promosubscription->setCode1($finalcode);
