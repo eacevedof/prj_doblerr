@@ -8,14 +8,14 @@ use App\Providers\SeoProvider;
 use App\Services\EmailService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
-use App\Services\Open\PromotionSubscribeService;
+use App\Services\Open\PromotionSubscriptionService;
 use Symfony\Component\HttpFoundation\Response;
 
 class PromotionController extends BaseController
 {
-    private PromotionSubscribeService $promotionSubscribeService;
+    private PromotionSubscriptionService $promotionSubscribeService;
 
-    public function __construct(PromotionSubscribeService $promotionSubscribeService)
+    public function __construct(PromotionSubscriptionService $promotionSubscribeService)
     {
         $this->promotionSubscribeService = $promotionSubscribeService;
     }

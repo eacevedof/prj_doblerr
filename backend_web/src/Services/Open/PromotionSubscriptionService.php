@@ -14,7 +14,7 @@ use App\Entity\App\AppPromotionUser;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class PromotionSubscribeService extends BaseService
+class PromotionSubscriptionService extends BaseService
 {
     private PromotionsSubscribersRepository $promotionsSubscribersRepository;
     private PromotionRepository $promotionRepository;
@@ -124,7 +124,7 @@ class PromotionSubscribeService extends BaseService
             throw new \Exception("No se ha proporcionado el nombre",Response::HTTP_BAD_REQUEST);
 
         $email = $this->_get_post("email");
-        if(!filter_var($email, FILTER_validate_with_exceptions_EMAIL))
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
             throw new \Exception("Email incorrecto",Response::HTTP_BAD_REQUEST);
 
         $phone1 = $this->_get_post("phone");
@@ -180,7 +180,8 @@ class PromotionSubscribeService extends BaseService
         //$promosubscription->setDateSubs();
         $code = $this->encDecrypt->get_rnd_word(5);
         $finalcode = "{$promosubscription->getId()}-$code";
-        $promosubscription->setCode1($code);
+        $this->logd($finalcode,"finalcode");
+        $promosubscription->setCode1($finalcode);
         $this->promotionsSubscribersRepository->save($promosubscription);
         //var_dump($promotion);die;
     }
