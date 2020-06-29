@@ -177,18 +177,10 @@ class PromotionSubscriptionService extends BaseService
         $promosubscription->setIdPromotion($promotion->getId());
         $promosubscription->setIdPromouser($promouser->getId());
         $this->promotionsSubscribersRepository->save($promosubscription);
-        //$promosubscription->setDateSubs();
         $code = $this->encDecrypt->get_rnd_word(5);
         $finalcode = "{$promosubscription->getId()}-$code";
         $this->logd($finalcode,"finalcode");
         $promosubscription->setCode1($finalcode);
         $this->promotionsSubscribersRepository->save($promosubscription);
-        //var_dump($promotion);die;
     }
-
-    public function confirm(?string $slug)
-    {
-        $this->logd($slug,"confirm.slug");
-    }
-
 }

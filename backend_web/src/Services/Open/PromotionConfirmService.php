@@ -36,7 +36,6 @@ class PromotionConfirmService extends BaseService
         $this->requestStack = $requestStack;
 
         $this->encDecrypt = new Encdecrypt();
-        //dump($this->requestStack);die;
     }
 
     private function _get_post($key){
@@ -58,13 +57,6 @@ class PromotionConfirmService extends BaseService
         $name1 = $this->_get_post("name");
         $email = $this->_get_post("email");
         $phone1 = $this->_get_post("phone");
-
-        /*
-        $promouser = new AppPromotionUser();
-        $promouser->setName1($name1);
-        $promouser->setEmail($email);
-        $promouser->setPhone1($phone1);
-        */
 
         $r = $this->promotionUserRepository->findBy(["email"=>$email]);
         $promouser = $r[0] ?? null;
@@ -99,8 +91,6 @@ class PromotionConfirmService extends BaseService
         $oPromotion = $r[0];
         if(!$oPromotion->getId()) return;
 
-        //print_r($oPromouser);die;
-        //var_dump($oPromotion);die;
         $idpromo = $oPromotion->getId();
         $idpromouser = $oPromouser->getId();
 
@@ -117,25 +107,20 @@ class PromotionConfirmService extends BaseService
             throw new \Exception("Solo te puedes subscribir una vez",Response::HTTP_BAD_REQUEST);
     }
 
-    private function _is_post()
-    {
-        $name1 = $this->_get_post("name");
-        if(!trim($name1))
-            throw new \Exception("No se ha proporcionado el nombre",Response::HTTP_BAD_REQUEST);
-
-        $email = $this->_get_post("email");
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-            throw new \Exception("Email incorrecto",Response::HTTP_BAD_REQUEST);
-
-        $phone1 = $this->_get_post("phone");
-        if(!trim($phone1))
-            throw new \Exception("No se ha proporcionado un teléfono",Response::HTTP_BAD_REQUEST);
-    }
-
     private function _is_slug()
     {
         if(!$this->slug)
             throw new \Exception("No se ha seleccionado una promoción",Response::HTTP_BAD_REQUEST);
+    }
+
+    private function _is_post()
+    {
+        $codeconfirm = $this->_get_post("codeconfirm");
+        if(!trim($codeconfirm))
+            throw new \Exception("No se ha proporcionado el código de confirmación",Response::HTTP_BAD_REQUEST);
+
+        if(!strstr($codeconfirm,"-"))
+            throw new \Exception("Formato de código de confirmación incorrecto.",Response::HTTP_BAD_REQUEST);
     }
 
     private function _is_promotion()
@@ -152,8 +137,7 @@ class PromotionConfirmService extends BaseService
             throw new \Exception("La promoción esta fuera de fecha.",Response::HTTP_BAD_REQUEST);
     }
 
-    private function _is_ip()
-    {}
+    private function _is_ip(){}
 
     private function _validate_with_exceptions()
     {
@@ -167,8 +151,7 @@ class PromotionConfirmService extends BaseService
 
     public function subscribe(?string $slug)
     {
-        $this->slug = $slug;
-        $this->_validate_with_exceptions();
+
 
         $promotion = $this->_get_promotion();
         $promouser = $this->_get_saved_promouser();
@@ -177,7 +160,7 @@ class PromotionConfirmService extends BaseService
         $promosubscription->setIdPromotion($promotion->getId());
         $promosubscription->setIdPromouser($promouser->getId());
         $this->promotionsSubscribersRepository->save($promosubscription);
-        //$promosubscription->setDateSubs();
+        $promosubscription->setDateSubs(new \DateTime());
         $code = $this->encDecrypt->get_rnd_word(5);
         $finalcode = "{$promosubscription->getId()}-$code";
         $this->logd($finalcode,"finalcode");
@@ -188,6 +171,8 @@ class PromotionConfirmService extends BaseService
 
     public function confirm(?string $slug)
     {
+        $this->slug = $slug;
+        $this->_validate_with_exceptions();
         $this->logd($slug,"confirm.slug");
     }
 
