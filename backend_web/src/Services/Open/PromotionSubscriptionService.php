@@ -165,6 +165,14 @@ class PromotionSubscriptionService extends BaseService
         $this->_is_ip();
     }
 
+    private function _get_generated_code1(AppPromotionsSusbscribers $subscription)
+    {
+        $code = $this->encDecrypt->get_rnd_wordsimple(4);
+        $finalcode = "{$subscription->getId()}$code";
+        $finalcode = strtolower($finalcode);
+        return $finalcode;
+    }
+
     public function subscribe(?string $slug)
     {
         $this->slug = $slug;
@@ -173,15 +181,14 @@ class PromotionSubscriptionService extends BaseService
         $promotion = $this->_get_promotion();
         $promouser = $this->_get_saved_promouser();
 
-        $promosubscription = new AppPromotionsSusbscribers();
-        $promosubscription->setIdPromotion($promotion->getId());
-        $promosubscription->setIdPromouser($promouser->getId());
-        $this->promotionsSubscribersRepository->save($promosubscription);
-        $code = $this->encDecrypt->get_rnd_wordsimple(4);
-        $finalcode = "{$promosubscription->getId()}$code";
-        $finalcode = strtolower($finalcode);
-        $this->logd($finalcode,"finalcode");
-        $promosubscription->setCode1($finalcode);
-        $this->promotionsSubscribersRepository->save($promosubscription);
+        $subscription = new AppPromotionsSusbscribers();
+        $subscription->setIdPromotion($promotion->getId());
+        $subscription->setIdPromouser($promouser->getId());
+        $this->promotionsSubscribersRepository->save($subscription);
+
+        $rndcode = $this->_get_generated_code1($subscription);
+        $this->logd($rndcode,"subscribe.randomcode");
+        $subscription->setCode1($rndcode);
+        $this->promotionsSubscribersRepository->save($subscription);
     }
 }// PromotionSubscriptionService
