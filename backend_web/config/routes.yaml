@@ -27,19 +27,19 @@ products:
     controller: App\Controller\Open\ProductController
 
 promotions:
-    path: /promotion/{slug}
+    path: /promocion/{slug}
     controller: App\Controller\Open\PromotionController
 
 promotion-subscribe:
-    path: /promotion/subscribe/{promoslug}
+    path: /promocion/subscribe/{promoslug}
     controller: App\Controller\Open\PromotionController::subscribe
 
 promotion-confirm:
-    path: /promotion/confirm/{promoslug}
+    path: /promocion/confirm/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm
 
 promotion-confirmform:
-    path: /promotion/confirm-form/{promoslug}
+    path: /promocion/confirm-form/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm_form
 
 # zona privada
