@@ -106,7 +106,7 @@ const app = new Vue({
             alert("confirm")
             const self = this
             const slug = get_slug()
-            const url = `/promotion/confirm-code/${slug}`
+            const url = `/promotion/confirm/${slug}`
             $("#btn-confirm").hide()
             const data = new FormData();
             data.append("action","confirm-code")

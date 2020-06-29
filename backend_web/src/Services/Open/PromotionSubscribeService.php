@@ -124,7 +124,7 @@ class PromotionSubscribeService extends BaseService
             throw new \Exception("No se ha proporcionado el nombre",Response::HTTP_BAD_REQUEST);
 
         $email = $this->_get_post("email");
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+        if(!filter_var($email, FILTER_validate_with_exceptions_EMAIL))
             throw new \Exception("Email incorrecto",Response::HTTP_BAD_REQUEST);
 
         $phone1 = $this->_get_post("phone");
@@ -155,7 +155,7 @@ class PromotionSubscribeService extends BaseService
     private function _is_ip()
     {}
 
-    private function _validate()
+    private function _validate_with_exceptions()
     {
         $this->_is_slug();
         $this->_is_post();
@@ -168,7 +168,8 @@ class PromotionSubscribeService extends BaseService
     public function subscribe(?string $slug)
     {
         $this->slug = $slug;
-        $this->_validate();
+        $this->_validate_with_exceptions();
+
         $promotion = $this->_get_promotion();
         $promouser = $this->_get_saved_promouser();
 
@@ -178,9 +179,15 @@ class PromotionSubscribeService extends BaseService
         $this->promotionsSubscribersRepository->save($promosubscription);
         //$promosubscription->setDateSubs();
         $code = $this->encDecrypt->get_rnd_word(5);
+        $finalcode = "{$promosubscription->getId()}-$code";
         $promosubscription->setCode1($code);
         $this->promotionsSubscribersRepository->save($promosubscription);
         //var_dump($promotion);die;
+    }
+
+    public function confirm(?string $slug)
+    {
+        $this->logd($slug,"confirm.slug");
     }
 
 }

@@ -34,6 +34,10 @@ promotion-subscribe:
     path: /promotion/subscribe/{promoslug}
     controller: App\Controller\Open\PromotionController::subscribe
 
+promotion-confirm:
+    path: /promotion/confirm/{promoslug}
+    controller: App\Controller\Open\PromotionController::confirm
+
 # zona privada
 register:
     path: /register

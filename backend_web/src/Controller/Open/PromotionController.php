@@ -34,7 +34,7 @@ class PromotionController extends BaseController
     }
 
     //<domain>/promotion/subscribe/{slug}
-    public function subscribe(Request $request,string $promoslug)
+    public function subscribe(string $promoslug)
     {
 //die($promoslug);
         try{
@@ -62,6 +62,35 @@ class PromotionController extends BaseController
                 "description"=>"Te hemos enviado un código de confirmación por favor insertalo para finalizar tu subscripcioón."
             ]
         ));
-    }
+    }// subscribe
 
+    //<domain>/promotion/confirm/{slug}
+    public function confirm(string $promoslug)
+    {
+        try{
+            $this->promotionSubscribeService->confirm($promoslug);
+            //$mail = new EmailService($this->get_request(),$mailer);
+            //$mail->send();
+        }
+        catch(\Exception $e){
+            $this->logd($e->getMessage(),"promotion.confirm.error");
+            return (new Response('Content',
+                Response::HTTP_BAD_REQUEST,
+                ['content-type' => 'application/json']))->setContent(json_encode(
+                [
+                    "title" => "error",
+                    "description"=>$e->getMessage()
+                ]
+            ));
+        }
+
+        return (new Response('Content',
+            Response::HTTP_OK,
+            ['content-type' => 'application/json']))->setContent(json_encode(
+            [
+                "title" => "success",
+                "description"=>"Gracias por haber confirmado tu suscripción. Hazla efectiva antes de que caduque."
+            ]
+        ));
+    }// subscribe
 }//PromotionController
