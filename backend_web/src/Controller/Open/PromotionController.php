@@ -6,6 +6,7 @@ namespace App\Controller\Open;
 use App\Component\Serialize;
 use App\Providers\SeoProvider;
 use App\Services\EmailService;
+use App\Services\Open\PromotionConfirmService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
 use App\Services\Open\PromotionSubscriptionService;
@@ -13,15 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PromotionController extends BaseController
 {
-    private PromotionSubscriptionService $promotionSubscribeService;
-
-    public function __construct(PromotionSubscriptionService $promotionSubscribeService)
-    {
-        $this->promotionSubscribeService = $promotionSubscribeService;
-    }
 
     //<domain>/promotion/<some-slug>
-    public function __invoke(Request $request, string $slug)
+    public function __invoke(string $slug)
     {
         $seo = SeoProvider::get_meta("promotion");
         return $this->render('open/promotion/forms/promo-0001.html.twig',[
@@ -34,11 +29,11 @@ class PromotionController extends BaseController
     }
 
     //<domain>/promotion/subscribe/{slug}
-    public function subscribe(string $promoslug)
+    public function subscribe(PromotionSubscriptionService $promotionSubscriptionService, string $promoslug)
     {
 //die($promoslug);
         try{
-            $this->promotionSubscribeService->subscribe($promoslug);
+            $promotionSubscriptionService->subscribe($promoslug);
             //$mail = new EmailService($this->get_request(),$mailer);
             //$mail->send();
         }
@@ -65,10 +60,10 @@ class PromotionController extends BaseController
     }// subscribe
 
     //<domain>/promotion/confirm/{slug}
-    public function confirm(string $promoslug)
+    public function confirm(PromotionConfirmService $promotionConfirmService, string $promoslug)
     {
         try{
-            $this->promotionSubscribeService->confirm($promoslug);
+            $promotionConfirmService->confirm($promoslug);
             //$mail = new EmailService($this->get_request(),$mailer);
             //$mail->send();
         }
