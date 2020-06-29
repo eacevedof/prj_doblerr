@@ -32,7 +32,7 @@ class PromotionsSubscribersRepository extends BaseRepository
         return $entity;
     }
 
-    public function findByPromoUser($idpromotion, $idpromouser)
+    public function findByPromoUser($idpromotion, $idpromouser):?AppPromotionsSusbscribers
     {
         $criteria = [
             "idPromotion" => $idpromotion,"idPromouser" => $idpromouser,
@@ -41,7 +41,17 @@ class PromotionsSubscribersRepository extends BaseRepository
         $entity = $this->findBy($criteria);
         return $entity;
     }
-    
+
+    public function findByCode(?string $codeconfirm):?AppPromotionsSusbscribers
+    {
+        $criteria = [
+            "code" => $codeconfirm,
+        ];
+        $entity = $this->findBy($criteria);
+        return $entity;
+    }
+
+
     public function findAll()
     {
         return $this->objectRepository->findAll();
