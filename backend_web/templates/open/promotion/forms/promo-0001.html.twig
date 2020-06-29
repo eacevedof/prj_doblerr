@@ -131,8 +131,8 @@ const app = new Vue({
                     self.showconfirm = true;
                 } else {
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Vaya! Algo no ha ido bien',
+                        icon: 'warning',
+                        title: 'Proceso incompleto',
                         text: response.description,
                     })
                 }

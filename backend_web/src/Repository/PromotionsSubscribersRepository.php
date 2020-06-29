@@ -27,19 +27,18 @@ class PromotionsSubscribersRepository extends BaseRepository
 
     public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
-        /** @var AppPromotionsSusbscribers $entity */
-        $entity = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
-        return $entity;
+        /** @var AppPromotionsSusbscribers[] $r */
+        $r = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
+        return $r;
     }
 
     public function findByPromoUser($idpromotion, $idpromouser):?AppPromotionsSusbscribers
     {
         $criteria = [
             "idPromotion" => $idpromotion,"idPromouser" => $idpromouser,
-            //"is_confirmed" => 0
         ];
-        $entity = $this->findBy($criteria);
-        return $entity;
+        $r = $this->findBy($criteria);
+        return $r[0] ?? null;
     }
 
     public function findByCode1(?string $codeconfirm):?AppPromotionsSusbscribers
