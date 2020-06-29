@@ -119,9 +119,9 @@ class PromotionConfirmService extends BaseService
     private function _is_not_confirmed()
     {
         $codeconfirm = $this->_get_post("codeconfirm");
-        $subscription = $this->promotionsSubscribersRepository->findByCode($codeconfirm);
+        $subscription = $this->promotionsSubscribersRepository->findByCode1($codeconfirm);
         if($subscription->getIsConfirmed())
-            throw new \Exception("Ya has confirmado tu subscripción",Response::HTTP_BAD_REQUEST);
+            throw new \Exception("Esta subscripción ya estaba confirmada",Response::HTTP_BAD_REQUEST);
     }
 
     private function _is_ip(){}
@@ -133,7 +133,7 @@ class PromotionConfirmService extends BaseService
         $this->_is_promotion();
         $this->_is_promotion_indate();
         $this->_is_subscription();
-        //$this->_is_not_confirmed();
+        $this->_is_not_confirmed();
         $this->_is_ip();
     }
 
@@ -143,8 +143,10 @@ class PromotionConfirmService extends BaseService
         $this->slug = $slug;
         $this->logd($slug,"confirm.slug");
         $this->_validate_with_exceptions();
-        //$promotion = $this->_get_promotion();
-
+        $subscription = $this->_get_subscription();
+        $subscription->setIsConfirmed(1);
+        $subscription->setDateSubs(new \DateTime());
+        $this->promotionsSubscribersRepository->save($subscription);
     }
 
 }
