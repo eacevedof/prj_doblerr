@@ -103,7 +103,7 @@ const app = new Vue({
         },//subscribe
 
         confirm(){
-            alert("confirm")
+            //alert("confirm")
             const self = this
             const slug = get_slug()
             const url = `/promotion/confirm/${slug}`
@@ -125,7 +125,7 @@ const app = new Vue({
                     Swal.fire({
                         icon: 'success',
                         title: 'Enhorabuena! <br/> Subscripción realizada correctamente',
-                        html: 'Revisa tu email e ingresa el código que te hemos enviado.',
+                        html: response.description
                     })
                     
                     self.showconfirm = true;
