@@ -157,4 +157,4 @@ class PromotionConfirmService extends BaseService
         $this->promotionsSubscribersRepository->save($subscription);
     }
 
-}
+}//PromotionConfirmService
