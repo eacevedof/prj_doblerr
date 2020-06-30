@@ -6,12 +6,12 @@ use App\Entity\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AppPromotionsSusbscribers
+ * AppPromotionsSubscriptions
  *
- * @ORM\Table(name="app_promotions_susbscribers")
+ * @ORM\Table(name="app_promotions_subscriptions")
  * @ORM\Entity
  */
-class AppPromotionsSusbscribers extends BaseEntity
+class AppPromotionsSubscriptions extends BaseEntity
 {
     /**
      * @var int
@@ -96,9 +96,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param int $idPromotion
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setIdPromotion(int $idPromotion): AppPromotionsSusbscribers
+    public function setIdPromotion(int $idPromotion): AppPromotionsSubscriptions
     {
         $this->idPromotion = $idPromotion;
         return $this;
@@ -114,9 +114,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param int $idPromouser
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setIdPromouser(int $idPromouser): AppPromotionsSusbscribers
+    public function setIdPromouser(int $idPromouser): AppPromotionsSubscriptions
     {
         $this->idPromouser = $idPromouser;
         return $this;
@@ -132,9 +132,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param \DateTime|null $dateSubs
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setDateSubs(?\DateTime $dateSubs): AppPromotionsSusbscribers
+    public function setDateSubs(?\DateTime $dateSubs): AppPromotionsSubscriptions
     {
         $this->dateSubs = $dateSubs;
         return $this;
@@ -150,9 +150,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param string|null $code1
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setCode1(?string $code1): AppPromotionsSusbscribers
+    public function setCode1(?string $code1): AppPromotionsSubscriptions
     {
         $this->code1 = $code1;
         return $this;
@@ -168,9 +168,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param \DateTime|null $dateConfirm
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setDateConfirm(?\DateTime $dateConfirm): AppPromotionsSusbscribers
+    public function setDateConfirm(?\DateTime $dateConfirm): AppPromotionsSubscriptions
     {
         $this->dateConfirm = $dateConfirm;
         return $this;
@@ -186,9 +186,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param bool|null $isConfirmed
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setIsConfirmed(?bool $isConfirmed): AppPromotionsSusbscribers
+    public function setIsConfirmed(?bool $isConfirmed): AppPromotionsSubscriptions
     {
         $this->isConfirmed = $isConfirmed;
         return $this;
@@ -204,9 +204,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param \DateTime|null $dateExec
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setDateExec(?\DateTime $dateExec): AppPromotionsSusbscribers
+    public function setDateExec(?\DateTime $dateExec): AppPromotionsSubscriptions
     {
         $this->dateExec = $dateExec;
         return $this;
@@ -222,9 +222,9 @@ class AppPromotionsSusbscribers extends BaseEntity
 
     /**
      * @param string|null $notes
-     * @return AppPromotionsSusbscribers
+     * @return AppPromotionsSubscriptions
      */
-    public function setNotes(?string $notes): AppPromotionsSusbscribers
+    public function setNotes(?string $notes): AppPromotionsSubscriptions
     {
         $this->notes = $notes;
         return $this;

@@ -24,13 +24,6 @@ class AppOrderLines extends BaseEntity
     private $id;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $description = null;
-
-    /**
      * @var int|null
      *
      * @ORM\Column(name="id_order_head", type="integer", nullable=true, options={"default"="NULL"})

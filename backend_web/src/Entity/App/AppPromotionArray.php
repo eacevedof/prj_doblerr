@@ -25,13 +25,6 @@ class AppPromotionArray extends BaseEntity
     /**
      * @var string|null
      *
-     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
-     */
-    private $codeErp = null;
-
-    /**
-     * @var string|null
-     *
      * @ORM\Column(name="type", type="string", length=15, nullable=true, options={"default"="NULL"})
      */
     private $type = null;
@@ -42,13 +35,6 @@ class AppPromotionArray extends BaseEntity
      * @ORM\Column(name="id_tosave", type="string", length=25, nullable=true, options={"default"="NULL"})
      */
     private $idTosave = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $description = null;
 
     /**
      * @var int|null
@@ -63,13 +49,5 @@ class AppPromotionArray extends BaseEntity
      * @ORM\Column(name="order_by", type="integer", nullable=false, options={"default"="100"})
      */
     private $orderBy = '100';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code_cache", type="string", length=50, nullable=true, options={"default"="NULL"})
-     */
-    private $codeCache = null;
-
 
 }

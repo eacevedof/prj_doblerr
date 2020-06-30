@@ -24,20 +24,6 @@ class AppOrderHead extends BaseEntity
     private $id;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code_erp", type="string", length=25, nullable=true, options={"default"="NULL"})
-     */
-    private $codeErp = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true, options={"default"="NULL"})
-     */
-    private $description = null;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id_user_client", type="integer", nullable=false)

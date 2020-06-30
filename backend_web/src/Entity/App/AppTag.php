@@ -28,11 +28,6 @@ class AppTag extends BaseEntity
      */
     private $idType = null;
 
-    /**
-     * @var string|null
-     * @ORM\Column(name="description", type="string", length=50, nullable=true, options={"default"="NULL"})
-     */
-    private $description = null;
 
     /**
      * @var int|null
