@@ -18,7 +18,7 @@ final class EmailPromotionService extends BaseService
         $this->mailer = $mailer;
     }
 
-    private function get_text_appointment()
+    private function _get_text_appointment()
     {
         $message = "
             Cita:
@@ -32,7 +32,7 @@ final class EmailPromotionService extends BaseService
         return $message;
     }
 
-    private function get_text_contact()
+    private function _get_text_contact()
     {
         $str = $this->get_post("message");
         $str = substr($str,0,3000);
@@ -46,7 +46,7 @@ final class EmailPromotionService extends BaseService
         return $message;
     }
 
-    private function appointment()
+    private function _appointment()
     {
         $action = $this->get_post("action");
         if($action==self::APPOINTMENT)
@@ -59,7 +59,7 @@ final class EmailPromotionService extends BaseService
             "to" => $email,
             "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
-            "text" => $this->get_text_appointment(),
+            "text" => $this->_get_text_appointment(),
         ];
 
         $this->logd($data,"mail.apointment");
@@ -68,7 +68,7 @@ final class EmailPromotionService extends BaseService
         //$mail->send();
     }
 
-    private function contact()
+    private function _contact()
     {
         $action = $this->get_post("action");
         if($action==self::CONTACT)
@@ -81,7 +81,7 @@ final class EmailPromotionService extends BaseService
             "to" => $email,
             "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
-            "text" => $this->get_text_contact(),
+            "text" => $this->_get_text_contact(),
         ];
 
         $this->logd($data,"mail.contact");
@@ -94,8 +94,8 @@ final class EmailPromotionService extends BaseService
     {
         $action = $this->get_post("action");
         $this->logd($action,"action");
-        if($action==self::APPOINTMENT) $this->appointment();
-        if($action==self::CONTACT) $this->contact();
+        if($action==self::APPOINTMENT) $this->_appointment();
+        if($action==self::CONTACT) $this->_contact();
     }
 
-}
+}//EmailPromotionService
