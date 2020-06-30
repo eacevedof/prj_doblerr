@@ -44,8 +44,8 @@ final class EmailPromotionService extends BaseService
         //$oSubscription = $this->objects["subscription"];
 
         $message = "
-        Hola %s. Gracias por confirmar tu suscripción. Ya tienes la promoción %s. 
-        Recuerda consumirla antes del día %s  
+        Hola %s. Gracias por confirmar tu suscripción. Ya tienes la promoción \"<b>%s</b>\".<br/> 
+        Recuerda consumirla antes del día <b>%s</b>  
         <br/>
         <b>Condiciones:</b>
         <ul>
@@ -56,7 +56,7 @@ final class EmailPromotionService extends BaseService
         </ul>
         ";
 
-        return sprintf($message,$oUser->getName1(),$oPromotion->getDescription(),$oPromotion->getDateTo());
+        return sprintf($message,$oUser->getName1(),$oPromotion->getDescription(),$oPromotion->getDateTo()->format("Y-m-d"));
     }
 
     private function _subscribe()
