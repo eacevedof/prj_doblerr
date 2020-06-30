@@ -6,11 +6,13 @@ namespace App\Controller\Open;
 use App\Component\Serialize;
 use App\Providers\SeoProvider;
 use App\Services\Email\EmailFormService;
+use App\Services\Email\EmailPromotionService;
 use App\Services\Open\PromotionConfirmService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
 use App\Services\Open\PromotionSubscriptionService;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 
 class PromotionController extends BaseController
 {
@@ -31,12 +33,13 @@ class PromotionController extends BaseController
     //<domain>/promocion/subscribe/{slug}
     public function subscribe(
         PromotionSubscriptionService $promotionSubscriptionService,
+        MailerInterface $mailer,
         string $promoslug)
     {
         try{
             $promotionSubscriptionService->subscribe($promoslug);
-            //$mail = new EmailFormService($this->get_request(),$mailer);
-            //$mail->send();
+            $mail = new EmailPromotionService($this->get_request(),$mailer);
+            $mail->send();
         }
         catch(\Exception $e){
             $this->logd($e->getMessage(),"promotion.subscribe.error");

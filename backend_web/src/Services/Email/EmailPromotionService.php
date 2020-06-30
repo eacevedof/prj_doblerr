@@ -7,8 +7,8 @@ use Symfony\Component\Mailer\MailerInterface;
 
 final class EmailPromotionService extends BaseService
 {
-    private const APPOINTMENT = "appointment";
-    private const CONTACT = "contact";
+    private const SUBSCRIBE = "subscribe";
+    private const CONFIRM = "confirm-code";
 
     private MailerInterface $mailer;
 
@@ -18,7 +18,7 @@ final class EmailPromotionService extends BaseService
         $this->mailer = $mailer;
     }
 
-    private function _get_text_appointment()
+    private function _get_text_subscribe()
     {
         $message = "
             Cita:
@@ -32,7 +32,7 @@ final class EmailPromotionService extends BaseService
         return $message;
     }
 
-    private function _get_text_contact()
+    private function _get_text_confirm()
     {
         $str = $this->get_post("message");
         $str = substr($str,0,3000);
@@ -46,10 +46,10 @@ final class EmailPromotionService extends BaseService
         return $message;
     }
 
-    private function _appointment()
+    private function _subscribe()
     {
         $action = $this->get_post("action");
-        if($action==self::APPOINTMENT)
+        if($action==self::SUBSCRIBE)
             $action = "Cita";
         $name = $this->get_post("name");
         $email = $this->get_post("email");
@@ -59,7 +59,7 @@ final class EmailPromotionService extends BaseService
             "to" => $email,
             "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
-            "text" => $this->_get_text_appointment(),
+            "text" => $this->_get_text_subscribe(),
         ];
 
         $this->logd($data,"mail.apointment");
@@ -68,11 +68,11 @@ final class EmailPromotionService extends BaseService
         //$mail->send();
     }
 
-    private function _contact()
+    private function _confirm()
     {
         $action = $this->get_post("action");
-        if($action==self::CONTACT)
-            $action = "Consulta";
+        if($action==self::CONFIRM)
+            $action = "Confirmación";
         $name = $this->get_post("name");
         $email = $this->get_post("email");
 
@@ -81,7 +81,7 @@ final class EmailPromotionService extends BaseService
             "to" => $email,
             "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
-            "text" => $this->_get_text_contact(),
+            "text" => $this->_get_text_confirm(),
         ];
 
         $this->logd($data,"mail.contact");
@@ -94,8 +94,8 @@ final class EmailPromotionService extends BaseService
     {
         $action = $this->get_post("action");
         $this->logd($action,"action");
-        if($action==self::APPOINTMENT) $this->_appointment();
-        if($action==self::CONTACT) $this->_contact();
+        if($action==self::SUBSCRIBE) $this->_subscribe();
+        if($action==self::CONFIRM) $this->_confirm();
     }
 
 }//EmailPromotionService
