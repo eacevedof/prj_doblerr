@@ -30,12 +30,13 @@ var app3 = new Vue({
     el: "#form-contact",
     data: {
         errors:[],
+        issending: false,
+        btnsend: "Enviar",
+
         name: "",
         email: "",
         subject: "",
         message: "",
-        issending: false,
-        btnsend: "Enviar",
     },
     methods:{
         reset(){
@@ -46,6 +47,7 @@ var app3 = new Vue({
         },
 
         checkform: function(e) {
+            const self = this
             console.log("checkform")
             e.preventDefault()
             this.issending = true
@@ -75,7 +77,7 @@ var app3 = new Vue({
                         title: 'Gracias por contactar con nosotros!',
                         html: 'En breves momentos recibirás una copia del mensaje en tu email.',
                     })
-                    this.reset()
+                    self.reset()
                 } else {
                     Swal.fire({
                         icon: 'warning',
@@ -85,13 +87,13 @@ var app3 = new Vue({
                 }
             })
             .catch(error => {
-                console.log("catch.error",response)
+                console.log("catch.error",error)
                 this.issending = false
                 this.btnsend = "Enviar"
                 Swal.fire({
                     icon: 'error',
                     title: 'Vaya! Algo ha ido mal',
-                    text: 'No se ha podido procesar tu mensaje. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
+                    text: 'No se ha podido procesar tu mensaje. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.'+error.toString(),
                 })
             })
         }

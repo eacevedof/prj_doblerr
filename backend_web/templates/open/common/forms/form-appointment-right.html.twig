@@ -11,7 +11,7 @@
 <div class="app_content d-flex flex-column align-items-start justify-content-center" style="background: black">
     <div class="app_form_container text-right">
         {% verbatim %}
-        <form id="frmappointment" action="/mail" @submit="checkform" method="post" class="app_form">
+        <form id="form-appointment-right" action="/mail" @submit="checkform" method="post" class="app_form">
             <input type="text" v-model="name" class="app_input" placeholder="Nombre" required="required">
             <input type="email" v-model="email"  class="app_input" placeholder="Email" required="required">
             <input type="text" v-model="phone"  class="app_input" placeholder="Teléfono" required="required">
@@ -38,9 +38,11 @@
 
 <script>
 var app2 = new Vue({
-    el: "#frmappointment",
+    el: "#form-appointment-right",
     data: {
         errors:[],
+        btnsend: "Enviar",
+        issending: false,
         name: "",
         email: "",
         phone: "",
@@ -65,10 +67,21 @@ var app2 = new Vue({
 
     },
     methods:{
+        reset(){
+            this.name = ""
+            this.email = ""
+            this.phone = ""
+            this.datetime = ""
+            this.selservices = []
+            this.selperson = ""
+        },
+
         checkform: function(e) {
             console.log("checkform")
-            $("#btn-appointment").hide()
+            const self = this
             e.preventDefault()
+            this.issending = true
+            this.btnsend = "Enviando..."
 
             const data = new FormData();
             data.append("action","appointment")
@@ -83,31 +96,44 @@ var app2 = new Vue({
                 method: 'post',
                 body: data
             })
-            .then(response => {
-                $("#btn-appointment").show()
-                console.log("reponse",response)
-                if(response.ok) {
-                    $(".app_button_close").click()
+                .then(response => {
+                    console.log("reponse",response)
+                    this.issending = true
+                    this.btnsend = "Enviando..."
+
+                    if(response.ok) {
+                        this.issending = false
+                        this.btnsend = "Enviar"
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Enhorabuena! la cita se ha procesado ',
+                            html: 'En breves momentos recibirás una copia de la misma en tu email. Recuerda que te llamaremos para <b>confirmarla</b>',
+                        })
+                        self.reset()
+                    } else {
+                        this.issending = false
+                        this.btnsend = "Enviar"
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Proceso incompleto',
+                            text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
+                        })
+                    }
+                })
+                .catch(error => {
+                    this.issending = false
+                    this.btnsend = "Enviar"
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Enhorabuena! la cita se ha procesado ',
-                        html: 'En breves momentos recibirás una copia de la misma en tu email. Recuerda que te llamaremos para <b>confirmarla</b>',
+                        icon: 'error',
+                        title: 'Vaya! Algo no ha ido bien',
+                        text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.'+error.toString(),
                     })
-                    e.target.reset()
-                }
-                else {
-                    Swal.fire({
-                        icon: 'Warning',
-                        title: 'Proceso incompleto',
-                        text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
-                    })
-                }
-            })
+                })
         }
     },//methods
     mounted(){
-        console.log("mounted")
-        document.getElementById("frmappointment").reset()
+        console.log("form-appointment-right-html.twig mounted")
+        document.getElementById("form-appointment").reset()
     }
 })
 </script>

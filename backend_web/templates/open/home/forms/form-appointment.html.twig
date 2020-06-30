@@ -19,7 +19,10 @@
             {{ option.text }}
             </option>
         </select>
-        <button id="btn-appointment" class="app_form_button">Enviar</button>
+        <button id="btn-appointment" class="contact_form_button" :disabled="issending" >
+            {{btnsend}}
+            <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
+        </button>
     </form>
     {% endverbatim %}
 </div>
@@ -29,6 +32,8 @@ var app1 = new Vue({
     el: "#form-appointment",
     data: {
         errors:[],
+        btnsend: "Enviar",
+        issending: false,
         name: "",
         email: "",
         phone: "",
@@ -53,10 +58,21 @@ var app1 = new Vue({
 
     },
     methods:{
+        reset(){
+            this.name = ""
+            this.email = ""
+            this.phone = ""
+            this.datetime = ""
+            this.selservices = []
+            this.selperson = ""
+        },
+
         checkform: function(e) {
             console.log("checkform")
-            $("#btn-appointment").hide()
+            const self = this
             e.preventDefault()
+            this.issending = true
+            this.btnsend = "Enviando..."
 
             const data = new FormData();
             data.append("action","appointment")
@@ -71,30 +87,43 @@ var app1 = new Vue({
                 method: 'post',
                 body: data
             })
-            .then(function(response) {
-                $("#btn-appointment").show()
+            .then(response => {
                 console.log("reponse",response)
+                this.issending = true
+                this.btnsend = "Enviando..."
+
                 if(response.ok) {
-                    $(".app_button_close").click()
+                    this.issending = false
+                    this.btnsend = "Enviar"
                     Swal.fire({
                         icon: 'success',
                         title: 'Enhorabuena! la cita se ha procesado ',
                         html: 'En breves momentos recibirás una copia de la misma en tu email. Recuerda que te llamaremos para <b>confirmarla</b>',
                     })
-                    e.target.reset()
+                    self.reset()
                 } else {
+                    this.issending = false
+                    this.btnsend = "Enviar"
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Vaya! Algo no ha ido bien',
+                        icon: 'warning',
+                        title: 'Proceso incompleto',
                         text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
                     })
                 }
-
+            })
+            .catch(error => {
+                this.issending = false
+                this.btnsend = "Enviar"
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Vaya! Algo no ha ido bien',
+                    text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.'+error.toString(),
+                })
             })
         }
     },//methods
     mounted(){
-        console.log("mounted")
+        console.log("form-appointment-html.twig mounted")
         document.getElementById("form-appointment").reset()
     }
 })
