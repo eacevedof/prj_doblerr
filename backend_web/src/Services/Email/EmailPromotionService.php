@@ -11,7 +11,7 @@ final class EmailPromotionService extends BaseService
     private const CONFIRM = "confirm-code";
 
     private MailerInterface $mailer;
-    private $arobjs = [];
+    private $objects = [];
 
     public function __construct(Request $request, MailerInterface $mailer)
     {
@@ -24,9 +24,9 @@ final class EmailPromotionService extends BaseService
         $domain = "http://localhost";
         if($this->is_envprod()) $domain = "https://doblerr.es";
 
-        $oPromotion = $this->arobjs["promotion"];
-        $oUser = $this->arobjs["user"];
-        $oSubscription = $this->arobjs["subscription"];
+        $oPromotion = $this->objects["promotion"];
+        $oUser = $this->objects["user"];
+        $oSubscription = $this->objects["subscription"];
 
         $message = "
         Hola %s. Solo te queda este paso. 
@@ -42,9 +42,9 @@ final class EmailPromotionService extends BaseService
         $domain = "http://localhost";
         if($this->is_envprod()) $domain = "https://doblerr.es";
 
-        $oPromotion = $this->arobjs["promotion"];
-        $oUser = $this->arobjs["user"];
-        $oSubscription = $this->arobjs["subscription"];
+        $oPromotion = $this->objects["promotion"];
+        $oUser = $this->objects["user"];
+        $oSubscription = $this->objects["subscription"];
 
         $message = "
         Hola %s. Gracias por confirmar tu suscripción. Ya tienes la promoción %s. 
@@ -57,8 +57,8 @@ final class EmailPromotionService extends BaseService
 
     private function _subscribe()
     {
-        $oPromotion = $this->arobjs["promotion"];
-        $oUser = $this->arobjs["user"];
+        $oPromotion = $this->objects["promotion"];
+        $oUser = $this->objects["user"];
         //$oSubscription = $this->arobjs["subscription"];
 
         $action = "Código suscripción";
@@ -80,8 +80,8 @@ final class EmailPromotionService extends BaseService
 
     private function _confirm()
     {
-        $oPromotion = $this->arobjs["promotion"];
-        $oUser = $this->arobjs["user"];
+        $oPromotion = $this->objects["promotion"];
+        $oUser = $this->objects["user"];
         //$oSubscription = $this->arobjs["subscription"];
 
         $action = "Suscripción realizada";
@@ -109,6 +109,6 @@ final class EmailPromotionService extends BaseService
         if($action==self::CONFIRM) $this->_confirm();
     }
 
-    public function set_objs($arobjs){$this->arobjs = $arobjs;}
+    public function set_objects($arobjs){$this->objects = $arobjs;}
 
 }//EmailPromotionService

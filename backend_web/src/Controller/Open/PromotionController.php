@@ -3,12 +3,9 @@
 declare(strict_types=1);
 
 namespace App\Controller\Open;
-use App\Component\Serialize;
 use App\Providers\SeoProvider;
-use App\Services\Email\EmailFormService;
 use App\Services\Email\EmailPromotionService;
 use App\Services\Open\PromotionConfirmService;
-use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
 use App\Services\Open\PromotionSubscriptionService;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +36,7 @@ class PromotionController extends BaseController
         try{
             $promotionSubscriptionService->subscribe($promoslug);
             $mail = new EmailPromotionService($this->get_request(),$mailer);
-            $mail->set_objs($promotionSubscriptionService->get_subscribed_objs());
+            $mail->set_objects($promotionSubscriptionService->get_subscribed_objs());
             $mail->send();
         }
         catch(\Exception $e){
@@ -77,7 +74,7 @@ class PromotionController extends BaseController
         try{
             $promotionConfirmService->confirm($promoslug);
             $mail = new EmailPromotionService($this->get_request(),$mailer);
-            $mail->set_objs($promotionConfirmService->get_subscribed_objs());
+            $mail->set_objects($promotionConfirmService->get_subscribed_objs());
             $mail->send();
         }
         catch(\Exception $e){
