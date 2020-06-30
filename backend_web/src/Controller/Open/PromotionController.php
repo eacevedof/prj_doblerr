@@ -68,12 +68,17 @@ class PromotionController extends BaseController
     }// subscribe
 
     //<domain>/promocion/confirm/{slug}
-    public function confirm(PromotionConfirmService $promotionConfirmService, string $promoslug)
+    public function confirm(
+        PromotionConfirmService $promotionConfirmService,
+        MailerInterface $mailer,
+        string $promoslug
+    )
     {
         try{
             $promotionConfirmService->confirm($promoslug);
-            //$mail = new EmailFormService($this->get_request(),$mailer);
-            //$mail->send();
+            $mail = new EmailPromotionService($this->get_request(),$mailer);
+            $mail->set_objs($promotionConfirmService->get_subscribed_objs());
+            $mail->send();
         }
         catch(\Exception $e){
             $this->logd($e->getMessage(),"promotion.confirm.error");

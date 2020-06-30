@@ -45,10 +45,6 @@ class PromotionSubscriptionService extends BaseService
         return $this->requestStack->getCurrentRequest()->get($key);
     }
 
-    private function _get_get($key){
-        return $this->requestStack->getCurrentRequest()->query->get($key);
-    }
-
     private function _get_promotion(): ?AppPromotion
     {
         $entity = $this->promotionRepository->findBySlug($this->slug);

@@ -47,9 +47,9 @@ final class EmailPromotionService extends BaseService
         $oSubscription = $this->arobjs["subscription"];
 
         $message = "
-        Hola %s. Solo te queda este paso. 
-        Tu código de confirmación es: <b>%s</b>
-        Finaliza el proceso de suscripción ingresandolo <a href='{$domain}/promocion/confirm-form/%s' target='_blank'>aquí</a>
+        Hola %s. Gracias por confirmar tu suscripción. Ya tienes la promoción %s. 
+        Recuerda consumirla antes de %s  
+        
         ";
 
         return sprintf($message,$oUser->getName1(),$oSubscription->getCode1(),$oPromotion->getSlug());
@@ -57,11 +57,13 @@ final class EmailPromotionService extends BaseService
 
     private function _subscribe()
     {
-        $action = $this->get_post("action");
-        if($action==self::SUBSCRIBE)
-            $action = "Cita";
-        $name = $this->get_post("name");
-        $email = $this->get_post("email");
+        $oPromotion = $this->arobjs["promotion"];
+        $oUser = $this->arobjs["user"];
+        //$oSubscription = $this->arobjs["subscription"];
+
+        $action = "Código suscripción";
+        $name = $oUser->getName1();
+        $email = $oUser->getEmail();
 
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
@@ -71,18 +73,20 @@ final class EmailPromotionService extends BaseService
             "text" => $this->_get_text_subscribe(),
         ];
 
-        $this->logd($data,"mail.apointment");
+        $this->logd($data,"mail.promotion._subscribe");
         $mail = new Mail($data,$this->mailer);
         if($this->is_envprod())  $mail->send();
     }
 
     private function _confirm()
     {
-        $action = $this->get_post("action");
-        if($action==self::CONFIRM)
-            $action = "Confirmación";
-        $name = $this->get_post("name");
-        $email = $this->get_post("email");
+        $oPromotion = $this->arobjs["promotion"];
+        $oUser = $this->arobjs["user"];
+        //$oSubscription = $this->arobjs["subscription"];
+
+        $action = "Suscripción realizada";
+        $name = $oUser->getName1();
+        $email = $oUser->getEmail();
 
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
@@ -92,7 +96,7 @@ final class EmailPromotionService extends BaseService
             "text" => $this->_get_text_confirm(),
         ];
 
-        $this->logd($data,"mail.contact");
+        $this->logd($data,"mail.promotion._confirm");
         $mail = new Mail($data,$this->mailer);
         if($this->is_envprod()) $mail->send();
     }
@@ -100,7 +104,7 @@ final class EmailPromotionService extends BaseService
     public function send()
     {
         $action = $this->get_post("action");
-        $this->logd($action,"action");
+        $this->logd($action,"emailpromotionservice.action");
         if($action==self::SUBSCRIBE) $this->_subscribe();
         if($action==self::CONFIRM) $this->_confirm();
     }

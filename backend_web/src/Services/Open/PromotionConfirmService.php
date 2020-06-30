@@ -24,6 +24,8 @@ class PromotionConfirmService extends BaseService
     private ?string $slug;
     private ?string $codeconfirm;
 
+    private $objects;
+
     public function __construct(
         PromotionsSubscribersRepository $promotionsSubscribersRepository,
         PromotionRepository $promotionRepository,
@@ -55,28 +57,9 @@ class PromotionConfirmService extends BaseService
         return $r[0] ?? null;
     }
 
-    private function _get_saved_promouser(): AppPromotionUser
+    private function _get_promouser($iduser): AppPromotionUser
     {
-        $name1 = $this->_get_post("codeconfirm");
-        $email = $this->_get_post("email");
-        $phone1 = $this->_get_post("phone");
-
-        $r = $this->promotionUserRepository->findBy(["email"=>$email]);
-        $promouser = $r[0] ?? null;
-        if(!$promouser){
-            $promouser = new AppPromotionUser();
-            $promouser->setName1($name1);
-            $promouser->setEmail($email);
-            $promouser->setPhone1($phone1);
-            $this->promotionUserRepository->save($promouser);
-            return $promouser;
-        }
-
-        $promouser->setUpdateDate(new \DateTime());
-        $promouser->setPhone1($phone1);
-        $promouser->setName1($name1);
-        $this->promotionUserRepository->save($promouser);
-        return $promouser;
+        return $this->promotionUserRepository->findOneById($iduser);
     }
 
     private function _is_slug()
@@ -155,6 +138,12 @@ class PromotionConfirmService extends BaseService
         $subscription->setIsConfirmed(1);
         $subscription->setDateSubs(new \DateTime());
         $this->promotionsSubscribersRepository->save($subscription);
+
+        $this->objects["promotion"] = $this->_get_promotion();
+        $this->objects["user"] = $this->_get_promouser($subscription->getIdPromouser());
+        $this->objects["subscription"] = $subscription;
     }
+
+    public function get_subscribed_objs(){return $this->objects;}
 
 }//PromotionConfirmService
