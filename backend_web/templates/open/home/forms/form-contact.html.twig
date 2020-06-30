@@ -1,7 +1,7 @@
 <div class="footer_title"></div>
-<div class="contact_form_container">
+<div class="form-contact_container">
     {% verbatim %}
-    <form action="/mail" @submit="checkform" method="post" id="contact_form" class="contact_form">
+    <form action="/mail" @submit="checkform" method="post" id="form-contact" class="form-contact">
         <div>
             <div class="row">
                 <div class="col-lg-6">
@@ -16,26 +16,34 @@
         </div>
         <div><input type="text" v-model="subject" placeholder="Asunto" class="contact_input" style="margin-top:15px"></div>
         <div><textarea v-model="message" class="contact_input contact_textarea" placeholder="Mensaje" required="required" style="margin-top:15px;"></textarea></div>
-        <button id="btn-contact" class="contact_form_button">Enviar</button>
+        <button id="btn-contact" class="contact_form_button" :disabled="issending" >
+            {{btnsend}}
+            <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
+        </button>
     </form>
     {% endverbatim %}
 </div>
 
 <script>
 var app3 = new Vue({
-    el: "#contact_form",
+    el: "#form-contact",
     data: {
         errors:[],
         name: "",
         email: "",
         subject: "",
         message: "",
+        issending: false,
+        btnsend: "Enviar",
     },
     methods:{
         checkform: function(e) {
             console.log("checkform")
-            $("#btn-contact").hide()
+
+            //$("#btn-contact").hide()
             e.preventDefault()
+            this.issending = true
+            this.btnsend = "Enviando..."
 
             const data = new FormData();
             data.append("action","contact")
@@ -49,8 +57,10 @@ var app3 = new Vue({
                 method: 'post',
                 body: data
             })
-            .then(function(response) {
-                $("#btn-contact").show()
+            .then(response => {
+                this.issending = false
+                this.btnsend = "Enviar"
+
                 console.log("reponse",response)
                 if(response.ok) {
                     $(".app_button_close").click()
@@ -63,17 +73,26 @@ var app3 = new Vue({
 
                 } else {
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Vaya! Algo no ha ido bien',
+                        icon: 'warning',
+                        title: 'Proceso incompleto',
                         text: 'No se ha podido procesar tu mensaje. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
                     })
                 }
             })
+            .catch(error => {
+                this.issending = false
+                this.btnsend = "Enviar"
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Vaya! Algo ha ido mal',
+                    text: 'No se ha podido procesar tu mensaje. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
+                })
+            })
         }
     },//methods
     mounted(){
-        console.log("mounted")
-        document.getElementById("contact_form").reset()
+        console.log("contact.mounted")
+        document.getElementById("form-contact").reset()
     }
 })
 </script>
