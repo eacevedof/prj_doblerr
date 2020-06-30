@@ -47,30 +47,27 @@ final class EmailPromotionService extends BaseService
         $oSubscription = $this->objects["subscription"];
 
         $message = "
+        <p>
+            Hola <b>{$oUser->getName1()}</b> <br/>
+            Gracias por confirmar tu suscripción en: 
+        </p>
+        
         <h3>Promoción {$oPromotion->getId()} - {$oPromotion->getDescription()}</h3>
         <p>
-        <b>Contenido:</b><br/>
-        Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.<br/>
-        </p>
-        <p>
-        Hola %s. <br/>
-        Gracias por confirmar tu suscripción. <br /> 
+            <b>Contenido:</b><br/>
+            Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.
         </p>
         <br/>
         <b>Recuerda:</b>
         <ul>
-            <li>Hacerla efectiva antes del día: <b>%s</b></li>
+            <li>Hacerla efectiva antes del día: <b>{$oPromotion->getDateTo()->format("Y-m-d")}</b></li>
             <li>Llamar antes para poder concretar una cita.</li>
             <li>El consumo de la promoción solo es válido entre los días: Lunes y Miercoles de 14:00 a 19:00</li>
             <li>Esta promoción cuenta como un punto. A los diez recibirás un email con un servicio de regalo.</li>
-            <li>Proporciona tu código: <code><b>%s</b></code> después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
+            <li>Proporciona tu código: <code><b><big>{$oSubscription->getCode1()}</big></b></code> después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
             <li>La contabilización de puntos se realiza por email. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
         </ul>
         ";
-
-        return sprintf($message,
-            $oUser->getName1(),$oPromotion->getDescription(),$oPromotion->getDateTo()->format("Y-m-d"),$oSubscription->getCode1()
-        );
     }
 
     private function _subscribe()
