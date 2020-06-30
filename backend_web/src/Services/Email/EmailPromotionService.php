@@ -39,27 +39,29 @@ final class EmailPromotionService extends BaseService
 
     private function _get_text_confirm()
     {
-        $domain = "http://localhost";
-        if($this->is_envprod()) $domain = "https://doblerr.es";
-
         $oPromotion = $this->objects["promotion"];
         $oUser = $this->objects["user"];
-        $oSubscription = $this->objects["subscription"];
+        //$oSubscription = $this->objects["subscription"];
 
         $message = "
         Hola %s. Gracias por confirmar tu suscripción. Ya tienes la promoción %s. 
-        Recuerda consumirla antes de %s  
-        
+        Recuerda consumirla antes del día %s  
+        <br/>
+        <b>Condiciones:</b>
+        <ul>
+            <li>Llamar antes para concretar una cita.</li>
+            <li>El consumo de la promoción solo es válido entre los días: Lunes a Miercoles de 14:00 a 19:00</li>
+            <li>Esta promoción te cuenta como un punto. A los 10 recibirás un email con un servicio de regalo.</li>
+            <li>Para que los puntos se acumulen debes apuntarte en cualquier promoción siempre con el mismo email</li>
+        </ul>
         ";
 
-        return sprintf($message,$oUser->getName1(),$oSubscription->getCode1(),$oPromotion->getSlug());
+        return sprintf($message,$oUser->getName1(),$oPromotion->getDescription(),$oPromotion->getDateTo());
     }
 
     private function _subscribe()
     {
-        $oPromotion = $this->objects["promotion"];
         $oUser = $this->objects["user"];
-        //$oSubscription = $this->arobjs["subscription"];
 
         $action = "Código suscripción";
         $name = $oUser->getName1();
@@ -68,7 +70,7 @@ final class EmailPromotionService extends BaseService
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
             "to" => $email,
-            "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
+            //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
             "text" => $this->_get_text_subscribe(),
         ];
@@ -80,9 +82,7 @@ final class EmailPromotionService extends BaseService
 
     private function _confirm()
     {
-        $oPromotion = $this->objects["promotion"];
         $oUser = $this->objects["user"];
-        //$oSubscription = $this->arobjs["subscription"];
 
         $action = "Suscripción realizada";
         $name = $oUser->getName1();
@@ -91,7 +91,7 @@ final class EmailPromotionService extends BaseService
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
             "to" => $email,
-            "bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
+            //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
             "text" => $this->_get_text_confirm(),
         ];
