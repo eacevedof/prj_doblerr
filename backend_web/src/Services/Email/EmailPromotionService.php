@@ -30,14 +30,14 @@ final class EmailPromotionService extends BaseService
 
         $message = "
         <p>
-        Hola <b>%s.</b><br/> 
+        Hola <b>{$oUser->getName1()}.</b><br/> 
         Ya casi terminamos. Falta validar tu suscripción. <br/>
-        Tu código de confirmación es: <code><b><big>%s</big></b></code>
-        Finaliza el proceso de suscripción ingresandolo <a href='{$domain}/promocion/confirm-form/%s' target='_blank'>aquí</a>
+        Tu código de confirmación es: <code><b><big>{$oSubscription->getCode1()}</big></b></code>
+        Finaliza el proceso de suscripción ingresandolo <a href='{$domain}/promocion/confirm-form/{$oPromotion->getSlug()}' target='_blank'>aquí</a>
         </p>
         ";
 
-        return sprintf($message,$oUser->getName1(),$oSubscription->getCode1(),$oPromotion->getSlug());
+        return $message;
     }
 
     private function _get_text_confirm()
@@ -68,21 +68,19 @@ final class EmailPromotionService extends BaseService
             <li>La contabilización de puntos se realiza por email. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
         </ul>
         ";
+        return $message;
     }
 
     private function _subscribe()
     {
         $oUser = $this->objects["user"];
-
-        $action = "Código suscripción";
-        $name = $oUser->getName1();
-        $email = $oUser->getEmail();
+        $oPromotion = $this->objects["promotion"];
 
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
-            "to" => $email,
+            "to" => $oUser->getEmail(),
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
-            "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
+            "subject" => "doblerr noreply - Código de promoción: {$oPromotion->getId()}-{$oPromotion->getDescription()}",
             "text" => "",//esta clave siempre tiene que ir sino no se envia
             "html" => $this->_get_text_subscribe(),
         ];
@@ -95,16 +93,14 @@ final class EmailPromotionService extends BaseService
     private function _confirm()
     {
         $oUser = $this->objects["user"];
-
-        $action = "Suscripción realizada";
-        $name = $oUser->getName1();
-        $email = $oUser->getEmail();
+        $oPromotion = $this->objects["promotion"];
+        $oSubscription = $this->objects["subscription"];
 
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
-            "to" => $email,
+            "to" => $oUser->getEmail(),
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
-            "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
+            "subject" => "doblerr noreply - Promoción confirmada: {$oPromotion->getId()}-{$oPromotion->getDescription()}",
             "text" => "",//esta clave siempre tiene que ir sino no se envia
             "html" => $this->_get_text_confirm(),
         ];
