@@ -29,9 +29,12 @@ final class EmailPromotionService extends BaseService
         $oSubscription = $this->objects["subscription"];
 
         $message = "
-        Hola %s. Solo te queda este paso. 
-        Tu código de confirmación es: <b>%s</b>
+        <p>
+        Hola <b>%s.</b><br/> 
+        Ya casi terminamos. Falta validar tu suscripción. <br/>
+        Tu código de confirmación es: <code><b><big>%s</big></b></code>
         Finaliza el proceso de suscripción ingresandolo <a href='{$domain}/promocion/confirm-form/%s' target='_blank'>aquí</a>
+        </p>
         ";
 
         return sprintf($message,$oUser->getName1(),$oSubscription->getCode1(),$oPromotion->getSlug());
@@ -44,15 +47,15 @@ final class EmailPromotionService extends BaseService
         $oSubscription = $this->objects["subscription"];
 
         $message = "
-        <h3>Promoción: {$oPromotion->getDescription()}</h3>
+        <h3>Promoción {$oPromotion->getId()} - {$oPromotion->getDescription()}</h3>
         <p>
-        Con cualquier trabajo técnico o modelado el tratamiento Botox capilar es gratis.
+        <b>Contenido:</b><br/>
+        Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.<br/>
         </p>
         <p>
-        Hola %s. Gracias por confirmar tu suscripción. <br /> 
-        Ya tienes la promoción \"<b>%s</b>\".<br/> 
+        Hola %s. <br/>
+        Gracias por confirmar tu suscripción. <br /> 
         </p>
-        
         <br/>
         <b>Recuerda:</b>
         <ul>
@@ -60,7 +63,7 @@ final class EmailPromotionService extends BaseService
             <li>Llamar antes para poder concretar una cita.</li>
             <li>El consumo de la promoción solo es válido entre los días: Lunes y Miercoles de 14:00 a 19:00</li>
             <li>Esta promoción cuenta como un punto. A los diez recibirás un email con un servicio de regalo.</li>
-            <li>Proporciona tu código:<b>%s</b> después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
+            <li>Proporciona tu código: <code><b>%s</b></code> después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
             <li>La contabilización de puntos se realiza por email. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
         </ul>
         ";

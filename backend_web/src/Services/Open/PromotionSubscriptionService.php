@@ -9,7 +9,7 @@ use App\Repository\PromotionRepository;
 use App\Repository\PromotionUserRepository;
 
 use App\Entity\App\AppPromotion;
-use App\Entity\App\AppPromotionsSusbscribers;
+use App\Entity\App\AppPromotionsSubscriptions;
 use App\Entity\App\AppPromotionUser;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -163,7 +163,7 @@ class PromotionSubscriptionService extends BaseService
         $this->_is_ip();
     }
 
-    private function _get_generated_code1(AppPromotionsSusbscribers $subscription)
+    private function _get_generated_code1(AppPromotionsSubscriptions $subscription)
     {
         $code = $this->encDecrypt->get_rnd_wordsimple(4);
         $finalcode = "{$subscription->getId()}$code";
@@ -179,7 +179,7 @@ class PromotionSubscriptionService extends BaseService
         $promotion = $this->_get_promotion();
         $promouser = $this->_get_saved_promouser();
 
-        $subscription = new AppPromotionsSusbscribers();
+        $subscription = new AppPromotionsSubscriptions();
         $subscription->setIdPromotion($promotion->getId());
         $subscription->setIdPromouser($promouser->getId());
         $this->promotionsSubscribersRepository->save($subscription);

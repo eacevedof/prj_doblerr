@@ -9,7 +9,7 @@ use App\Repository\PromotionRepository;
 use App\Repository\PromotionUserRepository;
 
 use App\Entity\App\AppPromotion;
-use App\Entity\App\AppPromotionsSusbscribers;
+use App\Entity\App\AppPromotionsSubscriptions;
 use App\Entity\App\AppPromotionUser;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +45,7 @@ class PromotionConfirmService extends BaseService
         return $this->requestStack->getCurrentRequest()->get($key);
     }
 
-    private function _get_subscription():?AppPromotionsSusbscribers
+    private function _get_subscription():?AppPromotionsSubscriptions
     {
         $subscription = $this->promotionsSubscribersRepository->findByCode1($this->codeconfirm);
         return $subscription;

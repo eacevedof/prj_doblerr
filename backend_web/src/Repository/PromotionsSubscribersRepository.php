@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\App\AppPromotionsSusbscribers;
+use App\Entity\App\AppPromotionsSubscriptions;
 
 class PromotionsSubscribersRepository extends BaseRepository
 {
@@ -12,13 +12,13 @@ class PromotionsSubscribersRepository extends BaseRepository
 
     protected static function entityClass(): string
     {
-        return AppPromotionsSusbscribers::class;
+        return AppPromotionsSubscriptions::class;
     }
 
-    public function findOneById(string $id): ?AppPromotionsSusbscribers
+    public function findOneById(string $id): ?AppPromotionsSubscriptions
     {
         /**
-         * @var AppPromotionsSusbscribers $entity
+         * @var AppPromotionsSubscriptions $entity
          */
         $entity = $this->objectRepository->find($id);
         return $entity;
@@ -27,12 +27,12 @@ class PromotionsSubscribersRepository extends BaseRepository
 
     public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
-        /** @var AppPromotionsSusbscribers[] $r */
+        /** @var AppPromotionsSubscriptions[] $r */
         $r = $this->objectRepository->findBy($criteria,  $orderBy, $limit, $offset);
         return $r;
     }
 
-    public function findByPromoUser($idpromotion, $idpromouser):?AppPromotionsSusbscribers
+    public function findByPromoUser($idpromotion, $idpromouser):?AppPromotionsSubscriptions
     {
         $criteria = [
             "idPromotion" => $idpromotion,"idPromouser" => $idpromouser,
@@ -41,7 +41,7 @@ class PromotionsSubscribersRepository extends BaseRepository
         return $r[0] ?? null;
     }
 
-    public function findByCode1(?string $codeconfirm):?AppPromotionsSusbscribers
+    public function findByCode1(?string $codeconfirm):?AppPromotionsSubscriptions
     {
         $criteria = [
             "code1" => $codeconfirm,
@@ -56,7 +56,7 @@ class PromotionsSubscribersRepository extends BaseRepository
         return $this->objectRepository->findAll();
     }
 
-    public function save(AppPromotionsSusbscribers $entity): void
+    public function save(AppPromotionsSubscriptions $entity): void
     {
         $this->saveEntity($entity);
     }
