@@ -61,9 +61,9 @@ final class EmailPromotionService extends BaseService
         <b>Recuerda:</b>
         <ul>
             <li>Hacerla efectiva antes del día: <b>{$oPromotion->getDateTo()->format("Y-m-d")}</b></li>
-            <li>Llamar antes para poder concretar una cita.</li>
+            <li>Llamar al <b>91 455 74 43</b> para poder concretar una cita.</li>
             <li>El consumo de la promoción solo es válido entre los días: Lunes y Miercoles de 14:00 a 19:00</li>
-            <li>Esta promoción cuenta como un punto. A los diez recibirás un email con un servicio de regalo.</li>
+            <li>Esta promoción puntúa en una unidad. A las diez unidades recibirás un email con un servicio de regalo.</li>
             <li>Proporciona tu código: <code><b><big>{$oSubscription->getCode1()}</big></b></code> después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
             <li>La contabilización de puntos se realiza por email. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
         </ul>
