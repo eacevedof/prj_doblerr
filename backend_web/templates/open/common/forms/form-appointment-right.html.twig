@@ -30,7 +30,10 @@
                 {{ option.text }}
                 </option>
             </select>
-            <button id="btn-appointment" class="app_form_button">Enviar</button>
+            <button id="btn-appointment-right" class="contact_form_button" :disabled="issending" >
+                {{btnsend}}
+                <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
+            </button>
         </form>
         {% endverbatim %}
     </div>
