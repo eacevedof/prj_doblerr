@@ -53,8 +53,8 @@ class PromotionConfirmService extends BaseService
 
     private function _get_promotion(): ?AppPromotion
     {
-        $r = $this->promotionRepository->findBySlug($this->slug);
-        return $r[0] ?? null;
+        $entity = $this->promotionRepository->findBySlug($this->slug);
+        return $entity;
     }
 
     private function _get_promouser($iduser): AppPromotionUser
