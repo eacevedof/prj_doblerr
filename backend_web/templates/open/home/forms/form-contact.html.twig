@@ -1,7 +1,8 @@
+<!-- formulario de contacto -->
 <div class="footer_title"></div>
 <div class="form-contact_container">
     {% verbatim %}
-    <form action="/mail" @submit="checkform" method="post" id="form-contact" class="form-contact">
+    <form action="/mail" @submit="checkform" method="post" id="form-contact" class="contact_form">
         <div>
             <div class="row">
                 <div class="col-lg-6">
@@ -37,6 +38,13 @@ var app3 = new Vue({
         btnsend: "Enviar",
     },
     methods:{
+        reset(){
+            this.name = ""
+            this.email = ""
+            this.subject = ""
+            this.message = ""
+        },
+
         checkform: function(e) {
             console.log("checkform")
 
@@ -61,16 +69,15 @@ var app3 = new Vue({
                 this.issending = false
                 this.btnsend = "Enviar"
 
-                console.log("reponse",response)
+                console.log("reponse ok",response)
                 if(response.ok) {
-                    $(".app_button_close").click()
+                    //console.log("e.target",e.target)
                     Swal.fire({
                         icon: 'success',
                         title: 'Gracias por contactar con nosotros!',
                         html: 'En breves momentos recibirás una copia del mensaje en tu email.',
                     })
-                    e.target.reset()
-
+                    this.reset()
                 } else {
                     Swal.fire({
                         icon: 'warning',
@@ -80,6 +87,7 @@ var app3 = new Vue({
                 }
             })
             .catch(error => {
+                console.log("catch.error",response)
                 this.issending = false
                 this.btnsend = "Enviar"
                 Swal.fire({

@@ -71,27 +71,26 @@ var app1 = new Vue({
                 method: 'post',
                 body: data
             })
-                .then(function(response) {
-                    $("#btn-appointment").show()
-                    console.log("reponse",response)
-                    if(response.ok) {
-                        $(".app_button_close").click()
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Enhorabuena! la cita se ha procesado ',
-                            html: 'En breves momentos recibirás una copia de la misma en tu email. Recuerda que te llamaremos para <b>confirmarla</b>',
-                        })
-                        e.target.reset()
+            .then(function(response) {
+                $("#btn-appointment").show()
+                console.log("reponse",response)
+                if(response.ok) {
+                    $(".app_button_close").click()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Enhorabuena! la cita se ha procesado ',
+                        html: 'En breves momentos recibirás una copia de la misma en tu email. Recuerda que te llamaremos para <b>confirmarla</b>',
+                    })
+                    e.target.reset()
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Vaya! Algo no ha ido bien',
+                        text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
+                    })
+                }
 
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Vaya! Algo no ha ido bien',
-                            text: 'No se ha podido procesar la cita. Por favor inténtalo más tarde o prueba por teléfono (34 91 455 74 43).  Disculpa las molestias.',
-                        })
-                    }
-
-                })
+            })
         }
     },//methods
     mounted(){
