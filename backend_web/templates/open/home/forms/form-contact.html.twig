@@ -47,8 +47,6 @@ var app3 = new Vue({
 
         checkform: function(e) {
             console.log("checkform")
-
-            //$("#btn-contact").hide()
             e.preventDefault()
             this.issending = true
             this.btnsend = "Enviando..."
@@ -99,7 +97,7 @@ var app3 = new Vue({
         }
     },//methods
     mounted(){
-        console.log("contact.mounted")
+        console.log("form-contact.html.twig")
         document.getElementById("form-contact").reset()
     }
 })
