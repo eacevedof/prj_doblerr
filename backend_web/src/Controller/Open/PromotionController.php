@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Open;
 use App\Component\Serialize;
 use App\Providers\SeoProvider;
-use App\Services\EmailService;
+use App\Services\Email\EmailFormService;
 use App\Services\Open\PromotionConfirmService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\BaseController;
@@ -29,11 +29,13 @@ class PromotionController extends BaseController
     }
 
     //<domain>/promocion/subscribe/{slug}
-    public function subscribe(PromotionSubscriptionService $promotionSubscriptionService, string $promoslug)
+    public function subscribe(
+        PromotionSubscriptionService $promotionSubscriptionService,
+        string $promoslug)
     {
         try{
             $promotionSubscriptionService->subscribe($promoslug);
-            //$mail = new EmailService($this->get_request(),$mailer);
+            //$mail = new EmailFormService($this->get_request(),$mailer);
             //$mail->send();
         }
         catch(\Exception $e){
@@ -66,7 +68,7 @@ class PromotionController extends BaseController
     {
         try{
             $promotionConfirmService->confirm($promoslug);
-            //$mail = new EmailService($this->get_request(),$mailer);
+            //$mail = new EmailFormService($this->get_request(),$mailer);
             //$mail->send();
         }
         catch(\Exception $e){

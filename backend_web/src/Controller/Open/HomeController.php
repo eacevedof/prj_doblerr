@@ -6,7 +6,7 @@ namespace App\Controller\Open;
 use App\Controller\BaseController;
 use App\Providers\HomeProvider;
 use App\Providers\SeoProvider;
-use App\Services\EmailService;
+use App\Services\Email\EmailFormService;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -61,7 +61,7 @@ class HomeController extends BaseController
         $this->logd($_POST,"mail.post");
         $this->logd($_SERVER["REMOTE_ADDR"],"ip from");
         try{
-            $mail = new EmailService($this->get_request(),$mailer);
+            $mail = new EmailFormService($this->get_request(),$mailer);
             $mail->send();
         }
         catch(\Exception $e){

@@ -1,10 +1,11 @@
 <?php
-namespace App\Services;
+namespace App\Services\Email;
+use App\Services\BaseService;
 use App\Component\Mail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 
-final class EmailService extends BaseService
+final class EmailFormService extends BaseService
 {
     private const APPOINTMENT = "appointment";
     private const CONTACT = "contact";
