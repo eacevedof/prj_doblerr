@@ -39,6 +39,7 @@ class PromotionController extends BaseController
         try{
             $promotionSubscriptionService->subscribe($promoslug);
             $mail = new EmailPromotionService($this->get_request(),$mailer);
+            $mail->set_objs($promotionSubscriptionService->get_subscribed_objs());
             $mail->send();
         }
         catch(\Exception $e){

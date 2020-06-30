@@ -23,6 +23,8 @@ class PromotionSubscriptionService extends BaseService
     private Encdecrypt $encDecrypt;
     private ?string $slug;
 
+    private $objects;
+
     public function __construct(
         PromotionsSubscribersRepository $promotionsSubscribersRepository,
         PromotionRepository $promotionRepository,
@@ -190,5 +192,12 @@ class PromotionSubscriptionService extends BaseService
         $this->logd($rndcode,"subscribe.randomcode");
         $subscription->setCode1($rndcode);
         $this->promotionsSubscribersRepository->save($subscription);
+
+        $this->objects["promotion"] = $promotion;
+        $this->objects["user"] = $promouser;
+        $this->objects["subscription"] = $subscription;
     }
+
+    public function get_subscribed_objs(){return $this->objects;}
+
 }// PromotionSubscriptionService
