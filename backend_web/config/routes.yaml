@@ -31,11 +31,11 @@ promotions:
     controller: App\Controller\Open\PromotionController
 
 promotion-subscribe:
-    path: /promocion/subscribe/{promoslug}
+    path: /promotion/subscribe/{promoslug}
     controller: App\Controller\Open\PromotionController::subscribe
 
 promotion-confirm:
-    path: /promocion/confirm/{promoslug}
+    path: /promotion/confirm/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm
 
 promotion-confirmform:
