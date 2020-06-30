@@ -50,7 +50,7 @@ class Mail
         if(isset($d["cc"])) $this->add_cc($d["cc"],$email);
         if(isset($d["bcc"])) $this->add_bcc($d["bcc"],$email);
         if(isset($d["subject"])) $email->subject($d["subject"]);
-        $email->text($d["text"]);
+        if(isset($d["text"])) $email->text($d["text"]);
         if(isset($d["html"]))$email->html($d["html"]);
         return $email;
     }

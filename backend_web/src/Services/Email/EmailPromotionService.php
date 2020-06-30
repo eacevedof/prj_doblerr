@@ -72,7 +72,8 @@ final class EmailPromotionService extends BaseService
             "to" => $email,
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
-            "text" => $this->_get_text_subscribe(),
+            "text" => "esto ex un txt",
+            "html" => $this->_get_text_subscribe(),
         ];
 
         $this->logd($data,"mail.promotion._subscribe");
@@ -93,7 +94,8 @@ final class EmailPromotionService extends BaseService
             "to" => $email,
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
             "subject" => sprintf("doblerr noreply - %s de %s (%s) %s",$action,$name,$email,date("Ymd-His")),
-            "text" => $this->_get_text_confirm(),
+            "text" => "esto ex un txt",
+            "html" => $this->_get_text_confirm(),
         ];
 
         $this->logd($data,"mail.promotion._confirm");

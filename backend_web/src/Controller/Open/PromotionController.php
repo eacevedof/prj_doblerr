@@ -58,7 +58,6 @@ class PromotionController extends BaseController
                 "title" => "success",
                 "description"=>"
                     Te hemos enviado un código de confirmación por favor insertalo para finalizar tu subscripcioón.
-                    
                 "
             ]
         ));
