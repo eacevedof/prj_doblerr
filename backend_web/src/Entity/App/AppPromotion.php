@@ -280,6 +280,37 @@ class AppPromotion extends BaseEntity
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getReturned(): ?string
+    {
+        return $this->returned;
+    }
+
+    /**
+     * @param string|null $returned
+     */
+    public function setReturned(?string $returned): void
+    {
+        $this->returned = $returned;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInvested(): ?string
+    {
+        return $this->invested;
+    }
+
+    /**
+     * @param string|null $invested
+     */
+    public function setInvested(?string $invested): void
+    {
+        $this->invested = $invested;
+    }
 
 
 }
