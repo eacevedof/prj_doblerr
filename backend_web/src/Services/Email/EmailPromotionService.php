@@ -52,20 +52,23 @@ final class EmailPromotionService extends BaseService
             Gracias por confirmar tu suscripción en: 
         </p>
         
-        <h3>Promoción {$oPromotion->getId()} - {$oPromotion->getDescription()}</h3>
+        <h3>Promoción Nº:{$oPromotion->getId()} | {$oPromotion->getDescription()}</h3>
         <p>
             <b>Contenido:</b><br/>
-            Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.
+            - Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.<br/>
+            - Tratamiento Botox Capilar valorado en 15 €
         </p>
         <br/>
         <b>Recuerda:</b>
         <ul>
+            <li>Tu código: <code><b><big>{$oSubscription->getCode1()}</big></b></code></li>
             <li>Hacerla efectiva antes del día: <b>{$oPromotion->getDateTo()->format("Y-m-d")}</b></li>
             <li>Llamar al <b>91 455 74 43</b> para poder concretar una cita.</li>
-            <li>El consumo de la promoción solo es válido entre los días: Lunes y Miercoles de 14:00 a 19:00</li>
-            <li>Esta promoción puntúa en una unidad. A las diez unidades recibirás un email con un servicio de regalo.</li>
-            <li>Proporciona tu código: <code><b><big>{$oSubscription->getCode1()}</big></b></code> después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
-            <li>La contabilización de puntos se realiza por email. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
+            <li>El consumo de la promoción solo es válido entre los días: Lunes y Miercoles de 14:00 a 19:00</li>            
+            <li>Esta promoción es acumulable.</li>
+            <li>Esta promoción puntúa en una unidad. Cuando obtengas diez unidades recibirás un email con un servicio de regalo.</li>
+            <li>Proporcionar tu código después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
+            <li>La contabilización de puntos se realiza <b>por email</b>. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
         </ul>
         ";
         return $message;
@@ -100,7 +103,7 @@ final class EmailPromotionService extends BaseService
             "from" => $this->get_env("APP_EMAIL_FROM"),
             "to" => $oUser->getEmail(),
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
-            "subject" => "doblerr noreply - Promoción confirmada: {$oPromotion->getId()}-{$oPromotion->getDescription()}",
+            "subject" => "doblerr noreply - Promoción Nº {$oPromotion->getId()} confirmada: {$oPromotion->getDescription()}",
             "text" => "",//esta clave siempre tiene que ir sino no se envia
             "html" => $this->_get_text_confirm(),
         ];
