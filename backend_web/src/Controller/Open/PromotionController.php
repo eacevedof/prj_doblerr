@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Controller\Open;
+use Symfony\Component\HttpFoundation\Request;
 use App\Providers\SeoProvider;
 use App\Services\Email\EmailPromotionService;
 use App\Services\Open\PromotionConfirmService;
@@ -28,12 +29,14 @@ class PromotionController extends BaseController
     }
 
     //<domain>/promotion/<slug>
-    public function detail(string $slug)
+    public function detail(Request $request, string $slug)
     {
+        $referer = $request->headers->get('referer');
         $seo = SeoProvider::get_meta("promotion");
         return $this->render('open/promotion/forms/promo-0001.html.twig',[
             "seo"=>$seo,
             "error"=>null,
+            "referer"=> $referer,
             "options"=>[
                 ["value"=>"","text"=>""],
             ],
