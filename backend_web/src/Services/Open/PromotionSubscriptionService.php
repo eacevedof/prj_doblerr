@@ -182,6 +182,7 @@ class PromotionSubscriptionService extends BaseService
         $subscription = new AppPromotionsSubscriptions();
         $subscription->setIdPromotion($promotion->getId());
         $subscription->setIdPromouser($promouser->getId());
+        $subscription->setUrlRef($this->_get_post("referer"));
         $this->promotionsSubscribersRepository->save($subscription);
 
         $rndcode = $this->_get_generated_code1($subscription);
