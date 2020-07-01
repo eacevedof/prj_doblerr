@@ -103,6 +103,22 @@ class AppPromotion extends BaseEntity
     }
 
     /**
+     * @return string|null
+     */
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string|null $content
+     */
+    public function setContent(?string $content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
      * @return int|null
      */
     public function getIdUser(): ?int
@@ -263,5 +279,7 @@ class AppPromotion extends BaseEntity
         $this->notes = $notes;
         return $this;
     }
+
+
 
 }
