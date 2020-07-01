@@ -1,29 +1,29 @@
 {% extends '/open/promotion/promotion.html.twig' %}
-
-{% block title %}Promoción Botox Capilar{% endblock %}
-
 {% block body %}
-    <div class="example-wrapper">
-        <h2>Botox Capilar Gratis</h2>
-        {% if error %}
-            <div class="alert alert-error">
-                {{ error.messagekey|trans(error.messageData,"security") }}
-            </div>
-        {% endif %}
-        {% verbatim %}
-        <form id="form-subscribe"  @submit="handleSubmit">
-            <input v-if="!showconfirm" type="text" v-model="name" placeholder="Nombre" required="required">
-            <input type="hidden" v-model="referer">
-            <input v-if="!showconfirm" type="email" v-model="email"  placeholder="Email" required="required">
-            <input v-if="!showconfirm" type="text" v-model="phone"  placeholder="Teléfono" required="required">
-            <input v-if="showconfirm" type="text" v-model="codeconfirm"  placeholder="Código confirmación" required="required">
-            <button id="btn-confirm" :disabled="issending" >
+<div class="jumbotron">
+    <h1 class="display-4">Promoción Botox Capilar</h1>
+    <p class="lead">
+        - Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.<br/>
+        - Tratamiento Botox Capilar valorado en 15 €
+    </p>
+    <hr class="my-4">
+    <p>Aprovecha esta oportunidad. Apuntaté ahora</p>
+    {% verbatim %}
+    <form id="form-subscribe"  @submit="handleSubmit">
+        <input v-if="!showconfirm" type="text" v-model="name" placeholder="Nombre" required="required">
+        <input type="hidden" v-model="referer">
+        <input v-if="!showconfirm" type="email" v-model="email"  placeholder="Email" required="required">
+        <input v-if="!showconfirm" type="text" v-model="phone"  placeholder="Teléfono" required="required">
+        <input v-if="showconfirm" type="text" v-model="codeconfirm"  placeholder="Código confirmación" required="required">
+        <p class="lead">
+            <button id="btn-confirm" class="btn btn-primary" :disabled="issending" >
                 {{btnsend}}
                 <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
             </button>
-        </form>
-        {% endverbatim %}
-    </div>
+        </p>
+    </form>
+    {% endverbatim %}
+</div>
 {% endblock %}
 {% block javascripts %}
 <script>
