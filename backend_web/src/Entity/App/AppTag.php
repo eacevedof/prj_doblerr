@@ -21,7 +21,6 @@ class AppTag extends BaseEntity
      */
     private $id;
 
-
     /**
      * @var int|null
      * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
@@ -46,5 +45,9 @@ class AppTag extends BaseEntity
      * @ORM\Column(name="order_by", type="integer", nullable=false, options={"default"="100"})
      */
     private $orderBy = '100';
+
+//======================================================================================================================
+//======================================================================================================================
+//======================================================================================================================
 
 }

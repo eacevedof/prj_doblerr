@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AppPromotion
- *
  * @ORM\Table(name="app_promotion")
  * @ORM\Entity
  */
@@ -14,7 +13,6 @@ class AppPromotion extends BaseEntity
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -23,14 +21,12 @@ class AppPromotion extends BaseEntity
 
     /**
      * @var int|null
-     *
      * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="a quien pertenece la promo"})
      */
     private $idUser = null;
 
     /**
      * @var int|null
-     *
      * @ORM\Column(name="id_type", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $idType = null;
@@ -55,13 +51,13 @@ class AppPromotion extends BaseEntity
 
     /**
      * @var string|null
-     * @ORM\Column(name="url_nw", type="string", length=250, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="url_nw", type="string", length=250, nullable=true, options={"default"="NULL","comment"="url en fb"})
      */
     private $urlNw = null;
 
     /**
      * @var string|null
-     * @ORM\Column(name="url_design", type="string", length=250, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="url_design", type="string", length=250, nullable=true, options={"default"="NULL","comment"="diseño por defecto"})
      */
     private $urlDesign = null;
 
@@ -73,10 +69,32 @@ class AppPromotion extends BaseEntity
 
     /**
      * @var string|null
-     *
+     * @ORM\Column(name="invested", type="decimal", precision=10, scale=3, nullable=true, options={"default"="0.000"})
+     */
+    private $invested = 0;
+
+    /**
+     * @var string|null
+     * @ORM\Column(name="returned", type="decimal", precision=10, scale=3, nullable=true, options={"default"="0.000"})
+     */
+    private $returned = 0;
+
+    /**
+     * @var string|null
      * @ORM\Column(name="notes", type="string", length=300, nullable=true, options={"default"="NULL"})
      */
     private $notes = null;
+
+//======================================================================================================================
+//======================================================================================================================
+//======================================================================================================================
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * @return int|null
@@ -240,11 +258,4 @@ class AppPromotion extends BaseEntity
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
 }
