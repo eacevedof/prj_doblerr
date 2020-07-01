@@ -161,9 +161,9 @@ const app = new Vue({
                 body: data
             })
             .then(response => response.json())
-            .then(function(response) {
+            .then(response => {
                 self.issending = false
-                self.btnsend = BTN_INISTATE
+                self.btnsend = BTN_CONFIRM
 
                 console.log("reponse",response)
                 
@@ -186,7 +186,7 @@ const app = new Vue({
             })
             .catch(error => {
                 self.issending = false
-                self.btnsend = BTN_INISTATE
+                self.btnsend = BTN_CONFIRM
 
                 console.log("CATCH ERROR confirm",error)
                 Swal.fire({
