@@ -37,7 +37,8 @@ class PromotionRepository extends BaseRepository
         return $this->objectRepository->findAll();
     }
 
-    public function findBySlug(string $slug=""){
+    public function findBySlug(string $slug=""):?AppPromotion
+    {
         $arcond = [
             "slug" => $slug
         ];

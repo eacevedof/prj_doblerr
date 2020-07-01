@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Controller\Open;
+use App\Repository\PromotionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Providers\SeoProvider;
 use App\Services\Email\EmailPromotionService;
@@ -12,6 +13,7 @@ use App\Services\Open\PromotionsService;
 use App\Services\Open\PromotionSubscriptionService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PromotionController extends BaseController
 {
@@ -29,10 +31,12 @@ class PromotionController extends BaseController
     }
 
     //<domain>/promocion/<promoslug>
-    public function detail(Request $request, string $promoslug)
+    public function detail(PromotionRepository $promotionRepository,Request $request, string $promoslug)
     {
-        $id = explode("-",$promoslug);
-        $id = $id[0];
+        $promotion = $promotionRepository->findBySlug($promoslug);
+        if(!$promotion)
+            throw new NotFoundHttpException('Sorry not existing!');
+        $id = "{$promotion->getId()}";
         $numpromo = str_pad($id, 6, "0", STR_PAD_LEFT);
         $referer = $request->headers->get('referer');
         $seo = SeoProvider::get_meta("promotion");
