@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_promotion_urls")
  * @ORM\Entity
  */
-class AppPromotionUrls
+class AppPromotionUrls extends BaseEntity
 {
     /**
      * @var int
@@ -52,5 +52,112 @@ class AppPromotionUrls
 //======================================================================================================================
 //======================================================================================================================
 //======================================================================================================================
-    
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return AppPromotionUrls
+     */
+    public function setId(int $id): AppPromotionUrls
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPromotion(): int
+    {
+        return $this->idPromotion;
+    }
+
+    /**
+     * @param int $idPromotion
+     * @return AppPromotionUrls
+     */
+    public function setIdPromotion(int $idPromotion): AppPromotionUrls
+    {
+        $this->idPromotion = $idPromotion;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdType(): int
+    {
+        return $this->idType;
+    }
+
+    /**
+     * @param int $idType
+     * @return AppPromotionUrls
+     */
+    public function setIdType(int $idType): AppPromotionUrls
+    {
+        $this->idType = $idType;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDesign(): ?string
+    {
+        return $this->design;
+    }
+
+    /**
+     * @param string|null $design
+     * @return AppPromotionUrls
+     */
+    public function setDesign(?string $design): AppPromotionUrls
+    {
+        $this->design = $design;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @param string|null $notes
+     * @return AppPromotionUrls
+     */
+    public function setNotes(?string $notes): AppPromotionUrls
+    {
+        $this->notes = $notes;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool|null $isActive
+     * @return AppPromotionUrls
+     */
+    public function setIsActive(?bool $isActive): AppPromotionUrls
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
+
 }
