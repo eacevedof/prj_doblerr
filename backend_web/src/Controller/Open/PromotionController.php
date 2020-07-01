@@ -28,7 +28,7 @@ class PromotionController extends BaseController
         ]);
     }
 
-    //<domain>/promotion/<slug>
+    //<domain>/promocion/<slug>
     public function detail(Request $request, string $slug)
     {
         $referer = $request->headers->get('referer');
@@ -43,7 +43,22 @@ class PromotionController extends BaseController
         ]);
     }
 
-    //<domain>/promocion/subscribe/{slug}
+    // formulario
+    //<domain>/promocion/confirmar/{slug}
+    public function confirm_form(PromotionConfirmService $promotionConfirmService, string $promoslug)
+    {
+        $seo = SeoProvider::get_meta("promotion");
+        return $this->render('open/promotion/forms/confirm.html.twig',[
+            "seo"=>$seo,
+            "error"=>null,
+            "options"=>[
+                ["value"=>"","text"=>""],
+            ],
+        ]);
+    }// confirm_form
+
+    //ajax
+    //<domain>/promotion/subscribe/{promoslug}
     public function subscribe(
         PromotionSubscriptionService $promotionSubscriptionService,
         MailerInterface $mailer,
@@ -79,7 +94,8 @@ class PromotionController extends BaseController
         ));
     }// subscribe
 
-    //<domain>/promocion/confirm/{slug}
+    //ajax
+    //<domain>/promotion/confirm/{promoslug}
     public function confirm(
         PromotionConfirmService $promotionConfirmService,
         MailerInterface $mailer,
@@ -113,18 +129,5 @@ class PromotionController extends BaseController
             ]
         ));
     }// confirm
-
-    //<domain>/promocion/confirmar/{slug}
-    public function confirm_form(PromotionConfirmService $promotionConfirmService, string $promoslug)
-    {
-        $seo = SeoProvider::get_meta("promotion");
-        return $this->render('open/promotion/forms/confirm.html.twig',[
-            "seo"=>$seo,
-            "error"=>null,
-            "options"=>[
-                ["value"=>"","text"=>""],
-            ],
-        ]);
-    }// confirm_form
 
 }//PromotionController

@@ -30,10 +30,16 @@ promotion:
     path: /promocion/{slug}
     controller: App\Controller\Open\PromotionController::detail
 
+promotion-confirmform:
+    path: /promocion/confirmar/{promoslug}
+    controller: App\Controller\Open\PromotionController::confirm_form
+
+# ajax
 promotion-subscribe:
     path: /promotion/subscribe/{promoslug}
     controller: App\Controller\Open\PromotionController::subscribe
 
+# ajax
 promotion-confirm:
     path: /promotion/confirm/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm
@@ -44,9 +50,6 @@ products:
 
 
 
-promotion-confirmform:
-    path: /promocion/confirmar/{promoslug}
-    controller: App\Controller\Open\PromotionController::confirm_form
 
 # zona privada
 register:
