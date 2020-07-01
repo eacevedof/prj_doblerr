@@ -7,6 +7,7 @@ use App\Providers\SeoProvider;
 use App\Services\Email\EmailPromotionService;
 use App\Services\Open\PromotionConfirmService;
 use App\Controller\BaseController;
+use App\Services\Open\PromotionsService;
 use App\Services\Open\PromotionSubscriptionService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -15,15 +16,14 @@ class PromotionController extends BaseController
 {
 
     //<domain>/promociones
-    public function __invoke(string $slug)
+    public function __invoke(PromotionsService $promotionsService)
     {
-        $seo = SeoProvider::get_meta("promotion");
+        $result = $promotionsService->get_list();
+        $seo = SeoProvider::get_meta("promotions");
         return $this->render('open/promotion/promotions.html.twig',[
             "seo"=>$seo,
             "error"=>null,
-            "options"=>[
-                ["value"=>"","text"=>""],
-            ],
+            "promotions"=>$result,
         ]);
     }
 

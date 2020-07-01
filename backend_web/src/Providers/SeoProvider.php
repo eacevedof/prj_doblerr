@@ -37,6 +37,14 @@ class SeoProvider
             "keywords" => "Peluquería Doble RR, citas, pedir cita, solicitar cita, corte de cabello, madrid",
             "h1" => "Formulario petición cita"
         ],
+
+        "promotions"=>[
+            "title"=>"Doble RR | Apuntate en nuestras mágnificas promociones",
+            "description"=>"Aprovecha de nuestras fabulosas promociones en distintos servicios",
+            "keywords" => "Peluquería Doble RR. Promociones, descuentos, regalos, bonos por puntos",
+            "h1" => "Nuestras promociones regalo"
+        ],
+
         "promotion"=>[
             "title"=>"Doble RR | Promoción Tratamiento Botox Capilar",
             "description"=>"Promoción limitada",

@@ -14,7 +14,7 @@ use App\Entity\App\AppPromotionUser;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class PromotionConfirmService extends BaseService
+class PromotionsService extends BaseService
 {
     private PromotionsSubscribersRepository $promotionsSubscribersRepository;
     private PromotionRepository $promotionRepository;
@@ -144,6 +144,11 @@ class PromotionConfirmService extends BaseService
         $this->objects["subscription"] = $subscription;
     }
 
+    public function get_list()
+    {
+        return $this->promotionRepository->findAll();
+    }
+
     public function get_subscribed_objs(){return $this->objects;}
 
-}//PromotionConfirmService
+}//PromotionsService

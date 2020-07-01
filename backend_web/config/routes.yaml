@@ -25,6 +25,7 @@ mail:
 promotions:
     path: /promociones
     controller: App\Controller\Open\PromotionController
+
 promotion:
     path: /promocion/{slug}
     controller: App\Controller\Open\PromotionController::detail
