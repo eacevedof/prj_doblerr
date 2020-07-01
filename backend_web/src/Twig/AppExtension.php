@@ -15,8 +15,9 @@ class AppExtension extends AbstractExtension
 
     public function is_prod()
     {
+        //esto en ionos no tira
         $value = getenv("APP_ENV");
-        print_r("value-env:$value");
+        print_r("value-env:$value --fin"); die;
         return $value==="prod";
     }
 }
