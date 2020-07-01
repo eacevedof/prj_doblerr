@@ -16,6 +16,7 @@ class AppExtension extends AbstractExtension
     public function is_prod()
     {
         $value = getenv("APP_ENV");
-        return $value=="prod";
+        dump($value);die;
+        return $value==="prod";
     }
 }
