@@ -39,7 +39,7 @@ promotion-confirm:
     controller: App\Controller\Open\PromotionController::confirm
 
 promotion-confirmform:
-    path: /promocion/confirm-form/{promoslug}
+    path: /promocion/confirmar/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm_form
 
 # zona privada

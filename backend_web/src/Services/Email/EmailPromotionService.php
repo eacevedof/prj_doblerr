@@ -31,9 +31,9 @@ final class EmailPromotionService extends BaseService
         $message = "
         <p>
         Hola <b>{$oUser->getName1()}.</b><br/> 
-        Ya casi terminamos. Falta validar tu suscripción. <br/>
+        Nos falta validar tu suscripción. <br/>
         Tu código de confirmación es: <code><b><big>{$oSubscription->getCode1()}</big></b></code>
-        Finaliza el proceso de suscripción ingresandolo <a href='{$domain}/promocion/confirm-form/{$oPromotion->getSlug()}' target='_blank'>aquí</a>
+        Finaliza el proceso ingresandolo <a href='{$domain}/promocion/confirmar/{$oPromotion->getSlug()}' target='_blank'>aquí</a>
         </p>
         ";
 
@@ -63,9 +63,9 @@ final class EmailPromotionService extends BaseService
         <ul>
             <li>Tu código: <code><b><big>{$oSubscription->getCode1()}</big></b></code></li>
             <li>Hacerla efectiva antes del día: <b>{$oPromotion->getDateTo()->format("Y-m-d")}</b></li>
-            <li>Llamar al <b>91 455 74 43</b> para poder concretar una cita.</li>
-            <li>El consumo de la promoción solo es válido entre los días: Lunes y Miercoles de 14:00 a 19:00</li>            
-            <li>Esta promoción es acumulable.</li>
+            <li>Llamar al <b>91 455 74 43</b> o en <a href='https://doblerr.es/cita' target='_blank'>Doblerr.es/Cita</a> para poder concretar una cita.</li>
+            <li>Solo se puede hacer efectiva la promoción los días: <b>Lunes a Miercoles de 14:00 a 19:00</b></li>            
+            <li>Esta promoción es acumulable. Entra en el plan por puntos.</li>
             <li>Esta promoción puntúa en una unidad. Cuando obtengas diez unidades recibirás un email con un servicio de regalo.</li>
             <li>Proporcionar tu código después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
             <li>La contabilización de puntos se realiza <b>por email</b>. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>

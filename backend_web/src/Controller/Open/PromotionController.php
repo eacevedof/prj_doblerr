@@ -98,7 +98,7 @@ class PromotionController extends BaseController
         ));
     }// confirm
 
-    //<domain>/promocion/confirm-form/{slug}
+    //<domain>/promocion/confirmar/{slug}
     public function confirm_form(PromotionConfirmService $promotionConfirmService, string $promoslug)
     {
         $seo = SeoProvider::get_meta("promotion");
