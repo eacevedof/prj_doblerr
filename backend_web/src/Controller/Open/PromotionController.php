@@ -33,7 +33,7 @@ class PromotionController extends BaseController
     {
         $id = explode("-",$promoslug);
         $id = $id[0];
-        $numpromo = str_pad("1", 6, "0", STR_PAD_LEFT);
+        $numpromo = str_pad($id, 6, "0", STR_PAD_LEFT);
         $referer = $request->headers->get('referer');
         $seo = SeoProvider::get_meta("promotion");
         return $this->render("open/promotion/forms/promo-{$numpromo}.html.twig",[
