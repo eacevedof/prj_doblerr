@@ -35,7 +35,7 @@
         <div v-if="showconfirm" class="form-group row">
             <label for="txt-code" class="col-sm-2 col-form-label">Código confirmación *</label>
             <div class="col-sm-10">
-                <input type="text" v-model="codeconfirm" id="txt-code"  placeholder="Código confirmación" required="required">
+                <input type="text" v-model="codeconfirm" class="form-control" id="txt-code" placeholder="Código confirmación" required="required">
             </div>
         </div>
 
@@ -67,6 +67,7 @@ const get_slug = ()=>{
 
 const BTN_INISTATE = "Lo quiero"
 const BTN_IN_PROGRESS = "Procesando..."
+const BTN_CONFIRM = "Confirmar"
 
 const formid = "form-subscribe"
 
@@ -121,6 +122,7 @@ const app = new Vue({
                         html: 'Revisa tu email e ingresa el código que te hemos enviado.',
                     })
                     self.showconfirm = true;
+                    self.btnsend = BTN_CONFIRM
                 } else {
                     Swal.fire({
                         icon: 'warning',
