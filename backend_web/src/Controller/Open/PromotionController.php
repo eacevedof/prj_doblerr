@@ -14,8 +14,21 @@ use Symfony\Component\Mailer\MailerInterface;
 class PromotionController extends BaseController
 {
 
-    //<domain>/promocion/<some-slug>
+    //<domain>/promociones
     public function __invoke(string $slug)
+    {
+        $seo = SeoProvider::get_meta("promotion");
+        return $this->render('open/promotion/promotions.html.twig',[
+            "seo"=>$seo,
+            "error"=>null,
+            "options"=>[
+                ["value"=>"","text"=>""],
+            ],
+        ]);
+    }
+
+    //<domain>/promotion/<slug>
+    public function detail(string $slug)
     {
         $seo = SeoProvider::get_meta("promotion");
         return $this->render('open/promotion/forms/promo-0001.html.twig',[

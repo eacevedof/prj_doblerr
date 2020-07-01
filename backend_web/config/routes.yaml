@@ -22,13 +22,12 @@ mail:
     path: /mail
     controller: App\Controller\Open\HomeController::mail
 
-products:
-    path: /products
-    controller: App\Controller\Open\ProductController
-
 promotions:
-    path: /promocion/{slug}
+    path: /promociones
     controller: App\Controller\Open\PromotionController
+promotion:
+    path: /promocion/{slug}
+    controller: App\Controller\Open\PromotionController::detail
 
 promotion-subscribe:
     path: /promotion/subscribe/{promoslug}
@@ -37,6 +36,12 @@ promotion-subscribe:
 promotion-confirm:
     path: /promotion/confirm/{promoslug}
     controller: App\Controller\Open\PromotionController::confirm
+
+products:
+    path: /productos
+    controller: App\Controller\Open\ProductController
+
+
 
 promotion-confirmform:
     path: /promocion/confirmar/{promoslug}
