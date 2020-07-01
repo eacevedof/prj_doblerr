@@ -33,7 +33,7 @@ class PromotionController extends BaseController
     {
         $referer = $request->headers->get('referer');
         $seo = SeoProvider::get_meta("promotion");
-        return $this->render('open/promotion/forms/promo-0001.html.twig',[
+        return $this->render('open/promotion/forms/promo-000001.html.twig',[
             "seo"=>$seo,
             "error"=>null,
             "referer"=> $referer,
