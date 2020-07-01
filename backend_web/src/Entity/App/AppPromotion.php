@@ -20,6 +20,12 @@ class AppPromotion extends BaseEntity
     private $id;
 
     /**
+     * @var string|null
+     * @ORM\Column(name="content", type="string", length=2000, nullable=true, options={"default"="NULL"})
+     */
+    private $content = null;
+
+    /**
      * @var int|null
      * @ORM\Column(name="id_user", type="integer", nullable=true, options={"default"="NULL","comment"="a quien pertenece la promo"})
      */
