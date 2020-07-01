@@ -71,6 +71,10 @@ final class EmailPromotionService extends BaseService
             <li>La contabilización de puntos se realiza <b>por email</b>. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
         </ul>
         ";
+        //php bin/console --env=local doctrine:mapping:import "App\Entity" --filter="app_promotion"
+        //php bin/console --env=local doctrine:mapping:import "App\Entity" --filter="app_promotion" --path=db
+
+        //php bin/console --env=local doctrine:mapping:import "App\Entity" annotation --path=src/Entity --filter="app_promotion"
         return $message;
     }
 
