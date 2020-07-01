@@ -27,7 +27,7 @@ promotions:
     controller: App\Controller\Open\PromotionController
 
 promotion:
-    path: /promocion/{slug}
+    path: /promocion/{promoslug}
     controller: App\Controller\Open\PromotionController::detail
 
 promotion-confirmform:
