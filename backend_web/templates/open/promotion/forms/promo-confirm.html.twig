@@ -3,34 +3,34 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    <div class="jumbotron">
-        <h1 class="display-4">Promoción: {{ promotion.description }} </h1>
-        <p class="lead">
-            {{ promotion.content }}
-        </p>
-        <hr class="my-4">
-        <h3>Confirma tu suscripción</h3>
-        {% verbatim %}
-        <form id="form-confirm"  @submit="handleSubmit">
-            <input type="hidden" v-model="referer">
-            <div  class="form-group row">
-                <label for="txt-code" class="col-sm-2 col-form-label">Código *</label>
-                <div class="col-sm-10">
-                    <input type="text" v-model="codeconfirm" class="form-control" id="txt-code" placeholder="este código te debe haber llegado por email" required="required">
-                </div>
+<div class="jumbotron">
+    <h1 class="display-4">Promoción: {{ promotion.description }} </h1>
+    <p class="lead">
+        {{ promotion.content }}
+    </p>
+    <hr class="my-4">
+    <h3>Confirma tu suscripción</h3>
+    {% verbatim %}
+    <form id="form-confirm"  @submit="handleSubmit">
+        <input type="hidden" v-model="referer">
+        <div  class="form-group row">
+            <label for="txt-code" class="col-sm-2 col-form-label">Código *</label>
+            <div class="col-sm-10">
+                <input type="text" v-model="codeconfirm" class="form-control" id="txt-code" placeholder="este código te debe haber llegado por email" required="required">
             </div>
+        </div>
 
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <button class="btn btn-primary" :disabled="issending" >
-                        {{btnsend}}
-                        <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
-                    </button>
-                </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button class="btn btn-primary" :disabled="issending" >
+                    {{btnsend}}
+                    <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
+                </button>
             </div>
-        </form>
-    {% endverbatim %}
-    </div>
+        </div>
+    </form>
+{% endverbatim %}
+</div>
 {% endblock %}
 {% block javascripts %}
 <script>
