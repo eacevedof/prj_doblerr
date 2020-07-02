@@ -123,7 +123,7 @@ const app = new Vue({
                     Swal.fire({
                         icon: 'success',
                         title: 'Enhorabuena! <br/> Subscripción pendiente de confirmación',
-                        html: 'Revisa tu email e ingresa el código que te hemos enviado.',
+                        html: `Revisa tu email <b>${self.email}</b> e ingresa el código que te hemos enviado.`,
                     })
                     self.showconfirm = true;
                     self.btnsend = BTN_CONFIRM
