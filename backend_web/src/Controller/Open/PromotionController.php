@@ -35,7 +35,7 @@ class PromotionController extends BaseController
     {
         $promotion = $promotionRepository->findBySlug($promoslug);
         if(!$promotion)
-            throw new NotFoundHttpException('Sorry not existing!');
+            throw new NotFoundHttpException('No existe esta promoción');
         $id = "{$promotion->getId()}";
         $numpromo = str_pad($id, 6, "0", STR_PAD_LEFT);
         $referer = $request->headers->get('referer');
@@ -52,15 +52,17 @@ class PromotionController extends BaseController
 
     // formulario
     //<domain>/promocion/confirmar/{slug}
-    public function confirm_form(PromotionConfirmService $promotionConfirmService, string $promoslug)
+    public function confirm_form(PromotionRepository $promotionRepository, string $promoslug)
     {
+        $promotion = $promotionRepository->findBySlug($promoslug);
+        if(!$promotion)
+            throw new NotFoundHttpException('No existe esta promoción');
+
         $seo = SeoProvider::get_meta("promotion");
         return $this->render('open/promotion/forms/promo-confirm.html.twig',[
             "seo"=>$seo,
             "error"=>null,
-            "options"=>[
-                ["value"=>"","text"=>""],
-            ],
+            "promotion"=>$promotion
         ]);
     }// confirm_form
 

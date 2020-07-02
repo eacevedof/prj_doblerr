@@ -4,16 +4,11 @@
 
 {% block body %}
     <div class="example-wrapper">
-        <h2>Ingresa tu código recibido en tu email</h2>
-        {% if error %}
-            <div class="alert alert-error">
-                {{ error.messagekey|trans(error.messageData,"security") }}
-            </div>
-        {% endif %}
+        <h2>Ingresa el código recibido en tu email</h2>
         {% verbatim %}
         <form id="form-confirm"  @submit="handleSubmit">
             <input type="text" v-model="codeconfirm" placeholder="Código confirmación" required="required">
-            <button id="btn-confirm">Aceptar</button>
+            <button>Confirmar</button>
         </form>
         {% endverbatim %}
     </div>
@@ -50,7 +45,6 @@ const app = new Vue({
             const self = this
             const slug = get_slug()
             const url = `/promotion/confirm/${slug}`
-            $("#btn-confirm").hide()
             const data = new FormData();
             data.append("action","confirm-code")
             data.append("codeconfirm",this.codeconfirm)
