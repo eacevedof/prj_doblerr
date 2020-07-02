@@ -30,10 +30,10 @@ final class EmailPromotionService extends BaseService
 
         $message = "
         <p>
-        Hola <b>{$oUser->getName1()}.</b><br/> 
+        Hola <b>{$oUser->getName1()}.</b><br/><br/> 
         Nos falta validar tu suscripción. <br/>
-        Tu código de confirmación para <b>{$oPromotion->getId()} - {$oPromotion->getDescription()}</b> es: <code><b><big>{$oSubscription->getCode1()}</big></b></code>
-        Finaliza el proceso ingresandolo <a href='{$domain}/promocion/confirmar/{$oPromotion->getSlug()}' target='_blank'>aquí</a>
+        Tu código de confirmación para <b>{$oPromotion->getId()} - {$oPromotion->getDescription()}</b> es: <code><b><big>{$oSubscription->getCode1()}</big></b></code><br/>
+        Finaliza el proceso ingresandolo <a href='{$domain}/promocion/confirmar/{$oPromotion->getSlug()}' target='_blank'><b>aquí</b></a>
         </p>
         ";
 

@@ -45,7 +45,7 @@
 
         <div class="form-group row">
             <div class="col-sm-10">
-                <button id="btn-confirm" class="btn btn-primary" :disabled="issending" >
+                <button class="btn btn-primary" :disabled="issending" >
                     {{btnsend}}
                     <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
                 </button>
@@ -73,9 +73,9 @@ const app = new Vue({
             issending: false,
             errors: [],
             codeconfirm: "",
-            name: "Eledu",
-            email: "eac@ya.com",
-            phone: "123474128",
+            name: "Eduaroo A.F",
+            email: "eacevedo@hotmail.com",
+            phone: "629196070",
         }
     },
 
@@ -110,7 +110,7 @@ const app = new Vue({
                 if(response.title == "success") {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Enhorabuena! <br/> Subscripción pendiente de confirmación',
+                        title: '${self.name} <br/> tu suscripción está pendiente de confirmación',
                         html: `Revisa tu email <b>${self.email}</b> e ingresa el código que te hemos enviado.`,
                     })
                     self.showconfirm = true;
@@ -160,7 +160,6 @@ const app = new Vue({
                 console.log("reponse",response)
                 
                 if(response.title == "success") {
-                    $(".app_button_close").click()
                     Swal.fire({
                         icon: 'success',
                         title: 'Enhorabuena! <br/> Subscripción realizada correctamente',
