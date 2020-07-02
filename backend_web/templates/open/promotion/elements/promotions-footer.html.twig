@@ -5,21 +5,26 @@
             <img class="mb-2" src="/assets/images/favicon-96x96.png" alt="" width="24" height="24">
             <small class="d-block mb-3 text-muted">&copy; 2010-2020</small>
         </div>
+        {% set requri = app.request.get('_route') %}
         <div class="col-6 col-md">
-            <h5>Enlaces</h5>
             <ul class="list-unstyled text-small">
-                {% set requri = app.request.get('_route') %}
-                <li class="{% if requri == 'home' %}active{% endif %}"><a href="{{ path("home") }}">Inicio</a></li>
+                <li class="{% if requri == 'home' %}active{% endif %}"><a href="{{ path("home") }}">Peluquería Doble RR </a></li>
                 {% if not is_prod() %}
                     <li class="{% if requri == 'promotions' %}active{% endif %}"><a href="{{ path("promotions") }}">Promociones</a></li>
                 {% endif %}
-                <li class="{% if requri == 'appointment' %}active{% endif %}"><a href="{{ path("appointment") }}">Reservar cita</a></li>
-                <li class="{% if requri == 'services' %}active{% endif %}"><a href="{{ path("services") }}">Servicios</a></li>
-                <li class="{% if requri == 'contact' %}active{% endif %}"><a href="{{ path("contact") }}">Contacto</a></li>
-                <li class="{% if requri == 'about-us' %}active{% endif %}"><a href="{{ path("about-us") }}">RR</a></li>
             </ul>
         </div>
-        <div class="col-6 col-md"></div>
-        <div class="col-6 col-md"></div>
+        <div class="col-6 col-md">
+            <ul class="list-unstyled text-small">
+                <li class="{% if requri == 'appointment' %}active{% endif %}"><a href="{{ path("appointment") }}">Reservar cita</a></li>
+                <li class="{% if requri == 'services' %}active{% endif %}"><a href="{{ path("services") }}">Servicios</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <ul class="list-unstyled text-small">
+                <li class="{% if requri == 'contact' %}active{% endif %}"><a href="{{ path("contact") }}">Contacto</a></li>
+                <li class="{% if requri == 'about-us' %}active{% endif %}"><a href="{{ path("about-us") }}">Sobre Doble RR</a></li>
+            </ul>
+        </div>
     </div>
 </footer>
