@@ -68,7 +68,14 @@ final class EmailPromotionService extends BaseService
             <li>Esta promoción es acumulable. Entra en el plan por puntos.</li>
             <li>Esta promoción puntúa en una unidad. Cuando obtengas diez unidades recibirás un email con un servicio de regalo.</li>
             <li>Proporcionar tu código después de hacer efectiva la promoción. Así lo podremos contabilizar para el regalo.</li>
-            <li>La contabilización de puntos se realiza <b>por email</b>. Procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
+            <li>La contabilización de los puntos se realiza por <b>cuenta de email</b> por este motivo procura suscribirte a cualquier promoción siempre con el mismo correo electrónico</li>
+            <li>Esta promoción esta sujeta a la disponibilidad de <a href='https://doblerr.es' target='_blank'>Doble RR</a></li>
+            <li>
+                Para cualquier duda o sugerencia puedes enviarnos un email a 
+                <a href=\"mailto:{$this->get_env("APP_EMAIL_TO")}?Subject=Suscripción%20{$oSubscription->getCode1()}\">
+                    <b>{$this->get_env("APP_EMAIL_TO")}</b>
+                </a>
+            </li>
         </ul>
         ";
 
