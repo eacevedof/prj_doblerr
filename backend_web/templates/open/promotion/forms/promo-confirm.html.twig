@@ -1,32 +1,42 @@
 {% extends '/open/promotion/promotion.html.twig' %}
 
-{% block title %}Confirma tu promoción{% endblock %}
+{% block title %}Confirma tu suscripción{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
+    <div class="jumbotron">
+        <h1 class="display-4">Promoción: {{ promotion.description }} </h1>
+        <p class="lead">
+            {{ promotion.content }}
+        </p>
         <h2>Ingresa el código recibido en tu email</h2>
         {% verbatim %}
-        <form id="form-confirm"  @submit="handleSubmit">
-            <input type="text" v-model="codeconfirm" placeholder="Código confirmación" required="required">
-            <button>Confirmar</button>
+        <form id="form-subscribe"  @submit="handleSubmit">
+            <input type="hidden" v-model="referer">
+            <div  class="form-group row">
+                <label for="txt-code" class="col-sm-2 col-form-label">Código confirmación *</label>
+                <div class="col-sm-10">
+                    <input type="text" v-model="codeconfirm" class="form-control" id="txt-code" placeholder="este código te debe haber llegado por email" required="required">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button class="btn btn-primary" :disabled="issending" >
+                        {{btnsend}}
+                        <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
+                    </button>
+                </div>
+            </div>
         </form>
-        {% endverbatim %}
+    {% endverbatim %}
     </div>
 {% endblock %}
 {% block javascripts %}
 <script>
-const pr = (v,t) => {
-    const str = JSON.stringify(v);
-    alert(`${t}\n:${str}`)
-}
 
-const get_slug = ()=>{
-    const parts = window.location.pathname.split("/")
-    const slugquery = parts[parts.length-1]
-    const slug = slugquery.split("?")
-    return slug[0] ?? ""
-}
 
+const BTN_IN_PROGRESS = "Procesando..."
+const BTN_CONFIRM = "Confirmar"
 const formid = "form-confirm"
 
 const app = new Vue({
@@ -39,26 +49,27 @@ const app = new Vue({
     },
 
     methods:{
-        handleSubmit: function(e) {
-          e.preventDefault()
-            //alert("confirm")
+        handleSubmit(e){
+            e.preventDefault()
             const self = this
             const slug = get_slug()
             const url = `/promotion/confirm/${slug}`
+
             const data = new FormData();
             data.append("action","confirm-code")
             data.append("codeconfirm",this.codeconfirm)
+
             fetch(url, {
                 method: 'post',
                 body: data
             })
             .then(response => response.json())
-            .then(function(response) {
+            .then(response => {
                 $("#btn-confirm").show()
                 console.log("reponse",response)
 
                 if(response.title == "success") {
-                    $(".app_button_close").click()
+
                     Swal.fire({
                         icon: 'success',
                         title: 'Enhorabuena! <br/> Subscripción realizada correctamente',
