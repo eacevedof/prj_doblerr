@@ -101,6 +101,7 @@ final class EmailPromotionService extends BaseService
             "from" => $this->get_env("APP_EMAIL_FROM"),
             "to" => $oUser->getEmail(),
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
+            "bcc" => [$this->get_env("APP_EMAIL_TO")],
             "subject" => "doblerr noreply - Código de promoción: {$oPromotion->getId()}-{$oPromotion->getDescription()}",
             "text" => "",//esta clave siempre tiene que ir sino no se envia
             "html" => $this->_get_text_subscribe(),
@@ -115,12 +116,13 @@ final class EmailPromotionService extends BaseService
     {
         $oUser = $this->objects["user"];
         $oPromotion = $this->objects["promotion"];
-        $oSubscription = $this->objects["subscription"];
+        //$oSubscription = $this->objects["subscription"];
 
         $data = [
             "from" => $this->get_env("APP_EMAIL_FROM"),
             "to" => $oUser->getEmail(),
             //"bcc" => [$this->get_env("APP_EMAIL_FROM"), $this->get_env("APP_EMAIL_TO")],
+            "bcc" => [$this->get_env("APP_EMAIL_TO")],
             "subject" => "doblerr noreply - Promoción Nº {$oPromotion->getId()} confirmada: {$oPromotion->getDescription()}",
             "text" => "",//esta clave siempre tiene que ir sino no se envia
             "html" => $this->_get_text_confirm(),
