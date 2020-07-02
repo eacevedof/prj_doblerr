@@ -15,18 +15,28 @@
     <script src="/assets/js/general.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body style="background: black">
+<body>
 <!--
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">{% block h1 %}{% endblock %}</h1>
 </div>
 -->
-<br/>
+<div class="col-12 col-md">
+    <img class="mb-2" src="/assets/images/favicon-96x96.png" alt="" width="24" height="24">
+</div>
 <div id="div-container" class="container">
 {% block container %}{% endblock %}
 {{ include("open/promotion/elements/promotions-footer.html.twig") }}
 </div>
 <style>
+body {
+    background-color: #000000;
+    background-image: url('/assets/themes/beauty/images/footer.jpg');
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    /**color: #a5a5a5;**/
+}
 ul > li > a{
     color: #F8BB02;
 }
