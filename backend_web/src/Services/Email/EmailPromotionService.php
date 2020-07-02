@@ -32,7 +32,7 @@ final class EmailPromotionService extends BaseService
         <p>
         Hola <b>{$oUser->getName1()}.</b><br/> 
         Nos falta validar tu suscripción. <br/>
-        Tu código de confirmación es: <code><b><big>{$oSubscription->getCode1()}</big></b></code>
+        Tu código de confirmación para <b>{$oPromotion->getId()} - {$oPromotion->getDescription()}</b> es: <code><b><big>{$oSubscription->getCode1()}</big></b></code>
         Finaliza el proceso ingresandolo <a href='{$domain}/promocion/confirmar/{$oPromotion->getSlug()}' target='_blank'>aquí</a>
         </p>
         ";
@@ -48,15 +48,15 @@ final class EmailPromotionService extends BaseService
 
         $message = "
         <p>
-            Hola <b>{$oUser->getName1()}</b> <br/>
-            Gracias por confirmar tu suscripción en: 
+            Hola <b>{$oUser->getName1()}</b>.<br/> 
         </p>
-        
-        <h3>Promoción Nº:{$oPromotion->getId()} | {$oPromotion->getDescription()}</h3>
+        <p>
+            Gracias por confirmar tu suscripción en: <b>Promoción Nº:{$oPromotion->getId()} | {$oPromotion->getDescription()}</b>
+        </p>
         <p>
             <b>Contenido:</b><br/>
             - Con cualquier trabajo técnico o moldeado el tratamiento Botox capilar es gratis.<br/>
-            - Tratamiento Botox Capilar valorado en 15 €
+            - Tratamiento Botox Capilar valorado en <b>15 €</b>
         </p>
         <br/>
         <b>Recuerda:</b>
