@@ -35,6 +35,16 @@ final class EmailPromotionService extends BaseService
         Tu código de confirmación para <b>{$oPromotion->getId()} - {$oPromotion->getDescription()}</b> es: <code><b><big>{$oSubscription->getCode1()}</big></b></code><br/>
         Finaliza el proceso ingresandolo <a href='{$domain}/promocion/confirmar/{$oPromotion->getSlug()}' target='_blank'><b>aquí</b></a>
         </p>
+        <sub>
+            <h4>Disclaimer:</h4>
+            <p>
+                Si por algún motivo has recibido este email sin haberlo solicitado por favor contacta con nosotros en
+                <a href=\"mailto:{$this->get_env("APP_EMAIL_TO")}?Subject=Suscripción-no-solicitada:{$oSubscription->getCode1()}\">
+                    <b>{$this->get_env("APP_EMAIL_TO")}</b>
+                </a> de modo que lo podamos resolver lo antes posible.<br/>
+                Disculpa las molestias
+            </p>
+        </sub>
         ";
 
         return $message;
@@ -63,7 +73,7 @@ final class EmailPromotionService extends BaseService
         <ul>
             <li>Tu código: <code><b><big>{$oSubscription->getCode1()}</big></b></code></li>
             <li>Hacerla efectiva antes del día: <b>{$oPromotion->getDateTo()->format("Y-m-d")}</b></li>
-            <li>Llamar al <b>91 455 74 43</b> o en <a href='https://doblerr.es/cita' target='_blank'>Doblerr.es/Cita</a> para poder concretar una cita.</li>
+            <li>Llamar al <b>91 455 74 43</b> o en <a href='https://doblerr.es/cita' target='_blank'>doblerr.es/cita</a> para poder concretar una cita.</li>
             <li>Solo se puede hacer efectiva la promoción los días: <b>Lunes a Miercoles de 14:00 a 19:00</b></li>            
             <li>Esta promoción es acumulable. Entra en el plan por puntos.</li>
             <li>Esta promoción puntúa en una unidad. Cuando obtengas diez unidades recibirás un email con un servicio de regalo.</li>
@@ -72,7 +82,7 @@ final class EmailPromotionService extends BaseService
             <li>Esta promoción esta sujeta a la disponibilidad de <a href='https://doblerr.es' target='_blank'>Doble RR</a></li>
             <li>
                 Para cualquier duda o sugerencia puedes enviarnos un email a 
-                <a href=\"mailto:{$this->get_env("APP_EMAIL_TO")}?Subject=Suscripción%20{$oSubscription->getCode1()}\">
+                <a href=\"mailto:{$this->get_env("APP_EMAIL_TO")}?Subject=Suscripción-código:{$oSubscription->getCode1()}\">
                     <b>{$this->get_env("APP_EMAIL_TO")}</b>
                 </a>
             </li>
