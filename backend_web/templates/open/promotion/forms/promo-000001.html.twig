@@ -1,4 +1,4 @@
-{% extends '/open/promotion/promotion.html.twig' %}
+{% extends '/open/promotion/promotion-layout.html.twig' %}
 {% block body %}
 <div class="jumbotron">
     <h1 class="display-4">Promoción: Tratamiento Botox Capilar</h1>
@@ -57,18 +57,6 @@
 {% endblock %}
 {% block javascripts %}
 <script>
-const pr = (v,t) => {
-    const str = JSON.stringify(v);
-    alert(`${t}\n:${str}`)
-}
-
-const get_slug = ()=>{
-    const parts = window.location.pathname.split("/")
-    const slugquery = parts[parts.length-1]
-    const slug = slugquery.split("?")
-    return slug[0] ?? ""
-}
-
 const BTN_INISTATE = "Lo quiero"
 const BTN_IN_PROGRESS = "Procesando..."
 const BTN_CONFIRM = "Confirmar"
