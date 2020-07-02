@@ -18,3 +18,26 @@ html {
 .card-deck .card {
     min-width: 220px;
 }
+body {
+    background-color: #000000;
+    background-image: url('/assets/themes/beauty/images/footer.jpg');
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    /**color: #a5a5a5;**/
+}
+ul > li > a{
+    color: #F8BB02;
+}
+ul > li > a:hover{
+    color: #F8BB02;
+}
+.btn-color {
+    background: #F8BB02;
+    border-color: #3b3b3b;
+    color: black;
+}
+.btn-color:hover{
+    background: #F8BB02;
+    color: black;
+}

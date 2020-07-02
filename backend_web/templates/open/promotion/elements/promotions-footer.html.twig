@@ -8,10 +8,8 @@
         {% set requri = app.request.get('_route') %}
         <div class="col-6 col-md">
             <ul class="list-unstyled text-small">
+                <li class="{% if requri == 'promotions' %}active{% endif %}"><a href="{{ path("promotions") }}">Más promociones</a></li>
                 <li class="{% if requri == 'home' %}active{% endif %}"><a href="{{ path("home") }}">Peluquería Doble RR </a></li>
-                {% if not is_prod() %}
-                    <li class="{% if requri == 'promotions' %}active{% endif %}"><a href="{{ path("promotions") }}">Promociones</a></li>
-                {% endif %}
             </ul>
         </div>
         <div class="col-6 col-md">
