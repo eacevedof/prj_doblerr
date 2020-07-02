@@ -1,6 +1,6 @@
 {% extends '/open/promotion/promotion-layout.html.twig' %}
 
-{% block title %}Confirma tu suscripción{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
     <div class="jumbotron">
@@ -8,12 +8,13 @@
         <p class="lead">
             {{ promotion.content }}
         </p>
-        <h2>Ingresa el código recibido en tu email</h2>
+        <hr class="my-4">
+        <h3>Confirma tu suscripción</h3>
         {% verbatim %}
-        <form id="form-subscribe"  @submit="handleSubmit">
+        <form id="form-confirm"  @submit="handleSubmit">
             <input type="hidden" v-model="referer">
             <div  class="form-group row">
-                <label for="txt-code" class="col-sm-2 col-form-label">Código confirmación *</label>
+                <label for="txt-code" class="col-sm-2 col-form-label">Código *</label>
                 <div class="col-sm-10">
                     <input type="text" v-model="codeconfirm" class="form-control" id="txt-code" placeholder="este código te debe haber llegado por email" required="required">
                 </div>
@@ -33,8 +34,9 @@
 {% endblock %}
 {% block javascripts %}
 <script>
+const BTN_INISTATE = "Confirmar"
 const BTN_IN_PROGRESS = "Procesando..."
-const BTN_CONFIRM = "Confirmar"
+
 const formid = "form-confirm"
 
 const app = new Vue({
@@ -42,6 +44,8 @@ const app = new Vue({
     data(){
         return {
             errors: [],
+            btnsend: BTN_INISTATE,
+            issending: false,
             codeconfirm: "",
         }
     },
@@ -50,12 +54,16 @@ const app = new Vue({
         handleSubmit(e){
             e.preventDefault()
             const self = this
+
+            self.issending = true
+            self.btnsend = BTN_IN_PROGRESS
+
             const slug = get_slug()
             const url = `/promotion/confirm/${slug}`
 
             const data = new FormData();
             data.append("action","confirm-code")
-            data.append("codeconfirm",this.codeconfirm)
+            data.append("codeconfirm",self.codeconfirm)
 
             fetch(url, {
                 method: 'post',
@@ -63,8 +71,9 @@ const app = new Vue({
             })
             .then(response => response.json())
             .then(response => {
-                $("#btn-confirm").show()
                 console.log("reponse",response)
+                self.issending = false
+                self.btnsend = BTN_INISTATE
 
                 if(response.title == "success") {
 
@@ -84,7 +93,9 @@ const app = new Vue({
                 }
             })
             .catch(function(error){
-                $("#btn-confirm").show()
+                self.issending = false
+                self.btnsend = BTN_INISTATE
+
                 console.log("error catched:",error)
                 Swal.fire({
                     icon: 'error',
