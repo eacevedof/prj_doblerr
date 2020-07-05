@@ -80,6 +80,10 @@ const app = new Vue({
                         html: response.description
                     })
 
+                    {% if is_prod() %}
+                        gtag('event', 'conversion', {'send_to': 'AW-990893572/ClvACInBn9YBEISsv9gD'});
+                    {% endif %}
+
                     self.showconfirm = true;
                 } else {
                     Swal.fire({
