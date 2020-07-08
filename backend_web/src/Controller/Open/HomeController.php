@@ -56,6 +56,12 @@ class HomeController extends BaseController
         return $this->render('open/home/appointment.html.twig',["seo"=>$seo]);
     }
 
+    public function cookies()
+    {
+        $seo = SeoProvider::get_meta("cookies");
+        return $this->render('open/home/cookies.html.twig',["seo"=>$seo]);
+    }
+
     public function mail(MailerInterface $mailer)
     {
         $this->logd($_POST,"mail.post");

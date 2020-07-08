@@ -18,6 +18,10 @@ appointment:
     path: /cita
     controller: App\Controller\Open\HomeController::appointment
 
+cookies-policy:
+    path: /politica-de-cookies
+    controller: App\Controller\Open\HomeController::cookies
+
 mail:
     path: /mail
     controller: App\Controller\Open\HomeController::mail

@@ -51,6 +51,12 @@ class SeoProvider
             "keywords" => "Peluquería Doble RR. Promociones. Tratamiento capilar botox",
             "h1" => "Promoción tratamiento capilar"
         ],
+        "cookies"=>[
+            "title"=>"Doble RR | Política de cookies",
+            "description"=>"Política de cookies",
+            "keywords" => "Peluquería Doble RR. Política de cookies",
+            "h1" => "Pólitica de cookies"
+        ],
     ];
 
     public static function get_meta($route)

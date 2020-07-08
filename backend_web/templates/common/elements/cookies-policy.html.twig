@@ -27,11 +27,17 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div id="cajacookies" >
     <p>
-        <button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i>
-            Aceptar y cerrar éste mensaje
+        <button onclick="aceptarCookies()" class="pull-right">
+            <i class="fa fa-"></i>
+            Configuración
         </button>
-        Éste sitio web usa cookies, si permanece aquí acepta su uso.
-        Puede leer más sobre el uso de cookies en nuestra <a href="politica.html">política de privacidad</a>.
+        <button onclick="aceptarCookies()" class="pull-right">
+            <i class="fa fa-times"></i>
+            Cerrar
+        </button>
+        <b>Doblerr.es</b> y sus socios almacenan información no sensible en tu dispositivo, como cookies o identificadores únicos de tu dispositivo, y acceden a esta información para realizar tratamientos de datos, como medir y analizar las preferencias de nuestros usuarios, mostrar publicidad o contenidos personalizados a través del análisis de tu navegación, para lo cual es necesario compartir datos y perfiles no vinculados directamente a tu identidad con anunciantes, operadores publicitarios y otros intermediarios. Para aceptar y dar tu consentimiento a todas las finalidades y funcionalidades indicadas, puedes continuar navegando. En caso contrario, puedes configurar o rechazar dichas finalidades clicando en el apartado de Configuración. Para obtener más información sobre el uso de cookies y tus derechos, o para cambiar en cualquier momento tus preferencias, accede a nuestra
+        Puede leer más sobre el uso de cookies en nuestra <a href="/politica-de-cookies">política de cookies</a>.
+        <a href="/nuestros-socios">Nuestros socios</a>.
     </p>
 </div>
 <style>
@@ -43,6 +49,14 @@ document.addEventListener('DOMContentLoaded', function(){
     background-color: #117a8b;
     color: white;
     text-align: center;
+    z-index: 9000;
+}
+#cajacookies p {
+    color:white;
+}
+
+#cajacookies p {
+    color:white;
 }
 
 #cajacookies button {
