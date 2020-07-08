@@ -22,9 +22,10 @@
 <body>
 <div class="super_container">
     {{ include("open/common/header.html.twig") }}
-{% block body %}
-{% endblock %}
+    {% block body %}{% endblock %}
 </div>
+<!--/div-container -->
+{{ include("common/elements/cookies-policy.html.twig") }}
 
 <script src="/assets/themes/beauty/js/jquery-3.2.1.min.js"></script>
 <script src="/assets/themes/beauty/styles/bootstrap-4.1.2/popper.js"></script>
