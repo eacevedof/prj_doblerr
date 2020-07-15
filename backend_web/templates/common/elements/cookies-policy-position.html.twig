@@ -6,7 +6,7 @@
 let attempts = 0
 const ithread = setInterval(hide_cookiebot_text,500)
 
-const hide_cookiebot_text = function (){
+function hide_cookiebot_text(){
     attempts++
     console.log("attempts",attempts)
     const elem = document.querySelector(".CookieDeclaration")
