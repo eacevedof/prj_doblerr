@@ -8,13 +8,13 @@
     <meta name="keywords" content="{{ seo.keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/favicon-96x96.png" />
+    {{ include("common/elements/cookies-policy-head.html.twig") }}
     <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/styles/bootstrap-4.1.2/bootstrap.min.css">
     <link href="/assets/themes/beauty/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="/assets/themes/beauty/plugins/OwlCarousel2-2.2.1/animate.css">
     {% block styles %}{% endblock %}
-    {{ include("common/elements/cookies-policy-head.html.twig") }}
     {{ include("common/elements/gtag.html.twig") }}
     {{ include("common/elements/fb-pixel.html.twig") }}
     <script src="/assets/js/general.js"></script>
