@@ -1,3 +1,22 @@
 <!-- cookies-policy-position -->
 <script id="CookieDeclaration" src="https://consent.cookiebot.com/1bd729d4-ecb2-47f5-9989-e49953ab771f/cd.js" type="text/javascript" async></script>
+
+<script>
+//fix texto visible
+let attempts = 0
+const ithread = setInterval(hide_cookiebot_text,500)
+
+const hide_cookiebot_text = () => {
+    attempts++
+    console.log("attempts",attempts)
+    const elem = document.querySelector(".CookieDeclaration")
+    if(elem){
+        clearInterval(ithread)
+        elem.style.display="none"
+        return
+    }
+
+    if(attempts>9) clearInterval(ithread)
+}
+</script>
 <!--/cookies-policy-position -->
