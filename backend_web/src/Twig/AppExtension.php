@@ -10,6 +10,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFunction('is_prod', [$this, 'is_prod']),
+            new TwigFunction('is_promotion', [$this, 'is_promotion']),
         ];
     }
 
@@ -20,5 +21,13 @@ class AppExtension extends AbstractExtension
         $value = $_ENV["APP_ENV"] ?? "";
         //print_r("value-env:$value --fin");
         return $value==="prod";
+    }
+
+    public function is_promotion($subject)
+    {
+        $subjects = [
+            "oferta-facebook-000002"
+        ];
+        return in_array($subject,$subjects);
     }
 }

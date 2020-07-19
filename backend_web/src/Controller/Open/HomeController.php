@@ -7,6 +7,7 @@ use App\Controller\BaseController;
 use App\Providers\HomeProvider;
 use App\Providers\SeoProvider;
 use App\Services\Email\EmailFormService;
+use App\Services\Open\PromotionSubjectService;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -46,8 +47,10 @@ class HomeController extends BaseController
 
     public function contact()
     {
+        $subject = $this->get_request()->query->get("subject");
+        $description = PromotionSubjectService::get_description($subject);
         $seo = SeoProvider::get_meta("contact");
-        return $this->render('open/home/contact.html.twig',["seo"=>$seo]);
+        return $this->render('open/home/contact.html.twig',["seo"=>$seo,"subject"=>["key"=>$subject,"description"=>$description]]);
     }
 
     public function appointment()

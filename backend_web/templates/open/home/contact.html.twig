@@ -12,9 +12,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="section_title_container">
-
-                        </div>
+                        <div class="section_title_container"></div>
                     </div>
                 </div>
                 <div class="row footer_row">
@@ -51,7 +49,11 @@
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        {{ include("open/home/forms/form-contact.html.twig") }}
+                        {% if is_promotion(subject.key) %}
+                            {{ include("open/home/forms/form-contact-promotion.html.twig") }}
+                        {% else %}
+                            {{ include("open/home/forms/form-contact.html.twig") }}
+                        {% endif %}
                     </div>
                 </div>
             </div>
