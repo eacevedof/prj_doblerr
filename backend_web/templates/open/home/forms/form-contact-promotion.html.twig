@@ -2,21 +2,30 @@
 <div class="footer_title"></div>
 <div class="form-contact_container">
     {% verbatim %}
-    <form @submit="checkform" id="form-contact" class="contact_form">
+    <form @submit="checkform" id="form-contact-promotion" class="contact_form">
+        <div>
+            <input type="text" v-model="subject" class="contact_input" style="font-weight:bolder; font-size: larger;" disabled readonly required />
+        </div>
         <div>
             <div class="row">
                 <div class="col-lg-6">
                     <label for="name">Nombre</label>
-                    <input type="text" id="name" v-model="name" placeholder="...tu nombre" class="contact_input" required="required">
+                    <input type="text" id="name" ref="name" v-model="name" placeholder="...tu nombre" class="contact_input" required="required" />
                 </div>
                 <div class="col-lg-6">
                     <label for="email">Email</label>
-                    <input id="email" type="email" v-model="email" placeholder="tu-email@dominio.com" class="contact_input" required="required">
+                    <input id="email" type="email" v-model="email" placeholder="tu-email@dominio.com" class="contact_input" required="required" />
                 </div>
             </div>
         </div>
-        <div><input type="text" v-model="subject" placeholder="Asunto" class="contact_input" style="margin-top:15px" readonly></div>
-        <div><textarea v-model="message" class="contact_input contact_textarea" placeholder="Mensaje" required="required" style="margin-top:15px;"></textarea></div>
+
+        <div class="row">
+            <div class="col-lg-6">
+            <label for="message">Móvil:</label>
+            <input type="number" v-model="message" placeholder="600 700 800" class="contact_input" id="message" required/>
+            </div>
+        </div>
+
         <button id="btn-contact" class="contact_form_button" :disabled="issending" >
             {{btnsend}}
             <img v-if="issending" src="/assets/images/loading-bw.gif" width="25" height="25"/>
@@ -27,7 +36,7 @@
 
 <script>
 var app3 = new Vue({
-    el: "#form-contact",
+    el: "#form-contact-promotion",
     data: {
         errors:[],
         issending: false,
@@ -57,7 +66,7 @@ var app3 = new Vue({
             data.append("name",this.name)
             data.append("email",this.email)
             data.append("subject",this.subject)
-            data.append("message",this.message)
+            data.append("message","Móvil: ".concat(this.message))
 
             console.log("data pre fetch",data)
             fetch('/mail', {
@@ -97,9 +106,10 @@ var app3 = new Vue({
             })
         }
     },//methods
+    
     mounted(){
         console.log("form-contact.html.twig mounted")
-        //document.getElementById("form-contact").reset()
+        this.$refs.name.focus()
     }
 })
 </script>
