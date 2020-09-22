@@ -17,9 +17,25 @@ class InfrastructureService
         return $upload_mb;
     }
 
+    public static function get_in_bytes(string $from)
+    {
+        $units = ["B", "KB", "MB", "GB", "TB", "PB"];
+        $number = substr($from, 0, -2);
+        $suffix = strtoupper(substr($from,-2));
+
+        //B or no suffix
+        if(is_numeric(substr($suffix, 0, 1)))
+            return preg_replace("[^\d]", "", $from);
+
+        $exponent = array_flip($units)[$suffix] ?? null;
+        if($exponent === null) return null;
+
+        return $number * (1024 ** $exponent);
+    }
+
     public static function get_maxsize_bytes(){
         $size = self::get_maxsize()."MB";
-        return \get_in_bytes($size);
+        return self::get_in_bytes($size);
     }
 
     public static function is_ipuntracked(Request $request, EntityManager $em){
