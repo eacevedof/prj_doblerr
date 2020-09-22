@@ -40,18 +40,18 @@ class InfrastructureService
 
     public static function is_ipuntracked(Request $request, EntityManager $em){
         $ip = $request->getClientIp();
-        $qb = $em->createQueryBuilder();
-
-        $r = $qb->select("u")
-            ->from("app_ip_untracked","u")
-            ->andWhere("u.remote_ip = :searchTerm")
-            ->andWhere("u.is_enabled = :enabled")
-            ->setParameter("searchTerm", $ip)
-            ->setParameter("enabled", 1)
-            ->getQuery()
-            ->execute();
-
-        if($r->isEmpty()) return false;
+        $conn = $em->getConnection();
+        $sql = "
+        SELECT id 
+        FROM app_ip_untracked 
+        WHERE 1
+        AND is_enabled=1
+        AND remote_ip='$ip'
+        ";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $r = $stmt->fetchAll();
+        if(!$r) return false;
         return true;
     }
 
