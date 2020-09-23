@@ -24,8 +24,8 @@ services:
         tags: ['controller.service_arguments']
 
     #prueba lazy
-    App\Services\FooService:
-        lazy: true
+    #App\Services\FooService:
+        #lazy: true
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

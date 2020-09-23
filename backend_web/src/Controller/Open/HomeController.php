@@ -15,20 +15,20 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController extends BaseController
 {
-    private $foo;
+    //private $foo;
     public function __construct(RequestStack $request, FooService $foo)
     {
         parent::__construct($request);
         $this->provider= new HomeProvider();
-        dump("class_implements:",class_implements($foo));
-        dump("instance of fooservice",$foo);
-        $this->foo  = $foo;
+        //dump("class_implements:",class_implements($foo));
+        //dump("instance of fooservice",$foo);
+        //$this->foo  = $foo;
     }
 
     public function index()
     {
-        $this->foo->loginfo("prueba loginfo en homecontroller.index");
-        dd("this->foo despues de loginfo",$this->foo);
+        //$this->foo->loginfo("prueba loginfo en homecontroller.index");
+        //dd("this->foo despues de loginfo",$this->foo);
         $seo = SeoProvider::get_meta("home");
         $arslider = $this->provider->get_text_slider();
         $services = $this->provider->get_text_services();
