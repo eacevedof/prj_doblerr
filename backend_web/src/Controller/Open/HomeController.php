@@ -7,6 +7,7 @@ use App\Controller\BaseController;
 use App\Providers\HomeProvider;
 use App\Providers\SeoProvider;
 use App\Services\Email\EmailFormService;
+use App\Services\FooService;
 use App\Services\Open\PromotionSubjectService;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,15 +15,19 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController extends BaseController
 {
-
-    public function __construct(RequestStack $request)
+    private $foo;
+    public function __construct(RequestStack $request, FooService $foo)
     {
         parent::__construct($request);
         $this->provider= new HomeProvider();
+        //dd($foo);
+        $this->foo  = $foo;
     }
 
     public function index()
     {
+        $this->foo->loginfo("prueba loginfo en homecontroller.index");
+        dd($this->foo);
         $seo = SeoProvider::get_meta("home");
         $arslider = $this->provider->get_text_slider();
         $services = $this->provider->get_text_services();
