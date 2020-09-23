@@ -1,11 +1,16 @@
 <?php
 namespace App\Services\Common;
-
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
 
 class InfrastructureService
 {
+    private EntityManager $em;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
     public static function get_maxsize()
     {
         $max_upload = (int)(ini_get("upload_max_filesize"));
@@ -38,9 +43,9 @@ class InfrastructureService
         return self::get_in_bytes($size);
     }
 
-    public static function is_ipuntracked(Request $request, EntityManager $em){
-        $ip = $request->getClientIp();
-        $conn = $em->getConnection();
+    public function is_ipuntracked(){
+        $ip = $_SERVER["REMOTE_ADDR"] ?? "";
+        $conn = $this->em->getConnection();
         $sql = "
         SELECT id 
         FROM app_ip_untracked 
@@ -48,9 +53,10 @@ class InfrastructureService
         AND is_enabled=1
         AND remote_ip='$ip'
         ";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $r = $stmt->fetchAll();
+        $r = $conn
+                ->prepare($sql)
+                ->execute()
+                ->fetchAll();
         if(!$r) return false;
         return true;
     }

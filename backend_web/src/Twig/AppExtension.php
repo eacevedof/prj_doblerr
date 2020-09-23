@@ -1,6 +1,7 @@
 <?php
 namespace App\Twig;
 
+use App\Services\Common\InfrastructureService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -29,5 +30,11 @@ class AppExtension extends AbstractExtension
             "oferta-facebook-000002"
         ];
         return in_array($subject,$subjects);
+    }
+
+    public function is_ipuntracked()
+    {
+        //$this->getDoctrine()->getManager();
+        //InfrastructureService::is_ipuntracked();
     }
 }
