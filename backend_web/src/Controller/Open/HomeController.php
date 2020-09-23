@@ -20,7 +20,8 @@ class HomeController extends BaseController
     {
         parent::__construct($request);
         $this->provider= new HomeProvider();
-        //dd($foo);
+        dump("class_implements:",class_implements($foo));
+        dump("instance of fooservice",$foo);
         $this->foo  = $foo;
     }
 
