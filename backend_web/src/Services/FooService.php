@@ -5,11 +5,14 @@ use Psr\Log\LoggerInterface;
 
 class FooService
 {
-    private $logger;
+    private LoggerInterface $logger;
 
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
+        dump("fooservice.construct.logger");
+        dd($this->logger);
+        //Symfony\Bridge\Monolog\Logger inyecta esto sin lazy
     }
 
     public function loginfo($info)
