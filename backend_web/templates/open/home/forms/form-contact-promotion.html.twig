@@ -85,6 +85,7 @@ var app3 = new Vue({
                         title: 'Gracias por contactar con nosotros!',
                         html: 'En breves momentos recibirás una copia del mensaje en tu email.',
                     })
+                    fbq('track', 'Subscribe')
                     self.reset()
                 } else {
                     Swal.fire({
