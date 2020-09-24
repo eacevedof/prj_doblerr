@@ -1,15 +1,10 @@
 <?php
 namespace App\Services\Common;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 class InfrastructureService
 {
-    private EntityManager $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
 
     public static function get_maxsize()
     {
@@ -43,9 +38,9 @@ class InfrastructureService
         return self::get_in_bytes($size);
     }
 
-    public function is_ipuntracked(){
+    public function is_ipuntracked(EntityManagerInterface $em){
         $ip = $_SERVER["REMOTE_ADDR"] ?? "";
-        $conn = $this->em->getConnection();
+        $conn = $em->getConnection();
         $sql = "
         SELECT id 
         FROM app_ip_untracked 
