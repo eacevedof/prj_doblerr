@@ -1,6 +1,6 @@
 <!-- cookies-policy-position -->
+{% if is_prod() and not is_ipuntracked() %}
 <script id="CookieDeclaration" src="https://consent.cookiebot.com/1bd729d4-ecb2-47f5-9989-e49953ab771f/cd.js" type="text/javascript" async></script>
-
 <script>
 //fix texto visible
 let attempts = 0
@@ -19,4 +19,5 @@ function hide_cookiebot_text(){
     if(attempts>9) clearInterval(ithread)
 }
 </script>
+{% endif %}
 <!--/cookies-policy-position -->

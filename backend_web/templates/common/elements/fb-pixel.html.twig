@@ -1,5 +1,5 @@
 <!-- fb-pixel.html.twig -->
-{% if app.environment is same as("prod") %}
+{% if is_prod() and not is_ipuntracked() %}
 <!-- Facebook Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)

@@ -1,6 +1,5 @@
 <?php
 namespace App\Services\Common;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 class InfrastructureService
@@ -48,10 +47,10 @@ class InfrastructureService
         AND is_enabled=1
         AND remote_ip='$ip'
         ";
-        $r = $conn
-                ->prepare($sql)
-                ->execute()
-                ->fetchAll();
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $r = $stm->fetchAllAssociative();
+        //var_dump($r,$ip);die;
         if(!$r) return false;
         return true;
     }

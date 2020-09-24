@@ -1,3 +1,5 @@
 <!-- cookies-policy-head -->
+{% if is_prod() and not is_ipuntracked() %}
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1bd729d4-ecb2-47f5-9989-e49953ab771f" data-blockingmode="auto" type="text/javascript"></script>
+{% endif %}
 <!--/cookies-policy-head-->

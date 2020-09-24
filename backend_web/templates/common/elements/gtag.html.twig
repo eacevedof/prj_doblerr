@@ -1,5 +1,5 @@
-<!-- Global site tag (gtag.js) - Google Analytics ({{ app.environment }}) -->
-{% if app.environment is same as("prod") %}
+<!-- Global site tag (gtag.js) - Google Analytics ({{ app.environment }}) untracked:({{ is_ipuntracked() }}) -->
+{% if is_prod() and not is_ipuntracked() %}
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18500857-8"></script>
 <script>
 window.dataLayer = window.dataLayer || [];

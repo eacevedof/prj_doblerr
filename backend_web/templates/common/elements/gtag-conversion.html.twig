@@ -1,5 +1,5 @@
 <!-- Global site tag (gtag.js) - Google Analytics ({{ app.environment }}) -->
-{% if app.environment is same as("prod") %}
+{% if is_prod() and not is_ipuntracked() %}
 <!-- Global site tag (gtag.js) - Google Ads: 990893572 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-990893572"></script>
 <script>
