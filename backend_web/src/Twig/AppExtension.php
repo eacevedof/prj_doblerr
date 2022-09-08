@@ -42,6 +42,7 @@ class AppExtension extends AbstractExtension
 
     public function is_ipuntracked()
     {
-        return (new InfrastructureService())->is_ipuntracked($this->em);
+        return true;
+        //return (new InfrastructureService())->is_ipuntracked($this->em);
     }
 }
